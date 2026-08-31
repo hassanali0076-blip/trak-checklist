@@ -1,10 +1,10 @@
 # TRAK — master checklist
 
-Updated: 2026-08-31T03:19:03Z · Reviewed through 2026-08-31
+Updated: 2026-08-31T03:50:00Z · Reviewed through 2026-08-31
 
-- native: Build 461 · private beta
+- native: Build 462 · iOS TestFlight
 - backend: Recurring first-day correction live · 31 August
-- next: Build 462 signed files are ready: Search opening, saved libraries, recurring refresh and safe logout. Not yet distributed.
+- next: Install Build 462 and check Search opening, saved libraries, recurring refresh and safe logout. Android 462 is ready; Firebase distribution is unconfirmed.
 
 > Public, read-only project status. No login needed.
 
@@ -18,9 +18,9 @@ Updated: 2026-08-31T03:19:03Z · Reviewed through 2026-08-31
 
 ID: suggested-and-recent-foods-feel-immediate-and-relevant · Search & catalogue · Reviewed 2026-08-31
 
-Signed Build 462 includes the tested correction that lets ready server cards appear without waiting for disk-cache reads and prevents late cached cards replacing them. Not yet distributed. The reported phone delay and wider long-idle freeze remain open until checked.
+iOS TestFlight Build 462 includes the tested correction that lets ready server cards appear without waiting for disk-cache reads and prevents late cached cards replacing them. The reported phone delay and wider long-idle freeze remain open until checked.
 
-Next: Distribute Build 462, then check fresh open, long-idle return and offline loading. Capture request-to-card timings if delay remains; do not mark the phone issue resolved from local tests alone.
+Next: Install Build 462 and check fresh open, long-idle return and offline loading. Capture request-to-card timings if delay remains; an upload does not confirm the phone issue is resolved.
 
 ### Regional product typos can miss a valid result
 
@@ -64,30 +64,6 @@ Next: Reconcile existing source versions, nutrient coverage and recorded permiss
 
 ## Next phone build
 
-### Recipes and custom foods appear missing
-
-ID: verify-saved-library-visibility-after-the-filter-correction · Recipes & custom foods · Reviewed 2026-08-31
-
-The catalogue-filter correction is included in signed Build 462 files; release tests pass. Saved records were confirmed present. Build 462 is not yet distributed, and the exact phone trigger and recovery remain unconfirmed.
-
-Next: Distribute Build 462, then test opening, filtering and logging from both libraries. Do not reset or recreate existing data.
-
-### Logout protects unsaved changes
-
-ID: logout-protects-unsaved-changes · Account & onboarding · Reviewed 2026-08-31
-
-Implemented, tested and reviewed; included in signed Build 462 files. Not yet distributed or phone-verified.
-
-Next: Distribute Build 462 and verify Stay/Discard, failed-sync recovery and account isolation.
-
-### Recurring foods refresh promptly after reopening
-
-ID: recurring-foods-appear-promptly-after-reopening · Diary & recurring · Reviewed 2026-08-31
-
-The tested and reviewed correction is included in signed Build 462 files. It waits for the real diary before removing due placeholders. Not yet distributed or in the installed build.
-
-Next: Distribute Build 462; test short/long returns, slow connections and offline recovery.
-
 ### Native code organization
 
 ID: native-code-organisation-server-companion-later · Release & reliability · Reviewed 2026-08-31
@@ -97,6 +73,14 @@ The first native organization batch is tested and saved remotely, but not releas
 Next: Keep behavior unchanged; scope and approve the next batch separately.
 
 ## Needs checking
+
+### Recipes and custom foods appear missing
+
+ID: verify-saved-library-visibility-after-the-filter-correction · Recipes & custom foods · Reviewed 2026-08-31
+
+The catalogue-filter correction is available in iOS TestFlight Build 462. Saved records were confirmed present. Android distribution and the exact phone trigger and recovery remain unconfirmed.
+
+Next: Install Build 462 and test opening, filtering and logging from both libraries. Do not reset or recreate existing data.
 
 ### Offline and restart food-log recovery
 
@@ -161,6 +145,22 @@ ID: new-recurring-food-appears-in-today-s-still-upcoming-slot · Diary & recurri
 Deployed on 31 August. A new food scheduled later today is admitted today; elapsed or untimed slots start tomorrow. Existing skip flags are not cleared.
 
 Next: Add a food a few minutes ahead; confirm it appears now and logs once at the saved time. No new phone build needed.
+
+### Logout protects unsaved changes
+
+ID: logout-protects-unsaved-changes · Account & onboarding · Reviewed 2026-08-31
+
+Implemented, tested and reviewed; available in iOS TestFlight Build 462. Android distribution and phone verification remain open.
+
+Next: Install Build 462 and verify Stay/Discard, failed-sync recovery and account isolation.
+
+### Recurring foods refresh promptly after reopening
+
+ID: recurring-foods-appear-promptly-after-reopening · Diary & recurring · Reviewed 2026-08-31
+
+The tested and reviewed correction is available in iOS TestFlight Build 462. It waits for the real diary before removing due placeholders. Installation, Android distribution and phone acceptance remain open.
+
+Next: Install Build 462; test short/long returns, slow connections and offline recovery.
 
 ## Planned
 

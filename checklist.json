@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
   "title": "TRAK — master checklist",
-  "updatedAt": "2026-08-31T03:19:03Z",
+  "updatedAt": "2026-08-31T03:50:00Z",
   "reviewedThrough": "2026-08-31",
   "release": {
-    "native": "Build 461 · private beta",
+    "native": "Build 462 · iOS TestFlight",
     "backend": "Recurring first-day correction live · 31 August",
-    "next": "Build 462 signed files are ready: Search opening, saved libraries, recurring refresh and safe logout. Not yet distributed."
+    "next": "Install Build 462 and check Search opening, saved libraries, recurring refresh and safe logout. Android 462 is ready; Firebase distribution is unconfirmed."
   },
   "notes": [
     "Public, read-only project status. No login needed.",
@@ -14,6 +14,10 @@
     "Updates appear here after the shared checklist is published. Local edits and chat messages do not update it."
   ],
   "changes": [
+    {
+      "date": "2026-08-31",
+      "text": "Build 462 is available in TestFlight for internal testers; Apple processing and beta availability are verified. The matching Android file is ready for Firebase. Installation and phone acceptance remain open."
+    },
     {
       "date": "2026-08-31",
       "text": "Main coordination checkpoint saved for a pause. Build 462 files and release notes are preserved. Resume with delivery and phone checks, address any remaining regression, then serving-size editing. Other work owners are unchanged."
@@ -583,9 +587,9 @@
       "id": "verify-saved-library-visibility-after-the-filter-correction",
       "title": "Recipes and custom foods appear missing",
       "area": "Recipes & custom foods",
-      "status": "next_release",
-      "summary": "The catalogue-filter correction is included in signed Build 462 files; release tests pass. Saved records were confirmed present. Build 462 is not yet distributed, and the exact phone trigger and recovery remain unconfirmed.",
-      "nextStep": "Distribute Build 462, then test opening, filtering and logging from both libraries. Do not reset or recreate existing data.",
+      "status": "testing",
+      "summary": "The catalogue-filter correction is available in iOS TestFlight Build 462. Saved records were confirmed present. Android distribution and the exact phone trigger and recovery remain unconfirmed.",
+      "nextStep": "Install Build 462 and test opening, filtering and logging from both libraries. Do not reset or recreate existing data.",
       "updated": "2026-08-31"
     },
     {
@@ -620,8 +624,8 @@
       "title": "Suggested and Recent cards arrive late when opening Search",
       "area": "Search & catalogue",
       "status": "issue",
-      "summary": "Signed Build 462 includes the tested correction that lets ready server cards appear without waiting for disk-cache reads and prevents late cached cards replacing them. Not yet distributed. The reported phone delay and wider long-idle freeze remain open until checked.",
-      "nextStep": "Distribute Build 462, then check fresh open, long-idle return and offline loading. Capture request-to-card timings if delay remains; do not mark the phone issue resolved from local tests alone.",
+      "summary": "iOS TestFlight Build 462 includes the tested correction that lets ready server cards appear without waiting for disk-cache reads and prevents late cached cards replacing them. The reported phone delay and wider long-idle freeze remain open until checked.",
+      "nextStep": "Install Build 462 and check fresh open, long-idle return and offline loading. Capture request-to-card timings if delay remains; an upload does not confirm the phone issue is resolved.",
       "updated": "2026-08-31"
     },
     {
@@ -727,18 +731,18 @@
       "id": "logout-protects-unsaved-changes",
       "title": "Logout protects unsaved changes",
       "area": "Account & onboarding",
-      "status": "next_release",
-      "summary": "Implemented, tested and reviewed; included in signed Build 462 files. Not yet distributed or phone-verified.",
-      "nextStep": "Distribute Build 462 and verify Stay/Discard, failed-sync recovery and account isolation.",
+      "status": "testing",
+      "summary": "Implemented, tested and reviewed; available in iOS TestFlight Build 462. Android distribution and phone verification remain open.",
+      "nextStep": "Install Build 462 and verify Stay/Discard, failed-sync recovery and account isolation.",
       "updated": "2026-08-31"
     },
     {
       "id": "recurring-foods-appear-promptly-after-reopening",
       "title": "Recurring foods refresh promptly after reopening",
       "area": "Diary & recurring",
-      "status": "next_release",
-      "summary": "The tested and reviewed correction is included in signed Build 462 files. It waits for the real diary before removing due placeholders. Not yet distributed or in the installed build.",
-      "nextStep": "Distribute Build 462; test short/long returns, slow connections and offline recovery.",
+      "status": "testing",
+      "summary": "The tested and reviewed correction is available in iOS TestFlight Build 462. It waits for the real diary before removing due placeholders. Installation, Android distribution and phone acceptance remain open.",
+      "nextStep": "Install Build 462; test short/long returns, slow connections and offline recovery.",
       "updated": "2026-08-31"
     },
     {
