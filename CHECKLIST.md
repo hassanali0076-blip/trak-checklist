@@ -1,6 +1,6 @@
 # TRAK — master checklist
 
-Updated: 2026-08-31T01:32:01.013Z · Reviewed through 2026-08-31
+Updated: 2026-08-31T02:17:10Z · Reviewed through 2026-08-31
 
 - native: Build 461 · private beta
 - backend: Recurring first-day correction live · 31 August
@@ -14,13 +14,13 @@ Updated: 2026-08-31T01:32:01.013Z · Reviewed through 2026-08-31
 
 ## Known issue
 
-### Search can freeze or arrive late after a long idle
+### Suggested and Recent cards arrive late when opening Search
 
 ID: suggested-and-recent-foods-feel-immediate-and-relevant · Search & catalogue · Reviewed 2026-08-31
 
-Ordinary loading and earlier infrastructure fixes are verified. A separate long-idle return freeze/blink and late Search shelf remain unresolved.
+The opening delay is still reported. A tested local native correction lets ready server cards appear without waiting for disk-cache reads and prevents late cached cards replacing them. This is not yet on phones, and the wider long-idle freeze remains open.
 
-Next: Reproduce and diagnose the long-idle refresh/prewarm path; preserve the already-working ordinary load.
+Next: Include the correction in the next approved phone build, then check fresh open, long-idle return and offline loading. Capture request-to-card timings if delay remains; do not mark the phone issue resolved from local tests alone.
 
 ### Regional product typos can miss a valid result
 

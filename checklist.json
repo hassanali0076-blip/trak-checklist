@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "title": "TRAK — master checklist",
-  "updatedAt": "2026-08-31T01:32:01.013Z",
+  "updatedAt": "2026-08-31T02:17:10Z",
   "reviewedThrough": "2026-08-31",
   "release": {
     "native": "Build 461 · private beta",
@@ -14,6 +14,10 @@
     "Updates appear here after the shared checklist is published. Local edits and chat messages do not update it."
   ],
   "changes": [
+    {
+      "date": "2026-08-31",
+      "text": "Search opening: a local native correction removes a disk-cache wait that can hold ready Suggested/Recents cards. A new phone build and timing check remain; the wider idle freeze is not closed."
+    },
     {
       "date": "2026-08-31",
       "text": "Reconciled the latest handoff: copy work is paused; reference-food publication and source-inventory review remain open."
@@ -605,11 +609,11 @@
     },
     {
       "id": "suggested-and-recent-foods-feel-immediate-and-relevant",
-      "title": "Search can freeze or arrive late after a long idle",
+      "title": "Suggested and Recent cards arrive late when opening Search",
       "area": "Search & catalogue",
       "status": "issue",
-      "summary": "Ordinary loading and earlier infrastructure fixes are verified. A separate long-idle return freeze/blink and late Search shelf remain unresolved.",
-      "nextStep": "Reproduce and diagnose the long-idle refresh/prewarm path; preserve the already-working ordinary load.",
+      "summary": "The opening delay is still reported. A tested local native correction lets ready server cards appear without waiting for disk-cache reads and prevents late cached cards replacing them. This is not yet on phones, and the wider long-idle freeze remains open.",
+      "nextStep": "Include the correction in the next approved phone build, then check fresh open, long-idle return and offline loading. Capture request-to-card timings if delay remains; do not mark the phone issue resolved from local tests alone.",
       "updated": "2026-08-31"
     },
     {
