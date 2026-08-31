@@ -1,10 +1,10 @@
 # TRAK — master checklist
 
-Updated: 2026-08-31T02:17:10Z · Reviewed through 2026-08-31
+Updated: 2026-08-31T03:06:12Z · Reviewed through 2026-08-31
 
 - native: Build 461 · private beta
 - backend: Recurring first-day correction live · 31 August
-- next: Native library, recurring-refresh and safe-logout fixes are not distributed.
+- next: Build 462 signed files are ready: Search opening, saved libraries, recurring refresh and safe logout. Not yet distributed.
 
 > Public, read-only project status. No login needed.
 
@@ -18,9 +18,9 @@ Updated: 2026-08-31T02:17:10Z · Reviewed through 2026-08-31
 
 ID: suggested-and-recent-foods-feel-immediate-and-relevant · Search & catalogue · Reviewed 2026-08-31
 
-The opening delay is still reported. A tested local native correction lets ready server cards appear without waiting for disk-cache reads and prevents late cached cards replacing them. This is not yet on phones, and the wider long-idle freeze remains open.
+Signed Build 462 includes the tested correction that lets ready server cards appear without waiting for disk-cache reads and prevents late cached cards replacing them. Not yet distributed. The reported phone delay and wider long-idle freeze remain open until checked.
 
-Next: Include the correction in the next approved phone build, then check fresh open, long-idle return and offline loading. Capture request-to-card timings if delay remains; do not mark the phone issue resolved from local tests alone.
+Next: Distribute Build 462, then check fresh open, long-idle return and offline loading. Capture request-to-card timings if delay remains; do not mark the phone issue resolved from local tests alone.
 
 ### Regional product typos can miss a valid result
 
@@ -68,25 +68,25 @@ Next: Reconcile existing source versions, nutrient coverage and recorded permiss
 
 ID: verify-saved-library-visibility-after-the-filter-correction · Recipes & custom foods · Reviewed 2026-08-31
 
-A reproduced catalogue-filter leak is fixed and tested in the next native candidate. Saved records were confirmed present. The exact phone trigger and recovery are not yet confirmed.
+The catalogue-filter correction is included in signed Build 462 files; release tests pass. Saved records were confirmed present. Build 462 is not yet distributed, and the exact phone trigger and recovery remain unconfirmed.
 
-Next: Release the native correction, then test opening, filtering and logging from both libraries. Do not reset or recreate existing data.
+Next: Distribute Build 462, then test opening, filtering and logging from both libraries. Do not reset or recreate existing data.
 
 ### Logout protects unsaved changes
 
 ID: logout-protects-unsaved-changes · Account & onboarding · Reviewed 2026-08-31
 
-Implemented, tested and reviewed in the next native candidate. Not yet built or distributed.
+Implemented, tested and reviewed; included in signed Build 462 files. Not yet distributed or phone-verified.
 
-Next: Release and verify Stay/Discard, failed-sync recovery and account isolation.
+Next: Distribute Build 462 and verify Stay/Discard, failed-sync recovery and account isolation.
 
 ### Recurring foods refresh promptly after reopening
 
 ID: recurring-foods-appear-promptly-after-reopening · Diary & recurring · Reviewed 2026-08-31
 
-A reproduced native refresh gap is fixed and reviewed in the next candidate. It waits for the real diary before removing due placeholders. Not in the installed build.
+The tested and reviewed correction is included in signed Build 462 files. It waits for the real diary before removing due placeholders. Not yet distributed or in the installed build.
 
-Next: Release a new phone build; test short/long returns, slow connections and offline recovery.
+Next: Distribute Build 462; test short/long returns, slow connections and offline recovery.
 
 ### Native code organization
 
