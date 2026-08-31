@@ -1,0 +1,887 @@
+{
+  "schemaVersion": 1,
+  "title": "TRAK — master checklist",
+  "updatedAt": "2026-08-31T01:14:17.784Z",
+  "reviewedThrough": "2026-08-31",
+  "release": {
+    "native": "Build 461 · private beta",
+    "backend": "Recurring first-day correction live · 31 August",
+    "next": "Native library, recurring-refresh and safe-logout fixes are not distributed."
+  },
+  "notes": [
+    "Public, read-only project status. No login needed.",
+    "Historical checks are retained separately; a new regression is not closed by an older sign-off.",
+    "Updates appear here after the shared checklist is published. Local edits and chat messages do not update it."
+  ],
+  "changes": [
+    {
+      "date": "2026-08-31",
+      "text": "Deployed the upcoming-slot recurring correction; phone acceptance remains."
+    },
+    {
+      "date": "2026-08-31",
+      "text": "Search History and recurring additions confirmed working on phone."
+    },
+    {
+      "date": "2026-08-30",
+      "text": "Library filtering, recurring return refresh and safe logout corrected in the unreleased native candidate."
+    }
+  ],
+  "tasks": [
+    {
+      "id": "build-461-backend-database-and-worker-prerequisites-are-live",
+      "title": "Build 461 backend, database and worker prerequisites are live",
+      "area": "Release & reliability",
+      "status": "history",
+      "summary": "Recorded complete in an earlier release or verification checkpoint. This is historical coverage, not a fresh test of every current device.",
+      "nextStep": "Keep covered by regression tests; track any newly reported regression separately.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "recurring-food-database-repair-is-live",
+      "title": "Recurring-food database repair is live",
+      "area": "Diary & recurring",
+      "status": "history",
+      "summary": "Recorded complete in an earlier release or verification checkpoint. This is historical coverage, not a fresh test of every current device.",
+      "nextStep": "Keep covered by regression tests; track any newly reported regression separately.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "account-photo-and-diary-authentication-outage-is-fixed",
+      "title": "Account, photo and diary authentication outage is fixed",
+      "area": "Release & reliability",
+      "status": "history",
+      "summary": "Recorded complete in an earlier release or verification checkpoint. This is historical coverage, not a fresh test of every current device.",
+      "nextStep": "Keep covered by regression tests; track any newly reported regression separately.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "retired-fatsecret-uk-foods-are-hidden",
+      "title": "Retired FatSecret UK foods are hidden",
+      "area": "Release & reliability",
+      "status": "history",
+      "summary": "Recorded complete in an earlier release or verification checkpoint. This is historical coverage, not a fresh test of every current device.",
+      "nextStep": "Keep covered by regression tests; track any newly reported regression separately.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "final-build-461-native-source-is-frozen-and-tested",
+      "title": "Final Build 461 native source is frozen and tested",
+      "area": "Release & reliability",
+      "status": "history",
+      "summary": "Recorded complete in an earlier release or verification checkpoint. This is historical coverage, not a fresh test of every current device.",
+      "nextStep": "Keep covered by regression tests; track any newly reported regression separately.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "final-ios-build-461-is-available-in-testflight",
+      "title": "Final iOS Build 461 is available in TestFlight",
+      "area": "Release & reliability",
+      "status": "history",
+      "summary": "Recorded complete in an earlier release or verification checkpoint. This is historical coverage, not a fresh test of every current device.",
+      "nextStep": "Keep covered by regression tests; track any newly reported regression separately.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "matching-android-build-461-is-distributed-through-firebase",
+      "title": "Matching Android Build 461 is distributed through Firebase",
+      "area": "Release & reliability",
+      "status": "history",
+      "summary": "Recorded complete in an earlier release or verification checkpoint. This is historical coverage, not a fresh test of every current device.",
+      "nextStep": "Keep covered by regression tests; track any newly reported regression separately.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "health-nutrition-replace-the-day-repair-shipped",
+      "title": "Health nutrition replace-the-day repair shipped",
+      "area": "Health",
+      "status": "history",
+      "summary": "Recorded complete in an earlier release or verification checkpoint. This is historical coverage, not a fresh test of every current device.",
+      "nextStep": "Keep covered by regression tests; track any newly reported regression separately.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "health-connect-connected-state-uses-real-os-permissions",
+      "title": "Health Connect connected state uses real OS permissions",
+      "area": "Health",
+      "status": "history",
+      "summary": "Recorded complete in an earlier release or verification checkpoint. This is historical coverage, not a fresh test of every current device.",
+      "nextStep": "Keep covered by regression tests; track any newly reported regression separately.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "health-connect-requests-only-the-permissions-trak-uses",
+      "title": "Health Connect requests only the permissions TRAK uses",
+      "area": "Health",
+      "status": "history",
+      "summary": "Recorded complete in an earlier release or verification checkpoint. This is historical coverage, not a fresh test of every current device.",
+      "nextStep": "Keep covered by regression tests; track any newly reported regression separately.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "health-connect-install-and-navigation-handling-is-repaired",
+      "title": "Health Connect install and navigation handling is repaired",
+      "area": "Health",
+      "status": "history",
+      "summary": "Recorded complete in an earlier release or verification checkpoint. This is historical coverage, not a fresh test of every current device.",
+      "nextStep": "Keep covered by regression tests; track any newly reported regression separately.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "regional-verified-confectionery-follow-ups-are-live",
+      "title": "Regional Verified confectionery follow-ups are live",
+      "area": "Search & catalogue",
+      "status": "history",
+      "summary": "Recorded complete in an earlier release or verification checkpoint. This is historical coverage, not a fresh test of every current device.",
+      "nextStep": "Keep covered by regression tests; track any newly reported regression separately.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "all-15-reviewed-berlinki-hot-dogs-are-visible-in-exact-search",
+      "title": "All 15 reviewed Berlinki hot dogs are visible in exact Search",
+      "area": "Search & catalogue",
+      "status": "history",
+      "summary": "Recorded complete in an earlier release or verification checkpoint. This is historical coverage, not a fresh test of every current device.",
+      "nextStep": "Keep covered by regression tests; track any newly reported regression separately.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "suggested-endpoint-work-was-reduced-from-52-to-about-10-queries",
+      "title": "Suggested endpoint work was reduced from 52 to about 10 queries",
+      "area": "Search & catalogue",
+      "status": "history",
+      "summary": "Recorded complete in an earlier release or verification checkpoint. This is historical coverage, not a fresh test of every current device.",
+      "nextStep": "Keep covered by regression tests; track any newly reported regression separately.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "duplicate-suggested-and-recent-identities-are-merged",
+      "title": "Duplicate Suggested and Recent identities are merged",
+      "area": "Search & catalogue",
+      "status": "history",
+      "summary": "Recorded complete in an earlier release or verification checkpoint. This is historical coverage, not a fresh test of every current device.",
+      "nextStep": "Keep covered by regression tests; track any newly reported regression separately.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "suggested-cards-use-the-real-portion-and-corrected-branded-calories",
+      "title": "Suggested cards use the real portion and corrected branded calories",
+      "area": "Search & catalogue",
+      "status": "history",
+      "summary": "Recorded complete in an earlier release or verification checkpoint. This is historical coverage, not a fresh test of every current device.",
+      "nextStep": "Keep covered by regression tests; track any newly reported regression separately.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "shared-food-links-can-forward-into-trak",
+      "title": "Shared food links can forward into TRAK",
+      "area": "Search & catalogue",
+      "status": "history",
+      "summary": "Recorded complete in an earlier release or verification checkpoint. This is historical coverage, not a fresh test of every current device.",
+      "nextStep": "Keep covered by regression tests; track any newly reported regression separately.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "save-to-library-and-share-authentication-are-repaired",
+      "title": "Save to library and share authentication are repaired",
+      "area": "Food editing",
+      "status": "history",
+      "summary": "Recorded complete in an earlier release or verification checkpoint. This is historical coverage, not a fresh test of every current device.",
+      "nextStep": "Keep covered by regression tests; track any newly reported regression separately.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "android-food-editing-uses-trak-s-custom-keypad",
+      "title": "Android food editing uses TRAK's custom keypad",
+      "area": "Search & catalogue",
+      "status": "history",
+      "summary": "Recorded complete in an earlier release or verification checkpoint. This is historical coverage, not a fresh test of every current device.",
+      "nextStep": "Keep covered by regression tests; track any newly reported regression separately.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "multi-select-action-controls-have-a-stable-press-response",
+      "title": "Multi-select action controls have a stable press response",
+      "area": "Search & catalogue",
+      "status": "history",
+      "summary": "Recorded complete in an earlier release or verification checkpoint. This is historical coverage, not a fresh test of every current device.",
+      "nextStep": "Keep covered by regression tests; track any newly reported regression separately.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "slow-search-and-scan-infrastructure-cause-was-removed",
+      "title": "Slow search and scan infrastructure cause was removed",
+      "area": "Search & catalogue",
+      "status": "history",
+      "summary": "Recorded complete in an earlier release or verification checkpoint. This is historical coverage, not a fresh test of every current device.",
+      "nextStep": "Keep covered by regression tests; track any newly reported regression separately.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "nightly-catalogue-work-runs-on-a-real-scheduler",
+      "title": "Nightly catalogue work runs on a real scheduler",
+      "area": "Release & reliability",
+      "status": "history",
+      "summary": "Recorded complete in an earlier release or verification checkpoint. This is historical coverage, not a fresh test of every current device.",
+      "nextStep": "Keep covered by regression tests; track any newly reported regression separately.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "backup-retention-and-freshness-protections-are-live",
+      "title": "Backup retention and freshness protections are live",
+      "area": "Release & reliability",
+      "status": "history",
+      "summary": "Recorded complete in an earlier release or verification checkpoint. This is historical coverage, not a fresh test of every current device.",
+      "nextStep": "Keep covered by regression tests; track any newly reported regression separately.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "point-in-time-database-recovery-is-live",
+      "title": "Point-in-time database recovery is live",
+      "area": "Release & reliability",
+      "status": "history",
+      "summary": "Recorded complete in an earlier release or verification checkpoint. This is historical coverage, not a fresh test of every current device.",
+      "nextStep": "Keep covered by regression tests; track any newly reported regression separately.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "catalogue-bulk-repair-safeguards-were-independently-checked",
+      "title": "Catalogue bulk-repair safeguards were independently checked",
+      "area": "Release & reliability",
+      "status": "history",
+      "summary": "Recorded complete in an earlier release or verification checkpoint. This is historical coverage, not a fresh test of every current device.",
+      "nextStep": "Keep covered by regression tests; track any newly reported regression separately.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "trak-mcp-deploys-boot-successfully-again",
+      "title": "TRAK MCP deploys boot successfully again",
+      "area": "Release & reliability",
+      "status": "history",
+      "summary": "Recorded complete in an earlier release or verification checkpoint. This is historical coverage, not a fresh test of every current device.",
+      "nextStep": "Keep covered by regression tests; track any newly reported regression separately.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "backend-boot-no-longer-takes-a-blocking-catalogue-lock",
+      "title": "Backend boot no longer takes a blocking catalogue lock",
+      "area": "Release & reliability",
+      "status": "history",
+      "summary": "Recorded complete in an earlier release or verification checkpoint. This is historical coverage, not a fresh test of every current device.",
+      "nextStep": "Keep covered by regression tests; track any newly reported regression separately.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "web-workers-recycle-without-retaining-image-decode-memory",
+      "title": "Web workers recycle without retaining image-decode memory",
+      "area": "Release & reliability",
+      "status": "history",
+      "summary": "Recorded complete in an earlier release or verification checkpoint. This is historical coverage, not a fresh test of every current device.",
+      "nextStep": "Keep covered by regression tests; track any newly reported regression separately.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "coach-check-ins-can-always-exit-safely",
+      "title": "Coach check-ins can always exit safely",
+      "area": "Coach & insights",
+      "status": "history",
+      "summary": "Recorded complete in an earlier release or verification checkpoint. This is historical coverage, not a fresh test of every current device.",
+      "nextStep": "Keep covered by regression tests; track any newly reported regression separately.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "day-nutrition-summary-uses-the-roll-on-adjusted-target",
+      "title": "Day nutrition summary uses the Roll-On-adjusted target",
+      "area": "Coach & insights",
+      "status": "history",
+      "summary": "Recorded complete in an earlier release or verification checkpoint. This is historical coverage, not a fresh test of every current device.",
+      "nextStep": "Keep covered by regression tests; track any newly reported regression separately.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "goal-weight-changes-update-milestones-and-predictions",
+      "title": "Goal-weight changes update Milestones and Predictions",
+      "area": "Coach & insights",
+      "status": "history",
+      "summary": "Recorded complete in an earlier release or verification checkpoint. This is historical coverage, not a fresh test of every current device.",
+      "nextStep": "Keep covered by regression tests; track any newly reported regression separately.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "empty-charts-retain-the-trak-visual-frame",
+      "title": "Empty charts retain the TRAK visual frame",
+      "area": "Coach & insights",
+      "status": "history",
+      "summary": "Recorded complete in an earlier release or verification checkpoint. This is historical coverage, not a fresh test of every current device.",
+      "nextStep": "Keep covered by regression tests; track any newly reported regression separately.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "body-measurement-cards-handle-sparse-data-cleanly",
+      "title": "Body measurement cards handle sparse data cleanly",
+      "area": "Coach & insights",
+      "status": "history",
+      "summary": "Recorded complete in an earlier release or verification checkpoint. This is historical coverage, not a fresh test of every current device.",
+      "nextStep": "Keep covered by regression tests; track any newly reported regression separately.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "beta-release-notes-are-internal-until-public-launch",
+      "title": "Beta release notes are internal until public launch",
+      "area": "Coach & insights",
+      "status": "history",
+      "summary": "Recorded complete in an earlier release or verification checkpoint. This is historical coverage, not a fresh test of every current device.",
+      "nextStep": "Keep covered by regression tests; track any newly reported regression separately.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "privacy-safe-ios-termination-diagnostic-trail-is-integrated",
+      "title": "Privacy-safe iOS termination diagnostic trail is integrated",
+      "area": "Release & reliability",
+      "status": "history",
+      "summary": "Recorded complete in an earlier release or verification checkpoint. This is historical coverage, not a fresh test of every current device.",
+      "nextStep": "Keep covered by regression tests; track any newly reported regression separately.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "previous-session-termination-diagnostics-use-the-right-severity",
+      "title": "Previous-session termination diagnostics use the right severity",
+      "area": "Release & reliability",
+      "status": "history",
+      "summary": "Recorded complete in an earlier release or verification checkpoint. This is historical coverage, not a fresh test of every current device.",
+      "nextStep": "Keep covered by regression tests; track any newly reported regression separately.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "app-scrolling-and-page-transitions-share-the-native-motion-system",
+      "title": "App scrolling and page transitions share the native motion system",
+      "area": "Account & onboarding",
+      "status": "history",
+      "summary": "Recorded complete in an earlier release or verification checkpoint. This is historical coverage, not a fresh test of every current device.",
+      "nextStep": "Keep covered by regression tests; track any newly reported regression separately.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "system-status-and-navigation-bars-follow-trak-s-theme",
+      "title": "System status and navigation bars follow TRAK's theme",
+      "area": "Account & onboarding",
+      "status": "history",
+      "summary": "Recorded complete in an earlier release or verification checkpoint. This is historical coverage, not a fresh test of every current device.",
+      "nextStep": "Keep covered by regression tests; track any newly reported regression separately.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "android-screenshots-and-screen-recordings-work",
+      "title": "Android screenshots and screen recordings work",
+      "area": "Account & onboarding",
+      "status": "history",
+      "summary": "Recorded complete in an earlier release or verification checkpoint. This is historical coverage, not a fresh test of every current device.",
+      "nextStep": "Keep covered by regression tests; track any newly reported regression separately.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "copy-to-calendar-clears-the-samsung-navigation-area",
+      "title": "Copy-to-calendar clears the Samsung navigation area",
+      "area": "Account & onboarding",
+      "status": "history",
+      "summary": "Recorded complete in an earlier release or verification checkpoint. This is historical coverage, not a fresh test of every current device.",
+      "nextStep": "Keep covered by regression tests; track any newly reported regression separately.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "samsung-adaptive-icon-and-copy-to-today-motion-are-repaired",
+      "title": "Samsung adaptive icon and copy-to-today motion are repaired",
+      "area": "Account & onboarding",
+      "status": "history",
+      "summary": "Recorded complete in an earlier release or verification checkpoint. This is historical coverage, not a fresh test of every current device.",
+      "nextStep": "Keep covered by regression tests; track any newly reported regression separately.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "google-sign-in-works-on-android",
+      "title": "Google sign-in works on Android",
+      "area": "Account & onboarding",
+      "status": "history",
+      "summary": "Recorded complete in an earlier release or verification checkpoint. This is historical coverage, not a fresh test of every current device.",
+      "nextStep": "Keep covered by regression tests; track any newly reported regression separately.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "legacy-account-history-recovery",
+      "title": "Legacy account history recovery",
+      "area": "Account & onboarding",
+      "status": "history",
+      "summary": "A reported legacy-account history mismatch was repaired and verified.",
+      "nextStep": "Keep covered by regression tests; track any newly reported regression separately.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "duplicate-legacy-native-account-recovery",
+      "title": "Duplicate legacy/native account recovery",
+      "area": "Account & onboarding",
+      "status": "history",
+      "summary": "A reported duplicate-account case was repaired with preservation checks.",
+      "nextStep": "Keep covered by regression tests; track any newly reported regression separately.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "phone-signups-enter-onboarding-correctly",
+      "title": "Phone signups enter onboarding correctly",
+      "area": "Account & onboarding",
+      "status": "history",
+      "summary": "Recorded complete in an earlier release or verification checkpoint. This is historical coverage, not a fresh test of every current device.",
+      "nextStep": "Keep covered by regression tests; track any newly reported regression separately.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "privacy-policy-and-account-deletion-page-are-live",
+      "title": "Privacy policy and account-deletion page are live",
+      "area": "Account & onboarding",
+      "status": "history",
+      "summary": "Recorded complete in an earlier release or verification checkpoint. This is historical coverage, not a fresh test of every current device.",
+      "nextStep": "Keep covered by regression tests; track any newly reported regression separately.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "verified-email-legacy-linking-engine-is-deployed-dark",
+      "title": "Verified-email legacy linking engine is deployed dark",
+      "area": "Account & onboarding",
+      "status": "history",
+      "summary": "Recorded complete in an earlier release or verification checkpoint. This is historical coverage, not a fresh test of every current device.",
+      "nextStep": "Keep covered by regression tests; track any newly reported regression separately.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "app-links-and-shared-links-resolve-into-the-native-app",
+      "title": "App Links and shared links resolve into the native app",
+      "area": "Account & onboarding",
+      "status": "history",
+      "summary": "Recorded complete in an earlier release or verification checkpoint. This is historical coverage, not a fresh test of every current device.",
+      "nextStep": "Keep covered by regression tests; track any newly reported regression separately.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "ai-features-and-recipe-import-use-the-current-gemini-route",
+      "title": "AI features and recipe import use the current Gemini route",
+      "area": "Account & onboarding",
+      "status": "history",
+      "summary": "Recorded complete in an earlier release or verification checkpoint. This is historical coverage, not a fresh test of every current device.",
+      "nextStep": "Keep covered by regression tests; track any newly reported regression separately.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "upload-and-verify-final-build-455-sentry-symbols",
+      "title": "Upload and verify final Build 455 Sentry symbols",
+      "area": "Release & reliability",
+      "status": "history",
+      "summary": "Recorded complete in an earlier release or verification checkpoint. This is historical coverage, not a fresh test of every current device.",
+      "nextStep": "Keep covered by regression tests; track any newly reported regression separately.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "diary-return-and-weekly-hero-refresh",
+      "title": "Diary return and weekly hero refresh",
+      "area": "Release & reliability",
+      "status": "history",
+      "summary": "Recorded complete in an earlier release or verification checkpoint. This is historical coverage, not a fresh test of every current device.",
+      "nextStep": "Keep covered by regression tests; track any newly reported regression separately.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "recurring-foods-end-to-end-behaviour",
+      "title": "Recurring foods end-to-end behaviour",
+      "area": "Diary & recurring",
+      "status": "history",
+      "summary": "Recorded complete in an earlier release or verification checkpoint. This is historical coverage, not a fresh test of every current device.",
+      "nextStep": "Keep covered by regression tests; track any newly reported regression separately.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "account-and-profile-regression-on-the-final-artifact",
+      "title": "Account and profile regression on the final artifact",
+      "area": "Release & reliability",
+      "status": "history",
+      "summary": "Recorded complete in an earlier release or verification checkpoint. This is historical coverage, not a fresh test of every current device.",
+      "nextStep": "Keep covered by regression tests; track any newly reported regression separately.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "scanner-recovery-and-correction-sheets",
+      "title": "Scanner recovery and correction sheets",
+      "area": "Release & reliability",
+      "status": "history",
+      "summary": "Recorded complete in an earlier release or verification checkpoint. This is historical coverage, not a fresh test of every current device.",
+      "nextStep": "Keep covered by regression tests; track any newly reported regression separately.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "barcode-and-label-mode-handoff-is-seamless",
+      "title": "Barcode and Label mode handoff is seamless",
+      "area": "Release & reliability",
+      "status": "history",
+      "summary": "Recorded complete in an earlier release or verification checkpoint. This is historical coverage, not a fresh test of every current device.",
+      "nextStep": "Keep covered by regression tests; track any newly reported regression separately.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "named-serving-and-gram-volume-maths-stays-exact",
+      "title": "Named-serving and gram-volume maths stays exact",
+      "area": "Release & reliability",
+      "status": "history",
+      "summary": "Recorded complete in an earlier release or verification checkpoint. This is historical coverage, not a fresh test of every current device.",
+      "nextStep": "Keep covered by regression tests; track any newly reported regression separately.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "missing-day-trend-weight-interpolation",
+      "title": "Missing-day trend-weight interpolation",
+      "area": "Release & reliability",
+      "status": "history",
+      "summary": "Recorded complete in an earlier release or verification checkpoint. This is historical coverage, not a fresh test of every current device.",
+      "nextStep": "Keep covered by regression tests; track any newly reported regression separately.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "a-new-account-never-flashes-the-diary-before-onboarding",
+      "title": "A new account never flashes the diary before onboarding",
+      "area": "Release & reliability",
+      "status": "history",
+      "summary": "Recorded complete in an earlier release or verification checkpoint. This is historical coverage, not a fresh test of every current device.",
+      "nextStep": "Keep covered by regression tests; track any newly reported regression separately.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "health-on-iphone-pixel-and-samsung",
+      "title": "Health on iPhone, Pixel and Samsung",
+      "area": "Release & reliability",
+      "status": "history",
+      "summary": "Recorded complete in an earlier release or verification checkpoint. This is historical coverage, not a fresh test of every current device.",
+      "nextStep": "Keep covered by regression tests; track any newly reported regression separately.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "verify-saved-library-visibility-after-the-filter-correction",
+      "title": "Recipes and custom foods appear missing",
+      "area": "Recipes & custom foods",
+      "status": "next_release",
+      "summary": "A reproduced catalogue-filter leak is fixed and tested in the next native candidate. Saved records were confirmed present. The exact phone trigger and recovery are not yet confirmed.",
+      "nextStep": "Release the native correction, then test opening, filtering and logging from both libraries. Do not reset or recreate existing data.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "offline-and-restart-food-log-recovery",
+      "title": "Offline and restart food-log recovery",
+      "area": "Diary & recurring",
+      "status": "testing",
+      "summary": "Diary identity, offline replay and deletion handling are implemented. Full connectivity-change and restart acceptance remains.",
+      "nextStep": "Add, edit, move, copy and delete while going offline; reopen and confirm the intended diary survives.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "recurring-foods-become-real-entries-at-their-exact-local-time",
+      "title": "Recurring foods log at their exact local time",
+      "area": "Diary & recurring",
+      "status": "testing",
+      "summary": "Backend and scheduler are live. Full open/background/closed-app acceptance remains. The separate native return-refresh correction is queued for the next build.",
+      "nextStep": "Verify saved minutes, timezone changes and one diary entry per occurrence; repeat after the next native release.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "coach-check-in-flag-appears-on-the-diary-only-when-due",
+      "title": "Coach check-in flag appears on the diary only when due",
+      "area": "Coach & insights",
+      "status": "testing",
+      "summary": "The due-only diary flag is shipped. Complete on-phone timing and completion checks are still open.",
+      "nextStep": "Confirm absent before due, visible when due, and cleared after completion or skip.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "suggested-and-recent-foods-feel-immediate-and-relevant",
+      "title": "Search can freeze or arrive late after a long idle",
+      "area": "Search & catalogue",
+      "status": "issue",
+      "summary": "Ordinary loading and earlier infrastructure fixes are verified. A separate long-idle return freeze/blink and late Search shelf remain unresolved.",
+      "nextStep": "Reproduce and diagnose the long-idle refresh/prewarm path; preserve the already-working ordinary load.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "verified-and-branded-foods-stay-correctly-classified-and-unique",
+      "title": "Verified and Branded foods stay correctly classified and unique",
+      "area": "Search & catalogue",
+      "status": "testing",
+      "summary": "The backend classification correction is live. Final checks of Common, Verified and Branded shelves remain.",
+      "nextStep": "Check government foods in Common, reviewed products in Verified, and unreviewed products in Branded.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "common-foods-use-the-correct-household-portions",
+      "title": "Common foods use the correct household portions",
+      "area": "Search & catalogue",
+      "status": "testing",
+      "summary": "Build 461 includes reviewed portion families and wording fixes. Several foods passed; remaining oat-milk, onion and macro-ring checks are open.",
+      "nextStep": "Check exact oat milk, onion portion scaling and the zero-to-filled macro-ring animation.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "regional-verified-product-typos-recover-safely",
+      "title": "Regional product typos can miss a valid result",
+      "area": "Search & catalogue",
+      "status": "issue",
+      "summary": "The reported regional-product typo is diagnosed. A general vocabulary and matching correction is not yet implemented.",
+      "nextStep": "Fix general typo recovery with false-positive and Fast/Full regressions, not a product-specific alias.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "the-unit-chosen-in-food-editor-stays-chosen-everywhere",
+      "title": "Immediate or offline reopen can hide a serving choice",
+      "area": "Food editing",
+      "status": "issue",
+      "summary": "The persisted grams-versus-scoops fix is in Build 461. A narrower optimistic/offline row does not retain all portion choices before server confirmation.",
+      "nextStep": "Carry serving choices into the initial diary row; test immediate reopen online and offline.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "an-iphone-inactive-moment-must-not-be-mislabeled-as-background",
+      "title": "iPhone inactive-state diagnostics need refinement",
+      "area": "Release & reliability",
+      "status": "issue",
+      "summary": "An inactive-but-visible moment can be classified as background. This affects diagnostics, not saved diary or Health records.",
+      "nextStep": "Correct the lifecycle classification in a later native change and add regression tests.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "food-and-recipe-sharing-works-between-android-and-iphone",
+      "title": "Food and recipe sharing works between Android and iPhone",
+      "area": "Recipes & custom foods",
+      "status": "testing",
+      "summary": "Recipe links open. One messaging-app path takes an extra browser permission step; full two-way import checks remain.",
+      "nextStep": "Test food, custom food and recipe links in both directions, including Log once and Save/import.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "large-text-remains-usable-across-android-phones",
+      "title": "Large text still clips on some Android screens",
+      "area": "Accessibility",
+      "status": "issue",
+      "summary": "Real Samsung screenshots show clipping in macro labels, calorie insights and Recipe Builder fields despite earlier improvements.",
+      "nextStep": "Reproduce with maximum font size and screen zoom; fix adaptive layout and recheck Pixel/iPhone.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "coach-settling-recovery",
+      "title": "Coach repeatedly says it is settling",
+      "area": "Coach & insights",
+      "status": "testing",
+      "summary": "The completed-goal mismatch is corrected and deployed. The affected phone's open/reopen check remains outstanding.",
+      "nextStep": "Open Coach, leave and reopen it. Confirm the review appears without resetting the goal. No phone build needed.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "previously-logged-food-stays-visible-as-search-results-finish",
+      "title": "Search History matches stay visible",
+      "area": "Search & catalogue",
+      "status": "resolved",
+      "summary": "Deployed. The reported partial-name search now works on the phone. Broader Search regression checks remain.",
+      "nextStep": "Check other partial brand/name searches, hidden foods and saved portions.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "adding-and-re-enabling-recurring-foods-succeeds",
+      "title": "Recurring foods can be added again",
+      "area": "Diary & recurring",
+      "status": "resolved",
+      "summary": "Deployed. Adding recurring foods is confirmed working on the phone. Re-enable and batch-add checks remain.",
+      "nextStep": "Check re-enable, multiple additions and duplicate prevention.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "new-recurring-food-appears-in-today-s-still-upcoming-slot",
+      "title": "New recurring foods appear in upcoming slots today",
+      "area": "Diary & recurring",
+      "status": "testing",
+      "summary": "Deployed on 31 August. A new food scheduled later today is admitted today; elapsed or untimed slots start tomorrow. Existing skip flags are not cleared.",
+      "nextStep": "Add a food a few minutes ahead; confirm it appears now and logs once at the saved time. No new phone build needed.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "logout-protects-unsaved-changes",
+      "title": "Logout protects unsaved changes",
+      "area": "Account & onboarding",
+      "status": "next_release",
+      "summary": "Implemented, tested and reviewed in the next native candidate. Not yet built or distributed.",
+      "nextStep": "Release and verify Stay/Discard, failed-sync recovery and account isolation.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "recurring-foods-appear-promptly-after-reopening",
+      "title": "Recurring foods refresh promptly after reopening",
+      "area": "Diary & recurring",
+      "status": "next_release",
+      "summary": "A reproduced native refresh gap is fixed and reviewed in the next candidate. It waits for the real diary before removing due placeholders. Not in the installed build.",
+      "nextStep": "Release a new phone build; test short/long returns, slow connections and offline recovery.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "edit-the-serving-size-of-a-database-food",
+      "title": "Edit a database food’s serving size",
+      "area": "Food editing",
+      "status": "planned",
+      "summary": "Known limitation: Food Editor → Edit does not currently let users change serving size. Requested and tracked; not implemented.",
+      "nextStep": "Reproduce, add serving-size editing, then verify scaling, persistence and unchanged historical diary snapshots.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "night-shift-and-custom-day-boundary-logging",
+      "title": "Night-shift and custom day-boundary logging",
+      "area": "Diary & recurring",
+      "status": "planned",
+      "summary": "Specified but intentionally not implemented; this needs one consistent date contract across the app.",
+      "nextStep": "Design logging, offline replay, targets and Health together.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "general-backend-cursor-sync",
+      "title": "General backend cursor sync",
+      "area": "Diary & recurring",
+      "status": "planned",
+      "summary": "A backend candidate exists; the native app does not use it. This is a future efficiency improvement.",
+      "nextStep": "Define incremental updates, deletion handling and safe fallbacks before rollout.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "broader-process-restoration-polish",
+      "title": "Broader process-restoration polish",
+      "area": "Diary & recurring",
+      "status": "planned",
+      "summary": "High-risk diary and Health flows are protected; broader screen-state restoration remains future work.",
+      "nextStep": "Audit remaining screens by user impact.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "native-code-organisation-server-companion-later",
+      "title": "Native code organization",
+      "area": "Release & reliability",
+      "status": "next_release",
+      "summary": "The first native organization batch is tested and saved remotely, but not released. Later batches and backend restructuring are not included.",
+      "nextStep": "Keep behavior unchanged; scope and approve the next batch separately.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "confirmed-small-backend-fixes-from-the-muse-sol-deep-review-verification",
+      "title": "Backend reliability follow-ups",
+      "area": "Release & reliability",
+      "status": "planned",
+      "summary": "Several independently verified reliability and hardening items remain. Sensitive implementation details stay in the private engineering records.",
+      "nextStep": "Address them as small tested changes, separately from mechanical refactoring.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "import-sleep-from-apple-health-and-health-connect",
+      "title": "Import sleep from Apple Health and Health Connect",
+      "area": "Health",
+      "status": "planned",
+      "summary": "Under consideration only; not implemented.",
+      "nextStep": "Decide display and day-boundary behavior before platform integration.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "full-micronutrient-and-body-fat-health-sync",
+      "title": "Full micronutrient and body-fat Health sync",
+      "area": "Health",
+      "status": "planned",
+      "summary": "The agreed core Health flows are covered, not every vitamin, mineral or body-fat surface.",
+      "nextStep": "Review platform support, permissions and two-way parity.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "public-store-launch",
+      "title": "Public-store launch",
+      "area": "Release & reliability",
+      "status": "planned",
+      "summary": "The app is in private beta. Public App Store and Google Play launch are separate future work.",
+      "nextStep": "Finish beta acceptance, store assets and rollout checks.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "remaining-new-user-and-empty-state-walk",
+      "title": "Remaining new-user and empty-state walk",
+      "area": "Account & onboarding",
+      "status": "planned",
+      "summary": "Chart empty states are repaired; a broader fresh-account walkthrough remains.",
+      "nextStep": "Review Coach, Roll-On, Insights, streaks and Suggested together.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "dedicated-first-run-create-account-welcome-screen",
+      "title": "Dedicated first-run Create Account welcome screen",
+      "area": "Account & onboarding",
+      "status": "planned",
+      "summary": "Designed at a high level but not built.",
+      "nextStep": "Build and test the first-run signup and existing-account paths.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "verify-email-screen-and-confirm-email-rollout",
+      "title": "Verify-email screen and Confirm Email rollout",
+      "area": "Account & onboarding",
+      "status": "planned",
+      "summary": "The verification experience and rollout are not complete.",
+      "nextStep": "Build resend/completion/recovery flows and test every sign-in method before enabling.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "health-disclaimer-and-consumer-health-privacy-consent",
+      "title": "Health disclaimer and consumer-health privacy consent",
+      "area": "Account & onboarding",
+      "status": "planned",
+      "summary": "Research and final consent wording are not complete.",
+      "nextStep": "Obtain appropriate legal/platform review before implementation.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "verified-email-legacy-account-auto-linking-rollout",
+      "title": "Verified-email legacy-account auto-linking rollout",
+      "area": "Account & onboarding",
+      "status": "planned",
+      "summary": "The guarded linking engine exists but is not enabled for general rollout.",
+      "nextStep": "Complete verified-email onboarding and regression testing first.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "coach-recalibrating-indicator-on-the-diary",
+      "title": "Coach recalibrating indicator on the diary",
+      "area": "Coach & insights",
+      "status": "planned",
+      "summary": "Separate from the shipped review-due flag; a recalibrating state is not implemented.",
+      "nextStep": "Decide a subtle, clear presentation after due-flag acceptance.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "broader-roadmap-and-catalogue-work",
+      "title": "Broader roadmap and catalogue work",
+      "area": "Search & catalogue",
+      "status": "planned",
+      "summary": "Additional catalogue coverage and nutrition/display improvements remain in the broader roadmap.",
+      "nextStep": "Promote one clearly scoped feature at a time.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "design-brief-stripe-web-first-vs-native-in-app-purchase-revenuecat",
+      "title": "Native subscription and billing design",
+      "area": "Billing",
+      "status": "planned",
+      "summary": "The native subscription approach has not been selected or implemented.",
+      "nextStep": "Compare web and store billing, account entitlements, cancellation and restore behavior.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "app-copy-program",
+      "title": "App-wide copy review",
+      "area": "Release & reliability",
+      "status": "active",
+      "summary": "Accepted copy changes are included in the next candidate. The broader copy program still has unfinished work and held decisions; it is not complete.",
+      "nextStep": "Finish the remaining review with the copy owner, then verify the approved package on phones.",
+      "updated": "2026-08-31"
+    }
+  ]
+}
