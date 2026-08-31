@@ -1,6 +1,6 @@
 # TRAK — master checklist
 
-Updated: 2026-08-31T01:29:51.589Z · Reviewed through 2026-08-31
+Updated: 2026-08-31T01:32:01.013Z · Reviewed through 2026-08-31
 
 - native: Build 461 · private beta
 - backend: Recurring first-day correction live · 31 August
@@ -53,6 +53,14 @@ ID: large-text-remains-usable-across-android-phones · Accessibility · Reviewed
 Real Samsung screenshots show clipping in macro labels, calorie insights and Recipe Builder fields despite earlier improvements.
 
 Next: Reproduce with maximum font size and screen zoom; fix adaptive layout and recheck Pixel/iPhone.
+
+### Food-source coverage review needs reconciliation
+
+ID: custom-source-inventory-reconciliation · Search & catalogue · Reviewed 2026-08-31
+
+A source-access assessment missed datasets already held locally. The assessment was corrected, but worldwide source exhaustion has not been established. This is a research/review issue, not a new phone regression.
+
+Next: Reconcile existing source versions, nutrient coverage and recorded permissions before claiming remaining gaps cannot be filled. No automatic food or database changes.
 
 ## Next phone build
 
@@ -284,15 +292,24 @@ The native subscription approach has not been selected or implemented.
 
 Next: Compare web and store billing, account entitlements, cancellation and restore behavior.
 
-## In progress
-
-### App-wide copy review
+### App-wide copy review — paused
 
 ID: app-copy-program · Release & reliability · Reviewed 2026-08-31
 
-Accepted copy changes are included in the next candidate. The broader copy program still has unfinished work and held decisions; it is not complete.
+Paused by Aadam on 31 August. Accepted changes remain separate from unfinished Quick add/alcohol-calculator work. The latest unfinished slice still has failing checks; the whole copy program is not complete.
 
-Next: Finish the remaining review with the copy owner, then verify the approved package on phones.
+Next: Resume only when Aadam asks. Fix the recorded unfinished checks, complete independent review and then integrate only accepted changes into a separately approved phone build.
+
+### TRAK Custom reference-food publication
+
+ID: trak-custom-food-publication · Search & catalogue · Reviewed 2026-08-31
+
+Nine food profiles and expanded nutrient evidence have been reviewed offline. This does not mean those foods are published or available in Search. Some nutrient values remain unsupported.
+
+Next: Test the publication adapter and nutrient mapping, then obtain separate approval for any live food publication. Preserve unknown values and existing reviewed snapshots.
+
+## In progress
+
 
 ## Resolved live
 

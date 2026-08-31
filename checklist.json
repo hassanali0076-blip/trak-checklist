@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "title": "TRAK — master checklist",
-  "updatedAt": "2026-08-31T01:29:51.589Z",
+  "updatedAt": "2026-08-31T01:32:01.013Z",
   "reviewedThrough": "2026-08-31",
   "release": {
     "native": "Build 461 · private beta",
@@ -14,6 +14,10 @@
     "Updates appear here after the shared checklist is published. Local edits and chat messages do not update it."
   ],
   "changes": [
+    {
+      "date": "2026-08-31",
+      "text": "Reconciled the latest handoff: copy work is paused; reference-food publication and source-inventory review remain open."
+    },
     {
       "date": "2026-08-31",
       "text": "Published the shared, no-login master checklist with current issues, unreleased fixes and earlier sign-offs separated."
@@ -880,11 +884,29 @@
     },
     {
       "id": "app-copy-program",
-      "title": "App-wide copy review",
+      "title": "App-wide copy review — paused",
       "area": "Release & reliability",
-      "status": "active",
-      "summary": "Accepted copy changes are included in the next candidate. The broader copy program still has unfinished work and held decisions; it is not complete.",
-      "nextStep": "Finish the remaining review with the copy owner, then verify the approved package on phones.",
+      "status": "planned",
+      "summary": "Paused by Aadam on 31 August. Accepted changes remain separate from unfinished Quick add/alcohol-calculator work. The latest unfinished slice still has failing checks; the whole copy program is not complete.",
+      "nextStep": "Resume only when Aadam asks. Fix the recorded unfinished checks, complete independent review and then integrate only accepted changes into a separately approved phone build.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "trak-custom-food-publication",
+      "title": "TRAK Custom reference-food publication",
+      "area": "Search & catalogue",
+      "status": "planned",
+      "summary": "Nine food profiles and expanded nutrient evidence have been reviewed offline. This does not mean those foods are published or available in Search. Some nutrient values remain unsupported.",
+      "nextStep": "Test the publication adapter and nutrient mapping, then obtain separate approval for any live food publication. Preserve unknown values and existing reviewed snapshots.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "custom-source-inventory-reconciliation",
+      "title": "Food-source coverage review needs reconciliation",
+      "area": "Search & catalogue",
+      "status": "issue",
+      "summary": "A source-access assessment missed datasets already held locally. The assessment was corrected, but worldwide source exhaustion has not been established. This is a research/review issue, not a new phone regression.",
+      "nextStep": "Reconcile existing source versions, nutrient coverage and recorded permissions before claiming remaining gaps cannot be filled. No automatic food or database changes.",
       "updated": "2026-08-31"
     }
   ]
