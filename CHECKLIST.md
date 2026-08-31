@@ -1,6 +1,6 @@
 # TRAK — master checklist
 
-Updated: 2026-08-31T01:14:17.784Z · Reviewed through 2026-08-31
+Updated: 2026-08-31T01:29:51.589Z · Reviewed through 2026-08-31
 
 - native: Build 461 · private beta
 - backend: Recurring first-day correction live · 31 August

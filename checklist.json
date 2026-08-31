@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "title": "TRAK — master checklist",
-  "updatedAt": "2026-08-31T01:14:17.784Z",
+  "updatedAt": "2026-08-31T01:29:51.589Z",
   "reviewedThrough": "2026-08-31",
   "release": {
     "native": "Build 461 · private beta",
@@ -14,6 +14,10 @@
     "Updates appear here after the shared checklist is published. Local edits and chat messages do not update it."
   ],
   "changes": [
+    {
+      "date": "2026-08-31",
+      "text": "Published the shared, no-login master checklist with current issues, unreleased fixes and earlier sign-offs separated."
+    },
     {
       "date": "2026-08-31",
       "text": "Deployed the upcoming-slot recurring correction; phone acceptance remains."

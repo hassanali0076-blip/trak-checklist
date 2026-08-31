@@ -2,7 +2,7 @@
 
 Public project status for Aadam, Josh, and AI agents. No login is needed to read.
 
-- [Easy-view board](https://trak-checklist.sites.openai.com) (publication URL will be verified before handoff)
+- [Easy-view board](https://trak-checklist.hassanali0076.chatgpt.site)
 - [Full Markdown checklist](CHECKLIST.md)
 - [Machine-readable source](checklist.json)
 
