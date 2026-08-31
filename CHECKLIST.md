@@ -1,6 +1,6 @@
 # TRAK — master checklist
 
-Updated: 2026-08-31T03:50:00Z · Reviewed through 2026-08-31
+Updated: 2026-08-31T16:12:10Z · Reviewed through 2026-08-31
 
 - native: Build 462 · iOS TestFlight
 - backend: Recurring first-day correction live · 31 August
@@ -164,14 +164,6 @@ Next: Install Build 462; test short/long returns, slow connections and offline r
 
 ## Planned
 
-### Edit a database food’s serving size
-
-ID: edit-the-serving-size-of-a-database-food · Food editing · Reviewed 2026-08-31
-
-Known limitation: Food Editor → Edit does not currently let users change serving size. Requested and tracked; not implemented.
-
-Next: Reproduce, add serving-size editing, then verify scaling, persistence and unchanged historical diary snapshots.
-
 ### Night-shift and custom day-boundary logging
 
 ID: night-shift-and-custom-day-boundary-logging · Diary & recurring · Reviewed 2026-08-31
@@ -310,6 +302,21 @@ Next: Test the publication adapter and nutrient mapping, then obtain separate ap
 
 ## In progress
 
+### Recurring cards transition without duplicates or gaps
+
+ID: recurring-cards-transition-without-duplicates-or-gaps · Diary & recurring · Reviewed 2026-08-31
+
+A newer regression affects scheduled transitions and Log all: cards can overlap or disappear temporarily. Local corrections are under review; handling ambiguous older entries without adding duplicate calories remains open. This is separate from Build 462 return-refresh coverage.
+
+Next: Implementation owner finishes the legacy-entry guard and feedback; reviewer checks it, then run combined tests before an approved release and phone acceptance.
+
+### Edit a database food’s serving size
+
+ID: edit-the-serving-size-of-a-database-food · Food editing · Reviewed 2026-08-31
+
+Local serving-size foundations exist. The expanded editor is still being completed: all eight food/liquid units, slide-up unit and icon selectors, matching nutrition and review values, and approved native styling. Not available in a phone build.
+
+Next: Implementation owner completes backend unit support and the native editor; verify counted servings, saved nutrition, review values and history, then independent combined review/tests before release.
 
 ## Resolved live
 
