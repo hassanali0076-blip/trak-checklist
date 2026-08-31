@@ -1,6 +1,6 @@
 # TRAK — master checklist
 
-Updated: 2026-08-31T18:33:54Z · Reviewed through 2026-08-31
+Updated: 2026-08-31T18:58:51Z · Reviewed through 2026-08-31
 
 - native: Build 462 · iOS TestFlight
 - backend: Recurring first-day correction live · 31 August
@@ -63,6 +63,22 @@ A source-access assessment missed datasets already held locally. The assessment 
 Next: Reconcile existing source versions, nutrient coverage and recorded permissions before claiming remaining gaps cannot be filled. No automatic food or database changes.
 
 ## Next phone build
+
+### Recurring cards transition without duplicates or gaps
+
+ID: recurring-cards-transition-without-duplicates-or-gaps · Diary & recurring · Reviewed 2026-08-31
+
+Implemented, combined and reviewed locally with final tests passing: recurring identity, safe handling of ambiguous older entries, and synchronized card/calorie updates. Unknown historical matches are not guessed and may remain pending. Not released; separate from Build 462 return-refresh coverage.
+
+Next: Release owner obtains separate backend/schema and new phone-build approval. Then test scheduled logging, Log all today/future, old overlapping entries, removal races and card/calorie transitions on device.
+
+### Edit a database food’s serving size
+
+ID: edit-the-serving-size-of-a-database-food · Food editing · Reviewed 2026-08-31
+
+Implemented and reviewed with final tests passing: eight food/liquid units, slide-up unit/icon selectors, matching nutrition/review values and approved styling. Recipe-splitting snapshots, estimate labels and typography are corrected. A minor entirely-empty-panel metadata cache follow-up remains; no new value or calorie error was found. Not in a phone build.
+
+Next: Release owner obtains separate backend/schema and phone-build approval, followed by save/reopen/review, unit, nutrition, dark-mode, keyboard and accessibility device checks. Retain the empty-panel metadata follow-up in the developer backlog.
 
 ### Native code organization
 
@@ -302,21 +318,6 @@ Next: Test the publication adapter and nutrient mapping, then obtain separate ap
 
 ## In progress
 
-### Recurring cards transition without duplicates or gaps
-
-ID: recurring-cards-transition-without-duplicates-or-gaps · Diary & recurring · Reviewed 2026-08-31
-
-Local corrections for overlapping or disappearing cards, safe handling of ambiguous older entries and synchronized card/calorie updates have passed scoped review and tests. They are not released. This is separate from Build 462 return-refresh coverage.
-
-Next: Coordinator closes the combined review findings and reruns final tests. Backend/schema release, a new phone build and on-device transition checks follow under separate approval.
-
-### Edit a database food’s serving size
-
-ID: edit-the-serving-size-of-a-database-food · Food editing · Reviewed 2026-08-31
-
-The eight-unit backend contract and native editor are implemented and scoped-reviewed: slide-up unit/icon selectors, matching nutrition/review values and approved styling. Combined review found recipe-splitting snapshot, estimate-label and typography gaps. Repairs are active; not in a phone build.
-
-Next: Finish the three final repairs, full tests and scoped re-review. Then separately approve backend/schema release and a phone build, followed by save/reopen, unit, nutrition and device checks.
 
 ## Resolved live
 
