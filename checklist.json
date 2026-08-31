@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "title": "TRAK — master checklist",
-  "updatedAt": "2026-08-31T16:12:10Z",
+  "updatedAt": "2026-08-31T17:18:35Z",
   "reviewedThrough": "2026-08-31",
   "release": {
     "native": "Build 462 · iOS TestFlight",
@@ -16,7 +16,7 @@
   "changes": [
     {
       "date": "2026-08-31",
-      "text": "Local review closure resumed for recurring card transitions and the serving/unit/icon editor. A legacy recurring duplication risk remains under correction; combined tests, review and release gates are still open. These changes are not in Build 462."
+      "text": "Recurring card corrections and backend serving-unit support have passed scoped local review and tests. The native serving/unit/icon editor is underway. Combined tests, final review and release gates remain open; these changes are not in Build 462."
     },
     {
       "date": "2026-08-31",
@@ -754,8 +754,8 @@
       "title": "Recurring cards transition without duplicates or gaps",
       "area": "Diary & recurring",
       "status": "active",
-      "summary": "A newer regression affects scheduled transitions and Log all: cards can overlap or disappear temporarily. Local corrections are under review; handling ambiguous older entries without adding duplicate calories remains open. This is separate from Build 462 return-refresh coverage.",
-      "nextStep": "Implementation owner finishes the legacy-entry guard and feedback; reviewer checks it, then run combined tests before an approved release and phone acceptance.",
+      "summary": "Local corrections for overlapping or disappearing cards, safe handling of ambiguous older entries and synchronized card/calorie updates have passed scoped review and tests. They are not released. This is separate from Build 462 return-refresh coverage.",
+      "nextStep": "Coordinator combines the reviewed native changes with the editor and runs full tests and final review. Release and phone acceptance follow separately.",
       "updated": "2026-08-31"
     },
     {
@@ -763,8 +763,8 @@
       "title": "Edit a database food’s serving size",
       "area": "Food editing",
       "status": "active",
-      "summary": "Local serving-size foundations exist. The expanded editor is still being completed: all eight food/liquid units, slide-up unit and icon selectors, matching nutrition and review values, and approved native styling. Not available in a phone build.",
-      "nextStep": "Implementation owner completes backend unit support and the native editor; verify counted servings, saved nutrition, review values and history, then independent combined review/tests before release.",
+      "summary": "Backend support for all eight food/liquid units has passed local tests and independent review. The native editor is underway: slide-up unit and icon selectors, matching nutrition and review values, and approved styling. Not available in a phone build.",
+      "nextStep": "Native owner completes the editor and verifies counted servings, saved nutrition, review values and history. Independent editor review and combined full tests follow before release.",
       "updated": "2026-08-31"
     },
     {
