@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "title": "TRAK — master checklist",
-  "updatedAt": "2026-08-31T03:06:12Z",
+  "updatedAt": "2026-08-31T03:19:03Z",
   "reviewedThrough": "2026-08-31",
   "release": {
     "native": "Build 461 · private beta",
@@ -14,6 +14,10 @@
     "Updates appear here after the shared checklist is published. Local edits and chat messages do not update it."
   ],
   "changes": [
+    {
+      "date": "2026-08-31",
+      "text": "Main coordination checkpoint saved for a pause. Build 462 files and release notes are preserved. Resume with delivery and phone checks, address any remaining regression, then serving-size editing. Other work owners are unchanged."
+    },
     {
       "date": "2026-08-31",
       "text": "Build 462 signed iPhone and Android files are ready and release tests pass. Includes Search opening, saved-library visibility, recurring refresh and safe logout. Upload, installation and phone acceptance remain; these issues are not marked resolved."
