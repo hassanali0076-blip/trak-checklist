@@ -1,10 +1,10 @@
 # TRAK — master checklist
 
-Updated: 2026-09-01T06:51:30Z · Reviewed through 2026-09-01
+Updated: 2026-09-01T10:57:35Z · Reviewed through 2026-09-01
 
 - native: Build 463 · iOS TestFlight internal beta
-- backend: Build 463 recurring/editor companion live · 1 September
-- next: Build 463 is installed on iPhone; recheck the deployed Recents correction and run recurring-transition and food-editor checks. Android 463 is signed; Aadam is uploading it to Firebase before Android phone checks.
+- backend: Build 463 companion and Search Recents correction live · 1 September
+- next: Build 464 is built and signed locally for iOS and Android. It is not uploaded or distributed; phone acceptance remains for Search cold-open, recurring refresh, serving persistence and account isolation.
 
 > Public, read-only project status. No login needed.
 
@@ -14,14 +14,6 @@ Updated: 2026-09-01T06:51:30Z · Reviewed through 2026-09-01
 
 ## Known issue
 
-### Suggested and Recent cards arrive late when opening Search
-
-ID: suggested-and-recent-foods-feel-immediate-and-relevant · Search & catalogue · Reviewed 2026-08-31
-
-iOS TestFlight Build 462 includes the tested correction that lets ready server cards appear without waiting for disk-cache reads and prevents late cached cards replacing them. The reported phone delay and wider long-idle freeze remain open until checked.
-
-Next: Install Build 462 and check fresh open, long-idle return and offline loading. Capture request-to-card timings if delay remains; an upload does not confirm the phone issue is resolved.
-
 ### Regional product typos can miss a valid result
 
 ID: regional-verified-product-typos-recover-safely · Search & catalogue · Reviewed 2026-08-31
@@ -29,22 +21,6 @@ ID: regional-verified-product-typos-recover-safely · Search & catalogue · Revi
 The reported regional-product typo is diagnosed. A general vocabulary and matching correction is not yet implemented.
 
 Next: Fix general typo recovery with false-positive and Fast/Full regressions, not a product-specific alias.
-
-### Immediate or offline reopen can hide a serving choice
-
-ID: the-unit-chosen-in-food-editor-stays-chosen-everywhere · Food editing · Reviewed 2026-08-31
-
-The persisted grams-versus-scoops fix is in Build 461. A narrower optimistic/offline row does not retain all portion choices before server confirmation.
-
-Next: Carry serving choices into the initial diary row; test immediate reopen online and offline.
-
-### iPhone inactive-state diagnostics need refinement
-
-ID: an-iphone-inactive-moment-must-not-be-mislabeled-as-background · Release & reliability · Reviewed 2026-08-31
-
-An inactive-but-visible moment can be classified as background. This affects diagnostics, not saved diary or Health records.
-
-Next: Correct the lifecycle classification in a later native change and add regression tests.
 
 ### Large text still clips on some Android screens
 
@@ -64,6 +40,38 @@ Next: Reconcile existing source versions, nutrient coverage and recorded permiss
 
 ## Next phone build
 
+### Suggested and Recent cards arrive late when opening Search
+
+ID: suggested-and-recent-foods-feel-immediate-and-relevant · Search & catalogue · Reviewed 2026-09-01
+
+Build 463 remains affected after a hard-close and immediate Search. A tested native correction preserves the warm Suggested and Recent shelves through same-account startup recovery and is included in locally built and signed Build 464. It is not distributed or phone-accepted.
+
+Next: Distribute and install Build 464, then hard-close and reopen TRAK and open Search immediately online and on a slow or offline connection. Confirm both shelves appear without delay and logout or account switching never shows another account's cards.
+
+### Immediate or offline reopen can hide a serving choice
+
+ID: the-unit-chosen-in-food-editor-stays-chosen-everywhere · Food editing · Reviewed 2026-09-01
+
+The persisted grams-versus-scoops fix is live, and the remaining optimistic or offline row now retains the exact catalogue serving choices. The correction is tested and included in locally built and signed Build 464, but is not distributed or phone-accepted.
+
+Next: Distribute and install Build 464, select grams on a food that also offers Scoop, log it and immediately reopen online and offline. Confirm the chosen unit stays selected and every exact serving remains available without changing nutrition.
+
+### iPhone inactive-state diagnostics need refinement
+
+ID: an-iphone-inactive-moment-must-not-be-mislabeled-as-background · Release & reliability · Reviewed 2026-09-01
+
+The inactive-but-visible diagnostic classification is corrected and tested in locally built and signed Build 464. Hidden, paused and idle lifecycle events remain informational. This does not change saved diary or Health records and is not yet distributed.
+
+Next: Distribute Build 464 with its verified symbols, then confirm any naturally reproduced visible inactive interruption keeps the foreground diagnostic while background suspension remains informational.
+
+### Recurring foods refresh promptly after reopening
+
+ID: recurring-foods-appear-promptly-after-reopening · Diary & recurring · Reviewed 2026-09-01
+
+Build 463 phone acceptance failed: planned recurring cards can still arrive late after a hard-close or take several seconds to become logged cards after their time passes. The first-frame and elapsed-plan correction is tested and included in locally built and signed Build 464, but is not distributed or phone-accepted.
+
+Next: Distribute and install Build 464. Hard-close and reopen before and after a scheduled time, then confirm the planned card appears immediately and becomes its logged card with the calorie total in one transition, including slow or offline recovery.
+
 ### Native code organization
 
 ID: native-code-organisation-server-companion-later · Release & reliability · Reviewed 2026-08-31
@@ -76,11 +84,11 @@ Next: Keep behavior unchanged; scope and approve the next batch separately.
 
 ### Recipes and custom foods appear missing
 
-ID: verify-saved-library-visibility-after-the-filter-correction · Recipes & custom foods · Reviewed 2026-08-31
+ID: verify-saved-library-visibility-after-the-filter-correction · Recipes & custom foods · Reviewed 2026-09-01
 
-The catalogue-filter correction is available in iOS TestFlight Build 462. Saved records were confirmed present. Android distribution and the exact phone trigger and recovery remain unconfirmed.
+The catalogue-filter correction is in installed iOS Build 463, and saved records were confirmed present. The exact phone trigger and recovery remain unconfirmed; Android phone acceptance is also open.
 
-Next: Install Build 462 and test opening, filtering and logging from both libraries. Do not reset or recreate existing data.
+Next: On Build 463 or later, test opening, filtering and logging from both libraries. Do not reset or recreate existing data.
 
 ### Offline and restart food-log recovery
 
@@ -92,11 +100,11 @@ Next: Add, edit, move, copy and delete while going offline; reopen and confirm t
 
 ### Recurring foods log at their exact local time
 
-ID: recurring-foods-become-real-entries-at-their-exact-local-time · Diary & recurring · Reviewed 2026-08-31
+ID: recurring-foods-become-real-entries-at-their-exact-local-time · Diary & recurring · Reviewed 2026-09-01
 
-Backend and scheduler are live. Full open/background/closed-app acceptance remains. The separate native return-refresh correction is queued for the next build.
+Backend and scheduler are live. Full open/background/closed-app acceptance remains. The separate native cold-open correction is included in locally built Build 464 but is not distributed.
 
-Next: Verify saved minutes, timezone changes and one diary entry per occurrence; repeat after the next native release.
+Next: Verify saved minutes, timezone changes and one diary entry per occurrence; repeat after Build 464 is distributed.
 
 ### Coach check-in flag appears on the diary only when due
 
@@ -156,35 +164,27 @@ Next: Add a food a few minutes ahead; confirm it appears now and logs once at th
 
 ### Logout protects unsaved changes
 
-ID: logout-protects-unsaved-changes · Account & onboarding · Reviewed 2026-08-31
+ID: logout-protects-unsaved-changes · Account & onboarding · Reviewed 2026-09-01
 
-Implemented, tested and reviewed; available in iOS TestFlight Build 462. Android distribution and phone verification remain open.
+Implemented, tested and reviewed; available in installed iOS Build 463. Phone verification and Android distribution remain open.
 
-Next: Install Build 462 and verify Stay/Discard, failed-sync recovery and account isolation.
-
-### Recurring foods refresh promptly after reopening
-
-ID: recurring-foods-appear-promptly-after-reopening · Diary & recurring · Reviewed 2026-08-31
-
-The tested and reviewed correction is available in iOS TestFlight Build 462. It waits for the real diary before removing due placeholders. Installation, Android distribution and phone acceptance remain open.
-
-Next: Install Build 462; test short/long returns, slow connections and offline recovery.
+Next: On Build 463 or later, verify Stay and Discard, failed-sync recovery and account isolation. Repeat on Android after distribution.
 
 ### Recurring cards transition without duplicates or gaps
 
 ID: recurring-cards-transition-without-duplicates-or-gaps · Diary & recurring · Reviewed 2026-09-01
 
-Implemented, reviewed and included in iOS TestFlight Build 463 with its backend/database companion live. The card and calorie total now publish together, logged entries replace their own plans, and refresh/removal races are covered. The connected iPhone had not installed 463 yet; Android distribution and phone acceptance remain open.
+Build 463 contains the duplicate, blank-interval and refresh-race protections, but iPhone acceptance still found a separate cold-open and elapsed-plan delay. That follow-up is in locally built Build 464 and remains undistributed; Android acceptance is also open.
 
-Next: Install Build 463 and test scheduled logging, Log all today/future, old overlapping entries, removal races and card/calorie transitions. After Android Firebase upload, repeat on Android.
+Next: After Build 464 distribution, test scheduled logging, Log all today and on a future day, old overlapping entries, removal during refresh and card/calorie transitions. Repeat on Android after Firebase distribution.
 
 ### Edit a database food’s serving size
 
 ID: edit-the-serving-size-of-a-database-food · Food editing · Reviewed 2026-09-01
 
-Implemented, reviewed and included in iOS TestFlight Build 463 with its backend/database companion live: eight food/liquid units, slide-up unit/icon selectors, matching nutrition/review values and approved styling. A minor entirely-empty-panel metadata cache follow-up remains; no value or calorie error was found. Phone acceptance is still open.
+Implemented, reviewed and available in installed iOS Build 463: eight food/liquid units, slide-up unit and icon selectors, matching nutrition and Review values, and approved styling. Locally built Build 464 retains the feature. Phone acceptance is still open.
 
-Next: Install Build 463 and check save/reopen/review, every unit, nutrition display, icon selection, dark mode, keyboard and accessibility. After Android Firebase upload, repeat on Android.
+Next: On Build 463 or later, check save, reopen and Review, every unit, nutrition display, icon selection, dark mode, keyboard and accessibility. Repeat on Android after Firebase distribution.
 
 ## Planned
 
