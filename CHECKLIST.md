@@ -1,10 +1,10 @@
 # TRAK — master checklist
 
-Updated: 2026-09-01T10:57:35Z · Reviewed through 2026-09-01
+Updated: 2026-09-01T13:32:04Z · Reviewed through 2026-09-01
 
-- native: Build 463 · iOS TestFlight internal beta
+- native: Build 464 · iOS TestFlight internal beta · installed; partial UAT failed
 - backend: Build 463 companion and Search Recents correction live · 1 September
-- next: Build 464 is built and signed locally for iOS and Android. It is not uploaded or distributed; phone acceptance remains for Search cold-open, recurring refresh, serving persistence and account isolation.
+- next: A local follow-up corrects Build 464's first-update Search shelves, Food Editor first-frame and live nutrition basis, safe-logout presentation and delayed Delete Undo. It is tested source only and needs a new native build; recurring, saved-library and persistence acceptance remain open.
 
 > Public, read-only project status. No login needed.
 
@@ -21,6 +21,14 @@ ID: regional-verified-product-typos-recover-safely · Search & catalogue · Revi
 The reported regional-product typo is diagnosed. A general vocabulary and matching correction is not yet implemented.
 
 Next: Fix general typo recovery with false-positive and Fast/Full regressions, not a product-specific alias.
+
+### Typed Search results feel slow again
+
+ID: typed-search-results-are-slow-again · Search & catalogue · Reviewed 2026-09-01
+
+Typed Search was reported slow again on installed iOS Build 464. The exact query, connection state and Fast-versus-Full paint timing were not captured, and Build 463-to-464 did not change the typed-query path, so the cause is not yet proven.
+
+Next: Reproduce with the exact query and record the first Fast result, Full replacement and network state. Compare those timings with the last known-good build before changing ranking or request code.
 
 ### Large text still clips on some Android screens
 
@@ -44,33 +52,33 @@ Next: Reconcile existing source versions, nutrient coverage and recorded permiss
 
 ID: suggested-and-recent-foods-feel-immediate-and-relevant · Search & catalogue · Reviewed 2026-09-01
 
-Build 463 remains affected after a hard-close and immediate Search. A tested native correction preserves the warm Suggested and Recent shelves through same-account startup recovery and is included in locally built and signed Build 464. It is not distributed or phone-accepted.
+Build 464 failed its first post-update phone check: immediately opening Search waited for Suggested and Recents, while later hard-close checks worked after today's response had replaced the one saved context. A local correction now retains a bounded set of exact contexts and permits only a recent same-hour warm start for live Search; it is tested source only and not in Build 464.
 
-Next: Distribute and install Build 464, then hard-close and reopen TRAK and open Search immediately online and on a slow or offline connection. Confirm both shelves appear without delay and logout or account switching never shows another account's cards.
+Next: Include the local correction in the next build. After updating, open Search before today's response can populate its cache and confirm both shelves paint immediately, then repeat hard-close, slow/offline, Timeline-hour, logout and A-to-B account-isolation checks.
 
-### Immediate or offline reopen can hide a serving choice
+### Logout protects unsaved changes
 
-ID: the-unit-chosen-in-food-editor-stays-chosen-everywhere · Food editing · Reviewed 2026-09-01
+ID: logout-protects-unsaved-changes · Account & onboarding · Reviewed 2026-09-01
 
-The persisted grams-versus-scoops fix is live, and the remaining optimistic or offline row now retains the exact catalogue serving choices. The correction is tested and included in locally built and signed Build 464, but is not distributed or phone-accepted.
+Build 464 phone acceptance confirmed that Stay signed in retains the account and pending food, but the warning used a centred dialog instead of TRAK's slide-up sheet. The canonical non-dismissible slide-up presentation is corrected and tested locally; Discard, account isolation and Android remain open.
 
-Next: Distribute and install Build 464, select grams on a food that also offers Scoop, log it and immediately reopen online and offline. Confirm the chosen unit stays selected and every exact serving remains available without changing nutrition.
+Next: Include the presentation correction in the next build, confirm the warning slides up, and repeat Stay. Then test Discard with disposable data, failed-sync recovery, account isolation and Android.
 
-### iPhone inactive-state diagnostics need refinement
+### Edit a database food’s serving size
 
-ID: an-iphone-inactive-moment-must-not-be-mislabeled-as-background · Release & reliability · Reviewed 2026-09-01
+ID: edit-the-serving-size-of-a-database-food · Food editing · Reviewed 2026-09-01
 
-The inactive-but-visible diagnostic classification is corrected and tested in locally built and signed Build 464. Hidden, paused and idle lifecycle events remain informational. This does not change saved diary or Health records and is not yet distributed.
+Build 464 exposed two editor defects: Edit first showed the old adjacent serving text before changing to the card, and the TRAK number pad changed Serving without updating the Nutrition \`per N unit\` basis. Stable first-frame serving geometry and live serving-scaled nutrition are corrected and tested locally; full save/reopen acceptance remains open.
 
-Next: Distribute Build 464 with its verified symbols, then confirm any naturally reproduced visible inactive interruption keeps the foreground diagnostic while background suspension remains informational.
+Next: Include the editor correction in the next build. Confirm the first frame is already the Serving card, changing its amount updates the Nutrition heading and values immediately, then check Review, save/reopen, all eight units, icon, dark mode, keyboard and accessibility.
 
-### Recurring foods refresh promptly after reopening
+### Delete Undo appears without waiting for sync
 
-ID: recurring-foods-appear-promptly-after-reopening · Diary & recurring · Reviewed 2026-09-01
+ID: food-log-delete-undo-appears-without-waiting-for-sync · Diary & recurring · Reviewed 2026-09-01
 
-Build 463 phone acceptance failed: planned recurring cards can still arrive late after a hard-close or take several seconds to become logged cards after their time passes. The first-frame and elapsed-plan correction is tested and included in locally built and signed Build 464, but is not distributed or phone-accepted.
+On Build 464, deleting immediately after reconnect showed syncing but delayed the Undo message by roughly ten seconds. The logger now continues as soon as the delete intent and local projection are durable while remote replay continues, with exact rejection handling to avoid restoring or re-adding the row twice. The correction is tested source only.
 
-Next: Distribute and install Build 464. Hard-close and reopen before and after a scheduled time, then confirm the planned card appears immediately and becomes its logged card with the calorie total in one transition, including slow or offline recovery.
+Next: Include the correction in the next build. Reconnect and immediately delete a disposable food; confirm Undo appears immediately, sync can finish in the background, Undo restores once, and a rejected delete never duplicates the row.
 
 ### Native code organization
 
@@ -86,25 +94,25 @@ Next: Keep behavior unchanged; scope and approve the next batch separately.
 
 ID: verify-saved-library-visibility-after-the-filter-correction · Recipes & custom foods · Reviewed 2026-09-01
 
-The catalogue-filter correction is in installed iOS Build 463, and saved records were confirmed present. The exact phone trigger and recovery remain unconfirmed; Android phone acceptance is also open.
+The catalogue-filter correction is in installed iOS Build 464, and saved records were confirmed present. Build 464 library visibility was not checked in this phone round; the exact original trigger and Android acceptance remain open.
 
-Next: On Build 463 or later, test opening, filtering and logging from both libraries. Do not reset or recreate existing data.
+Next: On Build 464, enter a catalogue query, open Recipes and Foods, and confirm both complete saved libraries remain visible and loggable while the catalogue query is preserved. Do not reset or recreate existing data.
 
 ### Offline and restart food-log recovery
 
-ID: offline-and-restart-food-log-recovery · Diary & recurring · Reviewed 2026-08-31
+ID: offline-and-restart-food-log-recovery · Diary & recurring · Reviewed 2026-09-01
 
-Diary identity, offline replay and deletion handling are implemented. Full connectivity-change and restart acceptance remains.
+Build 464 kept an unsaved food after choosing Stay signed in and saved it after reconnecting. Deleting immediately after reconnect exposed a separate roughly ten-second delay before Undo appeared; the exact local-admission correction is tested source only. Full connectivity-change and restart acceptance remains.
 
-Next: Add, edit, move, copy and delete while going offline; reopen and confirm the intended diary survives.
+Next: On the next build, repeat reconnect then immediate delete and confirm Undo appears immediately while sync continues. Also add, edit, move, copy and delete offline, reopen, and confirm the intended diary survives without duplication.
 
 ### Recurring foods log at their exact local time
 
 ID: recurring-foods-become-real-entries-at-their-exact-local-time · Diary & recurring · Reviewed 2026-09-01
 
-Backend and scheduler are live. Full open/background/closed-app acceptance remains. The separate native cold-open correction is included in locally built Build 464 but is not distributed.
+Backend and scheduler are live, and Build 464 containing the native cold-open correction is installed on iPhone. This phone round did not record the recurring checks, so open/background/closed-app acceptance remains.
 
-Next: Verify saved minutes, timezone changes and one diary entry per occurrence; repeat after Build 464 is distributed.
+Next: On Build 464, verify saved minutes, timezone changes, first-frame planned cards and exactly one diary entry per occurrence before and after the scheduled time.
 
 ### Coach check-in flag appears on the diary only when due
 
@@ -118,9 +126,9 @@ Next: Confirm absent before due, visible when due, and cleared after completion 
 
 ID: recents-shelf-remains-visible-alongside-suggested · Search & catalogue · Reviewed 2026-09-01
 
-Confirmed on installed Build 463 and corrected in the live backend. Clock-based Search now widens an empty Recents shelf to recent non-habit foods in the current meal even when Suggested is populated, while excluding cards already shown in Suggested. No new phone build is required.
+Corrected in the live backend. On Build 464 both shelves appeared after the first network response, but duplicate-card and cross-meal acceptance were not recorded and the first-frame delay remains a separate next-build issue.
 
-Next: Close and reopen Search on Build 463; confirm Suggested and Recents both appear without duplicate cards, then check another meal and time slot.
+Next: On Build 464 or later, confirm Suggested and Recents both appear without duplicate cards, then check another meal and time slot. Test first-frame timing separately on the next build.
 
 ### Verified and Branded foods stay correctly classified and unique
 
@@ -137,6 +145,22 @@ ID: common-foods-use-the-correct-household-portions · Search & catalogue · Rev
 Build 461 includes reviewed portion families and wording fixes. Several foods passed; remaining oat-milk, onion and macro-ring checks are open.
 
 Next: Check exact oat milk, onion portion scaling and the zero-to-filled macro-ring animation.
+
+### Immediate or offline reopen can hide a serving choice
+
+ID: the-unit-chosen-in-food-editor-stays-chosen-everywhere · Food editing · Reviewed 2026-09-01
+
+The persisted grams-versus-scoops fix and exact optimistic/offline serving choices are in installed Build 464, but their save/reopen phone check was not completed in this round.
+
+Next: On Build 464, select grams on a food that also offers Scoop, log it and immediately reopen online and offline. Confirm the chosen unit stays selected and every exact serving remains available without changing nutrition.
+
+### iPhone inactive-state diagnostics need refinement
+
+ID: an-iphone-inactive-moment-must-not-be-mislabeled-as-background · Release & reliability · Reviewed 2026-09-01
+
+The inactive-but-visible diagnostic classification is corrected and installed in Build 464. Hidden, paused and idle lifecycle events remain informational. This phone round did not reproduce or accept the diagnostic path.
+
+Next: Confirm any naturally reproduced visible inactive interruption keeps the foreground diagnostic while background suspension remains informational.
 
 ### Food and recipe sharing works between Android and iPhone
 
@@ -162,29 +186,21 @@ Deployed on 31 August. A new food scheduled later today is admitted today; elaps
 
 Next: Add a food a few minutes ahead; confirm it appears now and logs once at the saved time. No new phone build needed.
 
-### Logout protects unsaved changes
+### Recurring foods refresh promptly after reopening
 
-ID: logout-protects-unsaved-changes · Account & onboarding · Reviewed 2026-09-01
+ID: recurring-foods-appear-promptly-after-reopening · Diary & recurring · Reviewed 2026-09-01
 
-Implemented, tested and reviewed; available in installed iOS Build 463. Phone verification and Android distribution remain open.
+Build 463 failed this check. Its first-frame and elapsed-plan correction is now installed in Build 464, but no recurring result was recorded in the latest phone round, so it remains unaccepted.
 
-Next: On Build 463 or later, verify Stay and Discard, failed-sync recovery and account isolation. Repeat on Android after distribution.
+Next: On Build 464, hard-close and reopen before and after a scheduled time. Confirm the planned card appears immediately and becomes its logged card with the calorie total in one transition, including slow or offline recovery.
 
 ### Recurring cards transition without duplicates or gaps
 
 ID: recurring-cards-transition-without-duplicates-or-gaps · Diary & recurring · Reviewed 2026-09-01
 
-Build 463 contains the duplicate, blank-interval and refresh-race protections, but iPhone acceptance still found a separate cold-open and elapsed-plan delay. That follow-up is in locally built Build 464 and remains undistributed; Android acceptance is also open.
+Build 464 containing the duplicate, blank-interval, refresh-race, cold-open and elapsed-plan protections is installed. The latest phone round did not record recurring results, so iPhone and Android acceptance remain open.
 
-Next: After Build 464 distribution, test scheduled logging, Log all today and on a future day, old overlapping entries, removal during refresh and card/calorie transitions. Repeat on Android after Firebase distribution.
-
-### Edit a database food’s serving size
-
-ID: edit-the-serving-size-of-a-database-food · Food editing · Reviewed 2026-09-01
-
-Implemented, reviewed and available in installed iOS Build 463: eight food/liquid units, slide-up unit and icon selectors, matching nutrition and Review values, and approved styling. Locally built Build 464 retains the feature. Phone acceptance is still open.
-
-Next: On Build 463 or later, check save, reopen and Review, every unit, nutrition display, icon selection, dark mode, keyboard and accessibility. Repeat on Android after Firebase distribution.
+Next: On Build 464, test scheduled logging, Log all today and on a future day, old overlapping entries, removal during refresh and card/calorie transitions. Repeat on Android after Firebase distribution.
 
 ## Planned
 
