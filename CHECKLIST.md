@@ -1,6 +1,6 @@
 # TRAK — master checklist
 
-Updated: 2026-09-01T06:38:32Z · Reviewed through 2026-09-01
+Updated: 2026-09-01T06:40:45Z · Reviewed through 2026-09-01
 
 - native: Build 463 · iOS TestFlight internal beta
 - backend: Build 463 recurring/editor companion live · 1 September
@@ -21,6 +21,14 @@ ID: suggested-and-recent-foods-feel-immediate-and-relevant · Search & catalogue
 iOS TestFlight Build 462 includes the tested correction that lets ready server cards appear without waiting for disk-cache reads and prevents late cached cards replacing them. The reported phone delay and wider long-idle freeze remain open until checked.
 
 Next: Install Build 462 and check fresh open, long-idle return and offline loading. Capture request-to-card timings if delay remains; an upload does not confirm the phone issue is resolved.
+
+### Recents can disappear when Suggested is present
+
+ID: recents-shelf-remains-visible-alongside-suggested · Search & catalogue · Reviewed 2026-09-01
+
+Diagnosed on Build 462. Recents are restricted to a narrow clock slot, and the wider meal-period fallback runs only when both Suggested and Recents are empty. A valid Suggested card can therefore leave the Recents shelf absent. Build 463 does not include a correction.
+
+Next: Widen an empty Recents shelf to the current meal period even when Suggested is populated, exclude cards already shown in Suggested, and add ranking, deduplication and phone checks.
 
 ### Regional product typos can miss a valid result
 

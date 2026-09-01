@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "title": "TRAK — master checklist",
-  "updatedAt": "2026-09-01T06:38:32Z",
+  "updatedAt": "2026-09-01T06:40:45Z",
   "reviewedThrough": "2026-09-01",
   "release": {
     "native": "Build 463 · iOS TestFlight internal beta",
@@ -14,6 +14,10 @@
     "Updates appear here after the shared checklist is published. Local edits and chat messages do not update it."
   ],
   "changes": [
+    {
+      "date": "2026-09-01",
+      "text": "New Search issue recorded from Build 462: Suggested can appear while the Recents shelf is absent. Recents are currently narrowed to the clock slot, and their meal-period fallback is blocked whenever Suggested has a card. This is diagnosed, not fixed in Build 463."
+    },
     {
       "date": "2026-09-01",
       "text": "Build 463 is valid and available to TRAK's internal TestFlight group. Its backend and database companion are live. The matching Android build is signed and Aadam is uploading it to Firebase. The connected iPhone still had Build 462 and no Android phone was connected, so recurring-transition and food-editor phone acceptance remain open."
@@ -635,6 +639,15 @@
       "summary": "iOS TestFlight Build 462 includes the tested correction that lets ready server cards appear without waiting for disk-cache reads and prevents late cached cards replacing them. The reported phone delay and wider long-idle freeze remain open until checked.",
       "nextStep": "Install Build 462 and check fresh open, long-idle return and offline loading. Capture request-to-card timings if delay remains; an upload does not confirm the phone issue is resolved.",
       "updated": "2026-08-31"
+    },
+    {
+      "id": "recents-shelf-remains-visible-alongside-suggested",
+      "title": "Recents can disappear when Suggested is present",
+      "area": "Search & catalogue",
+      "status": "issue",
+      "summary": "Diagnosed on Build 462. Recents are restricted to a narrow clock slot, and the wider meal-period fallback runs only when both Suggested and Recents are empty. A valid Suggested card can therefore leave the Recents shelf absent. Build 463 does not include a correction.",
+      "nextStep": "Widen an empty Recents shelf to the current meal period even when Suggested is populated, exclude cards already shown in Suggested, and add ranking, deduplication and phone checks.",
+      "updated": "2026-09-01"
     },
     {
       "id": "verified-and-branded-foods-stay-correctly-classified-and-unique",
