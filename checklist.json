@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
   "title": "TRAK — master checklist",
-  "updatedAt": "2026-08-31T18:58:51Z",
-  "reviewedThrough": "2026-08-31",
+  "updatedAt": "2026-09-01T06:38:32Z",
+  "reviewedThrough": "2026-09-01",
   "release": {
-    "native": "Build 462 · iOS TestFlight",
-    "backend": "Recurring first-day correction live · 31 August",
-    "next": "Install Build 462 and check Search opening, saved libraries, recurring refresh and safe logout. Android 462 is ready; Firebase distribution is unconfirmed."
+    "native": "Build 463 · iOS TestFlight internal beta",
+    "backend": "Build 463 recurring/editor companion live · 1 September",
+    "next": "Install Build 463 and run recurring-transition and food-editor checks on iPhone. Android 463 is signed; Aadam is uploading it to Firebase before Android phone checks."
   },
   "notes": [
     "Public, read-only project status. No login needed.",
@@ -14,6 +14,10 @@
     "Updates appear here after the shared checklist is published. Local edits and chat messages do not update it."
   ],
   "changes": [
+    {
+      "date": "2026-09-01",
+      "text": "Build 463 is valid and available to TRAK's internal TestFlight group. Its backend and database companion are live. The matching Android build is signed and Aadam is uploading it to Firebase. The connected iPhone still had Build 462 and no Android phone was connected, so recurring-transition and food-editor phone acceptance remain open."
+    },
     {
       "date": "2026-08-31",
       "text": "Recurring transitions and the serving/unit/icon editor are implemented, combined and reviewed locally. Final tests pass: 3,717 native, 108 legacy-login and 630 backend tests. The three final review defects are repaired; one minor empty-panel metadata follow-up remains. Backend/schema release, a new phone build and device checks are still required. Not in Build 462."
@@ -753,19 +757,19 @@
       "id": "recurring-cards-transition-without-duplicates-or-gaps",
       "title": "Recurring cards transition without duplicates or gaps",
       "area": "Diary & recurring",
-      "status": "next_release",
-      "summary": "Implemented, combined and reviewed locally with final tests passing: recurring identity, safe handling of ambiguous older entries, and synchronized card/calorie updates. Unknown historical matches are not guessed and may remain pending. Not released; separate from Build 462 return-refresh coverage.",
-      "nextStep": "Release owner obtains separate backend/schema and new phone-build approval. Then test scheduled logging, Log all today/future, old overlapping entries, removal races and card/calorie transitions on device.",
-      "updated": "2026-08-31"
+      "status": "testing",
+      "summary": "Implemented, reviewed and included in iOS TestFlight Build 463 with its backend/database companion live. The card and calorie total now publish together, logged entries replace their own plans, and refresh/removal races are covered. The connected iPhone had not installed 463 yet; Android distribution and phone acceptance remain open.",
+      "nextStep": "Install Build 463 and test scheduled logging, Log all today/future, old overlapping entries, removal races and card/calorie transitions. After Android Firebase upload, repeat on Android.",
+      "updated": "2026-09-01"
     },
     {
       "id": "edit-the-serving-size-of-a-database-food",
       "title": "Edit a database food’s serving size",
       "area": "Food editing",
-      "status": "next_release",
-      "summary": "Implemented and reviewed with final tests passing: eight food/liquid units, slide-up unit/icon selectors, matching nutrition/review values and approved styling. Recipe-splitting snapshots, estimate labels and typography are corrected. A minor entirely-empty-panel metadata cache follow-up remains; no new value or calorie error was found. Not in a phone build.",
-      "nextStep": "Release owner obtains separate backend/schema and phone-build approval, followed by save/reopen/review, unit, nutrition, dark-mode, keyboard and accessibility device checks. Retain the empty-panel metadata follow-up in the developer backlog.",
-      "updated": "2026-08-31"
+      "status": "testing",
+      "summary": "Implemented, reviewed and included in iOS TestFlight Build 463 with its backend/database companion live: eight food/liquid units, slide-up unit/icon selectors, matching nutrition/review values and approved styling. A minor entirely-empty-panel metadata cache follow-up remains; no value or calorie error was found. Phone acceptance is still open.",
+      "nextStep": "Install Build 463 and check save/reopen/review, every unit, nutrition display, icon selection, dark mode, keyboard and accessibility. After Android Firebase upload, repeat on Android.",
+      "updated": "2026-09-01"
     },
     {
       "id": "night-shift-and-custom-day-boundary-logging",

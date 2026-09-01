@@ -1,10 +1,10 @@
 # TRAK — master checklist
 
-Updated: 2026-08-31T18:58:51Z · Reviewed through 2026-08-31
+Updated: 2026-09-01T06:38:32Z · Reviewed through 2026-09-01
 
-- native: Build 462 · iOS TestFlight
-- backend: Recurring first-day correction live · 31 August
-- next: Install Build 462 and check Search opening, saved libraries, recurring refresh and safe logout. Android 462 is ready; Firebase distribution is unconfirmed.
+- native: Build 463 · iOS TestFlight internal beta
+- backend: Build 463 recurring/editor companion live · 1 September
+- next: Install Build 463 and run recurring-transition and food-editor checks on iPhone. Android 463 is signed; Aadam is uploading it to Firebase before Android phone checks.
 
 > Public, read-only project status. No login needed.
 
@@ -63,22 +63,6 @@ A source-access assessment missed datasets already held locally. The assessment 
 Next: Reconcile existing source versions, nutrient coverage and recorded permissions before claiming remaining gaps cannot be filled. No automatic food or database changes.
 
 ## Next phone build
-
-### Recurring cards transition without duplicates or gaps
-
-ID: recurring-cards-transition-without-duplicates-or-gaps · Diary & recurring · Reviewed 2026-08-31
-
-Implemented, combined and reviewed locally with final tests passing: recurring identity, safe handling of ambiguous older entries, and synchronized card/calorie updates. Unknown historical matches are not guessed and may remain pending. Not released; separate from Build 462 return-refresh coverage.
-
-Next: Release owner obtains separate backend/schema and new phone-build approval. Then test scheduled logging, Log all today/future, old overlapping entries, removal races and card/calorie transitions on device.
-
-### Edit a database food’s serving size
-
-ID: edit-the-serving-size-of-a-database-food · Food editing · Reviewed 2026-08-31
-
-Implemented and reviewed with final tests passing: eight food/liquid units, slide-up unit/icon selectors, matching nutrition/review values and approved styling. Recipe-splitting snapshots, estimate labels and typography are corrected. A minor entirely-empty-panel metadata cache follow-up remains; no new value or calorie error was found. Not in a phone build.
-
-Next: Release owner obtains separate backend/schema and phone-build approval, followed by save/reopen/review, unit, nutrition, dark-mode, keyboard and accessibility device checks. Retain the empty-panel metadata follow-up in the developer backlog.
 
 ### Native code organization
 
@@ -177,6 +161,22 @@ ID: recurring-foods-appear-promptly-after-reopening · Diary & recurring · Revi
 The tested and reviewed correction is available in iOS TestFlight Build 462. It waits for the real diary before removing due placeholders. Installation, Android distribution and phone acceptance remain open.
 
 Next: Install Build 462; test short/long returns, slow connections and offline recovery.
+
+### Recurring cards transition without duplicates or gaps
+
+ID: recurring-cards-transition-without-duplicates-or-gaps · Diary & recurring · Reviewed 2026-09-01
+
+Implemented, reviewed and included in iOS TestFlight Build 463 with its backend/database companion live. The card and calorie total now publish together, logged entries replace their own plans, and refresh/removal races are covered. The connected iPhone had not installed 463 yet; Android distribution and phone acceptance remain open.
+
+Next: Install Build 463 and test scheduled logging, Log all today/future, old overlapping entries, removal races and card/calorie transitions. After Android Firebase upload, repeat on Android.
+
+### Edit a database food’s serving size
+
+ID: edit-the-serving-size-of-a-database-food · Food editing · Reviewed 2026-09-01
+
+Implemented, reviewed and included in iOS TestFlight Build 463 with its backend/database companion live: eight food/liquid units, slide-up unit/icon selectors, matching nutrition/review values and approved styling. A minor entirely-empty-panel metadata cache follow-up remains; no value or calorie error was found. Phone acceptance is still open.
+
+Next: Install Build 463 and check save/reopen/review, every unit, nutrition display, icon selection, dark mode, keyboard and accessibility. After Android Firebase upload, repeat on Android.
 
 ## Planned
 
