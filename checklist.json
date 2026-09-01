@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
   "title": "TRAK — master checklist",
-  "updatedAt": "2026-09-01T06:40:45Z",
+  "updatedAt": "2026-09-01T06:43:00Z",
   "reviewedThrough": "2026-09-01",
   "release": {
     "native": "Build 463 · iOS TestFlight internal beta",
     "backend": "Build 463 recurring/editor companion live · 1 September",
-    "next": "Install Build 463 and run recurring-transition and food-editor checks on iPhone. Android 463 is signed; Aadam is uploading it to Firebase before Android phone checks."
+    "next": "Build 463 is installed on iPhone; run recurring-transition and food-editor checks and fix the confirmed missing-Recents Search issue. Android 463 is signed; Aadam is uploading it to Firebase before Android phone checks."
   },
   "notes": [
     "Public, read-only project status. No login needed.",
@@ -16,11 +16,11 @@
   "changes": [
     {
       "date": "2026-09-01",
-      "text": "New Search issue recorded from Build 462: Suggested can appear while the Recents shelf is absent. Recents are currently narrowed to the clock slot, and their meal-period fallback is blocked whenever Suggested has a card. This is diagnosed, not fixed in Build 463."
+      "text": "New Search issue confirmed after installing Build 463: Suggested can appear while the Recents shelf is absent. Recents are currently narrowed to the clock slot, and their meal-period fallback is blocked whenever Suggested has a card."
     },
     {
       "date": "2026-09-01",
-      "text": "Build 463 is valid and available to TRAK's internal TestFlight group. Its backend and database companion are live. The matching Android build is signed and Aadam is uploading it to Firebase. The connected iPhone still had Build 462 and no Android phone was connected, so recurring-transition and food-editor phone acceptance remain open."
+      "text": "Build 463 is valid in TRAK's internal TestFlight group and is now installed on iPhone. Its backend and database companion are live. The matching Android build is signed and Aadam is uploading it to Firebase. Recurring-transition and food-editor acceptance remain open."
     },
     {
       "date": "2026-08-31",
@@ -645,7 +645,7 @@
       "title": "Recents can disappear when Suggested is present",
       "area": "Search & catalogue",
       "status": "issue",
-      "summary": "Diagnosed on Build 462. Recents are restricted to a narrow clock slot, and the wider meal-period fallback runs only when both Suggested and Recents are empty. A valid Suggested card can therefore leave the Recents shelf absent. Build 463 does not include a correction.",
+      "summary": "Confirmed on installed Build 463. Recents are restricted to a narrow clock slot, and the wider meal-period fallback runs only when both Suggested and Recents are empty. A valid Suggested card can therefore leave the Recents shelf absent.",
       "nextStep": "Widen an empty Recents shelf to the current meal period even when Suggested is populated, exclude cards already shown in Suggested, and add ranking, deduplication and phone checks.",
       "updated": "2026-09-01"
     },

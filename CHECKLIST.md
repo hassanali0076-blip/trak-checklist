@@ -1,10 +1,10 @@
 # TRAK — master checklist
 
-Updated: 2026-09-01T06:40:45Z · Reviewed through 2026-09-01
+Updated: 2026-09-01T06:43:00Z · Reviewed through 2026-09-01
 
 - native: Build 463 · iOS TestFlight internal beta
 - backend: Build 463 recurring/editor companion live · 1 September
-- next: Install Build 463 and run recurring-transition and food-editor checks on iPhone. Android 463 is signed; Aadam is uploading it to Firebase before Android phone checks.
+- next: Build 463 is installed on iPhone; run recurring-transition and food-editor checks and fix the confirmed missing-Recents Search issue. Android 463 is signed; Aadam is uploading it to Firebase before Android phone checks.
 
 > Public, read-only project status. No login needed.
 
@@ -26,7 +26,7 @@ Next: Install Build 462 and check fresh open, long-idle return and offline loadi
 
 ID: recents-shelf-remains-visible-alongside-suggested · Search & catalogue · Reviewed 2026-09-01
 
-Diagnosed on Build 462. Recents are restricted to a narrow clock slot, and the wider meal-period fallback runs only when both Suggested and Recents are empty. A valid Suggested card can therefore leave the Recents shelf absent. Build 463 does not include a correction.
+Confirmed on installed Build 463. Recents are restricted to a narrow clock slot, and the wider meal-period fallback runs only when both Suggested and Recents are empty. A valid Suggested card can therefore leave the Recents shelf absent.
 
 Next: Widen an empty Recents shelf to the current meal period even when Suggested is populated, exclude cards already shown in Suggested, and add ranking, deduplication and phone checks.
 
