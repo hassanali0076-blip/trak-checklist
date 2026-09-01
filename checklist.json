@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
   "title": "TRAK — master checklist",
-  "updatedAt": "2026-09-01T06:43:00Z",
+  "updatedAt": "2026-09-01T06:51:30Z",
   "reviewedThrough": "2026-09-01",
   "release": {
     "native": "Build 463 · iOS TestFlight internal beta",
     "backend": "Build 463 recurring/editor companion live · 1 September",
-    "next": "Build 463 is installed on iPhone; run recurring-transition and food-editor checks and fix the confirmed missing-Recents Search issue. Android 463 is signed; Aadam is uploading it to Firebase before Android phone checks."
+    "next": "Build 463 is installed on iPhone; recheck the deployed Recents correction and run recurring-transition and food-editor checks. Android 463 is signed; Aadam is uploading it to Firebase before Android phone checks."
   },
   "notes": [
     "Public, read-only project status. No login needed.",
@@ -14,6 +14,10 @@
     "Updates appear here after the shared checklist is published. Local edits and chat messages do not update it."
   ],
   "changes": [
+    {
+      "date": "2026-09-01",
+      "text": "The Build 463 missing-Recents issue is corrected in the live backend. Suggested habits no longer block recent non-habit foods from the current meal, and the shelves cannot duplicate a card. No new phone build is needed; close and reopen Search to verify."
+    },
     {
       "date": "2026-09-01",
       "text": "New Search issue confirmed after installing Build 463: Suggested can appear while the Recents shelf is absent. Recents are currently narrowed to the clock slot, and their meal-period fallback is blocked whenever Suggested has a card."
@@ -644,9 +648,9 @@
       "id": "recents-shelf-remains-visible-alongside-suggested",
       "title": "Recents can disappear when Suggested is present",
       "area": "Search & catalogue",
-      "status": "issue",
-      "summary": "Confirmed on installed Build 463. Recents are restricted to a narrow clock slot, and the wider meal-period fallback runs only when both Suggested and Recents are empty. A valid Suggested card can therefore leave the Recents shelf absent.",
-      "nextStep": "Widen an empty Recents shelf to the current meal period even when Suggested is populated, exclude cards already shown in Suggested, and add ranking, deduplication and phone checks.",
+      "status": "testing",
+      "summary": "Confirmed on installed Build 463 and corrected in the live backend. Clock-based Search now widens an empty Recents shelf to recent non-habit foods in the current meal even when Suggested is populated, while excluding cards already shown in Suggested. No new phone build is required.",
+      "nextStep": "Close and reopen Search on Build 463; confirm Suggested and Recents both appear without duplicate cards, then check another meal and time slot.",
       "updated": "2026-09-01"
     },
     {

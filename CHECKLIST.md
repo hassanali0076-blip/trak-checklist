@@ -1,10 +1,10 @@
 # TRAK — master checklist
 
-Updated: 2026-09-01T06:43:00Z · Reviewed through 2026-09-01
+Updated: 2026-09-01T06:51:30Z · Reviewed through 2026-09-01
 
 - native: Build 463 · iOS TestFlight internal beta
 - backend: Build 463 recurring/editor companion live · 1 September
-- next: Build 463 is installed on iPhone; run recurring-transition and food-editor checks and fix the confirmed missing-Recents Search issue. Android 463 is signed; Aadam is uploading it to Firebase before Android phone checks.
+- next: Build 463 is installed on iPhone; recheck the deployed Recents correction and run recurring-transition and food-editor checks. Android 463 is signed; Aadam is uploading it to Firebase before Android phone checks.
 
 > Public, read-only project status. No login needed.
 
@@ -21,14 +21,6 @@ ID: suggested-and-recent-foods-feel-immediate-and-relevant · Search & catalogue
 iOS TestFlight Build 462 includes the tested correction that lets ready server cards appear without waiting for disk-cache reads and prevents late cached cards replacing them. The reported phone delay and wider long-idle freeze remain open until checked.
 
 Next: Install Build 462 and check fresh open, long-idle return and offline loading. Capture request-to-card timings if delay remains; an upload does not confirm the phone issue is resolved.
-
-### Recents can disappear when Suggested is present
-
-ID: recents-shelf-remains-visible-alongside-suggested · Search & catalogue · Reviewed 2026-09-01
-
-Confirmed on installed Build 463. Recents are restricted to a narrow clock slot, and the wider meal-period fallback runs only when both Suggested and Recents are empty. A valid Suggested card can therefore leave the Recents shelf absent.
-
-Next: Widen an empty Recents shelf to the current meal period even when Suggested is populated, exclude cards already shown in Suggested, and add ranking, deduplication and phone checks.
 
 ### Regional product typos can miss a valid result
 
@@ -113,6 +105,14 @@ ID: coach-check-in-flag-appears-on-the-diary-only-when-due · Coach & insights �
 The due-only diary flag is shipped. Complete on-phone timing and completion checks are still open.
 
 Next: Confirm absent before due, visible when due, and cleared after completion or skip.
+
+### Recents can disappear when Suggested is present
+
+ID: recents-shelf-remains-visible-alongside-suggested · Search & catalogue · Reviewed 2026-09-01
+
+Confirmed on installed Build 463 and corrected in the live backend. Clock-based Search now widens an empty Recents shelf to recent non-habit foods in the current meal even when Suggested is populated, while excluding cards already shown in Suggested. No new phone build is required.
+
+Next: Close and reopen Search on Build 463; confirm Suggested and Recents both appear without duplicate cards, then check another meal and time slot.
 
 ### Verified and Branded foods stay correctly classified and unique
 
