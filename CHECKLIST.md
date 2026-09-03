@@ -1,6 +1,6 @@
 # TRAK — master checklist
 
-Updated: 2026-09-03T07:27:38Z · Reviewed through 2026-09-03
+Updated: 2026-09-03T07:35:48Z · Reviewed through 2026-09-03
 
 - native: Regular TRAK Build 467 · iOS TestFlight internal beta · installed; cold Search and recipe History UAT affected
 - backend: Production remains build 2709 · combined Search, recipe and nutrient backend is healthy on staging only
