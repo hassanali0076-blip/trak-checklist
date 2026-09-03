@@ -1,10 +1,10 @@
 # TRAK — master checklist
 
-Updated: 2026-09-03T07:35:48Z · Reviewed through 2026-09-03
+Updated: 2026-09-03T08:39:34Z · Reviewed through 2026-09-03
 
 - native: Regular TRAK Build 467 · iOS TestFlight internal beta · installed; cold Search and recipe History UAT affected
-- backend: Production remains build 2709 · combined Search, recipe and nutrient backend is healthy on staging only
-- next: TRAK Staging Build 14 is available to internal testers. It retains the Cronometer nutrient work and adds the Search first-paint, stable personal-results, shared recipe-serving and AI recipe-identity corrections. Phone acceptance remains open; regular TRAK and production are unchanged.
+- backend: Production remains build 2709 · staging now has the enforced Fast Search index and Raw Chicken portion correction
+- next: Retest the existing TRAK Staging Build 14. Catalogue and TRAK Custom results should no longer wait seconds behind local results, and Raw Chicken should show household portion chips. Phone acceptance remains open; regular TRAK and production are unchanged.
 
 > Public, read-only project status. No login needed.
 
@@ -126,9 +126,9 @@ Next: Check exact oat milk, onion portion scaling and the zero-to-filled macro-r
 
 ID: typed-search-results-are-slow-again · Search & catalogue · Reviewed 2026-09-03
 
-Regular Build 467 is phone-proven affected: a cold chicken breast query took about two seconds while startup Search-support work competed for the same moment. Staging Build 14 reduces prefix requests and defers or pre-empts background Suggested and cache-refresh work while Search is active. This remains a candidate until timed on a phone.
+Regular Build 467 and the first Staging Build 14 check were phone-proven affected. Local History and My foods appeared first while catalogue and TRAK Custom waited because staging was using its slower database fallback. The corrected staging backend now requires the Fast index at startup; live repeated probes passed its timing gate, but the phone result is not yet accepted.
 
-Next: On Staging Build 14, hard-close, reopen and immediately search chicken breast. Record the first useful result, then watch for five seconds. Results must appear promptly and Previously logged or My foods must not continue populating afterward.
+Next: Using the existing Staging Build 14, hard-close, reopen and immediately search chicken breast. Catalogue and TRAK Custom should join the local results without the previous multi-second gap. Watch for five seconds and confirm Previously logged or My foods does not keep populating or reshuffling. Aadam owns this phone check; production needs a separate later release decision.
 
 ### Recipes keep the same serving everywhere
 
@@ -230,9 +230,17 @@ Next: On Staging Build 14, reconnect and immediately delete a disposable food. C
 
 ID: trak-custom-food-publication · Search & catalogue · Reviewed 2026-09-03
 
-Nine reviewed reference-food profiles and their nutrient presentation are available only in TRAK Staging. Build 14 deliberately retains that work while combining the Search and recipe correction. This is not a production publication, and unsupported nutrient values remain unknown rather than invented.
+Nine reviewed reference-food profiles and their nutrient presentation are available only in TRAK Staging. Build 14 retains that work. The staging backend now also restores the reviewed metadata needed for Raw Chicken's household portion chips; live payload checks pass, but the installed-phone result remains open. This is not a production publication, and unsupported nutrient values remain unknown rather than invented.
 
-Next: On Staging Build 14, check the TRAK Custom shelf, micronutrient presentation, whole-number coverage and Raw chicken breast household portions. Record any mismatch before separately deciding whether any reviewed food should reach production.
+Next: On the existing Staging Build 14, check the TRAK Custom shelf, micronutrient presentation, whole-number coverage and Raw Chicken household portions. Record any mismatch. Aadam owns phone acceptance; deciding whether any reviewed food reaches production is a separate later gate.
+
+### Raw Chicken Breast shows household portion chips
+
+ID: raw-chicken-breast-shows-household-portion-chips · Search & catalogue · Reviewed 2026-09-03
+
+Staging Build 14 was phone-proven affected because the Search response omitted the reviewed source marker and therefore denied household portions. The backend-only staging correction now sends the reviewed marker and an affirmative portion verdict for the exact food. A phone has not yet confirmed the chips.
+
+Next: In the existing Staging Build 14, search chicken breast, open Raw Chicken Breast and confirm its named household portion chips appear and scale nutrition correctly. Aadam owns this check; no new phone build is required for this backend correction, and production is unchanged.
 
 ## Planned
 
