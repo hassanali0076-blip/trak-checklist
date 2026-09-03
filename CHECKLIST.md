@@ -1,10 +1,10 @@
 # TRAK — master checklist
 
-Updated: 2026-09-01T13:32:04Z · Reviewed through 2026-09-01
+Updated: 2026-09-03T07:27:38Z · Reviewed through 2026-09-03
 
-- native: Build 464 · iOS TestFlight internal beta · installed; partial UAT failed
-- backend: Build 463 companion and Search Recents correction live · 1 September
-- next: A local follow-up corrects Build 464's first-update Search shelves, Food Editor first-frame and live nutrition basis, safe-logout presentation and delayed Delete Undo. It is tested source only and needs a new native build; recurring, saved-library and persistence acceptance remain open.
+- native: Regular TRAK Build 467 · iOS TestFlight internal beta · installed; cold Search and recipe History UAT affected
+- backend: Production remains build 2709 · combined Search, recipe and nutrient backend is healthy on staging only
+- next: TRAK Staging Build 14 is available to internal testers. It retains the Cronometer nutrient work and adds the Search first-paint, stable personal-results, shared recipe-serving and AI recipe-identity corrections. Phone acceptance remains open; regular TRAK and production are unchanged.
 
 > Public, read-only project status. No login needed.
 
@@ -22,13 +22,13 @@ The reported regional-product typo is diagnosed. A general vocabulary and matchi
 
 Next: Fix general typo recovery with false-positive and Fast/Full regressions, not a product-specific alias.
 
-### Typed Search results feel slow again
+### Every daily total uses the canonical diary rule
 
-ID: typed-search-results-are-slow-again · Search & catalogue · Reviewed 2026-09-01
+ID: secondary-daily-totals-use-the-canonical-rule · Diary & recurring · Reviewed 2026-09-03
 
-Typed Search was reported slow again on installed iOS Build 464. The exact query, connection state and Fast-versus-Full paint timing were not captured, and Build 463-to-464 did not change the typed-query path, so the cause is not yet proven.
+The audit confirmed the main TDEE, Coach, Roll-On and calendar paths use the intended rule: a day's entries total wins when present, otherwise active food-log rows are used. Several secondary calculations still read one pool directly, so mixed old and new history can disagree across parts of the app.
 
-Next: Reproduce with the exact query and record the first Fast result, Full replacement and network state. Compare those timings with the last known-good build before changing ranking or request code.
+Next: Create one shared daily-total resolver and move the remaining trend, Insights, AI calorie-plan, remaining-macro and goal-summary consumers onto it. Add mixed-history, deletion, fasting, incomplete-day and account-isolation tests before release.
 
 ### Large text still clips on some Android screens
 
@@ -48,38 +48,6 @@ Next: Reconcile existing source versions, nutrient coverage and recorded permiss
 
 ## Next phone build
 
-### Suggested and Recent cards arrive late when opening Search
-
-ID: suggested-and-recent-foods-feel-immediate-and-relevant · Search & catalogue · Reviewed 2026-09-01
-
-Build 464 failed its first post-update phone check: immediately opening Search waited for Suggested and Recents, while later hard-close checks worked after today's response had replaced the one saved context. A local correction now retains a bounded set of exact contexts and permits only a recent same-hour warm start for live Search; it is tested source only and not in Build 464.
-
-Next: Include the local correction in the next build. After updating, open Search before today's response can populate its cache and confirm both shelves paint immediately, then repeat hard-close, slow/offline, Timeline-hour, logout and A-to-B account-isolation checks.
-
-### Logout protects unsaved changes
-
-ID: logout-protects-unsaved-changes · Account & onboarding · Reviewed 2026-09-01
-
-Build 464 phone acceptance confirmed that Stay signed in retains the account and pending food, but the warning used a centred dialog instead of TRAK's slide-up sheet. The canonical non-dismissible slide-up presentation is corrected and tested locally; Discard, account isolation and Android remain open.
-
-Next: Include the presentation correction in the next build, confirm the warning slides up, and repeat Stay. Then test Discard with disposable data, failed-sync recovery, account isolation and Android.
-
-### Edit a database food’s serving size
-
-ID: edit-the-serving-size-of-a-database-food · Food editing · Reviewed 2026-09-01
-
-Build 464 exposed two editor defects: Edit first showed the old adjacent serving text before changing to the card, and the TRAK number pad changed Serving without updating the Nutrition \`per N unit\` basis. Stable first-frame serving geometry and live serving-scaled nutrition are corrected and tested locally; full save/reopen acceptance remains open.
-
-Next: Include the editor correction in the next build. Confirm the first frame is already the Serving card, changing its amount updates the Nutrition heading and values immediately, then check Review, save/reopen, all eight units, icon, dark mode, keyboard and accessibility.
-
-### Delete Undo appears without waiting for sync
-
-ID: food-log-delete-undo-appears-without-waiting-for-sync · Diary & recurring · Reviewed 2026-09-01
-
-On Build 464, deleting immediately after reconnect showed syncing but delayed the Undo message by roughly ten seconds. The logger now continues as soon as the delete intent and local projection are durable while remote replay continues, with exact rejection handling to avoid restoring or re-adding the row twice. The correction is tested source only.
-
-Next: Include the correction in the next build. Reconnect and immediately delete a disposable food; confirm Undo appears immediately, sync can finish in the background, Undo restores once, and a rejected delete never duplicates the row.
-
 ### Native code organization
 
 ID: native-code-organisation-server-companion-later · Release & reliability · Reviewed 2026-08-31
@@ -92,27 +60,27 @@ Next: Keep behavior unchanged; scope and approve the next batch separately.
 
 ### Recipes and custom foods appear missing
 
-ID: verify-saved-library-visibility-after-the-filter-correction · Recipes & custom foods · Reviewed 2026-09-01
+ID: verify-saved-library-visibility-after-the-filter-correction · Recipes & custom foods · Reviewed 2026-09-03
 
-The catalogue-filter correction is in installed iOS Build 464, and saved records were confirmed present. Build 464 library visibility was not checked in this phone round; the exact original trigger and Android acceptance remain open.
+The catalogue-filter correction is in regular TRAK and the saved records were confirmed present. The latest report concerns My foods arriving late inside Search, not deleted library data. Staging Build 14 carries the stable personal-results candidate, but full library acceptance remains open.
 
-Next: On Build 464, enter a catalogue query, open Recipes and Foods, and confirm both complete saved libraries remain visible and loggable while the catalogue query is preserved. Do not reset or recreate existing data.
+Next: On Staging Build 14, enter a catalogue query, open Recipes and Foods, and confirm both complete saved libraries appear immediately, remain loggable and are unaffected by the catalogue query. Do not reset or recreate existing data.
 
 ### Offline and restart food-log recovery
 
-ID: offline-and-restart-food-log-recovery · Diary & recurring · Reviewed 2026-09-01
+ID: offline-and-restart-food-log-recovery · Diary & recurring · Reviewed 2026-09-03
 
-Build 464 kept an unsaved food after choosing Stay signed in and saved it after reconnecting. Deleting immediately after reconnect exposed a separate roughly ten-second delay before Undo appeared; the exact local-admission correction is tested source only. Full connectivity-change and restart acceptance remains.
+Build 464 kept an unsaved food after choosing Stay signed in and saved it after reconnecting, but delayed Delete Undo by roughly ten seconds. The local-admission correction is included in regular Build 467 and inherited by Staging Build 14; full connectivity-change and restart acceptance remains open.
 
-Next: On the next build, repeat reconnect then immediate delete and confirm Undo appears immediately while sync continues. Also add, edit, move, copy and delete offline, reopen, and confirm the intended diary survives without duplication.
+Next: On Staging Build 14, repeat reconnect then immediate delete and confirm Undo appears immediately while sync continues. Also add, edit, move, copy and delete offline, reopen, and confirm the intended diary survives without duplication.
 
 ### Recurring foods log at their exact local time
 
-ID: recurring-foods-become-real-entries-at-their-exact-local-time · Diary & recurring · Reviewed 2026-09-01
+ID: recurring-foods-become-real-entries-at-their-exact-local-time · Diary & recurring · Reviewed 2026-09-03
 
-Backend and scheduler are live, and Build 464 containing the native cold-open correction is installed on iPhone. This phone round did not record the recurring checks, so open/background/closed-app acceptance remains.
+Backend and scheduler are live. The native exact-time, cold-open, duplicate and transition safeguards are inherited by regular Build 467 and Staging Build 14, but open, background and closed-app phone acceptance is still not recorded.
 
-Next: On Build 464, verify saved minutes, timezone changes, first-frame planned cards and exactly one diary entry per occurrence before and after the scheduled time.
+Next: On Staging Build 14, verify saved minutes, timezone changes, first-frame planned cards and exactly one diary entry per occurrence before and after the scheduled time.
 
 ### Coach check-in flag appears on the diary only when due
 
@@ -122,13 +90,21 @@ The due-only diary flag is shipped. Complete on-phone timing and completion chec
 
 Next: Confirm absent before due, visible when due, and cleared after completion or skip.
 
+### Suggested and Recent cards arrive late when opening Search
+
+ID: suggested-and-recent-foods-feel-immediate-and-relevant · Search & catalogue · Reviewed 2026-09-03
+
+Regular Build 467 still allows cold Search support work to arrive late. Staging Build 14 retains bounded exact-context caches, migrates the older first-update cache and makes launch support work yield to a visible Search. Automated checks pass, but installed-phone timing is not yet accepted.
+
+Next: After installing Staging Build 14, hard-close, reopen and immediately enter Search before today's cache can warm. Confirm Suggested and Recents paint promptly, then repeat a later hard close plus slow/offline, Timeline-hour, logout and account-switch checks.
+
 ### Recents can disappear when Suggested is present
 
-ID: recents-shelf-remains-visible-alongside-suggested · Search & catalogue · Reviewed 2026-09-01
+ID: recents-shelf-remains-visible-alongside-suggested · Search & catalogue · Reviewed 2026-09-03
 
-Corrected in the live backend. On Build 464 both shelves appeared after the first network response, but duplicate-card and cross-meal acceptance were not recorded and the first-frame delay remains a separate next-build issue.
+The missing-shelf backend correction is live, but regular Build 467 can still paint personal Search sections late. Staging Build 14 gives each query one stable local Recents and My foods snapshot so server stages cannot keep adding or replacing those sections.
 
-Next: On Build 464 or later, confirm Suggested and Recents both appear without duplicate cards, then check another meal and time slot. Test first-frame timing separately on the next build.
+Next: On Staging Build 14, confirm Suggested and Recents appear without duplicate cards, then watch the completed screen for at least five seconds and verify neither Recents nor My foods keeps materialising or reshuffling. Repeat in another meal and time slot.
 
 ### Verified and Branded foods stay correctly classified and unique
 
@@ -146,13 +122,37 @@ Build 461 includes reviewed portion families and wording fixes. Several foods pa
 
 Next: Check exact oat milk, onion portion scaling and the zero-to-filled macro-ring animation.
 
+### Typed Search results feel slow again
+
+ID: typed-search-results-are-slow-again · Search & catalogue · Reviewed 2026-09-03
+
+Regular Build 467 is phone-proven affected: a cold chicken breast query took about two seconds while startup Search-support work competed for the same moment. Staging Build 14 reduces prefix requests and defers or pre-empts background Suggested and cache-refresh work while Search is active. This remains a candidate until timed on a phone.
+
+Next: On Staging Build 14, hard-close, reopen and immediately search chicken breast. Record the first useful result, then watch for five seconds. Results must appear promptly and Previously logged or My foods must not continue populating afterward.
+
+### Recipes keep the same serving everywhere
+
+ID: recipes-use-one-serving-across-every-search-surface · Recipes & custom foods · Reviewed 2026-09-03
+
+Regular Build 467 can reconstruct a Previously logged recipe from its diary row and lose the named serving shown in Recipes or My foods. Staging Build 14 uses one shared current-recipe projection for serving, unit, amount, nutrition and recipe identity while leaving old diary snapshots unchanged.
+
+Next: On Staging Build 14, open cheesy meatloaf or another recently logged recipe through Recipes, My foods and Previously logged. Confirm the named serving, amount, unit and nutrition are identical and History does not fall back to grams; then save and reopen one new log.
+
+### Food projections share one source of truth
+
+ID: food-projections-share-one-source-of-truth · Search & catalogue · Reviewed 2026-09-03
+
+An executable matrix now records which canonical food or recipe each app surface uses. Identical fixtures and cross-surface tests cover Recipes, My foods, Previously logged and AI logging, and Staging Build 14 preserves explicit AI recipe and template identity. Pinned private-food identity and recipe icon authority remain known follow-ups.
+
+Next: Complete the Build 14 phone parity checks, then separately define the remaining pinned-food identity and recipe-icon authority rules before changing those paths. Keep the matrix and identical fixtures mandatory for future Search or food-model work.
+
 ### Immediate or offline reopen can hide a serving choice
 
-ID: the-unit-chosen-in-food-editor-stays-chosen-everywhere · Food editing · Reviewed 2026-09-01
+ID: the-unit-chosen-in-food-editor-stays-chosen-everywhere · Food editing · Reviewed 2026-09-03
 
-The persisted grams-versus-scoops fix and exact optimistic/offline serving choices are in installed Build 464, but their save/reopen phone check was not completed in this round.
+The persisted grams-versus-scoops correction and exact optimistic or offline serving choices are inherited by regular Build 467 and Staging Build 14. Their complete save-and-reopen phone check remains open.
 
-Next: On Build 464, select grams on a food that also offers Scoop, log it and immediately reopen online and offline. Confirm the chosen unit stays selected and every exact serving remains available without changing nutrition.
+Next: On Staging Build 14, select grams on a food that also offers Scoop, log it and immediately reopen online and offline. Confirm the chosen unit stays selected and every exact serving remains available without changing nutrition.
 
 ### iPhone inactive-state diagnostics need refinement
 
@@ -180,27 +180,59 @@ Next: Open Coach, leave and reopen it. Confirm the review appears without resett
 
 ### New recurring foods appear in upcoming slots today
 
-ID: new-recurring-food-appears-in-today-s-still-upcoming-slot · Diary & recurring · Reviewed 2026-08-31
+ID: new-recurring-food-appears-in-today-s-still-upcoming-slot · Diary & recurring · Reviewed 2026-09-03
 
-Deployed on 31 August. A new food scheduled later today is admitted today; elapsed or untimed slots start tomorrow. Existing skip flags are not cleared.
+The backend admits a newly scheduled food to a remaining slot today. Regular Build 467 and Staging Build 14 also invalidate stale recurring data before refreshing after an add. The corrected combined behavior still needs installed-phone proof.
 
-Next: Add a food a few minutes ahead; confirm it appears now and logs once at the saved time. No new phone build needed.
+Next: On Staging Build 14, add a food a few minutes ahead and confirm its planned card appears immediately, logs once at the saved time and does not disturb unrelated recurring cards.
+
+### Logout protects unsaved changes
+
+ID: logout-protects-unsaved-changes · Account & onboarding · Reviewed 2026-09-03
+
+Build 464 proved that Stay signed in retained the account and pending food but used the wrong centred dialog. The canonical non-dismissible slide-up sheet is included in regular Build 467 and inherited by Staging Build 14; Discard, account isolation and Android remain open.
+
+Next: On Staging Build 14, confirm the warning slides up and repeat Stay. Then test Discard with disposable data, failed-sync recovery and account isolation; repeat on Android in a separately distributed matching build.
 
 ### Recurring foods refresh promptly after reopening
 
-ID: recurring-foods-appear-promptly-after-reopening · Diary & recurring · Reviewed 2026-09-01
+ID: recurring-foods-appear-promptly-after-reopening · Diary & recurring · Reviewed 2026-09-03
 
-Build 463 failed this check. Its first-frame and elapsed-plan correction is now installed in Build 464, but no recurring result was recorded in the latest phone round, so it remains unaccepted.
+The first-frame, elapsed-plan and refresh corrections are inherited by regular Build 467 and Staging Build 14, but the required hard-close phone result was never recorded. This remains unaccepted despite automated coverage.
 
-Next: On Build 464, hard-close and reopen before and after a scheduled time. Confirm the planned card appears immediately and becomes its logged card with the calorie total in one transition, including slow or offline recovery.
+Next: On Staging Build 14, hard-close and reopen before and after a scheduled time. Confirm the planned card appears immediately and becomes its logged card with the calorie total in one transition, including slow or offline recovery.
 
 ### Recurring cards transition without duplicates or gaps
 
-ID: recurring-cards-transition-without-duplicates-or-gaps · Diary & recurring · Reviewed 2026-09-01
+ID: recurring-cards-transition-without-duplicates-or-gaps · Diary & recurring · Reviewed 2026-09-03
 
-Build 464 containing the duplicate, blank-interval, refresh-race, cold-open and elapsed-plan protections is installed. The latest phone round did not record recurring results, so iPhone and Android acceptance remain open.
+The duplicate, blank-interval, refresh-race, cold-open, add and delete protections are inherited by regular Build 467 and Staging Build 14. Their combined iPhone and Android acceptance remains open.
 
-Next: On Build 464, test scheduled logging, Log all today and on a future day, old overlapping entries, removal during refresh and card/calorie transitions. Repeat on Android after Firebase distribution.
+Next: On Staging Build 14, test scheduled logging, Log all today and on a future day, old overlapping entries, template deletion, removal during refresh and card/calorie transitions. Repeat on Android after a matching staging distribution.
+
+### Edit a database food’s serving size
+
+ID: edit-the-serving-size-of-a-database-food · Food editing · Reviewed 2026-09-03
+
+The database-food serving, unit and icon editor is in regular Build 467 and inherited by Staging Build 14. It includes the stable first-frame Serving card, live serving-scaled Nutrition basis, immediate Edit navigation and retained source icon; full save-and-reopen acceptance remains open.
+
+Next: On Staging Build 14, confirm Edit opens promptly with the correct icon and Serving card already present. Change amount and unit, verify Nutrition updates immediately, then check Review, save/reopen, all eight units, icon, dark mode, keyboard and accessibility.
+
+### Delete Undo appears without waiting for sync
+
+ID: food-log-delete-undo-appears-without-waiting-for-sync · Diary & recurring · Reviewed 2026-09-03
+
+Build 464 delayed Delete Undo by roughly ten seconds after reconnecting. The logger's local-admission and exact rejection correction is included in regular Build 467 and inherited by Staging Build 14, but the phone check has not been recorded.
+
+Next: On Staging Build 14, reconnect and immediately delete a disposable food. Confirm Undo appears immediately, sync can finish in the background, Undo restores once and a rejected delete never duplicates the row.
+
+### TRAK Custom reference-food publication
+
+ID: trak-custom-food-publication · Search & catalogue · Reviewed 2026-09-03
+
+Nine reviewed reference-food profiles and their nutrient presentation are available only in TRAK Staging. Build 14 deliberately retains that work while combining the Search and recipe correction. This is not a production publication, and unsupported nutrient values remain unknown rather than invented.
+
+Next: On Staging Build 14, check the TRAK Custom shelf, micronutrient presentation, whole-number coverage and Raw chicken breast household portions. Record any mismatch before separately deciding whether any reviewed food should reach production.
 
 ## Planned
 
@@ -331,14 +363,6 @@ ID: app-copy-program · Release & reliability · Reviewed 2026-08-31
 Paused by Aadam on 31 August. Accepted changes remain separate from unfinished Quick add/alcohol-calculator work. The latest unfinished slice still has failing checks; the whole copy program is not complete.
 
 Next: Resume only when Aadam asks. Fix the recorded unfinished checks, complete independent review and then integrate only accepted changes into a separately approved phone build.
-
-### TRAK Custom reference-food publication
-
-ID: trak-custom-food-publication · Search & catalogue · Reviewed 2026-08-31
-
-Nine food profiles and expanded nutrient evidence have been reviewed offline. This does not mean those foods are published or available in Search. Some nutrient values remain unsupported.
-
-Next: Test the publication adapter and nutrient mapping, then obtain separate approval for any live food publication. Preserve unknown values and existing reviewed snapshots.
 
 ## In progress
 
