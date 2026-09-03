@@ -1,10 +1,10 @@
 # TRAK — master checklist
 
-Updated: 2026-09-03T11:29:01Z · Reviewed through 2026-09-03
+Updated: 2026-09-03T11:45:10Z · Reviewed through 2026-09-03
 
-- native: Regular TRAK Build 467 remains installed and affected · TRAK Staging Build 15 is available in the internal iOS TestFlight group · matching signed Android APK is ready for manual Firebase upload
+- native: Regular TRAK Build 467 remains installed and affected · TRAK Staging Build 15 passed the cold first typed-Search phone check · wider Build 15 acceptance remains open · matching signed Android APK is ready for manual Firebase upload
 - backend: Production remains build 2709 · staging now returns a compact first catalogue page and retains the Raw Chicken portion correction
-- next: Install TRAK Staging Build 15. Test a cold unseen worldwide query, stable first-page Search, View all, hard-restart cache, History and My foods stability, recipe parity, Raw Chicken portions and retained nutrient work. Phone acceptance remains open; regular TRAK and production are unchanged.
+- next: On TRAK Staging Build 15, leave a completed Search untouched for five seconds and check for no late additions or reordering, then test View all, repeat-query restart cache, worldwide reachability, recipe parity, Raw Chicken portions and retained nutrient work. The cold first typed-Search check passed on iPhone; regular TRAK and production are unchanged.
 
 > Public, read-only project status. No login needed.
 
@@ -126,9 +126,9 @@ Next: Check exact oat milk, onion portion scaling and the zero-to-filled macro-r
 
 ID: typed-search-results-are-slow-again · Search & catalogue · Reviewed 2026-09-03
 
-Regular Build 467 and Staging Build 14 were phone-proven affected. Staging Build 15 gives typed Search a compact first catalogue page, keeps the query's local History and My foods stable, loads the rest only through View all and stores a bounded per-account exact-query cache for restart. The staging backend is live and automated checks pass, but the phone result is not yet accepted.
+Regular Build 467 and Staging Build 14 were phone-proven affected. On iPhone, Staging Build 15 now passes the cold first typed-Search case: after a hard close and immediate reopen, personal and database results showed right away. It uses a compact first catalogue page, stable local History and My foods, View all for the remainder and a bounded per-account exact-query restart cache. Wider acceptance remains open.
 
-Next: On Staging Build 15, first search an unseen worldwide food and confirm one stable catalogue page appears without late waves. Open View all and confirm the first cards stay in place while more append. Repeat the exact query, hard-close and repeat again to test the disk cache. Watch History and My foods for five seconds; Aadam owns phone acceptance and production needs a separate later release decision.
+Next: On Staging Build 15, leave the completed results untouched for five seconds and confirm no card or section arrives, disappears or reorders. Open View all and confirm the first cards stay in place while more append. Repeat the exact query across another hard close to exercise the disk cache, then search a genuine other-market food. Aadam owns these phone checks; production needs a separate later release decision.
 
 ### Recipes keep the same serving everywhere
 
