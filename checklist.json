@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
   "title": "TRAK — master checklist",
-  "updatedAt": "2026-09-03T08:39:34Z",
+  "updatedAt": "2026-09-03T11:29:01Z",
   "reviewedThrough": "2026-09-03",
   "release": {
-    "native": "Regular TRAK Build 467 · iOS TestFlight internal beta · installed; cold Search and recipe History UAT affected",
-    "backend": "Production remains build 2709 · staging now has the enforced Fast Search index and Raw Chicken portion correction",
-    "next": "Retest the existing TRAK Staging Build 14. Catalogue and TRAK Custom results should no longer wait seconds behind local results, and Raw Chicken should show household portion chips. Phone acceptance remains open; regular TRAK and production are unchanged."
+    "native": "Regular TRAK Build 467 remains installed and affected · TRAK Staging Build 15 is available in the internal iOS TestFlight group · matching signed Android APK is ready for manual Firebase upload",
+    "backend": "Production remains build 2709 · staging now returns a compact first catalogue page and retains the Raw Chicken portion correction",
+    "next": "Install TRAK Staging Build 15. Test a cold unseen worldwide query, stable first-page Search, View all, hard-restart cache, History and My foods stability, recipe parity, Raw Chicken portions and retained nutrient work. Phone acceptance remains open; regular TRAK and production are unchanged."
   },
   "notes": [
     "Public, read-only project status. No login needed.",
@@ -14,6 +14,10 @@
     "Updates appear here after the shared checklist is published. Local edits and chat messages do not update it."
   ],
   "changes": [
+    {
+      "date": "2026-09-03",
+      "text": "TRAK Staging Build 15 is available to internal iOS testers, with a matching signed Android file ready for manual Firebase upload. It adds compact first-page catalogue Search, explicit View all loading, a bounded per-account exact-query cache and stable personal sections while retaining the existing staging nutrient and Raw Chicken work. Automated checks are recorded privately; phone acceptance remains open and production was not changed."
+    },
     {
       "date": "2026-09-03",
       "text": "Staging Build 14 failed two new phone checks: catalogue and TRAK Custom results lagged behind local results, and Raw Chicken had no portion chips. The staging Fast index had not been enabled and the Custom Search response omitted reviewed source metadata. A backend-only correction is now healthy on staging and passes live timing and payload checks; the same installed staging app still needs phone acceptance. Production was not changed."
@@ -632,8 +636,8 @@
       "title": "Recipes and custom foods appear missing",
       "area": "Recipes & custom foods",
       "status": "testing",
-      "summary": "The catalogue-filter correction is in regular TRAK and the saved records were confirmed present. The latest report concerns My foods arriving late inside Search, not deleted library data. Staging Build 14 carries the stable personal-results candidate, but full library acceptance remains open.",
-      "nextStep": "On Staging Build 14, enter a catalogue query, open Recipes and Foods, and confirm both complete saved libraries appear immediately, remain loggable and are unaffected by the catalogue query. Do not reset or recreate existing data.",
+      "summary": "The catalogue-filter correction is in regular TRAK and the saved records were confirmed present. The latest report concerns My foods arriving late inside Search, not deleted library data. Staging Build 15 carries the stable personal-results candidate, but full library acceptance remains open.",
+      "nextStep": "On Staging Build 15, enter a catalogue query, open Recipes and Foods, and confirm both complete saved libraries appear immediately, remain loggable and are unaffected by the catalogue query. Do not reset or recreate existing data.",
       "updated": "2026-09-03"
     },
     {
@@ -641,8 +645,8 @@
       "title": "Offline and restart food-log recovery",
       "area": "Diary & recurring",
       "status": "testing",
-      "summary": "Build 464 kept an unsaved food after choosing Stay signed in and saved it after reconnecting, but delayed Delete Undo by roughly ten seconds. The local-admission correction is included in regular Build 467 and inherited by Staging Build 14; full connectivity-change and restart acceptance remains open.",
-      "nextStep": "On Staging Build 14, repeat reconnect then immediate delete and confirm Undo appears immediately while sync continues. Also add, edit, move, copy and delete offline, reopen, and confirm the intended diary survives without duplication.",
+      "summary": "Build 464 kept an unsaved food after choosing Stay signed in and saved it after reconnecting, but delayed Delete Undo by roughly ten seconds. The local-admission correction is included in regular Build 467 and inherited by Staging Build 15; full connectivity-change and restart acceptance remains open.",
+      "nextStep": "On Staging Build 15, repeat reconnect then immediate delete and confirm Undo appears immediately while sync continues. Also add, edit, move, copy and delete offline, reopen, and confirm the intended diary survives without duplication.",
       "updated": "2026-09-03"
     },
     {
@@ -650,8 +654,8 @@
       "title": "Recurring foods log at their exact local time",
       "area": "Diary & recurring",
       "status": "testing",
-      "summary": "Backend and scheduler are live. The native exact-time, cold-open, duplicate and transition safeguards are inherited by regular Build 467 and Staging Build 14, but open, background and closed-app phone acceptance is still not recorded.",
-      "nextStep": "On Staging Build 14, verify saved minutes, timezone changes, first-frame planned cards and exactly one diary entry per occurrence before and after the scheduled time.",
+      "summary": "Backend and scheduler are live. The native exact-time, cold-open, duplicate and transition safeguards are inherited by regular Build 467 and Staging Build 15, but open, background and closed-app phone acceptance is still not recorded.",
+      "nextStep": "On Staging Build 15, verify saved minutes, timezone changes, first-frame planned cards and exactly one diary entry per occurrence before and after the scheduled time.",
       "updated": "2026-09-03"
     },
     {
@@ -668,8 +672,8 @@
       "title": "Suggested and Recent cards arrive late when opening Search",
       "area": "Search & catalogue",
       "status": "testing",
-      "summary": "Regular Build 467 still allows cold Search support work to arrive late. Staging Build 14 retains bounded exact-context caches, migrates the older first-update cache and makes launch support work yield to a visible Search. Automated checks pass, but installed-phone timing is not yet accepted.",
-      "nextStep": "After installing Staging Build 14, hard-close, reopen and immediately enter Search before today's cache can warm. Confirm Suggested and Recents paint promptly, then repeat a later hard close plus slow/offline, Timeline-hour, logout and account-switch checks.",
+      "summary": "Regular Build 467 still allows cold Search support work to arrive late. Staging Build 15 retains bounded exact-context caches, migrates the older first-update cache and makes launch support work yield to a visible Search. Automated checks pass, but installed-phone timing is not yet accepted.",
+      "nextStep": "After installing Staging Build 15, hard-close, reopen and immediately enter Search before today's cache can warm. Confirm Suggested and Recents paint promptly, then repeat a later hard close plus slow/offline, Timeline-hour, logout and account-switch checks.",
       "updated": "2026-09-03"
     },
     {
@@ -677,8 +681,8 @@
       "title": "Recents can disappear when Suggested is present",
       "area": "Search & catalogue",
       "status": "testing",
-      "summary": "The missing-shelf backend correction is live, but regular Build 467 can still paint personal Search sections late. Staging Build 14 gives each query one stable local Recents and My foods snapshot so server stages cannot keep adding or replacing those sections.",
-      "nextStep": "On Staging Build 14, confirm Suggested and Recents appear without duplicate cards, then watch the completed screen for at least five seconds and verify neither Recents nor My foods keeps materialising or reshuffling. Repeat in another meal and time slot.",
+      "summary": "The missing-shelf backend correction is live, but regular Build 467 can still paint personal Search sections late. Staging Build 15 gives each query one stable local Recents and My foods snapshot so server stages cannot keep adding or replacing those sections.",
+      "nextStep": "On Staging Build 15, confirm Suggested and Recents appear without duplicate cards, then watch the completed screen for at least five seconds and verify neither Recents nor My foods keeps materialising or reshuffling. Repeat in another meal and time slot.",
       "updated": "2026-09-03"
     },
     {
@@ -713,8 +717,8 @@
       "title": "Typed Search results feel slow again",
       "area": "Search & catalogue",
       "status": "testing",
-      "summary": "Regular Build 467 and the first Staging Build 14 check were phone-proven affected. Local History and My foods appeared first while catalogue and TRAK Custom waited because staging was using its slower database fallback. The corrected staging backend now requires the Fast index at startup; live repeated probes passed its timing gate, but the phone result is not yet accepted.",
-      "nextStep": "Using the existing Staging Build 14, hard-close, reopen and immediately search chicken breast. Catalogue and TRAK Custom should join the local results without the previous multi-second gap. Watch for five seconds and confirm Previously logged or My foods does not keep populating or reshuffling. Aadam owns this phone check; production needs a separate later release decision.",
+      "summary": "Regular Build 467 and Staging Build 14 were phone-proven affected. Staging Build 15 gives typed Search a compact first catalogue page, keeps the query's local History and My foods stable, loads the rest only through View all and stores a bounded per-account exact-query cache for restart. The staging backend is live and automated checks pass, but the phone result is not yet accepted.",
+      "nextStep": "On Staging Build 15, first search an unseen worldwide food and confirm one stable catalogue page appears without late waves. Open View all and confirm the first cards stay in place while more append. Repeat the exact query, hard-close and repeat again to test the disk cache. Watch History and My foods for five seconds; Aadam owns phone acceptance and production needs a separate later release decision.",
       "updated": "2026-09-03"
     },
     {
@@ -722,8 +726,8 @@
       "title": "Recipes keep the same serving everywhere",
       "area": "Recipes & custom foods",
       "status": "testing",
-      "summary": "Regular Build 467 can reconstruct a Previously logged recipe from its diary row and lose the named serving shown in Recipes or My foods. Staging Build 14 uses one shared current-recipe projection for serving, unit, amount, nutrition and recipe identity while leaving old diary snapshots unchanged.",
-      "nextStep": "On Staging Build 14, open cheesy meatloaf or another recently logged recipe through Recipes, My foods and Previously logged. Confirm the named serving, amount, unit and nutrition are identical and History does not fall back to grams; then save and reopen one new log.",
+      "summary": "Regular Build 467 can reconstruct a Previously logged recipe from its diary row and lose the named serving shown in Recipes or My foods. Staging Build 15 uses one shared current-recipe projection for serving, unit, amount, nutrition and recipe identity while leaving old diary snapshots unchanged.",
+      "nextStep": "On Staging Build 15, open cheesy meatloaf or another recently logged recipe through Recipes, My foods and Previously logged. Confirm the named serving, amount, unit and nutrition are identical and History does not fall back to grams; then save and reopen one new log.",
       "updated": "2026-09-03"
     },
     {
@@ -731,8 +735,8 @@
       "title": "Food projections share one source of truth",
       "area": "Search & catalogue",
       "status": "testing",
-      "summary": "An executable matrix now records which canonical food or recipe each app surface uses. Identical fixtures and cross-surface tests cover Recipes, My foods, Previously logged and AI logging, and Staging Build 14 preserves explicit AI recipe and template identity. Pinned private-food identity and recipe icon authority remain known follow-ups.",
-      "nextStep": "Complete the Build 14 phone parity checks, then separately define the remaining pinned-food identity and recipe-icon authority rules before changing those paths. Keep the matrix and identical fixtures mandatory for future Search or food-model work.",
+      "summary": "An executable matrix now records which canonical food or recipe each app surface uses. Identical fixtures and cross-surface tests cover Recipes, My foods, Previously logged and AI logging, and Staging Build 15 preserves explicit AI recipe and template identity. Pinned private-food identity and recipe icon authority remain known follow-ups.",
+      "nextStep": "Complete the Build 15 phone parity checks, then separately define the remaining pinned-food identity and recipe-icon authority rules before changing those paths. Keep the matrix and identical fixtures mandatory for future Search or food-model work.",
       "updated": "2026-09-03"
     },
     {
@@ -749,8 +753,8 @@
       "title": "Immediate or offline reopen can hide a serving choice",
       "area": "Food editing",
       "status": "testing",
-      "summary": "The persisted grams-versus-scoops correction and exact optimistic or offline serving choices are inherited by regular Build 467 and Staging Build 14. Their complete save-and-reopen phone check remains open.",
-      "nextStep": "On Staging Build 14, select grams on a food that also offers Scoop, log it and immediately reopen online and offline. Confirm the chosen unit stays selected and every exact serving remains available without changing nutrition.",
+      "summary": "The persisted grams-versus-scoops correction and exact optimistic or offline serving choices are inherited by regular Build 467 and Staging Build 15. Their complete save-and-reopen phone check remains open.",
+      "nextStep": "On Staging Build 15, select grams on a food that also offers Scoop, log it and immediately reopen online and offline. Confirm the chosen unit stays selected and every exact serving remains available without changing nutrition.",
       "updated": "2026-09-03"
     },
     {
@@ -812,8 +816,8 @@
       "title": "New recurring foods appear in upcoming slots today",
       "area": "Diary & recurring",
       "status": "testing",
-      "summary": "The backend admits a newly scheduled food to a remaining slot today. Regular Build 467 and Staging Build 14 also invalidate stale recurring data before refreshing after an add. The corrected combined behavior still needs installed-phone proof.",
-      "nextStep": "On Staging Build 14, add a food a few minutes ahead and confirm its planned card appears immediately, logs once at the saved time and does not disturb unrelated recurring cards.",
+      "summary": "The backend admits a newly scheduled food to a remaining slot today. Regular Build 467 and Staging Build 15 also invalidate stale recurring data before refreshing after an add. The corrected combined behavior still needs installed-phone proof.",
+      "nextStep": "On Staging Build 15, add a food a few minutes ahead and confirm its planned card appears immediately, logs once at the saved time and does not disturb unrelated recurring cards.",
       "updated": "2026-09-03"
     },
     {
@@ -821,8 +825,8 @@
       "title": "Logout protects unsaved changes",
       "area": "Account & onboarding",
       "status": "testing",
-      "summary": "Build 464 proved that Stay signed in retained the account and pending food but used the wrong centred dialog. The canonical non-dismissible slide-up sheet is included in regular Build 467 and inherited by Staging Build 14; Discard, account isolation and Android remain open.",
-      "nextStep": "On Staging Build 14, confirm the warning slides up and repeat Stay. Then test Discard with disposable data, failed-sync recovery and account isolation; repeat on Android in a separately distributed matching build.",
+      "summary": "Build 464 proved that Stay signed in retained the account and pending food but used the wrong centred dialog. The canonical non-dismissible slide-up sheet is included in regular Build 467 and inherited by Staging Build 15; Discard, account isolation and Android remain open.",
+      "nextStep": "On Staging Build 15, confirm the warning slides up and repeat Stay. Then test Discard with disposable data, failed-sync recovery and account isolation; repeat on Android after the matching file is distributed through Firebase.",
       "updated": "2026-09-03"
     },
     {
@@ -830,8 +834,8 @@
       "title": "Recurring foods refresh promptly after reopening",
       "area": "Diary & recurring",
       "status": "testing",
-      "summary": "The first-frame, elapsed-plan and refresh corrections are inherited by regular Build 467 and Staging Build 14, but the required hard-close phone result was never recorded. This remains unaccepted despite automated coverage.",
-      "nextStep": "On Staging Build 14, hard-close and reopen before and after a scheduled time. Confirm the planned card appears immediately and becomes its logged card with the calorie total in one transition, including slow or offline recovery.",
+      "summary": "The first-frame, elapsed-plan and refresh corrections are inherited by regular Build 467 and Staging Build 15, but the required hard-close phone result was never recorded. This remains unaccepted despite automated coverage.",
+      "nextStep": "On Staging Build 15, hard-close and reopen before and after a scheduled time. Confirm the planned card appears immediately and becomes its logged card with the calorie total in one transition, including slow or offline recovery.",
       "updated": "2026-09-03"
     },
     {
@@ -839,8 +843,8 @@
       "title": "Recurring cards transition without duplicates or gaps",
       "area": "Diary & recurring",
       "status": "testing",
-      "summary": "The duplicate, blank-interval, refresh-race, cold-open, add and delete protections are inherited by regular Build 467 and Staging Build 14. Their combined iPhone and Android acceptance remains open.",
-      "nextStep": "On Staging Build 14, test scheduled logging, Log all today and on a future day, old overlapping entries, template deletion, removal during refresh and card/calorie transitions. Repeat on Android after a matching staging distribution.",
+      "summary": "The duplicate, blank-interval, refresh-race, cold-open, add and delete protections are inherited by regular Build 467 and Staging Build 15. Their combined iPhone and Android acceptance remains open.",
+      "nextStep": "On Staging Build 15, test scheduled logging, Log all today and on a future day, old overlapping entries, template deletion, removal during refresh and card/calorie transitions. Repeat on Android after the matching file is distributed through Firebase.",
       "updated": "2026-09-03"
     },
     {
@@ -848,8 +852,8 @@
       "title": "Edit a database food’s serving size",
       "area": "Food editing",
       "status": "testing",
-      "summary": "The database-food serving, unit and icon editor is in regular Build 467 and inherited by Staging Build 14. It includes the stable first-frame Serving card, live serving-scaled Nutrition basis, immediate Edit navigation and retained source icon; full save-and-reopen acceptance remains open.",
-      "nextStep": "On Staging Build 14, confirm Edit opens promptly with the correct icon and Serving card already present. Change amount and unit, verify Nutrition updates immediately, then check Review, save/reopen, all eight units, icon, dark mode, keyboard and accessibility.",
+      "summary": "The database-food serving, unit and icon editor is in regular Build 467 and inherited by Staging Build 15. It includes the stable first-frame Serving card, live serving-scaled Nutrition basis, immediate Edit navigation and retained source icon; full save-and-reopen acceptance remains open.",
+      "nextStep": "On Staging Build 15, confirm Edit opens promptly with the correct icon and Serving card already present. Change amount and unit, verify Nutrition updates immediately, then check Review, save/reopen, all eight units, icon, dark mode, keyboard and accessibility.",
       "updated": "2026-09-03"
     },
     {
@@ -857,8 +861,8 @@
       "title": "Delete Undo appears without waiting for sync",
       "area": "Diary & recurring",
       "status": "testing",
-      "summary": "Build 464 delayed Delete Undo by roughly ten seconds after reconnecting. The logger's local-admission and exact rejection correction is included in regular Build 467 and inherited by Staging Build 14, but the phone check has not been recorded.",
-      "nextStep": "On Staging Build 14, reconnect and immediately delete a disposable food. Confirm Undo appears immediately, sync can finish in the background, Undo restores once and a rejected delete never duplicates the row.",
+      "summary": "Build 464 delayed Delete Undo by roughly ten seconds after reconnecting. The logger's local-admission and exact rejection correction is included in regular Build 467 and inherited by Staging Build 15, but the phone check has not been recorded.",
+      "nextStep": "On Staging Build 15, reconnect and immediately delete a disposable food. Confirm Undo appears immediately, sync can finish in the background, Undo restores once and a rejected delete never duplicates the row.",
       "updated": "2026-09-03"
     },
     {
@@ -1019,8 +1023,8 @@
       "title": "TRAK Custom reference-food publication",
       "area": "Search & catalogue",
       "status": "testing",
-      "summary": "Nine reviewed reference-food profiles and their nutrient presentation are available only in TRAK Staging. Build 14 retains that work. The staging backend now also restores the reviewed metadata needed for Raw Chicken's household portion chips; live payload checks pass, but the installed-phone result remains open. This is not a production publication, and unsupported nutrient values remain unknown rather than invented.",
-      "nextStep": "On the existing Staging Build 14, check the TRAK Custom shelf, micronutrient presentation, whole-number coverage and Raw Chicken household portions. Record any mismatch. Aadam owns phone acceptance; deciding whether any reviewed food reaches production is a separate later gate.",
+      "summary": "Nine reviewed reference-food profiles and their nutrient presentation are available only in TRAK Staging. Build 15 retains that work. The staging backend also restores the reviewed metadata needed for Raw Chicken's household portion chips; live payload checks pass, but the installed-phone result remains open. This is not a production publication, and unsupported nutrient values remain unknown rather than invented.",
+      "nextStep": "On Staging Build 15, check the TRAK Custom shelf, micronutrient presentation, whole-number coverage and Raw Chicken household portions. Record any mismatch. Aadam owns phone acceptance; deciding whether any reviewed food reaches production is a separate later gate.",
       "updated": "2026-09-03"
     },
     {
@@ -1028,8 +1032,8 @@
       "title": "Raw Chicken Breast shows household portion chips",
       "area": "Search & catalogue",
       "status": "testing",
-      "summary": "Staging Build 14 was phone-proven affected because the Search response omitted the reviewed source marker and therefore denied household portions. The backend-only staging correction now sends the reviewed marker and an affirmative portion verdict for the exact food. A phone has not yet confirmed the chips.",
-      "nextStep": "In the existing Staging Build 14, search chicken breast, open Raw Chicken Breast and confirm its named household portion chips appear and scale nutrition correctly. Aadam owns this check; no new phone build is required for this backend correction, and production is unchanged.",
+      "summary": "Staging Build 14 was phone-proven affected because the Search response omitted the reviewed source marker and therefore denied household portions. The corrected backend is retained by Staging Build 15 and sends the reviewed marker and an affirmative portion verdict for the exact food. A phone has not yet confirmed the chips.",
+      "nextStep": "In Staging Build 15, search chicken breast, open Raw Chicken Breast and confirm its named household portion chips appear and scale nutrition correctly. Aadam owns this check; production is unchanged.",
       "updated": "2026-09-03"
     },
     {
