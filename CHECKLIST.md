@@ -1,10 +1,10 @@
 # TRAK — master checklist
 
-Updated: 2026-09-08T11:50:58Z · Reviewed through 2026-09-08
+Updated: 2026-09-08T12:30:17Z · Reviewed through 2026-09-08
 
 - native: Regular TRAK Build 470 remains listed for internal TestFlight. TRAK Staging Build 37 is now available to internal TestFlight testers with the combined nutrient, food-calculation safety and earlier Coach/Roll-On updates. Phone acceptance remains open; Android distribution is unchanged by this release.
 - backend: Production backend 2715 is unchanged. Staging backend 2716 is paired with Build 37 and includes the reviewed Coach test-cycle and food-calculation support. Production and staging are separate environments.
-- next: Test the delivered Build 37 flows on a phone. The newly reviewed maintenance-range policy is a separate local candidate for the same staging owner to integrate next; it is not in Build 37. Complete staging and phone checks before regular TRAK promotion.
+- next: The new maintenance policy is accepted on simulation and awaits integration by the staging owner. No extra phone exercise with prepared histories is required for this policy. Existing Build 37 check-in/display issues and ordinary release checks remain separate; regular TRAK promotion is a later decision.
 
 > Public, read-only project status. No login needed.
 
@@ -78,9 +78,9 @@ Next: The release owner must use the gate for the next candidate, verify matchin
 
 ID: coach-maintenance-range-matches-selected-tolerance · Coach & insights · Reviewed 2026-09-08
 
-Implemented and independently reviewed locally: Coach uses the selected percentage range, responds to sustained weight trends near its edges and avoids tiny maintenance-target changes. The retained version passes 490 tests and the declared outcome and calorie-change checks. No previously passing endpoint regressed. Earlier range-only and overly changeable experiments were rejected. This new policy is not in Staging Build 37 or regular TRAK.
+Maintenance logic is accepted on the independently reviewed simulations: selected percentage ranges, sustained drift and fewer tiny calorie changes. The retained version passed 490 tests and the declared outcome and calorie-change checks, with no previously passing endpoint regressing. It remains a local backend candidate, not part of Build 37 or regular TRAK.
 
-Next: The existing staging owner must integrate onto the latest source, verify the matching backend and test selected ranges, stable weights, sustained drift and noisy weigh-ins on a phone. Production promotion remains separate.
+Next: The staging owner must integrate the matching backend and complete ordinary compatibility/release checks. No separate phone exercise with prepared weight histories is required to accept this maintenance policy. Production promotion remains separate.
 
 ## Needs checking
 
@@ -322,7 +322,7 @@ ID: repeat-coach-checkins-without-waiting-a-week · Coach & insights · Reviewed
 
 Repeat check-in and Next test week are included with the earlier Coach repair in distributed Staging Build 37 and the matching staging backend. They require the staging test configuration, preserve accepted history and are not production controls. Physical acceptance is still open.
 
-Next: Use Build 37 to verify both controls are available, then test repeat, advance, retries and account boundaries without waiting a week. These controls can also be used to test the separate maintenance policy after its later staging integration.
+Next: Use Build 37 to verify both controls are available, then test repeat, advance, retries and account boundaries without waiting a week. These earlier check-in flow checks are separate from maintenance-policy acceptance, which is covered by simulation.
 
 ### Micronutrient details open with the correct complete view
 
@@ -574,7 +574,7 @@ ID: coach-outcome-evaluation-before-full-signoff · Coach & insights · Reviewed
 
 The entry audit found the app and backend already agree on maintenance calories. A separately reviewed local policy improves the original maintenance journeys from 20/34 to 30/34 inside the selected range after eight weeks, and from 25/34 to 34/34 after sixteen. A wider comparison improves from 48/60 to 51/60 and 56/60 to 60/60 while cutting calorie reversals from 87 to 8. Only 60 of 120 wider conditions reached the maintenance transition; the rest remain unmeasured. The original broader effectiveness failure is preserved.
 
-Next: The staging owner must integrate this new policy into a later candidate and complete phone checks. Full Coach effectiveness remains open, including journeys that did not reach their first goal. Build 37 contains the earlier Coach repairs, not this new maintenance policy.
+Next: Maintenance decision behavior is accepted on simulation; the extra phone-scenario requirement is removed. The staging owner handles backend integration. Broader effectiveness questions, including journeys that did not reach their first goal, remain separate from this completed maintenance-policy evaluation.
 
 ### Compare Gemini Flash 3.8 across AI features
 
