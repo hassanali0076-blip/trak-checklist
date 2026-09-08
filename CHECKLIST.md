@@ -1,10 +1,10 @@
 # TRAK — master checklist
 
-Updated: 2026-09-08T06:21:32Z · Reviewed through 2026-09-08
+Updated: 2026-09-08T07:51:38Z · Reviewed through 2026-09-08
 
-- native: Regular TRAK Build 470 is available in internal TestFlight; its remaining nutrient issues are not signed off. TRAK Staging Build 33 is available in internal TestFlight. A matching regular-build Android file is prepared; current Android distribution and phone acceptance still need confirmation.
+- native: Regular TRAK Build 470 is available in internal TestFlight; its remaining nutrient issues are not signed off. TRAK Staging Build 34 is available in internal TestFlight. A matching regular-build Android file is prepared; current Android distribution and phone acceptance still need confirmation.
 - backend: Production backend 2715 and staging backend 2714 are live. These are separate environments. Production includes the selected goal, Search and nutrient support plus the coverage-endpoint repair; staging adds the latest Search network diagnostics.
-- next: The next staging candidate combines the latest chart-range, target-marker, weight-unit and calculator-serving fixes without dropping Build 33 work. Coach repairs remain a separate unreleased candidate with an open outcome-evaluation gate. Complete the relevant phone checks before promoting further changes to regular TRAK.
+- next: Build 34 contains the chart-range, target-marker, weight-unit and calculator-serving fixes on top of Build 33. Coach repairs and subsequent phone-review work remain separate local candidates. Integrate against the latest staging source and complete the relevant phone checks before promoting further changes to regular TRAK.
 
 > Public, read-only project status. No login needed.
 
@@ -56,13 +56,13 @@ Nightly catalogue maintenance completed through the audit date, but recent groce
 
 Next: The operations owner must inspect the last runner outcome and restore scheduling on existing infrastructure, with durable start/completion/failure records and missed-run alerts. No scheduler change was made by the audit.
 
-### Goal changes must preserve earlier expenditure history
+### Coach maintenance range matches the selected tolerance
 
-ID: goal-change-preserves-earlier-expenditure-history · Coach & insights · Reviewed 2026-09-08
+ID: coach-maintenance-range-matches-selected-tolerance · Coach & insights · Reviewed 2026-09-08
 
-A synthetic check found an existing goal-change edge case: when today has no saved expenditure row, switching to maintenance or another goal can change the previous day's estimate. It reproduces in both current production source and the Coach candidate; it was not introduced by the recent Coach repair. No real account data was changed during the check.
+The saved maintenance percentage is shown to the user, but Coach currently uses a fixed ±1.5 lb band to decide when to make corrective adjustments. For example, a selected ±2% range at 200 lb is ±4 lb. This mismatch is recorded separately; Coach rules were not changed to improve test scores.
 
-Next: Correct the date boundary while preserving the agreed goal-adjustment behaviour, then pass the retained failing cases and existing goal, Coach and expenditure tests before staging.
+Next: The Coach owner must establish the intended relationship between the selected range and the adjustment trigger, add behavior checks, and review any correction before staging.
 
 ## Next phone build
 
@@ -73,14 +73,6 @@ ID: native-code-organisation-server-companion-later · Release & reliability · 
 The first native organization batch is tested and saved remotely, but not released. Later batches and backend restructuring are not included.
 
 Next: Keep behavior unchanged; scope and approve the next batch separately.
-
-### Weight units stay consistent across goal editing
-
-ID: body-weight-units-use-one-conversion-path · Coach & insights · Reviewed 2026-09-08
-
-The next staging candidate consolidates goal-edit and onboarding conversions through the shared weight-unit module. Local tests cover edit values, saved targets, weekly rates, repeated lb/kg switching and cold reopening. It is not in Build 33. Stone remains unsupported.
-
-Next: The staging owner must retain the change in the combined candidate, then verify lb/kg input, display, save and reopen on the phone without drift.
 
 ### Coach weekly check-in shows and applies the correct calories
 
@@ -106,30 +98,6 @@ Repeat check-in and Next test week are implemented with the separate Coach repai
 
 Next: Integrate with the latest staging source, verify the combined app and matching backend, then enable only in that Coach staging release. Test repeat, advance, retries and account boundaries.
 
-### All shows the full recorded nutrient history
-
-ID: micronutrient-all-range-uses-recorded-history · Coach & insights · Reviewed 2026-09-08
-
-Phone testing still found 1Y to All stuck at one year in Build 33 for a shorter history. The next staging candidate fixes the shared chart extent using actual recorded history. A related regular Build 470 correction is also local. Neither follow-up is phone-accepted.
-
-Next: The staging owner must combine the correction and test repeated 1Y to All switching with less than and more than a year of history, including empty history, without closing the screen.
-
-### Nutrient target markers remain visible
-
-ID: micronutrient-target-markers-remain-visible · Coach & insights · Reviewed 2026-09-08
-
-The target values and positions were present, but faded marker styling made them hard to see. The next staging candidate restores solid markers across standard, overview and History cards. Automated visual tests pass; Build 33 does not contain this correction.
-
-Next: Verify marker visibility in light and dark modes across nutrient card styles while retaining the same targets, positions and ranges.
-
-### Remember the serving set with the pack calculator
-
-ID: remember-calculator-serving-when-food-is-reopened · Food editing · Reviewed 2026-09-08
-
-The calculator previously changed only the open editor. The local fix saves the calculated grams to the account and restores them through Search, Recents, barcode and restart. For example, 500 g divided by four servings reopens at 125 g. It is not in Build 33.
-
-Next: The staging owner must integrate the fix and test every reopening route, correct calories, manual overrides and existing diary amounts. A failed save must be reported; cold offline restoration and older web-app preference migration are not included.
-
 ### Verify the actual app before wider release
 
 ID: signed-artifact-release-and-promotion-checks · Release & reliability · Reviewed 2026-09-08
@@ -137,6 +105,14 @@ ID: signed-artifact-release-and-promotion-checks · Release & reliability · Rev
 A local release gate checks the signed iPhone and Android artifacts and requires recorded phone acceptance for claimed features. Release checks can run on the release Mac. Build 470 remains internal-only; these new protections do not retrospectively approve its unresolved nutrient issues.
 
 Next: The release owner must use the gate for the next candidate, verify matching platform artifacts and collect the required phone acceptance before wider promotion.
+
+### Goal changes must preserve earlier expenditure history
+
+ID: goal-change-preserves-earlier-expenditure-history · Coach & insights · Reviewed 2026-09-08
+
+The local repair preserves earlier expenditure records when a goal changes on a day without its own saved estimate. It also retains the current adjustment after recalculation. The unchanged independent cases pass on the candidate and still reproduce the old bug on production source. It is not in Build 34; no later release build is assigned.
+
+Next: The Coach owner must retain this repair in the combined staging candidate, verify it with the matching backend, and test goal changes and later recalculation before any production release.
 
 ## Needs checking
 
@@ -332,6 +308,14 @@ The new goal-weight step, review summary and shared current-goal update were del
 
 Next: Change target weight and rate, confirm the review screen, then check Coach, Insights, milestones, predictions and daily targets after reopening. Test both lb and kg.
 
+### Weight units stay consistent across goal editing
+
+ID: body-weight-units-use-one-conversion-path · Coach & insights · Reviewed 2026-09-08
+
+Staging Build 34 consolidates goal-edit and onboarding conversions through the shared weight-unit module. Local checks cover edit values, saved targets, weekly rates, repeated lb/kg switching and cold reopening. Further phone-review work remains separate; stone is unsupported.
+
+Next: The staging owner must track any later phone findings separately and verify lb/kg input, display, save and reopen without drift.
+
 ### New Health weights appear without manual syncing
 
 ID: automatic-health-weight-pickup-after-provider-publication · Health · Reviewed 2026-09-08
@@ -356,6 +340,22 @@ Successive staging fixes address cold Today data, partial first charts, delayed 
 
 Next: On Build 33 and its successor, open Today, History and nutrient details cold and warm, switch ranges rapidly and retry a failed load. Check for partial old data, delayed target changes or layout jumps.
 
+### All shows the full recorded nutrient history
+
+ID: micronutrient-all-range-uses-recorded-history · Coach & insights · Reviewed 2026-09-08
+
+Staging Build 34 contains the correction for 1Y to All remaining stuck at one year when recorded history is shorter. It uses the actual history span and retains Build 33 work. A related regular Build 470 correction remains separate; full phone acceptance is still open.
+
+Next: On Staging Build 34, test repeated 1Y to All switching with less than and more than a year of history, including empty history, without closing the screen.
+
+### Nutrient target markers remain visible
+
+ID: micronutrient-target-markers-remain-visible · Coach & insights · Reviewed 2026-09-08
+
+Staging Build 34 restores solid nutrient target markers across standard, overview and History cards. Values and positions are retained, and automated visual tests pass. Phone acceptance remains open.
+
+Next: On Staging Build 34, verify marker visibility in light and dark modes across nutrient card styles while retaining the same targets, positions and ranges.
+
 ### Nutrient values and spacing match the agreed design
 
 ID: micronutrient-formatting-and-spacing · Coach & insights · Reviewed 2026-09-08
@@ -379,6 +379,14 @@ ID: weight-units-before-named-food-portions · Food editing · Reviewed 2026-09-
 Staging Build 30 changed the serving-chip order to g, oz, lb before named portions such as Small, Medium and Large. Build 33 retains it. The change does not alter portion weights or food ranking.
 
 Next: Check several foods with named servings on Build 33, including scroll/overflow behaviour and correct calories after selecting a weight unit or named portion.
+
+### Remember the serving set with the pack calculator
+
+ID: remember-calculator-serving-when-food-is-reopened · Food editing · Reviewed 2026-09-08
+
+Staging Build 34 includes the fix that saves calculated grams to the account and restores them through Search, Recents, barcode and restart. For example, 500 g divided by four servings reopens at 125 g. Phone acceptance remains open.
+
+Next: On Staging Build 34, test every reopening route, correct calories, manual overrides, existing diary amounts and account switching. A failed save must be reported; cold offline restoration and older web-app preference migration are not included.
 
 ### Blueberries entered in grams must not become cups
 
@@ -564,9 +572,9 @@ Next: Compare uncached latency, food-ranking parity, catalogue licensing/freshne
 
 ID: coach-outcome-evaluation-before-full-signoff · Coach & insights · Reviewed 2026-09-08
 
-The completion flow already exists and its current checks pass. A fresh 108-pair simulation reproduced the previous score, but all 14 endpoint misses had reached the goal and then kept the frozen target without choosing another plan. The test never selects Maintain or Set new goal, so it does not assess those journeys or establish that the recent Coach repair worsened outcomes.
+The expanded simulation completed 360 paired cases, including Maintain, Set new goal, delays and cancellations. All 68 eligible plan changes passed the cycle and reset checks. Only 20 of 34 maintenance journeys ended within the selected range; all 34 eligible new-goal journeys attained the next goal. The comparison users never triggered official completion, so their next-plan outcomes were not measured. The original failed score is preserved.
 
-Next: Keep the original failed score visible. Add explicit maintenance and new-goal choices to the paired simulation, separate reaching a goal from maintaining it, and review the separate earlier-history issue before full Coach sign-off.
+Next: The Coach owner must investigate maintenance misses and the selected-range mismatch, add coverage for comparison users completing a goal, and retain the recorded results. Full effectiveness sign-off and physical staging checks remain open; this does not establish that the recent fixes worsened outcomes.
 
 ### Compare Gemini Flash 3.8 across AI features
 
