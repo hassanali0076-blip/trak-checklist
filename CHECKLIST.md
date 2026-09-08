@@ -1,10 +1,10 @@
 # TRAK — master checklist
 
-Updated: 2026-09-08T15:44:57Z · Reviewed through 2026-09-08
+Updated: 2026-09-08T16:48:01Z · Reviewed through 2026-09-08
 
 - native: Regular TRAK Build 470 remains listed for internal TestFlight. TRAK Staging Build 38 is available to internal iOS testers with the follow-up nutrient presentation, calorie-minimum picker and Coach test-button corrections. Physical phone acceptance remains open. Android distribution is unchanged.
 - backend: Staging backend 2717 is live and includes the reviewed maintenance-range policy. Its deployed runtime matches the integrated source. It is paired with Staging Build 38. Production backend 2715 remains separate and unchanged by this staging work.
-- next: The maintenance policy is accepted on simulation and deployed to staging; it no longer awaits staging integration. Check the corrected Coach test-button flow on Build 38. No prepared maintenance weight histories are required. Broader Coach effectiveness and regular TRAK promotion remain separate.
+- next: Staging Build 39 has a signed local iPhone artifact, built on top of Build 38, but is not uploaded or distributed. Its companion backend is still undeployed, so the EPA + DHA target correction is not live. Build 38/backend 2717 remain the available staging pair. Maintenance logic remains accepted on simulation; broader Coach effectiveness and regular TRAK promotion remain separate.
 
 > Public, read-only project status. No login needed.
 
