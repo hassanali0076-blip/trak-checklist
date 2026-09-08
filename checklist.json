@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "title": "TRAK — master checklist",
-  "updatedAt": "2026-09-08T05:43:28Z",
+  "updatedAt": "2026-09-08T06:21:32Z",
   "reviewedThrough": "2026-09-08",
   "release": {
     "native": "Regular TRAK Build 470 is available in internal TestFlight; its remaining nutrient issues are not signed off. TRAK Staging Build 33 is available in internal TestFlight. A matching regular-build Android file is prepared; current Android distribution and phone acceptance still need confirmation.",
@@ -15,6 +15,10 @@
     "Reconciled through 8 September. Released changes, local fixes and reported phone results are tracked separately. This board update does not release a TRAK app build."
   ],
   "changes": [
+    {
+      "date": "2026-09-08",
+      "text": "Coach completion investigation found and verified earlier goal-completion work. The outcome simulation omits choosing a next plan; its existing failed score remains visible. A separate earlier-history edge case is recorded, and Coach test controls are explicitly excluded from Build 34."
+    },
     {
       "date": "2026-09-08",
       "text": "Staging Build 33 is available in internal TestFlight with staging backend 2714. The Mac restart cleared the packaging blocker. The build retains earlier nutrient-range retry work and adds Search connection diagnostics; the VPN stall is still open."
@@ -1170,8 +1174,8 @@
       "title": "Test Coach check-ins without waiting a week",
       "area": "Coach & insights",
       "status": "next_release",
-      "summary": "Staging-only Repeat check-in and Next test week controls are implemented with the Coach repair. They preserve accepted history and avoid changing the phone date. They are not deployed or enabled yet, and production keeps them hidden.",
-      "nextStep": "Enable only in the approved staging Coach release. Verify repeat, advance, retry and account boundaries, and confirm regular TRAK cannot use the controls.",
+      "summary": "Repeat check-in and Next test week are implemented with the separate Coach repair. They are not included in Build 34 and are not deployed or enabled. They await a later Coach staging release; the controls preserve accepted history and keep production unchanged.",
+      "nextStep": "Integrate with the latest staging source, verify the combined app and matching backend, then enable only in that Coach staging release. Test repeat, advance, retries and account boundaries.",
       "updated": "2026-09-08"
     },
     {
@@ -1179,8 +1183,8 @@
       "title": "Complete the full Coach effectiveness review",
       "area": "Coach & insights",
       "status": "active",
-      "summary": "Review lifecycle and target-consistency tests pass after the local repair, but the broader simulated outcome comparison still fails its improvement gate. Passing the bug-fix tests does not establish that Coach consistently beats an unchanged target.",
-      "nextStep": "Investigate the completion/maintenance scenario and outcome misses with the existing thresholds intact. Keep this result visible and separate from the specific zero/1,500-calorie bug and phone acceptance.",
+      "summary": "The completion flow already exists and its current checks pass. A fresh 108-pair simulation reproduced the previous score, but all 14 endpoint misses had reached the goal and then kept the frozen target without choosing another plan. The test never selects Maintain or Set new goal, so it does not assess those journeys or establish that the recent Coach repair worsened outcomes.",
+      "nextStep": "Keep the original failed score visible. Add explicit maintenance and new-goal choices to the paired simulation, separate reaching a goal from maintaining it, and review the separate earlier-history issue before full Coach sign-off.",
       "updated": "2026-09-08"
     },
     {
@@ -1334,6 +1338,15 @@
       "status": "testing",
       "summary": "The selected goal, nutrient, Search and Health bundle reached regular Builds 469/470 with matching backend support. Newer staging transport, diagnostics, serving and nutrient follow-ups are separate; Coach also remains unreleased. There is no blanket approval that every staging change is production-ready.",
       "nextStep": "The release owner must reconcile exact accepted changes into the latest regular baseline, preserve concurrent work, pair any required backend first and verify signed artifacts and phone behaviour before promotion.",
+      "updated": "2026-09-08"
+    },
+    {
+      "id": "goal-change-preserves-earlier-expenditure-history",
+      "title": "Goal changes must preserve earlier expenditure history",
+      "area": "Coach & insights",
+      "status": "issue",
+      "summary": "A synthetic check found an existing goal-change edge case: when today has no saved expenditure row, switching to maintenance or another goal can change the previous day's estimate. It reproduces in both current production source and the Coach candidate; it was not introduced by the recent Coach repair. No real account data was changed during the check.",
+      "nextStep": "Correct the date boundary while preserving the agreed goal-adjustment behaviour, then pass the retained failing cases and existing goal, Coach and expenditure tests before staging.",
       "updated": "2026-09-08"
     }
   ]

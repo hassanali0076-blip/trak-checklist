@@ -1,6 +1,6 @@
 # TRAK — master checklist
 
-Updated: 2026-09-08T05:43:28Z · Reviewed through 2026-09-08
+Updated: 2026-09-08T06:21:32Z · Reviewed through 2026-09-08
 
 - native: Regular TRAK Build 470 is available in internal TestFlight; its remaining nutrient issues are not signed off. TRAK Staging Build 33 is available in internal TestFlight. A matching regular-build Android file is prepared; current Android distribution and phone acceptance still need confirmation.
 - backend: Production backend 2715 and staging backend 2714 are live. These are separate environments. Production includes the selected goal, Search and nutrient support plus the coverage-endpoint repair; staging adds the latest Search network diagnostics.
@@ -56,6 +56,14 @@ Nightly catalogue maintenance completed through the audit date, but recent groce
 
 Next: The operations owner must inspect the last runner outcome and restore scheduling on existing infrastructure, with durable start/completion/failure records and missed-run alerts. No scheduler change was made by the audit.
 
+### Goal changes must preserve earlier expenditure history
+
+ID: goal-change-preserves-earlier-expenditure-history · Coach & insights · Reviewed 2026-09-08
+
+A synthetic check found an existing goal-change edge case: when today has no saved expenditure row, switching to maintenance or another goal can change the previous day's estimate. It reproduces in both current production source and the Coach candidate; it was not introduced by the recent Coach repair. No real account data was changed during the check.
+
+Next: Correct the date boundary while preserving the agreed goal-adjustment behaviour, then pass the retained failing cases and existing goal, Coach and expenditure tests before staging.
+
 ## Next phone build
 
 ### Native code organization
@@ -94,9 +102,9 @@ Next: Validate Standard and Low with representative profiles and confirm every t
 
 ID: repeat-coach-checkins-without-waiting-a-week · Coach & insights · Reviewed 2026-09-08
 
-Staging-only Repeat check-in and Next test week controls are implemented with the Coach repair. They preserve accepted history and avoid changing the phone date. They are not deployed or enabled yet, and production keeps them hidden.
+Repeat check-in and Next test week are implemented with the separate Coach repair. They are not included in Build 34 and are not deployed or enabled. They await a later Coach staging release; the controls preserve accepted history and keep production unchanged.
 
-Next: Enable only in the approved staging Coach release. Verify repeat, advance, retry and account boundaries, and confirm regular TRAK cannot use the controls.
+Next: Integrate with the latest staging source, verify the combined app and matching backend, then enable only in that Coach staging release. Test repeat, advance, retries and account boundaries.
 
 ### All shows the full recorded nutrient history
 
@@ -556,9 +564,9 @@ Next: Compare uncached latency, food-ranking parity, catalogue licensing/freshne
 
 ID: coach-outcome-evaluation-before-full-signoff · Coach & insights · Reviewed 2026-09-08
 
-Review lifecycle and target-consistency tests pass after the local repair, but the broader simulated outcome comparison still fails its improvement gate. Passing the bug-fix tests does not establish that Coach consistently beats an unchanged target.
+The completion flow already exists and its current checks pass. A fresh 108-pair simulation reproduced the previous score, but all 14 endpoint misses had reached the goal and then kept the frozen target without choosing another plan. The test never selects Maintain or Set new goal, so it does not assess those journeys or establish that the recent Coach repair worsened outcomes.
 
-Next: Investigate the completion/maintenance scenario and outcome misses with the existing thresholds intact. Keep this result visible and separate from the specific zero/1,500-calorie bug and phone acceptance.
+Next: Keep the original failed score visible. Add explicit maintenance and new-goal choices to the paired simulation, separate reaching a goal from maintaining it, and review the separate earlier-history issue before full Coach sign-off.
 
 ### Compare Gemini Flash 3.8 across AI features
 
