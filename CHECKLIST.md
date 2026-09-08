@@ -1,16 +1,18 @@
 # TRAK — master checklist
 
-Updated: 2026-09-03T11:45:10Z · Reviewed through 2026-09-03
+Updated: 2026-09-08T05:43:28Z · Reviewed through 2026-09-08
 
-- native: Regular TRAK Build 467 remains installed and affected · TRAK Staging Build 15 passed the cold first typed-Search phone check · wider Build 15 acceptance remains open · matching signed Android APK is ready for manual Firebase upload
-- backend: Production remains build 2709 · staging now returns a compact first catalogue page and retains the Raw Chicken portion correction
-- next: On TRAK Staging Build 15, leave a completed Search untouched for five seconds and check for no late additions or reordering, then test View all, repeat-query restart cache, worldwide reachability, recipe parity, Raw Chicken portions and retained nutrient work. The cold first typed-Search check passed on iPhone; regular TRAK and production are unchanged.
+- native: Regular TRAK Build 470 is available in internal TestFlight; its remaining nutrient issues are not signed off. TRAK Staging Build 33 is available in internal TestFlight. A matching regular-build Android file is prepared; current Android distribution and phone acceptance still need confirmation.
+- backend: Production backend 2715 and staging backend 2714 are live. These are separate environments. Production includes the selected goal, Search and nutrient support plus the coverage-endpoint repair; staging adds the latest Search network diagnostics.
+- next: The next staging candidate combines the latest chart-range, target-marker, weight-unit and calculator-serving fixes without dropping Build 33 work. Coach repairs remain a separate unreleased candidate with an open outcome-evaluation gate. Complete the relevant phone checks before promoting further changes to regular TRAK.
 
 > Public, read-only project status. No login needed.
 
 > Historical checks are retained separately; a new regression is not closed by an older sign-off.
 
 > Updates appear here after the shared checklist is published. Local edits and chat messages do not update it.
+
+> Reconciled through 8 September. Released changes, local fixes and reported phone results are tracked separately. This board update does not release a TRAK app build.
 
 ## Known issue
 
@@ -22,13 +24,13 @@ The reported regional-product typo is diagnosed. A general vocabulary and matchi
 
 Next: Fix general typo recovery with false-positive and Fast/Full regressions, not a product-specific alias.
 
-### Every daily total uses the canonical diary rule
+### Typed Search results feel slow again
 
-ID: secondary-daily-totals-use-the-canonical-rule · Diary & recurring · Reviewed 2026-09-03
+ID: typed-search-results-are-slow-again · Search & catalogue · Reviewed 2026-09-08
 
-The audit confirmed the main TDEE, Coach, Roll-On and calendar paths use the intended rule: a day's entries total wins when present, otherwise active food-log rows are used. Several secondary calculations still read one pool directly, so mixed old and new history can disagree across parts of the app.
+Several staging speed improvements are released, and recent uncached phone searches appeared quickly. A much longer whole-egg stall occurred with a USA VPN even though the server response was quick. Build 33 adds measurements to locate that delay; it is not a proven fix for every spike. Existing food matching, ranking and immediate View all remain required.
 
-Next: Create one shared daily-total resolver and move the remaining trend, Insights, AI calorie-plan, remaining-macro and goal-summary consumers onto it. Add mixed-history, deletion, fasting, incomplete-day and account-isolation tests before release.
+Next: The Search owner must compare uncached searches with VPN off, already connected, and switched during use on Build 33. Measure connection, response and screen timing together. Preserve exact result order and immediate View all; do not infer speed from cached repeats.
 
 ### Large text still clips on some Android screens
 
@@ -46,6 +48,14 @@ A source-access assessment missed datasets already held locally. The assessment 
 
 Next: Reconcile existing source versions, nutrient coverage and recorded permissions before claiming remaining gaps cannot be filled. No automatic food or database changes.
 
+### Restore reliable grocery refreshes
+
+ID: grocery-refresh-scheduling-and-completion-receipts · Search & catalogue · Reviewed 2026-09-08
+
+Nightly catalogue maintenance completed through the audit date, but recent grocery triggers failed before running and the latest successful trigger did not establish refresh completion. Reliable recent grocery results remain unverified.
+
+Next: The operations owner must inspect the last runner outcome and restore scheduling on existing infrastructure, with durable start/completion/failure records and missed-run alerts. No scheduler change was made by the audit.
+
 ## Next phone build
 
 ### Native code organization
@@ -56,31 +66,95 @@ The first native organization batch is tested and saved remotely, but not releas
 
 Next: Keep behavior unchanged; scope and approve the next batch separately.
 
+### Weight units stay consistent across goal editing
+
+ID: body-weight-units-use-one-conversion-path · Coach & insights · Reviewed 2026-09-08
+
+The next staging candidate consolidates goal-edit and onboarding conversions through the shared weight-unit module. Local tests cover edit values, saved targets, weekly rates, repeated lb/kg switching and cold reopening. It is not in Build 33. Stone remains unsupported.
+
+Next: The staging owner must retain the change in the combined candidate, then verify lb/kg input, display, save and reopen on the phone without drift.
+
+### Coach weekly check-in shows and applies the correct calories
+
+ID: weekly-coach-review-displays-and-applies-one-valid-plan · Coach & insights · Reviewed 2026-09-08
+
+The reported zero-calorie first plan and incorrect 1,500-calorie repeat led to a local repair of review creation, refresh and acceptance. It keeps one review per period and applies exactly the displayed current targets. Backend and app tests pass, but the fix is not deployed or in a distributed staging build.
+
+Next: The Coach owner must integrate with the latest staging app and matching backend, then repeat the original first-check-in, redo, reopen and accept flows. Confirm all screens use the same saved calories and macros.
+
+### Use the agreed personal calorie minimum everywhere
+
+ID: personal-calorie-minimum-used-by-coach-goals-and-rollon · Coach & insights · Reviewed 2026-09-08
+
+The agreed height/weight-based Standard minimum and optional Low setting are implemented locally across Coach, goal setup and Roll-On. Existing explicit user choices are preserved, and missing profile details are handled explicitly. The change is not released; the TDEE calculation was not retuned.
+
+Next: Validate Standard and Low with representative profiles and confirm every target surface uses the same minimum. Complete the Coach staging release and phone checks before regular rollout.
+
+### Test Coach check-ins without waiting a week
+
+ID: repeat-coach-checkins-without-waiting-a-week · Coach & insights · Reviewed 2026-09-08
+
+Staging-only Repeat check-in and Next test week controls are implemented with the Coach repair. They preserve accepted history and avoid changing the phone date. They are not deployed or enabled yet, and production keeps them hidden.
+
+Next: Enable only in the approved staging Coach release. Verify repeat, advance, retry and account boundaries, and confirm regular TRAK cannot use the controls.
+
+### All shows the full recorded nutrient history
+
+ID: micronutrient-all-range-uses-recorded-history · Coach & insights · Reviewed 2026-09-08
+
+Phone testing still found 1Y to All stuck at one year in Build 33 for a shorter history. The next staging candidate fixes the shared chart extent using actual recorded history. A related regular Build 470 correction is also local. Neither follow-up is phone-accepted.
+
+Next: The staging owner must combine the correction and test repeated 1Y to All switching with less than and more than a year of history, including empty history, without closing the screen.
+
+### Nutrient target markers remain visible
+
+ID: micronutrient-target-markers-remain-visible · Coach & insights · Reviewed 2026-09-08
+
+The target values and positions were present, but faded marker styling made them hard to see. The next staging candidate restores solid markers across standard, overview and History cards. Automated visual tests pass; Build 33 does not contain this correction.
+
+Next: Verify marker visibility in light and dark modes across nutrient card styles while retaining the same targets, positions and ranges.
+
+### Remember the serving set with the pack calculator
+
+ID: remember-calculator-serving-when-food-is-reopened · Food editing · Reviewed 2026-09-08
+
+The calculator previously changed only the open editor. The local fix saves the calculated grams to the account and restores them through Search, Recents, barcode and restart. For example, 500 g divided by four servings reopens at 125 g. It is not in Build 33.
+
+Next: The staging owner must integrate the fix and test every reopening route, correct calories, manual overrides and existing diary amounts. A failed save must be reported; cold offline restoration and older web-app preference migration are not included.
+
+### Verify the actual app before wider release
+
+ID: signed-artifact-release-and-promotion-checks · Release & reliability · Reviewed 2026-09-08
+
+A local release gate checks the signed iPhone and Android artifacts and requires recorded phone acceptance for claimed features. Release checks can run on the release Mac. Build 470 remains internal-only; these new protections do not retrospectively approve its unresolved nutrient issues.
+
+Next: The release owner must use the gate for the next candidate, verify matching platform artifacts and collect the required phone acceptance before wider promotion.
+
 ## Needs checking
 
 ### Recipes and custom foods appear missing
 
-ID: verify-saved-library-visibility-after-the-filter-correction · Recipes & custom foods · Reviewed 2026-09-03
+ID: verify-saved-library-visibility-after-the-filter-correction · Recipes & custom foods · Reviewed 2026-09-08
 
-The catalogue-filter correction is in regular TRAK and the saved records were confirmed present. The latest report concerns My foods arriving late inside Search, not deleted library data. Staging Build 15 carries the stable personal-results candidate, but full library acceptance remains open.
+The saved-library and Search projection corrections are retained in later regular and staging releases. Missing records were not established; the reported problem was delayed or filtered presentation. Complete current-phone acceptance remains open.
 
-Next: On Staging Build 15, enter a catalogue query, open Recipes and Foods, and confirm both complete saved libraries appear immediately, remain loggable and are unaffected by the catalogue query. Do not reset or recreate existing data.
+Next: On Staging Build 33, open Recipes and Foods after a catalogue query and confirm both complete libraries appear, remain loggable and ignore the unrelated catalogue filter. Preserve existing data.
 
 ### Offline and restart food-log recovery
 
-ID: offline-and-restart-food-log-recovery · Diary & recurring · Reviewed 2026-09-03
+ID: offline-and-restart-food-log-recovery · Diary & recurring · Reviewed 2026-09-08
 
-Build 464 kept an unsaved food after choosing Stay signed in and saved it after reconnecting, but delayed Delete Undo by roughly ten seconds. The local-admission correction is included in regular Build 467 and inherited by Staging Build 15; full connectivity-change and restart acceptance remains open.
+Later releases retain the local-save and reconnect protections added after the earlier delayed Undo report. Automated coverage does not replace the remaining offline, restart and account-change phone checks.
 
-Next: On Staging Build 15, repeat reconnect then immediate delete and confirm Undo appears immediately while sync continues. Also add, edit, move, copy and delete offline, reopen, and confirm the intended diary survives without duplication.
+Next: On Staging Build 33, add, edit, move, copy and delete offline; reopen and reconnect. Confirm the intended diary survives once, with prompt Undo and no duplicate Health writes.
 
 ### Recurring foods log at their exact local time
 
-ID: recurring-foods-become-real-entries-at-their-exact-local-time · Diary & recurring · Reviewed 2026-09-03
+ID: recurring-foods-become-real-entries-at-their-exact-local-time · Diary & recurring · Reviewed 2026-09-08
 
-Backend and scheduler are live. The native exact-time, cold-open, duplicate and transition safeguards are inherited by regular Build 467 and Staging Build 15, but open, background and closed-app phone acceptance is still not recorded.
+The backend scheduler and native timing safeguards are implemented and retained in the current release lines. Complete open, background and closed-app phone acceptance is still unrecorded.
 
-Next: On Staging Build 15, verify saved minutes, timezone changes, first-frame planned cards and exactly one diary entry per occurrence before and after the scheduled time.
+Next: On the current staging build, verify saved minutes, timezone changes, upcoming cards and one diary entry per occurrence before and after its scheduled time.
 
 ### Coach check-in flag appears on the diary only when due
 
@@ -92,19 +166,19 @@ Next: Confirm absent before due, visible when due, and cleared after completion 
 
 ### Suggested and Recent cards arrive late when opening Search
 
-ID: suggested-and-recent-foods-feel-immediate-and-relevant · Search & catalogue · Reviewed 2026-09-03
+ID: suggested-and-recent-foods-feel-immediate-and-relevant · Search & catalogue · Reviewed 2026-09-08
 
-Regular Build 467 still allows cold Search support work to arrive late. Staging Build 15 retains bounded exact-context caches, migrates the older first-update cache and makes launch support work yield to a visible Search. Automated checks pass, but installed-phone timing is not yet accepted.
+The subsequent Search work reduces competing requests and preserves immediate personal shelves. Some phone searches are now quick, but cold-start, slow-network and account-change coverage is not fully accepted.
 
-Next: After installing Staging Build 15, hard-close, reopen and immediately enter Search before today's cache can warm. Confirm Suggested and Recents paint promptly, then repeat a later hard close plus slow/offline, Timeline-hour, logout and account-switch checks.
+Next: On Staging Build 33, hard-close, reopen and enter Search immediately. Check Suggested and Recents before caches warm, then repeat with slow/offline connectivity and another meal or account.
 
 ### Recents can disappear when Suggested is present
 
-ID: recents-shelf-remains-visible-alongside-suggested · Search & catalogue · Reviewed 2026-09-03
+ID: recents-shelf-remains-visible-alongside-suggested · Search & catalogue · Reviewed 2026-09-08
 
-The missing-shelf backend correction is live, but regular Build 467 can still paint personal Search sections late. Staging Build 15 gives each query one stable local Recents and My foods snapshot so server stages cannot keep adding or replacing those sections.
+The missing-shelf backend repair and stable personal-section projections are retained in later releases. The broader new-phone acceptance remains open; older fixes do not close a newly reported latency or reordering regression.
 
-Next: On Staging Build 15, confirm Suggested and Recents appear without duplicate cards, then watch the completed screen for at least five seconds and verify neither Recents nor My foods keeps materialising or reshuffling. Repeat in another meal and time slot.
+Next: On Staging Build 33, confirm both shelves appear without duplicates and remain stable for five seconds after results finish. Repeat in another meal and time slot.
 
 ### Verified and Branded foods stay correctly classified and unique
 
@@ -122,37 +196,37 @@ Build 461 includes reviewed portion families and wording fixes. Several foods pa
 
 Next: Check exact oat milk, onion portion scaling and the zero-to-filled macro-ring animation.
 
-### Typed Search results feel slow again
-
-ID: typed-search-results-are-slow-again · Search & catalogue · Reviewed 2026-09-03
-
-Regular Build 467 and Staging Build 14 were phone-proven affected. On iPhone, Staging Build 15 now passes the cold first typed-Search case: after a hard close and immediate reopen, personal and database results showed right away. It uses a compact first catalogue page, stable local History and My foods, View all for the remainder and a bounded per-account exact-query restart cache. Wider acceptance remains open.
-
-Next: On Staging Build 15, leave the completed results untouched for five seconds and confirm no card or section arrives, disappears or reorders. Open View all and confirm the first cards stay in place while more append. Repeat the exact query across another hard close to exercise the disk cache, then search a genuine other-market food. Aadam owns these phone checks; production needs a separate later release decision.
-
 ### Recipes keep the same serving everywhere
 
-ID: recipes-use-one-serving-across-every-search-surface · Recipes & custom foods · Reviewed 2026-09-03
+ID: recipes-use-one-serving-across-every-search-surface · Recipes & custom foods · Reviewed 2026-09-08
 
-Regular Build 467 can reconstruct a Previously logged recipe from its diary row and lose the named serving shown in Recipes or My foods. Staging Build 15 uses one shared current-recipe projection for serving, unit, amount, nutrition and recipe identity while leaving old diary snapshots unchanged.
+The shared current-recipe projection and preserved AI/private-food identity are included in later release work. Old diary snapshots remain historical. The cross-surface phone check still needs explicit acceptance.
 
-Next: On Staging Build 15, open cheesy meatloaf or another recently logged recipe through Recipes, My foods and Previously logged. Confirm the named serving, amount, unit and nutrition are identical and History does not fall back to grams; then save and reopen one new log.
+Next: On Staging Build 33, open the same recipe through Recipes, My foods and Previously logged. Confirm the named serving, amount, unit and nutrition agree, then save and reopen a new log.
 
 ### Food projections share one source of truth
 
-ID: food-projections-share-one-source-of-truth · Search & catalogue · Reviewed 2026-09-03
+ID: food-projections-share-one-source-of-truth · Search & catalogue · Reviewed 2026-09-08
 
-An executable matrix now records which canonical food or recipe each app surface uses. Identical fixtures and cross-surface tests cover Recipes, My foods, Previously logged and AI logging, and Staging Build 15 preserves explicit AI recipe and template identity. Pinned private-food identity and recipe icon authority remain known follow-ups.
+The executable projection matrix led to backend corrections for pinned private-food identity, recipe icons and trusted AI food links. Those corrections reached production with the Build 468 backend work. Cross-surface phone acceptance remains separate.
 
-Next: Complete the Build 15 phone parity checks, then separately define the remaining pinned-food identity and recipe-icon authority rules before changing those paths. Keep the matrix and identical fixtures mandatory for future Search or food-model work.
+Next: Verify Search, barcode, saved libraries, favorites, AI results and diary reopening refer to the same food and preserve its serving and icon. Keep deleted/private food and account-isolation cases in future regression coverage.
+
+### Every daily total uses the canonical diary rule
+
+ID: secondary-daily-totals-use-the-canonical-rule · Diary & recurring · Reviewed 2026-09-08
+
+The follow-up backend correction moved the remaining secondary daily-total consumers onto the shared resolver and was deployed with the Build 468 backend work. It preserves the entries-total-first rule and active food-log fallback. Mixed-history phone acceptance remains open.
+
+Next: Compare diary, Insights, Coach, remaining macros and goal summaries on days with manual totals, food logs, deletions and fasting. Any new mismatch needs its own exact example.
 
 ### Immediate or offline reopen can hide a serving choice
 
-ID: the-unit-chosen-in-food-editor-stays-chosen-everywhere · Food editing · Reviewed 2026-09-03
+ID: the-unit-chosen-in-food-editor-stays-chosen-everywhere · Food editing · Reviewed 2026-09-08
 
-The persisted grams-versus-scoops correction and exact optimistic or offline serving choices are inherited by regular Build 467 and Staging Build 15. Their complete save-and-reopen phone check remains open.
+Existing grams-versus-scoops and pending/offline diary protections are retained. The newly reported calculator default was a separate missing save path and now has its own unreleased fix card.
 
-Next: On Staging Build 15, select grams on a food that also offers Scoop, log it and immediately reopen online and offline. Confirm the chosen unit stays selected and every exact serving remains available without changing nutrition.
+Next: On Staging Build 33, log a food in grams that also offers Scoop and immediately reopen online and offline. Confirm the unit and exact portions survive with unchanged nutrition. Test calculator default memory in the next build containing that fix.
 
 ### iPhone inactive-state diagnostics need refinement
 
@@ -180,67 +254,147 @@ Next: Open Coach, leave and reopen it. Confirm the review appears without resett
 
 ### New recurring foods appear in upcoming slots today
 
-ID: new-recurring-food-appears-in-today-s-still-upcoming-slot · Diary & recurring · Reviewed 2026-09-03
+ID: new-recurring-food-appears-in-today-s-still-upcoming-slot · Diary & recurring · Reviewed 2026-09-08
 
-The backend admits a newly scheduled food to a remaining slot today. Regular Build 467 and Staging Build 15 also invalidate stale recurring data before refreshing after an add. The corrected combined behavior still needs installed-phone proof.
+Backend admission and the native immediate-refresh correction are implemented in the later release lines. The full combined phone result for a newly scheduled food is still open.
 
-Next: On Staging Build 15, add a food a few minutes ahead and confirm its planned card appears immediately, logs once at the saved time and does not disturb unrelated recurring cards.
+Next: On Staging Build 33, add a food a few minutes ahead. Its planned card should appear immediately and log once at the saved time without changing unrelated cards.
 
 ### Logout protects unsaved changes
 
-ID: logout-protects-unsaved-changes · Account & onboarding · Reviewed 2026-09-03
+ID: logout-protects-unsaved-changes · Account & onboarding · Reviewed 2026-09-08
 
-Build 464 proved that Stay signed in retained the account and pending food but used the wrong centred dialog. The canonical non-dismissible slide-up sheet is included in regular Build 467 and inherited by Staging Build 15; Discard, account isolation and Android remain open.
+The standard slide-up warning and pending-write protection are retained in later releases. Stay signed in previously preserved pending food. Discard, failed-sync recovery, account isolation and current Android acceptance remain open.
 
-Next: On Staging Build 15, confirm the warning slides up and repeat Stay. Then test Discard with disposable data, failed-sync recovery and account isolation; repeat on Android after the matching file is distributed through Firebase.
+Next: On the current staging build, verify Stay and Discard with disposable data, then failed-sync recovery and account changes. Repeat on Android using the matching release.
 
 ### Recurring foods refresh promptly after reopening
 
-ID: recurring-foods-appear-promptly-after-reopening · Diary & recurring · Reviewed 2026-09-03
+ID: recurring-foods-appear-promptly-after-reopening · Diary & recurring · Reviewed 2026-09-08
 
-The first-frame, elapsed-plan and refresh corrections are inherited by regular Build 467 and Staging Build 15, but the required hard-close phone result was never recorded. This remains unaccepted despite automated coverage.
+The earlier two-minute return delay has a separately tested reconciliation correction. Later release work retains recurring refresh protections, but the exact current-phone hard-close sequence is not signed off.
 
-Next: On Staging Build 15, hard-close and reopen before and after a scheduled time. Confirm the planned card appears immediately and becomes its logged card with the calorie total in one transition, including slow or offline recovery.
+Next: On Staging Build 33, hard-close and reopen before and after a scheduled time. Confirm the planned card becomes the logged card and calorie total together. Capture any delay, including slow or offline recovery.
 
 ### Recurring cards transition without duplicates or gaps
 
-ID: recurring-cards-transition-without-duplicates-or-gaps · Diary & recurring · Reviewed 2026-09-03
+ID: recurring-cards-transition-without-duplicates-or-gaps · Diary & recurring · Reviewed 2026-09-08
 
-The duplicate, blank-interval, refresh-race, cold-open, add and delete protections are inherited by regular Build 467 and Staging Build 15. Their combined iPhone and Android acceptance remains open.
+Later regular and staging releases retain duplicate, refresh-race, add/delete and card-transition protections. Full combined iPhone and Android acceptance is still open.
 
-Next: On Staging Build 15, test scheduled logging, Log all today and on a future day, old overlapping entries, template deletion, removal during refresh and card/calorie transitions. Repeat on Android after the matching file is distributed through Firebase.
+Next: On the current staging build, test scheduled logging, Log all today and on a future day, overlapping entries, template deletion and removal during refresh. Check one card and one calorie contribution per occurrence.
 
 ### Edit a database food’s serving size
 
-ID: edit-the-serving-size-of-a-database-food · Food editing · Reviewed 2026-09-03
+ID: edit-the-serving-size-of-a-database-food · Food editing · Reviewed 2026-09-08
 
-The database-food serving, unit and icon editor is in regular Build 467 and inherited by Staging Build 15. It includes the stable first-frame Serving card, live serving-scaled Nutrition basis, immediate Edit navigation and retained source icon; full save-and-reopen acceptance remains open.
+The serving/unit/icon editor is released, with later corrections for first-frame layout, Review state and stale post-save projections. It remains separate from calculator default memory. Complete save-and-reopen phone acceptance is still open.
 
-Next: On Staging Build 15, confirm Edit opens promptly with the correct icon and Serving card already present. Change amount and unit, verify Nutrition updates immediately, then check Review, save/reopen, all eight units, icon, dark mode, keyboard and accessibility.
+Next: On Staging Build 33, confirm Edit opens promptly with the correct name, icon and Serving card. Change amount and unit; check Nutrition, Review, save/reopen, supported units, dark mode and larger text.
 
 ### Delete Undo appears without waiting for sync
 
-ID: food-log-delete-undo-appears-without-waiting-for-sync · Diary & recurring · Reviewed 2026-09-03
+ID: food-log-delete-undo-appears-without-waiting-for-sync · Diary & recurring · Reviewed 2026-09-08
 
-Build 464 delayed Delete Undo by roughly ten seconds after reconnecting. The logger's local-admission and exact rejection correction is included in regular Build 467 and inherited by Staging Build 15, but the phone check has not been recorded.
+The local-admission correction is retained in the later release lines. The previous delayed Undo report remains a required reconnect phone check rather than an assumed pass.
 
-Next: On Staging Build 15, reconnect and immediately delete a disposable food. Confirm Undo appears immediately, sync can finish in the background, Undo restores once and a rejected delete never duplicates the row.
+Next: On Staging Build 33, reconnect and immediately delete a disposable food. Undo should appear promptly, restore once and remain correct if sync fails.
 
 ### TRAK Custom reference-food publication
 
-ID: trak-custom-food-publication · Search & catalogue · Reviewed 2026-09-03
+ID: trak-custom-food-publication · Search & catalogue · Reviewed 2026-09-08
 
-Nine reviewed reference-food profiles and their nutrient presentation are available only in TRAK Staging. Build 15 retains that work. The staging backend also restores the reviewed metadata needed for Raw Chicken's household portion chips; live payload checks pass, but the installed-phone result remains open. This is not a production publication, and unsupported nutrient values remain unknown rather than invented.
+The selected TRAK Custom nutrient support and native presentation were promoted through regular Builds 469/470 and backend 2714. This does not establish that every staged reference-food row was copied to production. Approved catalogue rows, coverage, source visibility and phone acceptance remain separate checks.
 
-Next: On Staging Build 15, check the TRAK Custom shelf, micronutrient presentation, whole-number coverage and Raw Chicken household portions. Record any mismatch. Aadam owns phone acceptance; deciding whether any reviewed food reaches production is a separate later gate.
+Next: Reconcile the approved reference-food inventory in each environment. Check the TRAK Custom shelf, nutrient data and source settings on regular Build 470 and current staging; keep unknown nutrient values unknown.
 
 ### Raw Chicken Breast shows household portion chips
 
-ID: raw-chicken-breast-shows-household-portion-chips · Search & catalogue · Reviewed 2026-09-03
+ID: raw-chicken-breast-shows-household-portion-chips · Search & catalogue · Reviewed 2026-09-08
 
-Staging Build 14 was phone-proven affected because the Search response omitted the reviewed source marker and therefore denied household portions. The corrected backend is retained by Staging Build 15 and sends the reviewed marker and an affirmative portion verdict for the exact food. A phone has not yet confirmed the chips.
+The reviewed-source eligibility correction is included in later backend work, and Staging Build 30 added weight-units-first ordering. The exact Raw Chicken portion and calorie phone check still needs a recorded pass.
 
-Next: In Staging Build 15, search chicken breast, open Raw Chicken Breast and confirm its named household portion chips appear and scale nutrition correctly. Aadam owns this check; production is unchanged.
+Next: On Staging Build 33, open Raw Chicken Breast and check that its named portions appear after g, oz and lb, with correct gram and nutrition scaling.
+
+### Edit the current goal weight and loss rate
+
+ID: edit-current-goal-weight-and-rate-together · Coach & insights · Reviewed 2026-09-08
+
+The new goal-weight step, review summary and shared current-goal update were delivered through the later staging builds and selected regular release. Goal and daily-target cards use the saved rate without restarting the journey. Phone acceptance across all consumers remains open.
+
+Next: Change target weight and rate, confirm the review screen, then check Coach, Insights, milestones, predictions and daily targets after reopening. Test both lb and kg.
+
+### New Health weights appear without manual syncing
+
+ID: automatic-health-weight-pickup-after-provider-publication · Health · Reviewed 2026-09-08
+
+A foreground pickup correction is included in regular Builds 469/470. It rechecks for a scale measurement published after the first Health read or after returning to TRAK. Automated Apple Health and Health Connect tests cover outgoing weight/nutrition writes too; physical provider acceptance remains open.
+
+Next: Publish a new scale weight while TRAK is open, then test a short app switch and return. Confirm one imported weight and verify manual food/weight writes still appear once in Apple Health or Health Connect. Confirm the intended staging source before testing there.
+
+### Roll-On staging behaviour and minimum targets
+
+ID: rollon-staging-behaviour-and-shared-minimum · Coach & insights · Reviewed 2026-09-08
+
+Roll-On was reported to fail in staging while regular TRAK worked; that report has no recorded final phone pass. The separate Coach candidate also removes a hidden minimum and uses the shared personal minimum, including cache and missing-profile handling. Those newer changes are not released.
+
+Next: Reproduce the staging report with the exact day and action. After integrating the Coach candidate, verify allocation, Why details, incomplete profiles, changed minimums and preserved historical targets without changing redistribution rules.
+
+### Micronutrient details open with the correct complete view
+
+ID: micronutrient-details-open-with-complete-current-data · Coach & insights · Reviewed 2026-09-08
+
+Successive staging fixes address cold Today data, partial first charts, delayed targets and stale timeframe responses. Build 33 includes the selected-range retry work. The remaining All-range and marker defects are tracked separately, so the whole nutrient feature is not signed off.
+
+Next: On Build 33 and its successor, open Today, History and nutrient details cold and warm, switch ranges rapidly and retry a failed load. Check for partial old data, delayed target changes or layout jumps.
+
+### Nutrient values and spacing match the agreed design
+
+ID: micronutrient-formatting-and-spacing · Coach & insights · Reviewed 2026-09-08
+
+Staging Builds 29/30 added the agreed numeric presentation and tighter legend-to-Today spacing, retained by Build 33. Further regular Build 470 formatting corrections are local and unreleased. These are presentation changes, not nutrition-data changes.
+
+Next: Check Today, Daily average, History, tooltips, percentages and small positive values on the intended build. Retain stored precision and verify the final regular/staging formatting agrees.
+
+### Micronutrient coverage loads in regular TRAK
+
+ID: micronutrient-coverage-production-retry-error · Coach & insights · Reviewed 2026-09-08
+
+Build 470 restored the intended nutrient screen, then production backend 2715 fixed the coverage endpoint that was returning an error because of an environment mismatch. The backend correction is verified live. The full phone experience, including separate chart issues, remains open.
+
+Next: Retry coverage in existing regular Build 470; no new app build is needed for the endpoint repair. Record the phone result and keep any range or marker defect on its own card.
+
+### Show weight units before Small, Medium and Large
+
+ID: weight-units-before-named-food-portions · Food editing · Reviewed 2026-09-08
+
+Staging Build 30 changed the serving-chip order to g, oz, lb before named portions such as Small, Medium and Large. Build 33 retains it. The change does not alter portion weights or food ranking.
+
+Next: Check several foods with named servings on Build 33, including scroll/overflow behaviour and correct calories after selecting a weight unit or named portion.
+
+### Blueberries entered in grams must not become cups
+
+ID: blueberries-grams-not-cup-count · Food editing · Reviewed 2026-09-08
+
+A separate serving check requires a small gram amount to stay grams rather than being interpreted as a cup count. The new persistence tests preserve 24 g and correctly scaled calories for a food with cup portions. That is local fixture evidence, not an exact live UK/US catalogue or phone sign-off.
+
+Next: Reproduce the exact reported Blueberries entry and route on the next staging candidate. Confirm 24 g stays grams and uses the selected catalogue row’s actual per-100 g nutrition.
+
+### Recent flagged foods have corrected catalogue servings
+
+ID: flagged-food-label-and-serving-corrections · Search & catalogue · Reviewed 2026-09-08
+
+Five recent moderation cases received guarded live catalogue corrections with independent readback. The ASDA reduced-fat burger entry now uses one burger and its label nutrition rather than incorrectly treating those values as per 100 g. Existing diary history was preserved.
+
+Next: Rescan or reselect the corrected products to verify the label serving and calories in the app. Track later catalogue drift separately from the broader unreleased verification-policy change.
+
+### Move accepted staging work into regular TRAK safely
+
+ID: promote-only-accepted-staging-work · Release & reliability · Reviewed 2026-09-08
+
+The selected goal, nutrient, Search and Health bundle reached regular Builds 469/470 with matching backend support. Newer staging transport, diagnostics, serving and nutrient follow-ups are separate; Coach also remains unreleased. There is no blanket approval that every staging change is production-ready.
+
+Next: The release owner must reconcile exact accepted changes into the latest regular baseline, preserve concurrent work, pair any required backend first and verify signed artifacts and phone behaviour before promotion.
 
 ## Planned
 
@@ -372,8 +526,55 @@ Paused by Aadam on 31 August. Accepted changes remain separate from unfinished Q
 
 Next: Resume only when Aadam asks. Fix the recorded unfinished checks, complete independent review and then integrate only accepted changes into a separately approved phone build.
 
+### Import Health changes while TRAK is fully closed
+
+ID: health-import-while-trak-is-fully-closed · Health · Reviewed 2026-09-08
+
+The foreground pickup correction does not provide continuous import while the app is killed. Background delivery needs its own platform design and testing.
+
+Next: Scope iOS and Android background delivery separately, including permissions, battery limits, account safety and duplicate prevention.
+
+### Keep imported food sources measurably up to date
+
+ID: catalogue-source-freshness-and-refresh-policy · Search & catalogue · Reviewed 2026-09-08
+
+The 7 September audit confirmed selected OFF/USDA imports, but found no implemented daily full-source delta sync. Recent row additions and local corrections do not prove that an entire source is fresh. Nightly housekeeping is a separate process.
+
+Next: Define source versions, refresh dates and guarded update rules. Preview differences and preserve reviewed corrections before importing changes; track completion rather than inferring freshness from row timestamps.
+
+### Evaluate search-engine alternatives after diagnosis
+
+ID: food-search-engine-alternatives-measured-first · Search & catalogue · Reviewed 2026-09-08
+
+Typesense, Meilisearch and a managed food API were reviewed as options. No migration is selected. TRAK already maintains an imported catalogue, and the outstanding phone/network delay must be measured before paying to replace search infrastructure.
+
+Next: Compare uncached latency, food-ranking parity, catalogue licensing/freshness and total operating cost only if the measured bottleneck justifies a migration. Preserve current food identification and immediate View all.
+
 ## In progress
 
+### Complete the full Coach effectiveness review
+
+ID: coach-outcome-evaluation-before-full-signoff · Coach & insights · Reviewed 2026-09-08
+
+Review lifecycle and target-consistency tests pass after the local repair, but the broader simulated outcome comparison still fails its improvement gate. Passing the bug-fix tests does not establish that Coach consistently beats an unchanged target.
+
+Next: Investigate the completion/maintenance scenario and outcome misses with the existing thresholds intact. Keep this result visible and separate from the specific zero/1,500-calorie bug and phone acceptance.
+
+### Compare Gemini Flash 3.8 across AI features
+
+ID: gemini-flash38-ai-feature-evaluation · Recipes & custom foods · Reviewed 2026-09-08
+
+The all-feature quality, speed and cost comparison is requested, and prior evaluation suites have been located. Small food-verifier experiments are preliminary and prompt-sensitive; they do not establish a production winner or complete the broader evaluation. No all-feature model switch is approved.
+
+Next: Use fixed current baselines and unseen labelled examples for meal photos, recipe photos/import, label scans, chat and food verification. Count retries and external calls in cost, and report a keep/switch decision per feature.
+
+### Strengthen evidence checks for barcoded foods
+
+ID: barcode-verification-requires-product-evidence · Search & catalogue · Reviewed 2026-09-08
+
+An all-region verification safeguard is implemented and tested locally, separate from the live one-off catalogue repairs. Review, a stale audit assumption about later diary additions, and the final Search cost check remain before backend rollout. No new phone build is required for that backend change.
+
+Next: The food-verification owner must preserve original records while allowing later additions, rerun independent review and Search timing, then complete the separately approved backend rollout and live checks.
 
 ## Resolved live
 
@@ -392,6 +593,14 @@ ID: adding-and-re-enabling-recurring-foods-succeeds · Diary & recurring · Revi
 Deployed. Adding recurring foods is confirmed working on the phone. Re-enable and batch-add checks remain.
 
 Next: Check re-enable, multiple additions and duplicate prevention.
+
+### Reviewed backend security protections are deployed
+
+ID: backend-security-hardening-september · Release & reliability · Reviewed 2026-09-08
+
+The reviewed September backend protections were deployed and verified, and retained in the subsequent production release. This closes that specific release scope, not every outstanding reliability or security item.
+
+Next: Keep the reviewed protections in future backend changes and track new findings separately. Sensitive implementation details stay in private engineering records.
 
 ## Earlier sign-off
 
