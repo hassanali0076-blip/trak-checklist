@@ -1,6 +1,6 @@
 # TRAK — master checklist
 
-Updated: 2026-09-08T16:48:01Z · Reviewed through 2026-09-08
+Updated: 2026-09-08T17:30:46Z · Reviewed through 2026-09-08
 
 - native: Regular TRAK Build 470 remains listed for internal TestFlight. TRAK Staging Build 38 is available to internal iOS testers with the follow-up nutrient presentation, calorie-minimum picker and Coach test-button corrections. Physical phone acceptance remains open. Android distribution is unchanged.
 - backend: Staging backend 2717 is live and includes the reviewed maintenance-range policy. Its deployed runtime matches the integrated source. It is paired with Staging Build 38. Production backend 2715 remains separate and unchanged by this staging work.
@@ -440,11 +440,11 @@ Next: Audit remaining screens by user impact.
 
 ### Backend reliability follow-ups
 
-ID: confirmed-small-backend-fixes-from-the-muse-sol-deep-review-verification · Release & reliability · Reviewed 2026-08-31
+ID: confirmed-small-backend-fixes-from-the-muse-sol-deep-review-verification · Release & reliability · Reviewed 2026-09-08
 
-Several independently verified reliability and hardening items remain. Sensitive implementation details stay in the private engineering records.
+The implementation pilot produced a reviewed local fix that preserves fractional calories when unlinking a recipe. Earlier rounding while saving a recipe remains open, alongside the other reliability follow-ups. Two pre-existing automated-test failures were also confirmed; the wider test suite is not yet clean.
 
-Next: Address them as small tested changes, separately from mechanical refactoring.
+Next: The staging owner has the local unlink patch for later integration and release checks. Address recipe-saving precision separately and resolve the existing test failures before broader sign-off.
 
 ### Import sleep from Apple Health and Health Connect
 

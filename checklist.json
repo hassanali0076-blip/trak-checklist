@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "title": "TRAK — master checklist",
-  "updatedAt": "2026-09-08T16:48:01Z",
+  "updatedAt": "2026-09-08T17:30:46Z",
   "reviewedThrough": "2026-09-08",
   "release": {
     "native": "Regular TRAK Build 470 remains listed for internal TestFlight. TRAK Staging Build 38 is available to internal iOS testers with the follow-up nutrient presentation, calorie-minimum picker and Coach test-button corrections. Physical phone acceptance remains open. Android distribution is unchanged.",
@@ -15,6 +15,10 @@
     "Reconciled through 8 September. Released changes, local fixes and reported phone results are tracked separately. This board update does not release a TRAK app build."
   ],
   "changes": [
+    {
+      "date": "2026-09-08",
+      "text": "Implementation pilot: a targeted recipe-unlink precision fix is reviewed locally. Earlier recipe-saving rounding and two pre-existing automated-test failures remain open. No staging or production app release was made."
+    },
     {
       "date": "2026-09-08",
       "text": "Staging Build 39 is built and signed locally with planner, cycling-target, Coach animation and nutrient presentation corrections. Its artifact identity was independently checked. Upload, distribution, companion backend deployment and phone acceptance remain outstanding; this checklist publication does not release the app."
@@ -995,9 +999,9 @@
       "title": "Backend reliability follow-ups",
       "area": "Release & reliability",
       "status": "planned",
-      "summary": "Several independently verified reliability and hardening items remain. Sensitive implementation details stay in the private engineering records.",
-      "nextStep": "Address them as small tested changes, separately from mechanical refactoring.",
-      "updated": "2026-08-31"
+      "summary": "The implementation pilot produced a reviewed local fix that preserves fractional calories when unlinking a recipe. Earlier rounding while saving a recipe remains open, alongside the other reliability follow-ups. Two pre-existing automated-test failures were also confirmed; the wider test suite is not yet clean.",
+      "nextStep": "The staging owner has the local unlink patch for later integration and release checks. Address recipe-saving precision separately and resolve the existing test failures before broader sign-off.",
+      "updated": "2026-09-08"
     },
     {
       "id": "import-sleep-from-apple-health-and-health-connect",
