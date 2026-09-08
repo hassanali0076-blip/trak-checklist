@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "title": "TRAK — master checklist",
-  "updatedAt": "2026-09-08T07:51:38Z",
+  "updatedAt": "2026-09-08T08:46:26Z",
   "reviewedThrough": "2026-09-08",
   "release": {
     "native": "Regular TRAK Build 470 is available in internal TestFlight; its remaining nutrient issues are not signed off. TRAK Staging Build 34 is available in internal TestFlight. A matching regular-build Android file is prepared; current Android distribution and phone acceptance still need confirmation.",
@@ -15,6 +15,10 @@
     "Reconciled through 8 September. Released changes, local fixes and reported phone results are tracked separately. This board update does not release a TRAK app build."
   ],
   "changes": [
+    {
+      "date": "2026-09-08",
+      "text": "The maintenance investigation reproduced all 34 journeys and traced the 14 small lower-range misses to the transition into maintenance and gradual corrections. Longer observation improved the count but did not resolve all misses. A range-only change made results worse and was removed; no app release occurred."
+    },
     {
       "date": "2026-09-08",
       "text": "Sol completed the goal-history repair and the expanded post-goal simulation, with independent review. Plan transitions passed, maintenance outcomes still need investigation, and the selected maintenance range differs from the current adjustment trigger. These Coach changes remain local; full sign-off is open."
@@ -1191,8 +1195,8 @@
       "title": "Complete the full Coach effectiveness review",
       "area": "Coach & insights",
       "status": "active",
-      "summary": "The expanded simulation completed 360 paired cases, including Maintain, Set new goal, delays and cancellations. All 68 eligible plan changes passed the cycle and reset checks. Only 20 of 34 maintenance journeys ended within the selected range; all 34 eligible new-goal journeys attained the next goal. The comparison users never triggered official completion, so their next-plan outcomes were not measured. The original failed score is preserved.",
-      "nextStep": "The Coach owner must investigate maintenance misses and the selected-range mismatch, add coverage for comparison users completing a goal, and retain the recorded results. Full effectiveness sign-off and physical staging checks remain open; this does not establish that the recent fixes worsened outcomes.",
+      "summary": "The 34 maintenance journeys were replayed exactly. All 14 misses followed weight loss and finished only 0.02–0.42 lb below the selected range. Maintenance began near its lower edge, with calories slightly below simulated needs and gradual corrections. The existing Coach had 20/34 inside at eight weeks and 25/34 at sixteen weeks; the original eight-week failure remains. All 68 eligible plan-transition checks and 34 new-goal attainments remain recorded. Comparison-user post-goal outcomes are still unmeasured.",
+      "nextStep": "The Coach owner must separate maintenance-entry calorie estimation from the gradual correction policy using declared comparisons, including noisy and sparse data, and add the missing post-goal comparison group. A range-only experiment worsened outcomes and was removed. Full effectiveness sign-off and physical staging checks remain open.",
       "updated": "2026-09-08"
     },
     {
@@ -1362,8 +1366,8 @@
       "title": "Coach maintenance range matches the selected tolerance",
       "area": "Coach & insights",
       "status": "issue",
-      "summary": "The saved maintenance percentage is shown to the user, but Coach currently uses a fixed ±1.5 lb band to decide when to make corrective adjustments. For example, a selected ±2% range at 200 lb is ±4 lb. This mismatch is recorded separately; Coach rules were not changed to improve test scores.",
-      "nextStep": "The Coach owner must establish the intended relationship between the selected range and the adjustment trigger, add behavior checks, and review any correction before staging.",
+      "summary": "Coach uses a fixed ±1.5 lb corrective trigger although the user selects a percentage range. A local experiment made the trigger follow that saved range, but reduced eight-week maintenance success from 20/34 to 16/34. It was removed from app code and retained only as diagnostic evidence. The mismatch remains unresolved; this is not a shipped fix.",
+      "nextStep": "The Coach owner must resolve the saved-range contract together with maintenance-entry estimation and correction behavior, then validate the combined behavior before staging. Preserve the recorded failed experiment and existing outcome thresholds.",
       "updated": "2026-09-08"
     }
   ]

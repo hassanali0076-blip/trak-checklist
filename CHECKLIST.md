@@ -1,6 +1,6 @@
 # TRAK — master checklist
 
-Updated: 2026-09-08T07:51:38Z · Reviewed through 2026-09-08
+Updated: 2026-09-08T08:46:26Z · Reviewed through 2026-09-08
 
 - native: Regular TRAK Build 470 is available in internal TestFlight; its remaining nutrient issues are not signed off. TRAK Staging Build 34 is available in internal TestFlight. A matching regular-build Android file is prepared; current Android distribution and phone acceptance still need confirmation.
 - backend: Production backend 2715 and staging backend 2714 are live. These are separate environments. Production includes the selected goal, Search and nutrient support plus the coverage-endpoint repair; staging adds the latest Search network diagnostics.
@@ -60,9 +60,9 @@ Next: The operations owner must inspect the last runner outcome and restore sche
 
 ID: coach-maintenance-range-matches-selected-tolerance · Coach & insights · Reviewed 2026-09-08
 
-The saved maintenance percentage is shown to the user, but Coach currently uses a fixed ±1.5 lb band to decide when to make corrective adjustments. For example, a selected ±2% range at 200 lb is ±4 lb. This mismatch is recorded separately; Coach rules were not changed to improve test scores.
+Coach uses a fixed ±1.5 lb corrective trigger although the user selects a percentage range. A local experiment made the trigger follow that saved range, but reduced eight-week maintenance success from 20/34 to 16/34. It was removed from app code and retained only as diagnostic evidence. The mismatch remains unresolved; this is not a shipped fix.
 
-Next: The Coach owner must establish the intended relationship between the selected range and the adjustment trigger, add behavior checks, and review any correction before staging.
+Next: The Coach owner must resolve the saved-range contract together with maintenance-entry estimation and correction behavior, then validate the combined behavior before staging. Preserve the recorded failed experiment and existing outcome thresholds.
 
 ## Next phone build
 
@@ -572,9 +572,9 @@ Next: Compare uncached latency, food-ranking parity, catalogue licensing/freshne
 
 ID: coach-outcome-evaluation-before-full-signoff · Coach & insights · Reviewed 2026-09-08
 
-The expanded simulation completed 360 paired cases, including Maintain, Set new goal, delays and cancellations. All 68 eligible plan changes passed the cycle and reset checks. Only 20 of 34 maintenance journeys ended within the selected range; all 34 eligible new-goal journeys attained the next goal. The comparison users never triggered official completion, so their next-plan outcomes were not measured. The original failed score is preserved.
+The 34 maintenance journeys were replayed exactly. All 14 misses followed weight loss and finished only 0.02–0.42 lb below the selected range. Maintenance began near its lower edge, with calories slightly below simulated needs and gradual corrections. The existing Coach had 20/34 inside at eight weeks and 25/34 at sixteen weeks; the original eight-week failure remains. All 68 eligible plan-transition checks and 34 new-goal attainments remain recorded. Comparison-user post-goal outcomes are still unmeasured.
 
-Next: The Coach owner must investigate maintenance misses and the selected-range mismatch, add coverage for comparison users completing a goal, and retain the recorded results. Full effectiveness sign-off and physical staging checks remain open; this does not establish that the recent fixes worsened outcomes.
+Next: The Coach owner must separate maintenance-entry calorie estimation from the gradual correction policy using declared comparisons, including noisy and sparse data, and add the missing post-goal comparison group. A range-only experiment worsened outcomes and was removed. Full effectiveness sign-off and physical staging checks remain open.
 
 ### Compare Gemini Flash 3.8 across AI features
 
