@@ -1,10 +1,10 @@
 # TRAK — master checklist
 
-Updated: 2026-09-08T17:30:46Z · Reviewed through 2026-09-08
+Updated: 2026-09-08T19:02:22Z · Reviewed through 2026-09-08
 
-- native: Regular TRAK Build 470 remains listed for internal TestFlight. TRAK Staging Build 38 is available to internal iOS testers with the follow-up nutrient presentation, calorie-minimum picker and Coach test-button corrections. Physical phone acceptance remains open. Android distribution is unchanged.
-- backend: Staging backend 2717 is live and includes the reviewed maintenance-range policy. Its deployed runtime matches the integrated source. It is paired with Staging Build 38. Production backend 2715 remains separate and unchanged by this staging work.
-- next: Staging Build 39 has a signed local iPhone artifact, built on top of Build 38, but is not uploaded or distributed. Its companion backend is still undeployed, so the EPA + DHA target correction is not live. Build 38/backend 2717 remain the available staging pair. Maintenance logic remains accepted on simulation; broader Coach effectiveness and regular TRAK promotion remain separate.
+- native: Regular TRAK Build 470 remains listed for internal TestFlight. TRAK Staging Build 39 is now distributed to internal iOS testers and builds on Build 38. Phone testing found remaining Coach animation, cycling-target refresh and nutrient-display defects, now under focused repair. Android distribution is unchanged.
+- backend: Staging backend 2718 is live. It preserves the accepted maintenance policy and adds the reviewed recipe-unlink precision fix. Health, runtime identity and authentication checks passed. Production backend 2715 remains separate and unchanged by this work.
+- next: Astra has taken over the remaining nutrient and Coach work using bounded implementation tasks and independent review. The EPA + DHA companion backend change is still local and not included in backend 2718. Native follow-up fixes and their phone acceptance remain pending; no new native build was released by this checklist update.
 
 > Public, read-only project status. No login needed.
 
@@ -296,9 +296,9 @@ Next: On Build 37, reproduce the reported day/action and verify allocation, Why 
 
 ID: weekly-coach-review-displays-and-applies-one-valid-plan · Coach & insights · Reviewed 2026-09-08
 
-The earlier repair for zero-calorie first plans and incorrect repeat plans is included in distributed Staging Build 37 with its matching backend. It keeps one review per period and applies the displayed current calories and macros. Combined app/backend checks passed; physical acceptance is still open.
+The repair for zero-calorie first plans and incorrect repeat plans is retained in distributed Staging Build 39 with backend 2718. It keeps one review per period and applies the displayed current calories and macros. The newly reported checklist-animation timing issue is tracked separately.
 
-Next: On Build 37, repeat the first-check-in, redo, reopen and accept flows. Confirm all screens show the same saved calories and macros. Keep the new maintenance-policy candidate separate from this delivered repair.
+Next: Verify first check-in, redo, reopen and accept in the current staging app. All screens should show the same saved calories and macros; keep calculation correctness separate from the animation repair.
 
 ### Use the agreed personal calorie minimum everywhere
 
@@ -312,17 +312,9 @@ Next: On staging, validate Standard and Low with representative profiles and con
 
 ID: repeat-coach-checkins-without-waiting-a-week · Coach & insights · Reviewed 2026-09-08
 
-Build 37 included the staging controls, but their request used a relative URL that the iPhone transport rejected. Distributed Staging Build 38 corrects that URL and is paired with backend 2717. The corrected request has automated coverage; physical phone acceptance remains open.
+Distributed Staging Build 39 retains the Build 38 URL correction for the test controls, paired with backend 2718. Automated request coverage passes; physical phone acceptance remains open.
 
-Next: On Build 38, confirm Repeat test check-in and Start next test week complete without the previous connection failure. These controls reuse recorded data; they do not generate a week of weight or food history. Keep retries and account boundaries covered separately from the accepted maintenance-policy simulations.
-
-### Micronutrient details open with the correct complete view
-
-ID: micronutrient-details-open-with-complete-current-data · Coach & insights · Reviewed 2026-09-08
-
-Successive staging fixes address cold Today data, partial first charts, delayed targets and stale timeframe responses. Build 33 includes the selected-range retry work. The remaining All-range and marker defects are tracked separately, so the whole nutrient feature is not signed off.
-
-Next: On Build 33 and its successor, open Today, History and nutrient details cold and warm, switch ranges rapidly and retry a failed load. Check for partial old data, delayed target changes or layout jumps.
+Next: On Build 39, confirm Repeat test check-in and Start next test week complete without the previous connection failure. These controls reuse recorded data; they do not generate a week of weight or food history. Maintenance decisions remain accepted on the reviewed simulations.
 
 ### All shows the full recorded nutrient history
 
@@ -331,14 +323,6 @@ ID: micronutrient-all-range-uses-recorded-history · Coach & insights · Reviewe
 Staging Build 34 contains the correction for 1Y to All remaining stuck at one year when recorded history is shorter. It uses the actual history span and retains Build 33 work. A related regular Build 470 correction remains separate; full phone acceptance is still open.
 
 Next: On the latest Staging Build 37, test repeated 1Y to All switching with less than and more than a year of history, including empty history, without closing the screen.
-
-### Nutrient target markers remain visible
-
-ID: micronutrient-target-markers-remain-visible · Coach & insights · Reviewed 2026-09-08
-
-Staging Build 37 includes the approved shared nutrient track, target-range shading and inset target marker across overview, History and food-context surfaces. The marker stays muted until intake reaches it. Automated visual checks passed; phone acceptance remains open.
-
-Next: On Build 37, verify markers and ranges in light/dark modes, at different text sizes and on narrow screens, using the same nutrient targets and values.
 
 ### Nutrient values and spacing match the agreed design
 
@@ -442,9 +426,9 @@ Next: Audit remaining screens by user impact.
 
 ID: confirmed-small-backend-fixes-from-the-muse-sol-deep-review-verification · Release & reliability · Reviewed 2026-09-08
 
-The implementation pilot produced a reviewed local fix that preserves fractional calories when unlinking a recipe. Earlier rounding while saving a recipe remains open, alongside the other reliability follow-ups. Two pre-existing automated-test failures were also confirmed; the wider test suite is not yet clean.
+The reviewed recipe-unlink precision fix is deployed on staging backend 2718: unlinking now preserves stored fractional calories. Real PostgreSQL rollback and account-boundary checks passed. Earlier rounding while saving a recipe remains open, alongside the other reliability follow-ups and existing test failures.
 
-Next: The staging owner has the local unlink patch for later integration and release checks. Address recipe-saving precision separately and resolve the existing test failures before broader sign-off.
+Next: Verify normal unlink use in the staging app. Address recipe-saving precision separately and retain the outstanding test failures before broader sign-off.
 
 ### Import sleep from Apple Health and Health Connect
 
@@ -576,6 +560,22 @@ The accepted maintenance policy is now integrated into staging backend 2717. Its
 
 Next: Broader effectiveness questions, including journeys that did not reach their first goal, remain separate from the accepted and staging-integrated maintenance policy. The Coach review owner should investigate those questions without changing the accepted simulation thresholds or reopening completed maintenance work.
 
+### Micronutrient details open with the correct complete view
+
+ID: micronutrient-details-open-with-complete-current-data · Coach & insights · Reviewed 2026-09-08
+
+Build 39 phone testing still shows grey placeholder columns when a saved nutrient timeframe opens cold. Astra has taken over a focused fix at the navigation boundary so the selected view is complete when it opens, with no replacement spinner.
+
+Next: Review delayed cold-load, saved-timeframe, error and stale-response tests against the real opener, then check the integrated build. Earlier green unit tests do not close the phone regression.
+
+### Nutrient target markers remain visible
+
+ID: micronutrient-target-markers-remain-visible · Coach & insights · Reviewed 2026-09-08
+
+The shared target marker and range logic is retained, but Build 39 phone testing found inconsistent rail contrast between nutrient surfaces and themes. A focused shared-theme correction is underway; nutrient values and target semantics must remain unchanged.
+
+Next: Review rendered light and dark surfaces against the existing card theme, retain marker/range regression checks, then verify the integrated build on phone.
+
 ### Compare Gemini Flash 3.8 across AI features
 
 ID: gemini-flash38-ai-feature-evaluation · Recipes & custom foods · Reviewed 2026-09-08
@@ -591,6 +591,30 @@ ID: barcode-verification-requires-product-evidence · Search & catalogue · Revi
 An all-region verification safeguard is implemented and tested locally, separate from the live one-off catalogue repairs. Review, a stale audit assumption about later diary additions, and the final Search cost check remain before backend rollout. No new phone build is required for that backend change.
 
 Next: The food-verification owner must preserve original records while allowing later additions, rerun independent review and Search timing, then complete the separately approved backend rollout and live checks.
+
+### Coach result waits for its review checklist
+
+ID: coach-result-waits-for-review-checklist · Coach & insights · Reviewed 2026-09-08
+
+Build 39 can show the result before the animated review checklist finishes. A focused local fix now waits for both the real data and the checklist completion; slow-response and disposal tests pass. Astra review is in progress.
+
+Next: Finish independent review and integration, then verify the next staging build. Other AI loading flows and Coach calculations remain outside this change.
+
+### Daily targets show saved cycling values immediately
+
+ID: cycling-save-updates-daily-targets-first-frame · Coach & insights · Reviewed 2026-09-08
+
+After saving calorie cycling in Build 39, the retained Insights screen can briefly show old daily targets before updating. The repair is tracing the real save and return path, including stale in-flight requests, while preserving the single current-target source.
+
+Next: Prove the first visible frame shows the saved calories and macros, with failed-save and account/date boundary coverage, then independently review and integrate.
+
+### EPA + DHA uses the combined 0.25 g target
+
+ID: epa-dha-combined-standard-target · Coach & insights · Reviewed 2026-09-08
+
+Build 39 includes the native companion for the agreed combined EPA + DHA target. Its backend change is local and has not been deployed with backend 2718, so the complete correction is not live.
+
+Next: Independently review the paired backend and native contract, including missing component data and unchanged source references, before integrating on top of the latest staging backend.
 
 ## Resolved live
 
