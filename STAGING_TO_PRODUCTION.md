@@ -55,6 +55,7 @@ are recorded separately. All earlier staging changes above are retained.
 
 | Work | Current state |
 | --- | --- |
+| Restore standard nutrient graph transition speed | Tested for the next staging build, not yet delivered. Removes the special 200 ms override, keeping earlier data preparation, cached history and swipe-back. |
 | Food micronutrients sometimes finish with Retry | Still needs the failed request diagnosis. |
 | Recipe-save precision pilot | Separate local candidate, not the delivered recipe-unlink fix. |
 | Older backend test-database gaps | Twelve broader failures reproduce unchanged on the staging baseline. Repair/verify the fixtures before broader integration sign-off; do not describe the full suite as passing. |
@@ -79,8 +80,10 @@ owner, remaining checks and production completion evidence. The private checker
 detects a stale file inventory or changed fetched production source. A green
 build or an old commit message does not close phone regressions.
 
-Next: install Build 43 to check the delivered graph/tick/iodine changes. Astra
-maintains this list and owns any follow-up from that testing. Production
+Next: Astra includes the standard-transition correction in the next staging
+build. Build 43 remains the delivered graph/tick/iodine baseline; its faster
+slide has been rejected in phone feedback. Astra maintains this list and owns
+follow-up testing. Production
 integration remains a separate reviewed release; updating this list deploys
 neither the app nor the backend. The broader master checklist retains research
 and unimplemented requests; those are not staging-delivered features.
