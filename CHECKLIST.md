@@ -1,6 +1,6 @@
 # TRAK — master checklist
 
-Updated: 2026-09-09T03:04:48Z · Reviewed through 2026-09-09
+Updated: 2026-09-09T03:07:25Z · Reviewed through 2026-09-09
 
 - native: TRAK Staging Build 40 is available in the internal TestFlight group. It builds on Build 39 and contains all five reviewed Coach, cycling and nutrient follow-ups. Signing, Apple Health entitlement and both complete app test suites passed. Phone acceptance is pending. Regular TRAK and Android distribution were not changed by this release.
 - backend: Staging backend 2719 is live and paired with Build 40. It adds the reviewed EPA + DHA target, history and coverage contract while retaining the accepted maintenance policy and recipe-unlink precision fix. Live source and calculation checks match the candidate; staging configuration is preserved. Production was not changed.
@@ -438,6 +438,14 @@ Next: On Build 40, verify the combined target and intake in overview/detail/cove
 
 ## Planned
 
+### Add first-use guides for key app features
+
+ID: native-ftux-feature-tutorial-modals · Account & onboarding · Reviewed 2026-09-09
+
+Light and dark designs are approved for micronutrient bars, nutrition history, multi-food logging and Trend versus Scale weight. Quick Actions is excluded because it is being removed. Nothing is implemented or released.
+
+Next: Later, build the approved native floating modal and carousel using the real app components. Define dismissal, replay, accessibility and reduced-motion behaviour before release.
+
 ### Night-shift and custom day-boundary logging
 
 ID: night-shift-and-custom-day-boundary-logging · Diary & recurring · Reviewed 2026-08-31
@@ -589,14 +597,6 @@ ID: food-search-engine-alternatives-measured-first · Search & catalogue · Revi
 Typesense, Meilisearch and a managed food API were reviewed as options. No migration is selected. TRAK already maintains an imported catalogue, and the outstanding phone/network delay must be measured before paying to replace search infrastructure.
 
 Next: Compare uncached latency, food-ranking parity, catalogue licensing/freshness and total operating cost only if the measured bottleneck justifies a migration. Preserve current food identification and immediate View all.
-
-### Add first-use guides for key app features
-
-ID: native-ftux-feature-tutorial-modals · Account & onboarding · Reviewed 2026-09-09
-
-Light and dark designs are approved for micronutrient bars, nutrition history, multi-food logging and Trend versus Scale weight. Quick Actions is excluded because it is being removed. Nothing is implemented or released.
-
-Next: Later, build the approved native floating modal and carousel using the real app components. Define dismissal, replay, accessibility and reduced-motion behaviour before release.
 
 ## In progress
 

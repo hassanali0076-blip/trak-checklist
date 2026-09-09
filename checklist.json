@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "title": "TRAK — master checklist",
-  "updatedAt": "2026-09-09T03:04:48Z",
+  "updatedAt": "2026-09-09T03:07:25Z",
   "reviewedThrough": "2026-09-09",
   "release": {
     "native": "TRAK Staging Build 40 is available in the internal TestFlight group. It builds on Build 39 and contains all five reviewed Coach, cycling and nutrient follow-ups. Signing, Apple Health entitlement and both complete app test suites passed. Phone acceptance is pending. Regular TRAK and Android distribution were not changed by this release.",
@@ -21,7 +21,7 @@
     },
     {
       "date": "2026-09-09",
-      "text": "Added the approved first-use feature guides as planned work. The light and dark designs cover micronutrient bars, nutrition history, multi-food logging and Trend versus Scale weight. Quick Actions is excluded because it is being removed. This is a design record only; no app implementation or release is claimed."
+      "text": "Added the approved first-use feature guides at the top of Planned work. The light and dark designs cover micronutrient bars, nutrition history, multi-food logging and Trend versus Scale weight. Quick Actions is excluded because it is being removed. This is a design record only; no app implementation or release is claimed."
     },
     {
       "date": "2026-09-08",
@@ -975,6 +975,15 @@
       "updated": "2026-09-08"
     },
     {
+      "id": "native-ftux-feature-tutorial-modals",
+      "title": "Add first-use guides for key app features",
+      "area": "Account & onboarding",
+      "status": "planned",
+      "summary": "Light and dark designs are approved for micronutrient bars, nutrition history, multi-food logging and Trend versus Scale weight. Quick Actions is excluded because it is being removed. Nothing is implemented or released.",
+      "nextStep": "Later, build the approved native floating modal and carousel using the real app components. Define dismissal, replay, accessibility and reduced-motion behaviour before release.",
+      "updated": "2026-09-09"
+    },
+    {
       "id": "night-shift-and-custom-day-boundary-logging",
       "title": "Night-shift and custom day-boundary logging",
       "area": "Diary & recurring",
@@ -1440,15 +1449,6 @@
       "status": "active",
       "summary": "Astra selected the outstanding recipe-saving precision issue for the next larger workflow pilot. The first step reproduces the earlier 400-to-399 calorie report on the current staging source and locates where precision changes. No new recipe-saving fix is included in Build 40.",
       "nextStep": "Sol reproduces and traces create/edit/save/log/unlink behavior, recording Graft navigation time and fallbacks. Astra reviews the evidence before any app change. Preserve historical snapshots, manual tuning and fractional servings.",
-      "updated": "2026-09-09"
-    },
-    {
-      "id": "native-ftux-feature-tutorial-modals",
-      "title": "Add first-use guides for key app features",
-      "area": "Account & onboarding",
-      "status": "planned",
-      "summary": "Light and dark designs are approved for micronutrient bars, nutrition history, multi-food logging and Trend versus Scale weight. Quick Actions is excluded because it is being removed. Nothing is implemented or released.",
-      "nextStep": "Later, build the approved native floating modal and carousel using the real app components. Define dismissal, replay, accessibility and reduced-motion behaviour before release.",
       "updated": "2026-09-09"
     }
   ]
