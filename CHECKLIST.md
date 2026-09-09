@@ -1,10 +1,10 @@
 # TRAK — master checklist
 
-Updated: 2026-09-09T18:18:10Z · Reviewed through 2026-09-09
+Updated: 2026-09-09T19:01:57Z · Reviewed through 2026-09-09
 
-- native: TRAK Staging Build 42 remains available in internal TestFlight. Phone testing found a pause partway through its Coach tick animation and improved but still slightly delayed nutrient graph opening. A continuous-tick correction passes 91 focused checks locally; it is not yet built or distributed.
-- backend: Staging backend 2720 is live and verified. It prepares Today nutrient breakdowns together for the Build 42 graph-loading improvement while preserving the existing app response. Source identity, health, access checks and unchanged staging deployment settings are verified. Production is unchanged.
-- next: Astra owns the remaining graph timing capture and the next staging package with the tick correction. Goal editing still needs acceptance; the intermittent food Retry remains open. Production promotion and the separate recipe-precision correction remain separate work.
+- native: TRAK Staging Build 42 remains available in internal TestFlight. The continuous Coach tick correction is implemented and tested but unbuilt. The completed graph trace distinguishes fast cached first frames from two history-cold waits; full transition timing and phone acceptance remain open.
+- backend: Staging backend 2720 remains live. Iodine is rejected by the current backend despite being offered by the app; a shared correction passes focused checks but is not deployed. Twelve older test-schema failures reproduce on both baseline and candidate. Production remains unchanged.
+- next: Astra owns the next staging package and runtime/phone checks, plus the remaining graph and food Retry diagnosis. The maintained production-promotion list tracks all staging deltas and protects newer production work. No app build or backend deployment occurred in this checklist update.
 
 > Public, read-only project status. No login needed.
 
@@ -15,6 +15,14 @@ Updated: 2026-09-09T18:18:10Z · Reviewed through 2026-09-09
 > Reconciled through 9 September. Released changes, local fixes and reported phone results are tracked separately. This board update does not release a TRAK app build.
 
 ## Known issue
+
+### Repair older nutrient test-database fixtures
+
+ID: backend-nutrient-test-fixture-schema-gaps · Release verification · Reviewed 2026-09-09
+
+Broader nutrient authority and recipe tests have 12 failures caused by incomplete SQLite test schemas. The unchanged staging backend and iodine candidate have the same 12 failures and 161 passes. The iodine change adds no new failing case; the full backend suite is not claimed green.
+
+Next: Astra or the owning backend maintainer updates the fixtures to the current schema and reruns the unchanged and candidate cases before broader integration sign-off. Do not delete failures or weaken assertions.
 
 ### Regional product typos can miss a valid result
 
@@ -60,9 +68,9 @@ Next: The operations owner must inspect the last runner outcome and restore sche
 
 ID: micronutrient-graph-repeat-tap-delay · Coach & insights · Reviewed 2026-09-09
 
-Phone testing on Build 42 reports better graph opening, but still roughly half a second between tapping and opening. The previous improvement is retained. The remaining delay is not diagnosed or accepted yet.
+The completed Build 42 trace captured 27 cached opens whose first graph frame drew in 3–37 ms. Two uncached opens waited for history and took 0.38–0.62 seconds. Three later opens failed while preparing the breakdown. The timing starts at the tap callback and does not measure the full screen transition, so the reported remaining delay is still open.
 
-Next: Astra captures repeated graph opens on Build 42 and separates the data-read wait from screen drawing and transition timing before changing the code.
+Next: Astra separates cold history preparation from full transition timing before another graph change. Preserve a complete first frame and the standard back gesture. The capture is finished and stopped; iodine is tracked separately.
 
 ### Search foods sometimes fail to load micronutrients
 
@@ -510,6 +518,38 @@ Next: On Build 42, check the full edit-and-save sequence and the returned daily 
 
 ## Planned
 
+### Keep newer production work when promoting staging
+
+ID: preserve-production-work-during-staging-promotion · Production promotion · Reviewed 2026-09-09
+
+Production contains work missing from staging: widgets and their integration; automatic Health weight pickup; saved-food Search cache invalidation and icon persistence; AI/voice/recipe/recurring identity and serving fixes; production release checks, notes and signing. Copying the staging branch over production would lose these.
+
+Next: Astra reconciles the changes on the latest production source and verifies the archive-to-source receipt. Preserve Apple Health writes and Health Connect. Keep staging test controls, API/auth destinations and signing settings isolated.
+
+### Promote staging micronutrient changes
+
+ID: staging-promotion-micronutrients · Production promotion · Reviewed 2026-09-09
+
+Already on staging: consistent nutrient rails, references, legends and precision; EPA+DHA agreement; full-screen food nutrients with serving in the title; requested zero display; light-mode background; prepared graph history and breakdowns; short ALL history and navigation/race fixes; clearer food loading diagnostics.
+
+Next: Astra includes the separate iodine correction and keeps missing/provenance semantics. Graph transition delay and intermittent food Retry remain open. Preserve a complete first frame and review the paired backend requirements before production.
+
+### Promote staging Coach and goal changes
+
+ID: staging-promotion-coach-and-goals · Production promotion · Reviewed 2026-09-09
+
+Already on staging: personal calorie minimum and clearer copy; coherent saved reviews; maintenance correction and post-goal simulation coverage; immediate per-day/cycling target updates; goal-weight then goal-rate review editing; weight/slider fixes; Coach loading and Accept feedback. The smoother tick correction is not in Build 42 yet.
+
+Next: Astra includes the continuous-tick fix, retains exact-review/current-target behaviour and uses the recorded simulation evidence with its limitations. Keep repeat/advance check-in controls disabled on production; complete remaining phone acceptance.
+
+### Promote staging Search and food changes
+
+ID: staging-promotion-search-and-food · Production promotion · Reviewed 2026-09-09
+
+Already on staging: dedicated native iOS search transport and diagnostics; remembered calculator servings; g/oz/lb before named portions; validated food calculations with offline recovery; Add commits the selected-food list; recipe unlink keeps fractional nutrition. These changes are awaiting production integration, not a new staging implementation.
+
+Next: Astra ports reviewed changes onto current production, preserving ranking, immediate View all, production saved-food cache/icon fixes and required database checks. The separate recipe-save precision and parsing candidates are not delivered yet.
+
 ### Add first-use guides for key app features
 
 ID: native-ftux-feature-tutorial-modals · Account & onboarding · Reviewed 2026-09-09
@@ -671,6 +711,22 @@ Typesense, Meilisearch and a managed food API were reviewed as options. No migra
 Next: Compare uncached latency, food-ranking parity, catalogue licensing/freshness and total operating cost only if the measured bottleneck justifies a migration. Preserve current food identification and immediate View all.
 
 ## In progress
+
+### Staging changes awaiting production
+
+ID: staging-changes-awaiting-production · Production promotion · Reviewed 2026-09-09
+
+A maintained release list now groups all staging-only work, unreleased fixes, staging-only tools, backend/schema requirements and newer production work to preserve. Current comparison: staging app 42/backend 2720 against regular TRAK 472 and production backend 2715. The private inventory records 435 native and 124 backend/repository file differences; files are not individual features. The full readable list is STAGING\_TO\_PRODUCTION.md in the shared checklist repository.
+
+Next: Astra updates this list after every staging release and production port. Read the three promotion groups and the production-protection item here, or the full list at https://github.com/hassanali0076-blip/trak-checklist/blob/main/STAGING\_TO\_PRODUCTION.md. Do not mark work shipped from a source commit alone.
+
+### Make iodine graphs load
+
+ID: iodine-graph-cannot-load · Coach & insights · Reviewed 2026-09-09
+
+The app offers iodine, but both current servers reject it as an unknown nutrient. The shared backend fix reads existing iodine values in micrograms through history, batch history and breakdowns. Missing data stays missing; no recommended target is invented. It passes 101 focused checks and 174 subtests, but is not deployed.
+
+Next: Astra includes the reviewed correction in the next staging backend package, verifies the deployed source and opens iodine on the phone. It can work with the existing app after that backend release. The separate tick correction requires a new phone build.
 
 ### Complete the full Coach effectiveness review
 

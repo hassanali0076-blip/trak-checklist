@@ -4,6 +4,7 @@ Public project status for Aadam, Josh, and AI agents. No login is needed to read
 
 - [Easy-view board](https://trak-checklist.hassanali0076.chatgpt.site)
 - [Full Markdown checklist](CHECKLIST.md)
+- [Staging changes awaiting production](STAGING_TO_PRODUCTION.md)
 - [Machine-readable source](checklist.json)
 
 ## Updating the checklist

@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
   "title": "TRAK — master checklist",
-  "updatedAt": "2026-09-09T18:18:10Z",
+  "updatedAt": "2026-09-09T19:01:57Z",
   "reviewedThrough": "2026-09-09",
   "release": {
-    "native": "TRAK Staging Build 42 remains available in internal TestFlight. Phone testing found a pause partway through its Coach tick animation and improved but still slightly delayed nutrient graph opening. A continuous-tick correction passes 91 focused checks locally; it is not yet built or distributed.",
-    "backend": "Staging backend 2720 is live and verified. It prepares Today nutrient breakdowns together for the Build 42 graph-loading improvement while preserving the existing app response. Source identity, health, access checks and unchanged staging deployment settings are verified. Production is unchanged.",
-    "next": "Astra owns the remaining graph timing capture and the next staging package with the tick correction. Goal editing still needs acceptance; the intermittent food Retry remains open. Production promotion and the separate recipe-precision correction remain separate work."
+    "native": "TRAK Staging Build 42 remains available in internal TestFlight. The continuous Coach tick correction is implemented and tested but unbuilt. The completed graph trace distinguishes fast cached first frames from two history-cold waits; full transition timing and phone acceptance remain open.",
+    "backend": "Staging backend 2720 remains live. Iodine is rejected by the current backend despite being offered by the app; a shared correction passes focused checks but is not deployed. Twelve older test-schema failures reproduce on both baseline and candidate. Production remains unchanged.",
+    "next": "Astra owns the next staging package and runtime/phone checks, plus the remaining graph and food Retry diagnosis. The maintained production-promotion list tracks all staging deltas and protects newer production work. No app build or backend deployment occurred in this checklist update."
   },
   "notes": [
     "Public, read-only project status. No login needed.",
@@ -15,6 +15,10 @@
     "Reconciled through 9 September. Released changes, local fixes and reported phone results are tracked separately. This board update does not release a TRAK app build."
   ],
   "changes": [
+    {
+      "date": "2026-09-09",
+      "text": "Completed the Build 42 graph trace, diagnosed iodine as a shared backend key mismatch, and recorded its tested but undeployed correction. Added the maintained staging-to-production list with 18 change groups, unreleased work, schema/configuration gates and production-only protections. Source inventory covers 559 differing tracked files. Older backend fixture failures remain explicit; no new deployment."
+    },
     {
       "date": "2026-09-09",
       "text": "Build 42 phone testing found a tick-animation pause and a remaining roughly half-second graph delay. The tick pause is reproduced and removed locally, with 91 focused Coach checks passing. A new regression item records its pending release. Graph timing and phone acceptance remain open; no new app build or backend deployment."
@@ -237,6 +241,69 @@
     }
   ],
   "tasks": [
+    {
+      "id": "staging-changes-awaiting-production",
+      "title": "Staging changes awaiting production",
+      "area": "Production promotion",
+      "status": "active",
+      "summary": "A maintained release list now groups all staging-only work, unreleased fixes, staging-only tools, backend/schema requirements and newer production work to preserve. Current comparison: staging app 42/backend 2720 against regular TRAK 472 and production backend 2715. The private inventory records 435 native and 124 backend/repository file differences; files are not individual features. The full readable list is STAGING_TO_PRODUCTION.md in the shared checklist repository.",
+      "nextStep": "Astra updates this list after every staging release and production port. Read the three promotion groups and the production-protection item here, or the full list at https://github.com/hassanali0076-blip/trak-checklist/blob/main/STAGING_TO_PRODUCTION.md. Do not mark work shipped from a source commit alone.",
+      "updated": "2026-09-09"
+    },
+    {
+      "id": "preserve-production-work-during-staging-promotion",
+      "title": "Keep newer production work when promoting staging",
+      "area": "Production promotion",
+      "status": "planned",
+      "summary": "Production contains work missing from staging: widgets and their integration; automatic Health weight pickup; saved-food Search cache invalidation and icon persistence; AI/voice/recipe/recurring identity and serving fixes; production release checks, notes and signing. Copying the staging branch over production would lose these.",
+      "nextStep": "Astra reconciles the changes on the latest production source and verifies the archive-to-source receipt. Preserve Apple Health writes and Health Connect. Keep staging test controls, API/auth destinations and signing settings isolated.",
+      "updated": "2026-09-09"
+    },
+    {
+      "id": "staging-promotion-micronutrients",
+      "title": "Promote staging micronutrient changes",
+      "area": "Production promotion",
+      "status": "planned",
+      "summary": "Already on staging: consistent nutrient rails, references, legends and precision; EPA+DHA agreement; full-screen food nutrients with serving in the title; requested zero display; light-mode background; prepared graph history and breakdowns; short ALL history and navigation/race fixes; clearer food loading diagnostics.",
+      "nextStep": "Astra includes the separate iodine correction and keeps missing/provenance semantics. Graph transition delay and intermittent food Retry remain open. Preserve a complete first frame and review the paired backend requirements before production.",
+      "updated": "2026-09-09"
+    },
+    {
+      "id": "staging-promotion-coach-and-goals",
+      "title": "Promote staging Coach and goal changes",
+      "area": "Production promotion",
+      "status": "planned",
+      "summary": "Already on staging: personal calorie minimum and clearer copy; coherent saved reviews; maintenance correction and post-goal simulation coverage; immediate per-day/cycling target updates; goal-weight then goal-rate review editing; weight/slider fixes; Coach loading and Accept feedback. The smoother tick correction is not in Build 42 yet.",
+      "nextStep": "Astra includes the continuous-tick fix, retains exact-review/current-target behaviour and uses the recorded simulation evidence with its limitations. Keep repeat/advance check-in controls disabled on production; complete remaining phone acceptance.",
+      "updated": "2026-09-09"
+    },
+    {
+      "id": "staging-promotion-search-and-food",
+      "title": "Promote staging Search and food changes",
+      "area": "Production promotion",
+      "status": "planned",
+      "summary": "Already on staging: dedicated native iOS search transport and diagnostics; remembered calculator servings; g/oz/lb before named portions; validated food calculations with offline recovery; Add commits the selected-food list; recipe unlink keeps fractional nutrition. These changes are awaiting production integration, not a new staging implementation.",
+      "nextStep": "Astra ports reviewed changes onto current production, preserving ranking, immediate View all, production saved-food cache/icon fixes and required database checks. The separate recipe-save precision and parsing candidates are not delivered yet.",
+      "updated": "2026-09-09"
+    },
+    {
+      "id": "backend-nutrient-test-fixture-schema-gaps",
+      "title": "Repair older nutrient test-database fixtures",
+      "area": "Release verification",
+      "status": "issue",
+      "summary": "Broader nutrient authority and recipe tests have 12 failures caused by incomplete SQLite test schemas. The unchanged staging backend and iodine candidate have the same 12 failures and 161 passes. The iodine change adds no new failing case; the full backend suite is not claimed green.",
+      "nextStep": "Astra or the owning backend maintainer updates the fixtures to the current schema and reruns the unchanged and candidate cases before broader integration sign-off. Do not delete failures or weaken assertions.",
+      "updated": "2026-09-09"
+    },
+    {
+      "id": "iodine-graph-cannot-load",
+      "title": "Make iodine graphs load",
+      "area": "Coach & insights",
+      "status": "active",
+      "summary": "The app offers iodine, but both current servers reject it as an unknown nutrient. The shared backend fix reads existing iodine values in micrograms through history, batch history and breakdowns. Missing data stays missing; no recommended target is invented. It passes 101 focused checks and 174 subtests, but is not deployed.",
+      "nextStep": "Astra includes the reviewed correction in the next staging backend package, verifies the deployed source and opens iodine on the phone. It can work with the existing app after that backend release. The separate tick correction requires a new phone build.",
+      "updated": "2026-09-09"
+    },
     {
       "id": "coach-accept-tick-pauses-mid-stroke",
       "title": "Keep the Coach acceptance tick smooth",
@@ -1538,8 +1605,8 @@
       "title": "Remove the delay when reopening nutrient graphs",
       "area": "Coach & insights",
       "status": "issue",
-      "summary": "Phone testing on Build 42 reports better graph opening, but still roughly half a second between tapping and opening. The previous improvement is retained. The remaining delay is not diagnosed or accepted yet.",
-      "nextStep": "Astra captures repeated graph opens on Build 42 and separates the data-read wait from screen drawing and transition timing before changing the code.",
+      "summary": "The completed Build 42 trace captured 27 cached opens whose first graph frame drew in 3–37 ms. Two uncached opens waited for history and took 0.38–0.62 seconds. Three later opens failed while preparing the breakdown. The timing starts at the tap callback and does not measure the full screen transition, so the reported remaining delay is still open.",
+      "nextStep": "Astra separates cold history preparation from full transition timing before another graph change. Preserve a complete first frame and the standard back gesture. The capture is finished and stopped; iodine is tracked separately.",
       "updated": "2026-09-09"
     },
     {
