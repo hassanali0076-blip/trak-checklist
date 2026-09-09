@@ -1,10 +1,10 @@
 # TRAK — master checklist
 
-Updated: 2026-09-09T03:07:25Z · Reviewed through 2026-09-09
+Updated: 2026-09-09T03:24:38Z · Reviewed through 2026-09-09
 
 - native: TRAK Staging Build 40 is available in the internal TestFlight group. It builds on Build 39 and contains all five reviewed Coach, cycling and nutrient follow-ups. Signing, Apple Health entitlement and both complete app test suites passed. Phone acceptance is pending. Regular TRAK and Android distribution were not changed by this release.
 - backend: Staging backend 2719 is live and paired with Build 40. It adds the reviewed EPA + DHA target, history and coverage contract while retaining the accepted maintenance policy and recipe-unlink precision fix. Live source and calculation checks match the candidate; staging configuration is preserved. Production was not changed.
-- next: Update TRAK Staging to Build 40 and test the five delivered fixes. The next larger Astra/Sol pilot investigates recipe-saving precision across saving, reopening, logging and unlinking, with measured Graft navigation and mandatory Astra review. That new pilot is separate from Build 40.
+- next: Test the five delivered fixes on TRAK Staging Build 40. The larger recipe-precision pilot has produced a reviewed local backend correction; it needs its own staging release and is not included in live backend 2719. Existing baseline test gaps remain recorded.
 
 > Public, read-only project status. No login needed.
 
@@ -474,9 +474,9 @@ Next: Audit remaining screens by user impact.
 
 ID: confirmed-small-backend-fixes-from-the-muse-sol-deep-review-verification · Release & reliability · Reviewed 2026-09-09
 
-The reviewed recipe-unlink precision fix is deployed on staging backend 2718: unlinking now preserves stored fractional calories. Real PostgreSQL rollback and account-boundary checks passed. Earlier rounding while saving a recipe remains open, alongside the other reliability follow-ups and existing test failures.
+The recipe-unlink precision fix is live on staging backend 2719. The earlier 400-to-399 loss was then traced to diary snapshot creation and corrected in a separate reviewed local patch. Other reliability follow-ups and inherited test failures remain open.
 
-Next: Confirm normal unlink use on staging. The separate recipe-saving precision pilot is now active; other reliability follow-ups and recorded test failures remain open.
+Next: Confirm normal unlink use on staging. Release the separately reviewed snapshot-precision correction through its own staging gate, and keep the outstanding test gaps visible.
 
 ### Import sleep from Apple Health and Health Connect
 
@@ -624,13 +624,13 @@ An all-region verification safeguard is implemented and tested locally, separate
 
 Next: The food-verification owner must preserve original records while allowing later additions, rerun independent review and Search timing, then complete the separately approved backend rollout and live checks.
 
-### Recipe saving preserves nutrition precision
+### Recipe logging preserves nutrition precision
 
 ID: recipe-saving-preserves-nutrition-precision · Recipes & custom foods · Reviewed 2026-09-09
 
-Astra selected the outstanding recipe-saving precision issue for the next larger workflow pilot. The first step reproduces the earlier 400-to-399 calorie report on the current staging source and locates where precision changes. No new recipe-saving fix is included in Build 40.
+The larger Astra/Sol pilot reproduced the 400-to-399 calorie loss during diary snapshot creation. A reviewed one-line local fix preserves fractional ingredient calories. Four new real-route cases pass, including the published daily total, recipe edits, Tune and unlink. The same four older test failures occur on the unchanged baseline and remain recorded. This fix is not in Build 40 or live backend 2719.
 
-Next: Sol reproduces and traces create/edit/save/log/unlink behavior, recording Graft navigation time and fallbacks. Astra reviews the evidence before any app change. Preserve historical snapshots, manual tuning and fractional servings.
+Next: Prepare this separate backend correction on the latest staging source before its own release. Preserve old diary snapshots; retain the four recorded test gaps. Graft helped find supporting files but missed the decisive backend helper, so no token saving is claimed.
 
 ## Resolved live
 
