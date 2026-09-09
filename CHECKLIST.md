@@ -1,10 +1,10 @@
 # TRAK — master checklist
 
-Updated: 2026-09-09T17:18:43Z · Reviewed through 2026-09-09
+Updated: 2026-09-09T18:18:10Z · Reviewed through 2026-09-09
 
-- native: TRAK Staging Build 42 is available in internal TestFlight. It retains Build 41 and adds immediate Coach Accept feedback, goal-weight/rate editing from review, nutrient graph preparation and clearer food micronutrient loading with diagnostics. All 4,282 complete app checks and signed-artifact checks pass. Phone acceptance remains open.
+- native: TRAK Staging Build 42 remains available in internal TestFlight. Phone testing found a pause partway through its Coach tick animation and improved but still slightly delayed nutrient graph opening. A continuous-tick correction passes 91 focused checks locally; it is not yet built or distributed.
 - backend: Staging backend 2720 is live and verified. It prepares Today nutrient breakdowns together for the Build 42 graph-loading improvement while preserving the existing app response. Source identity, health, access checks and unchanged staging deployment settings are verified. Production is unchanged.
-- next: Install Build 42 and check Coach Accept, the goal-weight/rate edit sequence and nutrient graph opening. Astra owns any remaining food Retry and cold-graph investigation. The actual intermittent food failure is still open. Production promotion and the separate recipe-precision correction remain separate work.
+- next: Astra owns the remaining graph timing capture and the next staging package with the tick correction. Goal editing still needs acceptance; the intermittent food Retry remains open. Production promotion and the separate recipe-precision correction remain separate work.
 
 > Public, read-only project status. No login needed.
 
@@ -56,6 +56,14 @@ Nightly catalogue maintenance completed through the audit date, but recent groce
 
 Next: The operations owner must inspect the last runner outcome and restore scheduling on existing infrastructure, with durable start/completion/failure records and missed-run alerts. No scheduler change was made by the audit.
 
+### Remove the delay when reopening nutrient graphs
+
+ID: micronutrient-graph-repeat-tap-delay · Coach & insights · Reviewed 2026-09-09
+
+Phone testing on Build 42 reports better graph opening, but still roughly half a second between tapping and opening. The previous improvement is retained. The remaining delay is not diagnosed or accepted yet.
+
+Next: Astra captures repeated graph opens on Build 42 and separates the data-read wait from screen drawing and transition timing before changing the code.
+
 ### Search foods sometimes fail to load micronutrients
 
 ID: search-food-micronutrients-intermittent-retry · Food editing · Reviewed 2026-09-09
@@ -65,6 +73,14 @@ Build 42 now separates initial micronutrient loading from an actual failed reque
 Next: Astra captures and diagnoses the failed request using Build 42 diagnostics. Report the food name and whether Retry succeeds if it happens again; do not close this issue from a successful unrelated request.
 
 ## Next phone build
+
+### Keep the Coach acceptance tick smooth
+
+ID: coach-accept-tick-pauses-mid-stroke · Coach & insights · Reviewed 2026-09-09
+
+Phone testing found that Build 42 pauses the tick partway through until saving finishes. A local correction draws it continuously from the tap. Confirmation and the return still wait for a successful save; late failures restore the review. The regression reproduces on Build 42 and all 91 focused Coach checks pass after correction. It is not in the installed build yet.
+
+Next: Astra packages the correction in a future staging release and verifies the uninterrupted animation on the phone. Graph opening remains a separate open issue.
 
 ### Native code organization
 
@@ -424,9 +440,9 @@ Next: The staging owner retains ordinary release compatibility checks and prepar
 
 ID: coach-accept-animation-starts-without-save-delay · Coach & insights · Reviewed 2026-09-09
 
-Build 42 starts the tick animation when Accept is tapped, shows that the target is updating, and completes it only after the save succeeds. Failed saves restore the review for retry; target calculations are unchanged. The focused Coach checks and full app suites pass.
+Build 42 starts feedback on Accept immediately, but phone testing found that the tick stops partway through while saving. That new animation regression is tracked separately. Save confirmation and failed-save recovery remain in place.
 
-Next: Check Accept on Build 42: feedback should begin immediately and the saved plan should appear after confirmation. Astra investigates any remaining delay.
+Next: Astra includes the tested continuous-tick correction in a future staging build, then checks smooth motion and the confirmed saved plan on the phone.
 
 ### Coach result waits for its review checklist
 
@@ -483,14 +499,6 @@ ID: micronutrient-overview-light-background · Coach & insights · Reviewed 2026
 Build 41 restores the light-grey background behind the main micronutrient overview so white cards remain visible. Dark mode is unchanged. Existing visual references verify the intended colours.
 
 Next: On Build 41, confirm the white nutrient cards stand out against the grey background in light mode.
-
-### Remove the delay when reopening nutrient graphs
-
-ID: micronutrient-graph-repeat-tap-delay · Coach & insights · Reviewed 2026-09-09
-
-Build 42 and live backend 2720 prepare every Today nutrient breakdown together, targeting the missing-data wait measured on Build 41. Calculation parity and app checks pass. Phone timing is not yet accepted; cold history or tapping before preparation finishes can still require a request.
-
-Next: Compare repeated graph taps on Build 42, including prepared and cold history. Astra uses the timing traces to investigate any remaining wait before closing this issue.
 
 ### Goal-rate editing from plan review includes goal weight
 

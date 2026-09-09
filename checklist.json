@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
   "title": "TRAK — master checklist",
-  "updatedAt": "2026-09-09T17:18:43Z",
+  "updatedAt": "2026-09-09T18:18:10Z",
   "reviewedThrough": "2026-09-09",
   "release": {
-    "native": "TRAK Staging Build 42 is available in internal TestFlight. It retains Build 41 and adds immediate Coach Accept feedback, goal-weight/rate editing from review, nutrient graph preparation and clearer food micronutrient loading with diagnostics. All 4,282 complete app checks and signed-artifact checks pass. Phone acceptance remains open.",
+    "native": "TRAK Staging Build 42 remains available in internal TestFlight. Phone testing found a pause partway through its Coach tick animation and improved but still slightly delayed nutrient graph opening. A continuous-tick correction passes 91 focused checks locally; it is not yet built or distributed.",
     "backend": "Staging backend 2720 is live and verified. It prepares Today nutrient breakdowns together for the Build 42 graph-loading improvement while preserving the existing app response. Source identity, health, access checks and unchanged staging deployment settings are verified. Production is unchanged.",
-    "next": "Install Build 42 and check Coach Accept, the goal-weight/rate edit sequence and nutrient graph opening. Astra owns any remaining food Retry and cold-graph investigation. The actual intermittent food failure is still open. Production promotion and the separate recipe-precision correction remain separate work."
+    "next": "Astra owns the remaining graph timing capture and the next staging package with the tick correction. Goal editing still needs acceptance; the intermittent food Retry remains open. Production promotion and the separate recipe-precision correction remain separate work."
   },
   "notes": [
     "Public, read-only project status. No login needed.",
@@ -15,6 +15,10 @@
     "Reconciled through 9 September. Released changes, local fixes and reported phone results are tracked separately. This board update does not release a TRAK app build."
   ],
   "changes": [
+    {
+      "date": "2026-09-09",
+      "text": "Build 42 phone testing found a tick-animation pause and a remaining roughly half-second graph delay. The tick pause is reproduced and removed locally, with 91 focused Coach checks passing. A new regression item records its pending release. Graph timing and phone acceptance remain open; no new app build or backend deployment."
+    },
     {
       "date": "2026-09-09",
       "text": "Build 42 is available in internal TestFlight, paired with verified live backend 2720. It adds Coach Accept feedback, the goal-weight/rate review flow, graph preparation and clearer food loading with diagnostics. All 4,282 complete app checks and signed-artifact checks pass. Fresh staging provisioning is verified. Phone acceptance and the actual food Retry failure remain open."
@@ -233,6 +237,15 @@
     }
   ],
   "tasks": [
+    {
+      "id": "coach-accept-tick-pauses-mid-stroke",
+      "title": "Keep the Coach acceptance tick smooth",
+      "area": "Coach & insights",
+      "status": "next_release",
+      "summary": "Phone testing found that Build 42 pauses the tick partway through until saving finishes. A local correction draws it continuously from the tap. Confirmation and the return still wait for a successful save; late failures restore the review. The regression reproduces on Build 42 and all 91 focused Coach checks pass after correction. It is not in the installed build yet.",
+      "nextStep": "Astra packages the correction in a future staging release and verifies the uninterrupted animation on the phone. Graph opening remains a separate open issue.",
+      "updated": "2026-09-09"
+    },
     {
       "id": "build-461-backend-database-and-worker-prerequisites-are-live",
       "title": "Build 461 backend, database and worker prerequisites are live",
@@ -1444,8 +1457,8 @@
       "title": "Coach Accept responds immediately",
       "area": "Coach & insights",
       "status": "testing",
-      "summary": "Build 42 starts the tick animation when Accept is tapped, shows that the target is updating, and completes it only after the save succeeds. Failed saves restore the review for retry; target calculations are unchanged. The focused Coach checks and full app suites pass.",
-      "nextStep": "Check Accept on Build 42: feedback should begin immediately and the saved plan should appear after confirmation. Astra investigates any remaining delay.",
+      "summary": "Build 42 starts feedback on Accept immediately, but phone testing found that the tick stops partway through while saving. That new animation regression is tracked separately. Save confirmation and failed-save recovery remain in place.",
+      "nextStep": "Astra includes the tested continuous-tick correction in a future staging build, then checks smooth motion and the confirmed saved plan on the phone.",
       "updated": "2026-09-09"
     },
     {
@@ -1524,9 +1537,9 @@
       "id": "micronutrient-graph-repeat-tap-delay",
       "title": "Remove the delay when reopening nutrient graphs",
       "area": "Coach & insights",
-      "status": "testing",
-      "summary": "Build 42 and live backend 2720 prepare every Today nutrient breakdown together, targeting the missing-data wait measured on Build 41. Calculation parity and app checks pass. Phone timing is not yet accepted; cold history or tapping before preparation finishes can still require a request.",
-      "nextStep": "Compare repeated graph taps on Build 42, including prepared and cold history. Astra uses the timing traces to investigate any remaining wait before closing this issue.",
+      "status": "issue",
+      "summary": "Phone testing on Build 42 reports better graph opening, but still roughly half a second between tapping and opening. The previous improvement is retained. The remaining delay is not diagnosed or accepted yet.",
+      "nextStep": "Astra captures repeated graph opens on Build 42 and separates the data-read wait from screen drawing and transition timing before changing the code.",
       "updated": "2026-09-09"
     },
     {
