@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
   "title": "TRAK — master checklist",
-  "updatedAt": "2026-09-09T03:24:38Z",
+  "updatedAt": "2026-09-09T15:37:32Z",
   "reviewedThrough": "2026-09-09",
   "release": {
-    "native": "TRAK Staging Build 40 is available in the internal TestFlight group. It builds on Build 39 and contains all five reviewed Coach, cycling and nutrient follow-ups. Signing, Apple Health entitlement and both complete app test suites passed. Phone acceptance is pending. Regular TRAK and Android distribution were not changed by this release.",
-    "backend": "Staging backend 2719 is live and paired with Build 40. It adds the reviewed EPA + DHA target, history and coverage contract while retaining the accepted maintenance policy and recipe-unlink precision fix. Live source and calculation checks match the candidate; staging configuration is preserved. Production was not changed.",
-    "next": "Test the five delivered fixes on TRAK Staging Build 40. The larger recipe-precision pilot has produced a reviewed local backend correction; it needs its own staging release and is not included in live backend 2719. Existing baseline test gaps remain recorded."
+    "native": "TRAK Staging Build 41 is available in internal TestFlight. It retains Build 40 and adds the goal-rate return fix, calorie-minimum explanations, Food Editor micronutrient presentation, restored light background and nutrient-opening timing diagnostics. Both complete app suites and signed-artifact checks passed. Phone acceptance remains open.",
+    "backend": "Staging backend still reports 2719 and passes its health check. Build 41 uses the same staging endpoint. The existing EPA + DHA and Coach maintenance work is retained; no backend change was part of this app release.",
+    "next": "Test the new UI and goal-rate changes on Build 41, then capture the repeated nutrient-opening delay; diagnostics are included, but that delay is not fixed. Refresh staging provisioning before the next iOS build. The separate recipe-precision backend correction still needs its own staging release; its recorded baseline test gaps remain."
   },
   "notes": [
     "Public, read-only project status. No login needed.",
@@ -15,6 +15,10 @@
     "Reconciled through 9 September. Released changes, local fixes and reported phone results are tracked separately. This board update does not release a TRAK app build."
   ],
   "changes": [
+    {
+      "date": "2026-09-09",
+      "text": "Staging Build 41 is available in internal TestFlight. It adds the Edit goal target-return correction, clearer calorie-minimum copy, full-screen food micronutrients with serving captions and blank zeros, and the restored light overview background. The repeated graph-opening delay remains open; local diagnostics are included. Full app suites passed 4,163 current-login and 110 legacy-login checks. Apple accepted this build despite the shared provisioning-profile change; future signing is tracked separately."
+    },
     {
       "date": "2026-09-09",
       "text": "The larger recipe-precision pilot reproduced the 400-to-399 loss and produced a one-line local snapshot fix. Four new route cases pass; Astra compared the same four broader test failures against unchanged staging source and retained them. The TDEE benchmark is unchanged. Graft helped with supporting files but missed the backend helper; measured token savings are not established. This new fix is not deployed."
@@ -1254,7 +1258,7 @@
       "area": "Coach & insights",
       "status": "testing",
       "summary": "Build 40 now prepares the selected complete nutrient view before navigation. Delayed-response and account/date/route checks passed; the phone check remains open.",
-      "nextStep": "On Build 40, cold-open a saved nutrient timeframe, including 6 months, and confirm the correct complete view appears.",
+      "nextStep": "On Build 41, cold-open a saved nutrient timeframe, including 6 months, and confirm the correct complete view appears.",
       "updated": "2026-09-09"
     },
     {
@@ -1272,7 +1276,7 @@
       "area": "Coach & insights",
       "status": "testing",
       "summary": "Build 40 restores the historical light and dark nutrient rail colours. Astra reviewed rendered examples and marker/range tests; nutrient values and target calculations are preserved.",
-      "nextStep": "On Build 40, check rail contrast and visible target markers across nutrient screens and Food Editor.",
+      "nextStep": "On Build 41, check rail contrast and visible target markers across nutrient screens and Food Editor.",
       "updated": "2026-09-09"
     },
     {
@@ -1434,7 +1438,7 @@
       "area": "Coach & insights",
       "status": "testing",
       "summary": "Build 40 carries the exact saved cycling week through the real settings flow, so the first returned Insights card has the saved calories and macros. Cancellation, account changes and later target edits are covered.",
-      "nextStep": "On Build 40, save a different cycling plan and confirm the first returned daily-target card immediately matches it.",
+      "nextStep": "On Build 41, save a different cycling plan and confirm the first returned daily-target card immediately matches it.",
       "updated": "2026-09-09"
     },
     {
@@ -1453,6 +1457,60 @@
       "status": "active",
       "summary": "The larger Astra/Sol pilot reproduced the 400-to-399 calorie loss during diary snapshot creation. A reviewed one-line local fix preserves fractional ingredient calories. Four new real-route cases pass, including the published daily total, recipe edits, Tune and unlink. The same four older test failures occur on the unchanged baseline and remain recorded. This fix is not in Build 40 or live backend 2719.",
       "nextStep": "Prepare this separate backend correction on the latest staging source before its own release. Preserve old diary snapshots; retain the four recorded test gaps. Graft helped find supporting files but missed the decisive backend helper, so no token saving is claimed.",
+      "updated": "2026-09-09"
+    },
+    {
+      "id": "edit-goal-rate-updates-cycling-targets-on-return",
+      "title": "Edit goal returns with updated daily targets",
+      "area": "Coach & insights",
+      "status": "testing",
+      "summary": "Build 41 prepares the current daily targets before returning from Edit goal after a weekly loss-rate change, including different calories by day. It uses the existing target resolver; target calculations are unchanged.",
+      "nextStep": "On Build 41, change weekly loss rate, update the plan and confirm the first returned Insights targets match the new plan. Check both uniform and cycling targets.",
+      "updated": "2026-09-09"
+    },
+    {
+      "id": "calorie-minimum-explanations-and-recommended-badge",
+      "title": "Explain the Standard and Low calorie minimums",
+      "area": "Coach & insights",
+      "status": "testing",
+      "summary": "Build 41 explains the Standard and Low allowances, marks Standard as Recommended and removes the size-based sentence. Displayed minimums remain calculated for the profile; the minimum policy is unchanged.",
+      "nextStep": "Review the wording and calculated Standard/Low amounts in Build 41, including larger text.",
+      "updated": "2026-09-09"
+    },
+    {
+      "id": "food-micronutrients-fullscreen-serving-caption",
+      "title": "Food micronutrients open full-screen with the serving shown",
+      "area": "Food editing",
+      "status": "testing",
+      "summary": "Build 41 opens Food Editor micronutrients as a full screen, puts the serving in brackets after the food name and displays unit-bearing zero for blank food amounts. Missing nutrition remains unknown internally. Embedded recipe and meal panels keep their parent layout.",
+      "nextStep": "On Build 41, check food and recipe serving captions, full-screen opening, back navigation and blank values in light and dark mode.",
+      "updated": "2026-09-09"
+    },
+    {
+      "id": "micronutrient-overview-light-background",
+      "title": "Restore the light-grey micronutrient background",
+      "area": "Coach & insights",
+      "status": "testing",
+      "summary": "Build 41 restores the light-grey background behind the main micronutrient overview so white cards remain visible. Dark mode is unchanged. Existing visual references verify the intended colours.",
+      "nextStep": "On Build 41, confirm the white nutrient cards stand out against the grey background in light mode.",
+      "updated": "2026-09-09"
+    },
+    {
+      "id": "micronutrient-graph-repeat-tap-delay",
+      "title": "Remove the delay when reopening nutrient graphs",
+      "area": "Coach & insights",
+      "status": "issue",
+      "summary": "A repeated tap still took about a second on Build 40. Build 41 adds local timing diagnostics for data preparation and first-frame rendering. The cause is not confirmed and no latency fix is claimed.",
+      "nextStep": "Install Build 41, then coordinate phone log capture with the release owner while opening a nutrient, going back and immediately reopening it.",
+      "updated": "2026-09-09"
+    },
+    {
+      "id": "refresh-staging-ios-provisioning",
+      "title": "Refresh staging provisioning before the next iOS build",
+      "area": "Release & reliability",
+      "status": "planned",
+      "summary": "Shared Apple account changes invalidated the older staging provisioning profile. Apple independently accepted Build 41 as valid and made it available in TestFlight. This is a follow-up for future signing, not a reported Build 41 install failure.",
+      "nextStep": "The release owner should verify or refresh the staging signing profile before the next archive, preserving separation from production. Record the resulting profile and artifact checks.",
       "updated": "2026-09-09"
     }
   ]

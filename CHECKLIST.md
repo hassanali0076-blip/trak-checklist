@@ -1,10 +1,10 @@
 # TRAK — master checklist
 
-Updated: 2026-09-09T03:24:38Z · Reviewed through 2026-09-09
+Updated: 2026-09-09T15:37:32Z · Reviewed through 2026-09-09
 
-- native: TRAK Staging Build 40 is available in the internal TestFlight group. It builds on Build 39 and contains all five reviewed Coach, cycling and nutrient follow-ups. Signing, Apple Health entitlement and both complete app test suites passed. Phone acceptance is pending. Regular TRAK and Android distribution were not changed by this release.
-- backend: Staging backend 2719 is live and paired with Build 40. It adds the reviewed EPA + DHA target, history and coverage contract while retaining the accepted maintenance policy and recipe-unlink precision fix. Live source and calculation checks match the candidate; staging configuration is preserved. Production was not changed.
-- next: Test the five delivered fixes on TRAK Staging Build 40. The larger recipe-precision pilot has produced a reviewed local backend correction; it needs its own staging release and is not included in live backend 2719. Existing baseline test gaps remain recorded.
+- native: TRAK Staging Build 41 is available in internal TestFlight. It retains Build 40 and adds the goal-rate return fix, calorie-minimum explanations, Food Editor micronutrient presentation, restored light background and nutrient-opening timing diagnostics. Both complete app suites and signed-artifact checks passed. Phone acceptance remains open.
+- backend: Staging backend still reports 2719 and passes its health check. Build 41 uses the same staging endpoint. The existing EPA + DHA and Coach maintenance work is retained; no backend change was part of this app release.
+- next: Test the new UI and goal-rate changes on Build 41, then capture the repeated nutrient-opening delay; diagnostics are included, but that delay is not fixed. Refresh staging provisioning before the next iOS build. The separate recipe-precision backend correction still needs its own staging release; its recorded baseline test gaps remain.
 
 > Public, read-only project status. No login needed.
 
@@ -55,6 +55,14 @@ ID: grocery-refresh-scheduling-and-completion-receipts · Search & catalogue · 
 Nightly catalogue maintenance completed through the audit date, but recent grocery triggers failed before running and the latest successful trigger did not establish refresh completion. Reliable recent grocery results remain unverified.
 
 Next: The operations owner must inspect the last runner outcome and restore scheduling on existing infrastructure, with durable start/completion/failure records and missed-run alerts. No scheduler change was made by the audit.
+
+### Remove the delay when reopening nutrient graphs
+
+ID: micronutrient-graph-repeat-tap-delay · Coach & insights · Reviewed 2026-09-09
+
+A repeated tap still took about a second on Build 40. Build 41 adds local timing diagnostics for data preparation and first-frame rendering. The cause is not confirmed and no latency fix is claimed.
+
+Next: Install Build 41, then coordinate phone log capture with the release owner while opening a nutrient, going back and immediately reopening it.
 
 ## Next phone build
 
@@ -322,7 +330,7 @@ ID: micronutrient-details-open-with-complete-current-data · Coach & insights ·
 
 Build 40 now prepares the selected complete nutrient view before navigation. Delayed-response and account/date/route checks passed; the phone check remains open.
 
-Next: On Build 40, cold-open a saved nutrient timeframe, including 6 months, and confirm the correct complete view appears.
+Next: On Build 41, cold-open a saved nutrient timeframe, including 6 months, and confirm the correct complete view appears.
 
 ### All shows the full recorded nutrient history
 
@@ -338,7 +346,7 @@ ID: micronutrient-target-markers-remain-visible · Coach & insights · Reviewed 
 
 Build 40 restores the historical light and dark nutrient rail colours. Astra reviewed rendered examples and marker/range tests; nutrient values and target calculations are preserved.
 
-Next: On Build 40, check rail contrast and visible target markers across nutrient screens and Food Editor.
+Next: On Build 41, check rail contrast and visible target markers across nutrient screens and Food Editor.
 
 ### Nutrient values and spacing match the agreed design
 
@@ -426,7 +434,7 @@ ID: cycling-save-updates-daily-targets-first-frame · Coach & insights · Review
 
 Build 40 carries the exact saved cycling week through the real settings flow, so the first returned Insights card has the saved calories and macros. Cancellation, account changes and later target edits are covered.
 
-Next: On Build 40, save a different cycling plan and confirm the first returned daily-target card immediately matches it.
+Next: On Build 41, save a different cycling plan and confirm the first returned daily-target card immediately matches it.
 
 ### EPA + DHA uses the combined 0.25 g target
 
@@ -435,6 +443,38 @@ ID: epa-dha-combined-standard-target · Coach & insights · Reviewed 2026-09-09
 Build 40 and live backend 2719 now share the combined 0.25 g target, history and coverage contract. Complete components produce a known total; incomplete foods remain unknown. The deployed calculation probe exactly matches the reviewed candidate.
 
 Next: On Build 40, verify the combined target and intake in overview/detail/coverage, including a food missing one component. Phone acceptance remains open.
+
+### Edit goal returns with updated daily targets
+
+ID: edit-goal-rate-updates-cycling-targets-on-return · Coach & insights · Reviewed 2026-09-09
+
+Build 41 prepares the current daily targets before returning from Edit goal after a weekly loss-rate change, including different calories by day. It uses the existing target resolver; target calculations are unchanged.
+
+Next: On Build 41, change weekly loss rate, update the plan and confirm the first returned Insights targets match the new plan. Check both uniform and cycling targets.
+
+### Explain the Standard and Low calorie minimums
+
+ID: calorie-minimum-explanations-and-recommended-badge · Coach & insights · Reviewed 2026-09-09
+
+Build 41 explains the Standard and Low allowances, marks Standard as Recommended and removes the size-based sentence. Displayed minimums remain calculated for the profile; the minimum policy is unchanged.
+
+Next: Review the wording and calculated Standard/Low amounts in Build 41, including larger text.
+
+### Food micronutrients open full-screen with the serving shown
+
+ID: food-micronutrients-fullscreen-serving-caption · Food editing · Reviewed 2026-09-09
+
+Build 41 opens Food Editor micronutrients as a full screen, puts the serving in brackets after the food name and displays unit-bearing zero for blank food amounts. Missing nutrition remains unknown internally. Embedded recipe and meal panels keep their parent layout.
+
+Next: On Build 41, check food and recipe serving captions, full-screen opening, back navigation and blank values in light and dark mode.
+
+### Restore the light-grey micronutrient background
+
+ID: micronutrient-overview-light-background · Coach & insights · Reviewed 2026-09-09
+
+Build 41 restores the light-grey background behind the main micronutrient overview so white cards remain visible. Dark mode is unchanged. Existing visual references verify the intended colours.
+
+Next: On Build 41, confirm the white nutrient cards stand out against the grey background in light mode.
 
 ## Planned
 
@@ -597,6 +637,14 @@ ID: food-search-engine-alternatives-measured-first · Search & catalogue · Revi
 Typesense, Meilisearch and a managed food API were reviewed as options. No migration is selected. TRAK already maintains an imported catalogue, and the outstanding phone/network delay must be measured before paying to replace search infrastructure.
 
 Next: Compare uncached latency, food-ranking parity, catalogue licensing/freshness and total operating cost only if the measured bottleneck justifies a migration. Preserve current food identification and immediate View all.
+
+### Refresh staging provisioning before the next iOS build
+
+ID: refresh-staging-ios-provisioning · Release & reliability · Reviewed 2026-09-09
+
+Shared Apple account changes invalidated the older staging provisioning profile. Apple independently accepted Build 41 as valid and made it available in TestFlight. This is a follow-up for future signing, not a reported Build 41 install failure.
+
+Next: The release owner should verify or refresh the staging signing profile before the next archive, preserving separation from production. Record the resulting profile and artifact checks.
 
 ## In progress
 
