@@ -1,10 +1,10 @@
 # TRAK — master checklist
 
-Updated: 2026-09-09T16:21:54Z · Reviewed through 2026-09-09
+Updated: 2026-09-09T16:45:31Z · Reviewed through 2026-09-09
 
 - native: TRAK Staging Build 41 is available in internal TestFlight. It retains Build 40 and adds the goal-rate return fix, calorie-minimum explanations, Food Editor micronutrient presentation, restored light background and nutrient-opening timing diagnostics. Both complete app suites and signed-artifact checks passed. Phone acceptance remains open.
 - backend: Staging backend still reports 2719 and passes its health check. Build 41 uses the same staging endpoint. The existing EPA + DHA and Coach maintenance work is retained; no backend change was part of this app release.
-- next: Astra is addressing three Build 41 phone findings: the goal-weight edit sequence, nutrient graph request delays and intermittent food micronutrient retries. Candidates remain local; no newer build or backend has been released. Preserve complete graph first frames and confirm the failed food request. Refresh staging provisioning before the next iOS archive. The separate recipe-precision correction remains a separate release item.
+- next: Astra is addressing four Build 41 phone findings: Coach Accept feedback, the goal-weight edit sequence, nutrient graph request delays and intermittent food micronutrient retries. Tested native corrections remain local; no newer build or backend has been released. Preserve complete graph first frames and confirm the failed food request. Refresh staging provisioning before the next iOS archive. The separate recipe-precision correction remains a separate release item.
 
 > Public, read-only project status. No login needed.
 
@@ -81,6 +81,14 @@ ID: signed-artifact-release-and-promotion-checks · Release & reliability · Rev
 A local release gate checks the signed iPhone and Android artifacts and requires recorded phone acceptance for claimed features. Release checks can run on the release Mac. Build 470 remains internal-only; these new protections do not retrospectively approve its unresolved nutrient issues.
 
 Next: The release owner must use the gate for the next candidate, verify matching platform artifacts and collect the required phone acceptance before wider promotion.
+
+### Coach Accept responds immediately
+
+ID: coach-accept-animation-starts-without-save-delay · Coach & insights · Reviewed 2026-09-09
+
+Build 41 waits for the server save before starting the tick animation. A tested local correction starts the animation on the tap, shows that the target is updating, and completes it only after the save succeeds. Failed saves restore the review for retry; target calculations are unchanged. All 91 focused checks pass. This is not yet in a distributed build.
+
+Next: Astra includes the correction in the next staging package, completes the release checks and confirms prompt tap feedback on phone. Keep the earlier review-checklist sequence and correct saved targets intact.
 
 ### Goal-rate editing from plan review includes goal weight
 

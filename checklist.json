@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
   "title": "TRAK — master checklist",
-  "updatedAt": "2026-09-09T16:21:54Z",
+  "updatedAt": "2026-09-09T16:45:31Z",
   "reviewedThrough": "2026-09-09",
   "release": {
     "native": "TRAK Staging Build 41 is available in internal TestFlight. It retains Build 40 and adds the goal-rate return fix, calorie-minimum explanations, Food Editor micronutrient presentation, restored light background and nutrient-opening timing diagnostics. Both complete app suites and signed-artifact checks passed. Phone acceptance remains open.",
     "backend": "Staging backend still reports 2719 and passes its health check. Build 41 uses the same staging endpoint. The existing EPA + DHA and Coach maintenance work is retained; no backend change was part of this app release.",
-    "next": "Astra is addressing three Build 41 phone findings: the goal-weight edit sequence, nutrient graph request delays and intermittent food micronutrient retries. Candidates remain local; no newer build or backend has been released. Preserve complete graph first frames and confirm the failed food request. Refresh staging provisioning before the next iOS archive. The separate recipe-precision correction remains a separate release item."
+    "next": "Astra is addressing four Build 41 phone findings: Coach Accept feedback, the goal-weight edit sequence, nutrient graph request delays and intermittent food micronutrient retries. Tested native corrections remain local; no newer build or backend has been released. Preserve complete graph first frames and confirm the failed food request. Refresh staging provisioning before the next iOS archive. The separate recipe-precision correction remains a separate release item."
   },
   "notes": [
     "Public, read-only project status. No login needed.",
@@ -15,6 +15,10 @@
     "Reconciled through 9 September. Released changes, local fixes and reported phone results are tracked separately. This board update does not release a TRAK app build."
   ],
   "changes": [
+    {
+      "date": "2026-09-09",
+      "text": "Added the reported Coach Accept delay. A local correction starts its animation while saving, then confirms success only after the save completes. Failure recovery, duplicate taps, changed recommendations and the existing Coach flow pass 91 focused checks. It awaits the next staging package and phone acceptance; Build 41 and the live backend are unchanged."
+    },
     {
       "date": "2026-09-09",
       "text": "Build 41 phone testing identified missing-data waits behind graph delays, an incomplete goal-rate edit sequence and intermittent Food Editor retries. Goal-flow and initial-loading corrections are local; the graph preparation candidate has passed calculation parity checks. The actual intermittent food failure remains open. No new app or backend release."
@@ -1426,6 +1430,15 @@
       "summary": "The maintenance policy is accepted on independently reviewed simulations and is now integrated into live staging backend 2717, paired with Build 38. The accepted controller logic and confidence calculation are preserved in the integrated runtime. Existing simulation evidence remains valid; production promotion is still outstanding.",
       "nextStep": "The staging owner retains ordinary release compatibility checks and prepares a separately approved regular TRAK promotion. Do not repeat the accepted maintenance simulations or require prepared phone weight histories unless relevant code changes invalidate that evidence.",
       "updated": "2026-09-08"
+    },
+    {
+      "id": "coach-accept-animation-starts-without-save-delay",
+      "title": "Coach Accept responds immediately",
+      "area": "Coach & insights",
+      "status": "next_release",
+      "summary": "Build 41 waits for the server save before starting the tick animation. A tested local correction starts the animation on the tap, shows that the target is updating, and completes it only after the save succeeds. Failed saves restore the review for retry; target calculations are unchanged. All 91 focused checks pass. This is not yet in a distributed build.",
+      "nextStep": "Astra includes the correction in the next staging package, completes the release checks and confirms prompt tap feedback on phone. Keep the earlier review-checklist sequence and correct saved targets intact.",
+      "updated": "2026-09-09"
     },
     {
       "id": "coach-result-waits-for-review-checklist",
