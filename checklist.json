@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
   "title": "TRAK — master checklist",
-  "updatedAt": "2026-09-09T15:37:32Z",
+  "updatedAt": "2026-09-09T16:21:54Z",
   "reviewedThrough": "2026-09-09",
   "release": {
     "native": "TRAK Staging Build 41 is available in internal TestFlight. It retains Build 40 and adds the goal-rate return fix, calorie-minimum explanations, Food Editor micronutrient presentation, restored light background and nutrient-opening timing diagnostics. Both complete app suites and signed-artifact checks passed. Phone acceptance remains open.",
     "backend": "Staging backend still reports 2719 and passes its health check. Build 41 uses the same staging endpoint. The existing EPA + DHA and Coach maintenance work is retained; no backend change was part of this app release.",
-    "next": "Test the new UI and goal-rate changes on Build 41, then capture the repeated nutrient-opening delay; diagnostics are included, but that delay is not fixed. Refresh staging provisioning before the next iOS build. The separate recipe-precision backend correction still needs its own staging release; its recorded baseline test gaps remain."
+    "next": "Astra is addressing three Build 41 phone findings: the goal-weight edit sequence, nutrient graph request delays and intermittent food micronutrient retries. Candidates remain local; no newer build or backend has been released. Preserve complete graph first frames and confirm the failed food request. Refresh staging provisioning before the next iOS archive. The separate recipe-precision correction remains a separate release item."
   },
   "notes": [
     "Public, read-only project status. No login needed.",
@@ -15,6 +15,10 @@
     "Reconciled through 9 September. Released changes, local fixes and reported phone results are tracked separately. This board update does not release a TRAK app build."
   ],
   "changes": [
+    {
+      "date": "2026-09-09",
+      "text": "Build 41 phone testing identified missing-data waits behind graph delays, an incomplete goal-rate edit sequence and intermittent Food Editor retries. Goal-flow and initial-loading corrections are local; the graph preparation candidate has passed calculation parity checks. The actual intermittent food failure remains open. No new app or backend release."
+    },
     {
       "date": "2026-09-09",
       "text": "Staging Build 41 is available in internal TestFlight. It adds the Edit goal target-return correction, clearer calorie-minimum copy, full-screen food micronutrients with serving captions and blank zeros, and the restored light overview background. The repeated graph-opening delay remains open; local diagnostics are included. Full app suites passed 4,163 current-login and 110 legacy-login checks. Apple accepted this build despite the shared provisioning-profile change; future signing is tracked separately."
@@ -1499,9 +1503,9 @@
       "id": "micronutrient-graph-repeat-tap-delay",
       "title": "Remove the delay when reopening nutrient graphs",
       "area": "Coach & insights",
-      "status": "issue",
-      "summary": "A repeated tap still took about a second on Build 40. Build 41 adds local timing diagnostics for data preparation and first-frame rendering. The cause is not confirmed and no latency fix is claimed.",
-      "nextStep": "Install Build 41, then coordinate phone log capture with the release owner while opening a nutrient, going back and immediately reopening it.",
+      "status": "active",
+      "summary": "Build 41 phone traces show prepared graphs open in 22–33 ms, while missing data requests delay opening by up to 2.7 seconds. A local candidate prepares every Today breakdown with the overview, using the existing nutrient calculations. It is tested locally but not released; cold history can still require a request.",
+      "nextStep": "Astra owns the final native/backend release review and staging integration. Compare the same phone taps after release, including cached and cold history, before closing this issue.",
       "updated": "2026-09-09"
     },
     {
@@ -1511,6 +1515,24 @@
       "status": "planned",
       "summary": "Shared Apple account changes invalidated the older staging provisioning profile. Apple independently accepted Build 41 as valid and made it available in TestFlight. This is a follow-up for future signing, not a reported Build 41 install failure.",
       "nextStep": "The release owner should verify or refresh the staging signing profile before the next archive, preserving separation from production. Record the resulting profile and artifact checks.",
+      "updated": "2026-09-09"
+    },
+    {
+      "id": "goal-review-rate-edit-includes-goal-weight",
+      "title": "Goal-rate editing from plan review includes goal weight",
+      "area": "Coach & insights",
+      "status": "next_release",
+      "summary": "On Build 41, editing Goal rate from the plan review skips goal weight. The local correction opens goal weight, then goal rate, then returns to the review before saving. Related goal and Insights tests pass; target calculations are unchanged.",
+      "nextStep": "Astra includes the reviewed correction in the next authorized staging build. Check the full edit-and-save sequence on the phone.",
+      "updated": "2026-09-09"
+    },
+    {
+      "id": "search-food-micronutrients-intermittent-retry",
+      "title": "Search foods sometimes fail to load micronutrients",
+      "area": "Food editing",
+      "status": "issue",
+      "summary": "Reported on Build 41 with VPN off. The reproduced catalogue entry contains nutrients and its live response parses successfully, so missing catalogue data is not the explanation. A local correction separates initial loading from a failed request. The intermittent final Retry failure is still unresolved.",
+      "nextStep": "Astra must capture a failed app request and diagnose its cause. Local staging-only diagnostics record outcome and timing without food or account details; no failure fix or phone acceptance is claimed.",
       "updated": "2026-09-09"
     }
   ]

@@ -1,10 +1,10 @@
 # TRAK — master checklist
 
-Updated: 2026-09-09T15:37:32Z · Reviewed through 2026-09-09
+Updated: 2026-09-09T16:21:54Z · Reviewed through 2026-09-09
 
 - native: TRAK Staging Build 41 is available in internal TestFlight. It retains Build 40 and adds the goal-rate return fix, calorie-minimum explanations, Food Editor micronutrient presentation, restored light background and nutrient-opening timing diagnostics. Both complete app suites and signed-artifact checks passed. Phone acceptance remains open.
 - backend: Staging backend still reports 2719 and passes its health check. Build 41 uses the same staging endpoint. The existing EPA + DHA and Coach maintenance work is retained; no backend change was part of this app release.
-- next: Test the new UI and goal-rate changes on Build 41, then capture the repeated nutrient-opening delay; diagnostics are included, but that delay is not fixed. Refresh staging provisioning before the next iOS build. The separate recipe-precision backend correction still needs its own staging release; its recorded baseline test gaps remain.
+- next: Astra is addressing three Build 41 phone findings: the goal-weight edit sequence, nutrient graph request delays and intermittent food micronutrient retries. Candidates remain local; no newer build or backend has been released. Preserve complete graph first frames and confirm the failed food request. Refresh staging provisioning before the next iOS archive. The separate recipe-precision correction remains a separate release item.
 
 > Public, read-only project status. No login needed.
 
@@ -56,13 +56,13 @@ Nightly catalogue maintenance completed through the audit date, but recent groce
 
 Next: The operations owner must inspect the last runner outcome and restore scheduling on existing infrastructure, with durable start/completion/failure records and missed-run alerts. No scheduler change was made by the audit.
 
-### Remove the delay when reopening nutrient graphs
+### Search foods sometimes fail to load micronutrients
 
-ID: micronutrient-graph-repeat-tap-delay · Coach & insights · Reviewed 2026-09-09
+ID: search-food-micronutrients-intermittent-retry · Food editing · Reviewed 2026-09-09
 
-A repeated tap still took about a second on Build 40. Build 41 adds local timing diagnostics for data preparation and first-frame rendering. The cause is not confirmed and no latency fix is claimed.
+Reported on Build 41 with VPN off. The reproduced catalogue entry contains nutrients and its live response parses successfully, so missing catalogue data is not the explanation. A local correction separates initial loading from a failed request. The intermittent final Retry failure is still unresolved.
 
-Next: Install Build 41, then coordinate phone log capture with the release owner while opening a nutrient, going back and immediately reopening it.
+Next: Astra must capture a failed app request and diagnose its cause. Local staging-only diagnostics record outcome and timing without food or account details; no failure fix or phone acceptance is claimed.
 
 ## Next phone build
 
@@ -81,6 +81,14 @@ ID: signed-artifact-release-and-promotion-checks · Release & reliability · Rev
 A local release gate checks the signed iPhone and Android artifacts and requires recorded phone acceptance for claimed features. Release checks can run on the release Mac. Build 470 remains internal-only; these new protections do not retrospectively approve its unresolved nutrient issues.
 
 Next: The release owner must use the gate for the next candidate, verify matching platform artifacts and collect the required phone acceptance before wider promotion.
+
+### Goal-rate editing from plan review includes goal weight
+
+ID: goal-review-rate-edit-includes-goal-weight · Coach & insights · Reviewed 2026-09-09
+
+On Build 41, editing Goal rate from the plan review skips goal weight. The local correction opens goal weight, then goal rate, then returns to the review before saving. Related goal and Insights tests pass; target calculations are unchanged.
+
+Next: Astra includes the reviewed correction in the next authorized staging build. Check the full edit-and-save sequence on the phone.
 
 ## Needs checking
 
@@ -679,6 +687,14 @@ ID: recipe-saving-preserves-nutrition-precision · Recipes & custom foods · Rev
 The larger Astra/Sol pilot reproduced the 400-to-399 calorie loss during diary snapshot creation. A reviewed one-line local fix preserves fractional ingredient calories. Four new real-route cases pass, including the published daily total, recipe edits, Tune and unlink. The same four older test failures occur on the unchanged baseline and remain recorded. This fix is not in Build 40 or live backend 2719.
 
 Next: Prepare this separate backend correction on the latest staging source before its own release. Preserve old diary snapshots; retain the four recorded test gaps. Graft helped find supporting files but missed the decisive backend helper, so no token saving is claimed.
+
+### Remove the delay when reopening nutrient graphs
+
+ID: micronutrient-graph-repeat-tap-delay · Coach & insights · Reviewed 2026-09-09
+
+Build 41 phone traces show prepared graphs open in 22–33 ms, while missing data requests delay opening by up to 2.7 seconds. A local candidate prepares every Today breakdown with the overview, using the existing nutrient calculations. It is tested locally but not released; cold history can still require a request.
+
+Next: Astra owns the final native/backend release review and staging integration. Compare the same phone taps after release, including cached and cold history, before closing this issue.
 
 ## Resolved live
 
