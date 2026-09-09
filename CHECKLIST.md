@@ -1,10 +1,10 @@
 # TRAK — master checklist
 
-Updated: 2026-09-09T17:09:03Z · Reviewed through 2026-09-09
+Updated: 2026-09-09T17:18:43Z · Reviewed through 2026-09-09
 
-- native: Staging Build 42 is signed and uploading to TestFlight. Both complete app suites pass: 4,172 current-login and 110 legacy-login checks. Its signed package preserves HealthKit, app identity and existing launch assets. Build 41 remains the latest available phone build until Apple finishes processing.
+- native: TRAK Staging Build 42 is available in internal TestFlight. It retains Build 41 and adds immediate Coach Accept feedback, goal-weight/rate editing from review, nutrient graph preparation and clearer food micronutrient loading with diagnostics. All 4,282 complete app checks and signed-artifact checks pass. Phone acceptance remains open.
 - backend: Staging backend 2720 is live and verified. It prepares Today nutrient breakdowns together for the Build 42 graph-loading improvement while preserving the existing app response. Source identity, health, access checks and unchanged staging deployment settings are verified. Production is unchanged.
-- next: Astra is finishing the Build 42 upload and Apple processing. Then test Coach Accept feedback, the goal-weight/rate edit sequence and nutrient graph opening. The food micronutrient Retry issue remains open; Build 42 adds clearer loading and diagnostics. The separate recipe-precision correction remains a separate release item.
+- next: Install Build 42 and check Coach Accept, the goal-weight/rate edit sequence and nutrient graph opening. Astra owns any remaining food Retry and cold-graph investigation. The actual intermittent food failure is still open. Production promotion and the separate recipe-precision correction remain separate work.
 
 > Public, read-only project status. No login needed.
 
@@ -60,9 +60,9 @@ Next: The operations owner must inspect the last runner outcome and restore sche
 
 ID: search-food-micronutrients-intermittent-retry · Food editing · Reviewed 2026-09-09
 
-Reported on Build 41 with VPN off. The reproduced catalogue entry contains nutrients and its live response parses successfully, so missing catalogue data is not the explanation. A local correction separates initial loading from a failed request. The intermittent final Retry failure is still unresolved.
+Build 42 now separates initial micronutrient loading from an actual failed request and includes staging-only timing/outcome diagnostics. The reported food has catalogue nutrients, but its intermittent final Retry failure remains unresolved. This release does not claim to fix that request failure.
 
-Next: Astra must capture a failed app request and diagnose its cause. Local staging-only diagnostics record outcome and timing without food or account details; no failure fix or phone acceptance is claimed.
+Next: Astra captures and diagnoses the failed request using Build 42 diagnostics. Report the food name and whether Retry succeeds if it happens again; do not close this issue from a successful unrelated request.
 
 ## Next phone build
 
@@ -81,22 +81,6 @@ ID: signed-artifact-release-and-promotion-checks · Release & reliability · Rev
 A local release gate checks the signed iPhone and Android artifacts and requires recorded phone acceptance for claimed features. Release checks can run on the release Mac. Build 470 remains internal-only; these new protections do not retrospectively approve its unresolved nutrient issues.
 
 Next: The release owner must use the gate for the next candidate, verify matching platform artifacts and collect the required phone acceptance before wider promotion.
-
-### Coach Accept responds immediately
-
-ID: coach-accept-animation-starts-without-save-delay · Coach & insights · Reviewed 2026-09-09
-
-Build 41 waits for the server save before starting the tick animation. A tested local correction starts the animation on the tap, shows that the target is updating, and completes it only after the save succeeds. Failed saves restore the review for retry; target calculations are unchanged. All 91 focused checks pass. This is not yet in a distributed build.
-
-Next: Astra includes the correction in the next staging package, completes the release checks and confirms prompt tap feedback on phone. Keep the earlier review-checklist sequence and correct saved targets intact.
-
-### Goal-rate editing from plan review includes goal weight
-
-ID: goal-review-rate-edit-includes-goal-weight · Coach & insights · Reviewed 2026-09-09
-
-On Build 41, editing Goal rate from the plan review skips goal weight. The local correction opens goal weight, then goal rate, then returns to the review before saving. Related goal and Insights tests pass; target calculations are unchanged.
-
-Next: Astra includes the reviewed correction in the next authorized staging build. Check the full edit-and-save sequence on the phone.
 
 ## Needs checking
 
@@ -436,6 +420,14 @@ The maintenance policy is accepted on independently reviewed simulations and is 
 
 Next: The staging owner retains ordinary release compatibility checks and prepares a separately approved regular TRAK promotion. Do not repeat the accepted maintenance simulations or require prepared phone weight histories unless relevant code changes invalidate that evidence.
 
+### Coach Accept responds immediately
+
+ID: coach-accept-animation-starts-without-save-delay · Coach & insights · Reviewed 2026-09-09
+
+Build 42 starts the tick animation when Accept is tapped, shows that the target is updating, and completes it only after the save succeeds. Failed saves restore the review for retry; target calculations are unchanged. The focused Coach checks and full app suites pass.
+
+Next: Check Accept on Build 42: feedback should begin immediately and the saved plan should appear after confirmation. Astra investigates any remaining delay.
+
 ### Coach result waits for its review checklist
 
 ID: coach-result-waits-for-review-checklist · Coach & insights · Reviewed 2026-09-09
@@ -491,6 +483,22 @@ ID: micronutrient-overview-light-background · Coach & insights · Reviewed 2026
 Build 41 restores the light-grey background behind the main micronutrient overview so white cards remain visible. Dark mode is unchanged. Existing visual references verify the intended colours.
 
 Next: On Build 41, confirm the white nutrient cards stand out against the grey background in light mode.
+
+### Remove the delay when reopening nutrient graphs
+
+ID: micronutrient-graph-repeat-tap-delay · Coach & insights · Reviewed 2026-09-09
+
+Build 42 and live backend 2720 prepare every Today nutrient breakdown together, targeting the missing-data wait measured on Build 41. Calculation parity and app checks pass. Phone timing is not yet accepted; cold history or tapping before preparation finishes can still require a request.
+
+Next: Compare repeated graph taps on Build 42, including prepared and cold history. Astra uses the timing traces to investigate any remaining wait before closing this issue.
+
+### Goal-rate editing from plan review includes goal weight
+
+ID: goal-review-rate-edit-includes-goal-weight · Coach & insights · Reviewed 2026-09-09
+
+Build 42 opens goal weight, then goal rate, when editing Goal rate from the plan review. It returns to the review before the final Update plan. Related goal and Insights checks and the full app suites pass; target calculations are unchanged.
+
+Next: On Build 42, check the full edit-and-save sequence and the returned daily targets. Astra owns any remaining regression.
 
 ## Planned
 
@@ -688,22 +696,6 @@ The larger Astra/Sol pilot reproduced the 400-to-399 calorie loss during diary s
 
 Next: Prepare this separate backend correction on the latest staging source before its own release. Preserve old diary snapshots; retain the four recorded test gaps. Graft helped find supporting files but missed the decisive backend helper, so no token saving is claimed.
 
-### Remove the delay when reopening nutrient graphs
-
-ID: micronutrient-graph-repeat-tap-delay · Coach & insights · Reviewed 2026-09-09
-
-Build 41 traces showed prepared graphs opening in 22–33 ms, while missing data requests delayed opening by up to 2.7 seconds. Backend 2720 now prepares every Today breakdown together. The paired native change is signed in Build 42 and awaiting TestFlight processing. Cold history can still need a request.
-
-Next: Astra completes Build 42 distribution, then compares repeated phone taps with prepared and cold history before closing this issue.
-
-### Refresh staging provisioning before the next iOS build
-
-ID: refresh-staging-ios-provisioning · Release & reliability · Reviewed 2026-09-09
-
-A fresh staging profile is active and Build 42 signed successfully with HealthKit intact. No Apple capability or production widget configuration was changed. The old invalid profile is replaced for this build.
-
-Next: Astra completes the Apple upload and verifies TestFlight availability before closing this signing follow-up.
-
 ## Resolved live
 
 ### Search History matches stay visible
@@ -729,6 +721,14 @@ ID: backend-security-hardening-september · Release & reliability · Reviewed 20
 The reviewed September backend protections were deployed and verified, and retained in the subsequent production release. This closes that specific release scope, not every outstanding reliability or security item.
 
 Next: Keep the reviewed protections in future backend changes and track new findings separately. Sensitive implementation details stay in private engineering records.
+
+### Refresh staging provisioning before the next iOS build
+
+ID: refresh-staging-ios-provisioning · Release & reliability · Reviewed 2026-09-09
+
+A fresh active staging profile signed Build 42 successfully with HealthKit intact. Apple accepted the exact upload as valid and made it available in internal TestFlight. No Apple capability or production widget configuration was changed.
+
+Next: Use the verified staging profile for subsequent builds and recheck it if shared Apple capabilities change again.
 
 ## Earlier sign-off
 

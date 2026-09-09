@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
   "title": "TRAK — master checklist",
-  "updatedAt": "2026-09-09T17:09:03Z",
+  "updatedAt": "2026-09-09T17:18:43Z",
   "reviewedThrough": "2026-09-09",
   "release": {
-    "native": "Staging Build 42 is signed and uploading to TestFlight. Both complete app suites pass: 4,172 current-login and 110 legacy-login checks. Its signed package preserves HealthKit, app identity and existing launch assets. Build 41 remains the latest available phone build until Apple finishes processing.",
+    "native": "TRAK Staging Build 42 is available in internal TestFlight. It retains Build 41 and adds immediate Coach Accept feedback, goal-weight/rate editing from review, nutrient graph preparation and clearer food micronutrient loading with diagnostics. All 4,282 complete app checks and signed-artifact checks pass. Phone acceptance remains open.",
     "backend": "Staging backend 2720 is live and verified. It prepares Today nutrient breakdowns together for the Build 42 graph-loading improvement while preserving the existing app response. Source identity, health, access checks and unchanged staging deployment settings are verified. Production is unchanged.",
-    "next": "Astra is finishing the Build 42 upload and Apple processing. Then test Coach Accept feedback, the goal-weight/rate edit sequence and nutrient graph opening. The food micronutrient Retry issue remains open; Build 42 adds clearer loading and diagnostics. The separate recipe-precision correction remains a separate release item."
+    "next": "Install Build 42 and check Coach Accept, the goal-weight/rate edit sequence and nutrient graph opening. Astra owns any remaining food Retry and cold-graph investigation. The actual intermittent food failure is still open. Production promotion and the separate recipe-precision correction remain separate work."
   },
   "notes": [
     "Public, read-only project status. No login needed.",
@@ -15,6 +15,10 @@
     "Reconciled through 9 September. Released changes, local fixes and reported phone results are tracked separately. This board update does not release a TRAK app build."
   ],
   "changes": [
+    {
+      "date": "2026-09-09",
+      "text": "Build 42 is available in internal TestFlight, paired with verified live backend 2720. It adds Coach Accept feedback, the goal-weight/rate review flow, graph preparation and clearer food loading with diagnostics. All 4,282 complete app checks and signed-artifact checks pass. Fresh staging provisioning is verified. Phone acceptance and the actual food Retry failure remain open."
+    },
     {
       "date": "2026-09-09",
       "text": "Staging backend 2720 is deployed and verified. Build 42 is signed and uploading, with the Coach Accept, goal-review and nutrient follow-ups. All 4,282 complete app checks pass, plus signing/configuration checks. Apple processing and phone acceptance remain pending."
@@ -1439,9 +1443,9 @@
       "id": "coach-accept-animation-starts-without-save-delay",
       "title": "Coach Accept responds immediately",
       "area": "Coach & insights",
-      "status": "next_release",
-      "summary": "Build 41 waits for the server save before starting the tick animation. A tested local correction starts the animation on the tap, shows that the target is updating, and completes it only after the save succeeds. Failed saves restore the review for retry; target calculations are unchanged. All 91 focused checks pass. This is not yet in a distributed build.",
-      "nextStep": "Astra includes the correction in the next staging package, completes the release checks and confirms prompt tap feedback on phone. Keep the earlier review-checklist sequence and correct saved targets intact.",
+      "status": "testing",
+      "summary": "Build 42 starts the tick animation when Accept is tapped, shows that the target is updating, and completes it only after the save succeeds. Failed saves restore the review for retry; target calculations are unchanged. The focused Coach checks and full app suites pass.",
+      "nextStep": "Check Accept on Build 42: feedback should begin immediately and the saved plan should appear after confirmation. Astra investigates any remaining delay.",
       "updated": "2026-09-09"
     },
     {
@@ -1520,27 +1524,27 @@
       "id": "micronutrient-graph-repeat-tap-delay",
       "title": "Remove the delay when reopening nutrient graphs",
       "area": "Coach & insights",
-      "status": "active",
-      "summary": "Build 41 traces showed prepared graphs opening in 22–33 ms, while missing data requests delayed opening by up to 2.7 seconds. Backend 2720 now prepares every Today breakdown together. The paired native change is signed in Build 42 and awaiting TestFlight processing. Cold history can still need a request.",
-      "nextStep": "Astra completes Build 42 distribution, then compares repeated phone taps with prepared and cold history before closing this issue.",
+      "status": "testing",
+      "summary": "Build 42 and live backend 2720 prepare every Today nutrient breakdown together, targeting the missing-data wait measured on Build 41. Calculation parity and app checks pass. Phone timing is not yet accepted; cold history or tapping before preparation finishes can still require a request.",
+      "nextStep": "Compare repeated graph taps on Build 42, including prepared and cold history. Astra uses the timing traces to investigate any remaining wait before closing this issue.",
       "updated": "2026-09-09"
     },
     {
       "id": "refresh-staging-ios-provisioning",
       "title": "Refresh staging provisioning before the next iOS build",
       "area": "Release & reliability",
-      "status": "active",
-      "summary": "A fresh staging profile is active and Build 42 signed successfully with HealthKit intact. No Apple capability or production widget configuration was changed. The old invalid profile is replaced for this build.",
-      "nextStep": "Astra completes the Apple upload and verifies TestFlight availability before closing this signing follow-up.",
+      "status": "resolved",
+      "summary": "A fresh active staging profile signed Build 42 successfully with HealthKit intact. Apple accepted the exact upload as valid and made it available in internal TestFlight. No Apple capability or production widget configuration was changed.",
+      "nextStep": "Use the verified staging profile for subsequent builds and recheck it if shared Apple capabilities change again.",
       "updated": "2026-09-09"
     },
     {
       "id": "goal-review-rate-edit-includes-goal-weight",
       "title": "Goal-rate editing from plan review includes goal weight",
       "area": "Coach & insights",
-      "status": "next_release",
-      "summary": "On Build 41, editing Goal rate from the plan review skips goal weight. The local correction opens goal weight, then goal rate, then returns to the review before saving. Related goal and Insights tests pass; target calculations are unchanged.",
-      "nextStep": "Astra includes the reviewed correction in the next authorized staging build. Check the full edit-and-save sequence on the phone.",
+      "status": "testing",
+      "summary": "Build 42 opens goal weight, then goal rate, when editing Goal rate from the plan review. It returns to the review before the final Update plan. Related goal and Insights checks and the full app suites pass; target calculations are unchanged.",
+      "nextStep": "On Build 42, check the full edit-and-save sequence and the returned daily targets. Astra owns any remaining regression.",
       "updated": "2026-09-09"
     },
     {
@@ -1548,8 +1552,8 @@
       "title": "Search foods sometimes fail to load micronutrients",
       "area": "Food editing",
       "status": "issue",
-      "summary": "Reported on Build 41 with VPN off. The reproduced catalogue entry contains nutrients and its live response parses successfully, so missing catalogue data is not the explanation. A local correction separates initial loading from a failed request. The intermittent final Retry failure is still unresolved.",
-      "nextStep": "Astra must capture a failed app request and diagnose its cause. Local staging-only diagnostics record outcome and timing without food or account details; no failure fix or phone acceptance is claimed.",
+      "summary": "Build 42 now separates initial micronutrient loading from an actual failed request and includes staging-only timing/outcome diagnostics. The reported food has catalogue nutrients, but its intermittent final Retry failure remains unresolved. This release does not claim to fix that request failure.",
+      "nextStep": "Astra captures and diagnoses the failed request using Build 42 diagnostics. Report the food name and whether Retry succeeds if it happens again; do not close this issue from a successful unrelated request.",
       "updated": "2026-09-09"
     }
   ]
