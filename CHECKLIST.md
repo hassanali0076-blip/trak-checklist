@@ -1,6 +1,6 @@
 # TRAK — master checklist
 
-Updated: 2026-09-08T20:31:20Z · Reviewed through 2026-09-08
+Updated: 2026-09-09T03:00:58Z · Reviewed through 2026-09-09
 
 - native: Regular TRAK Build 470 and TRAK Staging Build 39 are the last independently verified internal TestFlight artifacts. The five Coach, cycling and nutrient follow-up fixes have been reviewed locally on top of Build 39. No newer native artifact has been distributed by this work. Android distribution is unchanged.
 - backend: Staging backend 2718 is live. It preserves the accepted maintenance policy and adds the reviewed recipe-unlink precision fix. Health, runtime identity and authentication checks passed. Production backend 2715 remains separate and unchanged by this work.
@@ -12,7 +12,7 @@ Updated: 2026-09-08T20:31:20Z · Reviewed through 2026-09-08
 
 > Updates appear here after the shared checklist is published. Local edits and chat messages do not update it.
 
-> Reconciled through 8 September. Released changes, local fixes and reported phone results are tracked separately. This board update does not release a TRAK app build.
+> Reconciled through 9 September. Released changes, local fixes and reported phone results are tracked separately. This board update does not release a TRAK app build.
 
 ## Known issue
 
@@ -453,6 +453,14 @@ ID: public-store-launch · Release & reliability · Reviewed 2026-08-31
 The app is in private beta. Public App Store and Google Play launch are separate future work.
 
 Next: Finish beta acceptance, store assets and rollout checks.
+
+### Add first-use guides for key app features
+
+ID: native-ftux-feature-tutorial-modals · Account & onboarding · Reviewed 2026-09-09
+
+Light and dark designs are approved for micronutrient bars, nutrition history, multi-food logging and Trend versus Scale weight. Quick Actions is excluded because it is being removed. Nothing is implemented or released.
+
+Next: Later, build the approved native floating modal and carousel using the real app components. Define dismissal, replay, accessibility and reduced-motion behaviour before release.
 
 ### Remaining new-user and empty-state walk
 
