@@ -1,20 +1,24 @@
 {
   "schemaVersion": 1,
   "title": "TRAK — master checklist",
-  "updatedAt": "2026-09-08T20:31:20Z",
-  "reviewedThrough": "2026-09-08",
+  "updatedAt": "2026-09-09T03:02:22Z",
+  "reviewedThrough": "2026-09-09",
   "release": {
-    "native": "Regular TRAK Build 470 and TRAK Staging Build 39 are the last independently verified internal TestFlight artifacts. The five Coach, cycling and nutrient follow-up fixes have been reviewed locally on top of Build 39. No newer native artifact has been distributed by this work. Android distribution is unchanged.",
-    "backend": "Staging backend 2718 is live. It preserves the accepted maintenance policy and adds the reviewed recipe-unlink precision fix. Health, runtime identity and authentication checks passed. Production backend 2715 remains separate and unchanged by this work.",
-    "next": "The reviewed native follow-ups have passed both complete app test runs. Next, package a new staging app and coordinate the separate EPA + DHA backend companion. The large-text visual tests now cover the enabled TRAK Custom foods setting using baselines from unchanged Build 39. Phone acceptance remains pending; no new native artifact or EPA backend deployment is claimed."
+    "native": "TRAK Staging Build 40 is available in the internal TestFlight group. It builds on Build 39 and contains all five reviewed Coach, cycling and nutrient follow-ups. Signing, Apple Health entitlement and both complete app test suites passed. Phone acceptance is pending. Regular TRAK and Android distribution were not changed by this release.",
+    "backend": "Staging backend 2719 is live and paired with Build 40. It adds the reviewed EPA + DHA target, history and coverage contract while retaining the accepted maintenance policy and recipe-unlink precision fix. Live source and calculation checks match the candidate; staging configuration is preserved. Production was not changed.",
+    "next": "Update TRAK Staging to Build 40 and test the five delivered fixes. The next larger Astra/Sol pilot investigates recipe-saving precision across saving, reopening, logging and unlinking, with measured Graft navigation and mandatory Astra review. That new pilot is separate from Build 40."
   },
   "notes": [
     "Public, read-only project status. No login needed.",
     "Historical checks are retained separately; a new regression is not closed by an older sign-off.",
     "Updates appear here after the shared checklist is published. Local edits and chat messages do not update it.",
-    "Reconciled through 8 September. Released changes, local fixes and reported phone results are tracked separately. This board update does not release a TRAK app build."
+    "Reconciled through 9 September. Released changes, local fixes and reported phone results are tracked separately. This board update does not release a TRAK app build."
   ],
   "changes": [
+    {
+      "date": "2026-09-09",
+      "text": "Staging Build 40 is available in internal TestFlight, paired with verified live backend 2719. All five transferred Coach, cycling and nutrient fixes are delivered; phone acceptance remains open. Both complete app suites passed (4,159 current-login and 110 legacy-login checks). The next larger recipe-saving precision pilot has started with a focused reproduction gate and measured Graft use. Production was not changed."
+    },
     {
       "date": "2026-09-08",
       "text": "Astra reviewed and integrated the five transferred Coach/nutrient follow-ups locally. Review replaced a copied-save test with the real cycling settings journey and caught stale-owner and later-edit cases. The EPA + DHA backend/app contract now agrees on incomplete data. An inherited feature-flag visual-test gap was identified against unchanged Build 39 and corrected with separate baselines; no new native build or EPA backend deployment is claimed. Both complete app test runs now pass: 4,159 current-login checks and 110 legacy-login checks. Graft repository mapping is installed and connected to Codex for agent navigation."
@@ -1008,8 +1012,8 @@
       "area": "Release & reliability",
       "status": "planned",
       "summary": "The reviewed recipe-unlink precision fix is deployed on staging backend 2718: unlinking now preserves stored fractional calories. Real PostgreSQL rollback and account-boundary checks passed. Earlier rounding while saving a recipe remains open, alongside the other reliability follow-ups and existing test failures.",
-      "nextStep": "Verify normal unlink use in the staging app. Address recipe-saving precision separately and retain the outstanding test failures before broader sign-off.",
-      "updated": "2026-09-08"
+      "nextStep": "Confirm normal unlink use on staging. The separate recipe-saving precision pilot is now active; other reliability follow-ups and recorded test failures remain open.",
+      "updated": "2026-09-09"
     },
     {
       "id": "import-sleep-from-apple-health-and-health-connect",
@@ -1231,10 +1235,10 @@
       "id": "micronutrient-details-open-with-complete-current-data",
       "title": "Micronutrient details open with the correct complete view",
       "area": "Coach & insights",
-      "status": "active",
-      "summary": "The local fix has passed review and delayed-response tests. The selected nutrient view is prepared before navigation, so it opens with its complete data. Old account, date or route responses cannot open the wrong view.",
-      "nextStep": "Include it in the next staging app and retest a cold saved timeframe, including 6 months. Phone acceptance is still pending.",
-      "updated": "2026-09-08"
+      "status": "testing",
+      "summary": "Build 40 now prepares the selected complete nutrient view before navigation. Delayed-response and account/date/route checks passed; the phone check remains open.",
+      "nextStep": "On Build 40, cold-open a saved nutrient timeframe, including 6 months, and confirm the correct complete view appears.",
+      "updated": "2026-09-09"
     },
     {
       "id": "micronutrient-all-range-uses-recorded-history",
@@ -1249,10 +1253,10 @@
       "id": "micronutrient-target-markers-remain-visible",
       "title": "Nutrient target markers remain visible",
       "area": "Coach & insights",
-      "status": "active",
-      "summary": "The shared nutrient rail colours have been restored to the historical light and dark theme. Astra reviewed rendered examples and the marker/range tests; nutrient values and target calculations are preserved.",
-      "nextStep": "Confirm the integrated staging app has consistent rail contrast and visible target markers across nutrient screens and Food Editor.",
-      "updated": "2026-09-08"
+      "status": "testing",
+      "summary": "Build 40 restores the historical light and dark nutrient rail colours. Astra reviewed rendered examples and marker/range tests; nutrient values and target calculations are preserved.",
+      "nextStep": "On Build 40, check rail contrast and visible target markers across nutrient screens and Food Editor.",
+      "updated": "2026-09-09"
     },
     {
       "id": "micronutrient-formatting-and-spacing",
@@ -1402,28 +1406,37 @@
       "id": "coach-result-waits-for-review-checklist",
       "title": "Coach result waits for its review checklist",
       "area": "Coach & insights",
-      "status": "active",
-      "summary": "The local fix has passed Astra review. Coach now waits for both its data and the completed review checklist before showing the result, including slow replies, retry, reduced motion and leaving the screen.",
-      "nextStep": "Include the reviewed fix in the next staging app, then confirm the checklist finishes before its result appears. It is not yet in a newly distributed build.",
-      "updated": "2026-09-08"
+      "status": "testing",
+      "summary": "Build 40 waits for both Coach data and the completed review checklist before showing the result. Slow responses, retry, reduced motion and leaving the screen are covered by tests.",
+      "nextStep": "On Build 40, repeat a staging Coach check-in and confirm the checklist finishes before its result appears.",
+      "updated": "2026-09-09"
     },
     {
       "id": "cycling-save-updates-daily-targets-first-frame",
       "title": "Daily targets show saved cycling values immediately",
       "area": "Coach & insights",
-      "status": "active",
-      "summary": "The local fix now follows the real settings flow: the exact saved cycling week appears on the first return to Insights. Cancelling, changing accounts, or making a later calorie, macro or goal edit cannot reuse an outdated plan. Astra rejected cache shortcuts and verified the actual save path.",
-      "nextStep": "Package the reviewed candidate in the next staging app, then confirm the first returned daily-target card uses the saved calories and macros.",
-      "updated": "2026-09-08"
+      "status": "testing",
+      "summary": "Build 40 carries the exact saved cycling week through the real settings flow, so the first returned Insights card has the saved calories and macros. Cancellation, account changes and later target edits are covered.",
+      "nextStep": "On Build 40, save a different cycling plan and confirm the first returned daily-target card immediately matches it.",
+      "updated": "2026-09-09"
     },
     {
       "id": "epa-dha-combined-standard-target",
       "title": "EPA + DHA uses the combined 0.25 g target",
       "area": "Coach & insights",
+      "status": "testing",
+      "summary": "Build 40 and live backend 2719 now share the combined 0.25 g target, history and coverage contract. Complete components produce a known total; incomplete foods remain unknown. The deployed calculation probe exactly matches the reviewed candidate.",
+      "nextStep": "On Build 40, verify the combined target and intake in overview/detail/coverage, including a food missing one component. Phone acceptance remains open.",
+      "updated": "2026-09-09"
+    },
+    {
+      "id": "recipe-saving-preserves-nutrition-precision",
+      "title": "Recipe saving preserves nutrition precision",
+      "area": "Recipes & custom foods",
       "status": "active",
-      "summary": "Both local halves have passed review: the backend provides the combined 0.25 g target, history and coverage, and the app uses the same combined intake. An EPA-only food plus a different DHA-only food cannot create a false known total. The backend companion is not included in live backend 2718.",
-      "nextStep": "Coordinate the reviewed backend companion with the next native staging build, then verify the complete contract in staging before marking this live.",
-      "updated": "2026-09-08"
+      "summary": "Astra selected the outstanding recipe-saving precision issue for the next larger workflow pilot. The first step reproduces the earlier 400-to-399 calorie report on the current staging source and locates where precision changes. No new recipe-saving fix is included in Build 40.",
+      "nextStep": "Sol reproduces and traces create/edit/save/log/unlink behavior, recording Graft navigation time and fallbacks. Astra reviews the evidence before any app change. Preserve historical snapshots, manual tuning and fractional servings.",
+      "updated": "2026-09-09"
     }
   ]
 }
