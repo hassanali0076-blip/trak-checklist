@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "title": "TRAK — master checklist",
-  "updatedAt": "2026-09-09T20:02:45Z",
+  "updatedAt": "2026-09-09T20:21:45Z",
   "reviewedThrough": "2026-09-09",
   "release": {
     "native": "TRAK Staging Build 43 is available in internal TestFlight. It retains Build 42 and adds early graph preparation, protected cached history, EPA+DHA cache coverage, a faster graph slide and the continuous Coach tick. All 4,290 complete app tests and signed-artifact checks pass. Installation and physical phone observations are recorded separately.",
@@ -15,6 +15,10 @@
     "Reconciled through 9 September. Released changes, local fixes and reported phone results are tracked separately. This board update does not release a TRAK app build."
   ],
   "changes": [
+    {
+      "date": "2026-09-09",
+      "text": "The release inventory is now a complete visual page: 18 staging change groups with their remaining checks, unfinished fixes and production protections. Open Staging → production above the checklist. The previous shared anchor now opens this full view."
+    },
     {
       "date": "2026-09-09",
       "text": "Build 43 is available in internal TestFlight and backend 2721 is verified live. Graph preparation, cache retention and the 200ms slide fix reproduced delays; Coach draws a continuous tick; iodine is recognised by the shared backend. All 4,290 app tests and signed-artifact checks pass. The promotion ledger now covers 572 differing tracked paths and retains all earlier staging groups and newer production protections. This staging release did not deploy production. The inventory also caught the separate production 2716 recipe release and now protects it during future promotion."
@@ -250,8 +254,8 @@
       "title": "Staging changes awaiting production",
       "area": "Production promotion",
       "status": "active",
-      "summary": "The maintained list now includes Build 43 and backend 2721: graph preparation/retention/transition, the continuous Coach tick and iodine, alongside all earlier staging work. Compared with regular TRAK 472/backend 2716, the private inventory records 439 native and 133 backend/repository file differences. Files are not individual features. Newer production work remains explicitly protected.",
-      "nextStep": "Astra updates this after every staging release or production port. Full list: https://github.com/hassanali0076-blip/trak-checklist/blob/main/STAGING_TO_PRODUCTION.md. Production promotion requires reviewed integration and its own release evidence.",
+      "summary": "Open the dedicated visual release list to see all 18 staging change groups, each remaining production check, unfinished fixes and newer production work to preserve. It includes Staging Build 43 and backend 2721. This is a release inventory; individual acceptance and production promotion remain separately recorded.",
+      "nextStep": "Full visual list: https://trak-checklist.hassanali0076.chatgpt.site/staging-to-production. Astra maintains the shared STAGING_TO_PRODUCTION.md source after every staging release or production port. The old checklist anchor also opens the full list. Production promotion requires reviewed integration and its own release evidence.",
       "updated": "2026-09-09"
     },
     {

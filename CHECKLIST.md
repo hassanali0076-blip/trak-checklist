@@ -1,6 +1,6 @@
 # TRAK — master checklist
 
-Updated: 2026-09-09T20:02:45Z · Reviewed through 2026-09-09
+Updated: 2026-09-09T20:21:45Z · Reviewed through 2026-09-09
 
 - native: TRAK Staging Build 43 is available in internal TestFlight. It retains Build 42 and adds early graph preparation, protected cached history, EPA+DHA cache coverage, a faster graph slide and the continuous Coach tick. All 4,290 complete app tests and signed-artifact checks pass. Installation and physical phone observations are recorded separately.
 - backend: Staging backend 2721 is live and its running source is verified. It fixes the missing iodine read contract without changing nutrient values or inventing a recommended target. All 101 focused tests and 174 subtests pass. The earlier broader test-fixture gaps remain separately tracked. Production backend 2716 was released separately for recipe import/save corrections; this staging release did not modify it.
@@ -724,9 +724,9 @@ Next: Compare uncached latency, food-ranking parity, catalogue licensing/freshne
 
 ID: staging-changes-awaiting-production · Production promotion · Reviewed 2026-09-09
 
-The maintained list now includes Build 43 and backend 2721: graph preparation/retention/transition, the continuous Coach tick and iodine, alongside all earlier staging work. Compared with regular TRAK 472/backend 2716, the private inventory records 439 native and 133 backend/repository file differences. Files are not individual features. Newer production work remains explicitly protected.
+Open the dedicated visual release list to see all 18 staging change groups, each remaining production check, unfinished fixes and newer production work to preserve. It includes Staging Build 43 and backend 2721. This is a release inventory; individual acceptance and production promotion remain separately recorded.
 
-Next: Astra updates this after every staging release or production port. Full list: https://github.com/hassanali0076-blip/trak-checklist/blob/main/STAGING\_TO\_PRODUCTION.md. Production promotion requires reviewed integration and its own release evidence.
+Next: Full visual list: https://trak-checklist.hassanali0076.chatgpt.site/staging-to-production. Astra maintains the shared STAGING\_TO\_PRODUCTION.md source after every staging release or production port. The old checklist anchor also opens the full list. Production promotion requires reviewed integration and its own release evidence.
 
 ### Complete the full Coach effectiveness review
 

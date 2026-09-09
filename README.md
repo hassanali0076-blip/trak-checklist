@@ -4,7 +4,8 @@ Public project status for Aadam, Josh, and AI agents. No login is needed to read
 
 - [Easy-view board](https://trak-checklist.hassanali0076.chatgpt.site)
 - [Full Markdown checklist](CHECKLIST.md)
-- [Staging changes awaiting production](STAGING_TO_PRODUCTION.md)
+- [Visual staging release list](https://trak-checklist.hassanali0076.chatgpt.site/staging-to-production)
+- [Release ledger source](STAGING_TO_PRODUCTION.md)
 - [Machine-readable source](checklist.json)
 
 ## Updating the checklist
@@ -22,6 +23,16 @@ The website reads it automatically. Local changes and chat messages do not updat
 
 If another update lands first, fetch/rebase and reconcile it; do not overwrite it.
 Viewing is anonymous. Publishing requires repository write permission. This is not an anonymous editable board.
+
+## Updating the release list
+
+`STAGING_TO_PRODUCTION.md` is the single source for the full visual release list.
+Keep its 18 current staging groups, remaining checks, undelivered work and
+production protections current at each release. The visual page reads it on
+load; use Refresh list to check the new publication. Data-only edits to this
+ledger do not require a website rebuild. Keep headings, paragraphs, bullet
+lists and two-column tables; do not add raw HTML or private diagnostics.
+The original `/#staging-changes-awaiting-production` link opens the full view.
 
 ## Status meanings
 

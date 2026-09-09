@@ -1,7 +1,7 @@
 # Staging changes awaiting production
 
 Updated 9 September 2026. Astra maintains this list at every staging release and
-production promotion. [Visual checklist](https://trak-checklist.hassanali0076.chatgpt.site/#staging-changes-awaiting-production).
+production promotion. [Visual checklist](https://trak-checklist.hassanali0076.chatgpt.site/staging-to-production).
 
 Current staging is **app Build 43 + backend 2721**. Regular TRAK is **Build 472**
 in internal TestFlight, with **production backend 2716**. This does not claim a
