@@ -1,10 +1,10 @@
 # TRAK — master checklist
 
-Updated: 2026-09-09T16:45:31Z · Reviewed through 2026-09-09
+Updated: 2026-09-09T17:09:03Z · Reviewed through 2026-09-09
 
-- native: TRAK Staging Build 41 is available in internal TestFlight. It retains Build 40 and adds the goal-rate return fix, calorie-minimum explanations, Food Editor micronutrient presentation, restored light background and nutrient-opening timing diagnostics. Both complete app suites and signed-artifact checks passed. Phone acceptance remains open.
-- backend: Staging backend still reports 2719 and passes its health check. Build 41 uses the same staging endpoint. The existing EPA + DHA and Coach maintenance work is retained; no backend change was part of this app release.
-- next: Astra is addressing four Build 41 phone findings: Coach Accept feedback, the goal-weight edit sequence, nutrient graph request delays and intermittent food micronutrient retries. Tested native corrections remain local; no newer build or backend has been released. Preserve complete graph first frames and confirm the failed food request. Refresh staging provisioning before the next iOS archive. The separate recipe-precision correction remains a separate release item.
+- native: Staging Build 42 is signed and uploading to TestFlight. Both complete app suites pass: 4,172 current-login and 110 legacy-login checks. Its signed package preserves HealthKit, app identity and existing launch assets. Build 41 remains the latest available phone build until Apple finishes processing.
+- backend: Staging backend 2720 is live and verified. It prepares Today nutrient breakdowns together for the Build 42 graph-loading improvement while preserving the existing app response. Source identity, health, access checks and unchanged staging deployment settings are verified. Production is unchanged.
+- next: Astra is finishing the Build 42 upload and Apple processing. Then test Coach Accept feedback, the goal-weight/rate edit sequence and nutrient graph opening. The food micronutrient Retry issue remains open; Build 42 adds clearer loading and diagnostics. The separate recipe-precision correction remains a separate release item.
 
 > Public, read-only project status. No login needed.
 
@@ -654,14 +654,6 @@ Typesense, Meilisearch and a managed food API were reviewed as options. No migra
 
 Next: Compare uncached latency, food-ranking parity, catalogue licensing/freshness and total operating cost only if the measured bottleneck justifies a migration. Preserve current food identification and immediate View all.
 
-### Refresh staging provisioning before the next iOS build
-
-ID: refresh-staging-ios-provisioning · Release & reliability · Reviewed 2026-09-09
-
-Shared Apple account changes invalidated the older staging provisioning profile. Apple independently accepted Build 41 as valid and made it available in TestFlight. This is a follow-up for future signing, not a reported Build 41 install failure.
-
-Next: The release owner should verify or refresh the staging signing profile before the next archive, preserving separation from production. Record the resulting profile and artifact checks.
-
 ## In progress
 
 ### Complete the full Coach effectiveness review
@@ -700,9 +692,17 @@ Next: Prepare this separate backend correction on the latest staging source befo
 
 ID: micronutrient-graph-repeat-tap-delay · Coach & insights · Reviewed 2026-09-09
 
-Build 41 phone traces show prepared graphs open in 22–33 ms, while missing data requests delay opening by up to 2.7 seconds. A local candidate prepares every Today breakdown with the overview, using the existing nutrient calculations. It is tested locally but not released; cold history can still require a request.
+Build 41 traces showed prepared graphs opening in 22–33 ms, while missing data requests delayed opening by up to 2.7 seconds. Backend 2720 now prepares every Today breakdown together. The paired native change is signed in Build 42 and awaiting TestFlight processing. Cold history can still need a request.
 
-Next: Astra owns the final native/backend release review and staging integration. Compare the same phone taps after release, including cached and cold history, before closing this issue.
+Next: Astra completes Build 42 distribution, then compares repeated phone taps with prepared and cold history before closing this issue.
+
+### Refresh staging provisioning before the next iOS build
+
+ID: refresh-staging-ios-provisioning · Release & reliability · Reviewed 2026-09-09
+
+A fresh staging profile is active and Build 42 signed successfully with HealthKit intact. No Apple capability or production widget configuration was changed. The old invalid profile is replaced for this build.
+
+Next: Astra completes the Apple upload and verifies TestFlight availability before closing this signing follow-up.
 
 ## Resolved live
 
