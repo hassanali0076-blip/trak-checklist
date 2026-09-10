@@ -1,15 +1,17 @@
 # Staging changes awaiting production
 
-Updated 9 September 2026. Astra maintains this list at every staging release and
+Updated 10 September 2026. Astra maintains this list at every staging release and
 production promotion. [Visual checklist](https://trak-checklist.hassanali0076.chatgpt.site/staging-to-production).
 
-Current staging is **app Build 43 + backend 2721**. Regular TRAK is **Build 472**
-in internal TestFlight, with **production backend 2716**. This does not claim a
+Current staging is **app Build 44 + backend 2721**. Build 44 is installed in
+place and launches on the test phone; it is also available in internal TestFlight.
+Saved preferences are unchanged across installation. Regular TRAK is **Build 472**
+in internal TestFlight, with **production backend 2717**. This does not claim a
 public App Store release. The comparison records the current production source
 line; its exact binding to the Build 472 archive still needs a release receipt.
 
 The private release ledger records every differing tracked file: **439 native
-paths and 133 backend/repository paths**. These are files, not 572 features or
+paths and 142 backend/repository paths**. These are files, not 581 features or
 a patch to copy. Some differences are newer production work to preserve.
 
 ## Already on staging; still awaiting production integration
@@ -30,7 +32,7 @@ a patch to copy. Some differences are newer production work to preserve.
 | Clearer calorie-minimum copy and Recommended badge | Keep the displayed minimum calculated for the person. |
 | Nutrient rails, legends, references, precision and EPA+DHA consistency | Preserve provenance and unknown-data handling. |
 | Full-screen food nutrients, serving in the title, requested zero display and light-mode background | Keep missing-data status distinct from the displayed number. |
-| Faster prepared nutrient graphs, short ALL history, retries and navigation safeguards | Build 43 prepares and retains histories earlier and shortens the slide to 200 ms while preserving a complete first frame and swipe-back. |
+| Faster prepared nutrient graphs, short ALL history, retries and navigation safeguards | Build 44 retains earlier history preparation and caching, restores normal screen-transition speed, and retains swipe-back. Complete chart drawing is still failing phone acceptance; see the active fix below. |
 | Clearer initial food nutrient loading and failure diagnostics | Intermittent final Retry is still unresolved. |
 | Recipe unlink preserves fractional nutrition | Earlier recipe-save rounding is a separate pilot. |
 | Native runtime/environment guards, packaging and share-link isolation | Reconcile production signing, links and configuration; retain production-only work. |
@@ -51,11 +53,23 @@ All 4,290 app tests and signed-artifact checks pass. Backend focused 101 tests a
 174 subtests pass. These are delivered fixes; phone observations after installing 43
 are recorded separately. All earlier staging changes above are retained.
 
+## Added in Build 44
+
+The graph uses the same standard screen transition as the other Insights
+screens. The special 200 ms override was removed after phone feedback. Earlier
+data preparation, cached histories and the back gesture are retained. Build 44
+is installed and launches; it is also available in internal TestFlight.
+
+The full run had two intermittent sync-test failures. The same test files pass
+on the prior build source and twice on this candidate; 50 Insights checks and
+the prior 97 focused graph checks pass. The initial failures remain in the
+release evidence; the full run is not described as all green.
+
 ## Fixes not delivered yet
 
 | Work | Current state |
 | --- | --- |
-| Restore standard nutrient graph transition speed | Tested for the next staging build, not yet delivered. Removes the special 200 ms override, keeping earlier data preparation, cached history and swipe-back. |
+| Nutrient graphs finish shading/bars late and leave a target-range edge gap | Reported on installed Build44. Astra is tracing the data/render sequence and correcting the geometry; no follow-up fix is delivered yet. |
 | Food micronutrients sometimes finish with Retry | Still needs the failed request diagnosis. |
 | Recipe-save precision pilot | Separate local candidate, not the delivered recipe-unlink fix. |
 | Older backend test-database gaps | Twelve broader failures reproduce unchanged on the staging baseline. Repair/verify the fixtures before broader integration sign-off; do not describe the full suite as passing. |
@@ -64,13 +78,14 @@ are recorded separately. All earlier staging changes above are retained.
 
 Production already has work missing from staging. A promotion must preserve:
 
-- Home-screen widgets and their sign-out, snapshot and deep-link integration.
+- Home-screen widgets and their sign-out, snapshot and deep-link integration, including newer selectable nutrient rings, configurable Quick actions and fibre data.
 - Automatic Health weight pickup, Apple Health writes and Health Connect behaviour.
 - Saved-food Search cache invalidation and icon persistence after edits, deletion,
   imports and app restart.
 - AI, voice, recipe and recurring-food identity, icons and serving calculations.
 - Production release checks, configuration, current release notes and signing.
-- The separately released backend 2716 recipe matching and recovery when an AI ingredient identity becomes stale. This newer production fix is not yet in staging.
+- The separately released backend 2716 recipe matching and recovery when an AI ingredient identity becomes stale.
+- Backend 2717 preserves original recipe household amounts alongside one gram calculation total, supports household-unit editing, and avoids counting the same amount twice. These newer production changes are not yet in staging.
 
 ## How this stays current
 
@@ -80,10 +95,10 @@ owner, remaining checks and production completion evidence. The private checker
 detects a stale file inventory or changed fetched production source. A green
 build or an old commit message does not close phone regressions.
 
-Next: Astra includes the standard-transition correction in the next staging
-build. Build 43 remains the delivered graph/tick/iodine baseline; its faster
-slide has been rejected in phone feedback. Astra maintains this list and owns
-follow-up testing. Production
-integration remains a separate reviewed release; updating this list deploys
-neither the app nor the backend. The broader master checklist retains research
-and unimplemented requests; those are not staging-delivered features.
+Next: compare the installed Build 44 graph transition with other Insights
+screens. Astra fixes the newly reported delayed chart drawing and outer-edge gap,
+maintains this list and owns
+follow-up regressions. Production integration remains a separate reviewed
+release; updating this list deploys neither the app nor the backend. The
+broader master checklist retains research and unimplemented requests; those
+are not staging-delivered features.

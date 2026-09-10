@@ -1,10 +1,10 @@
 # TRAK — master checklist
 
-Updated: 2026-09-09T20:30:58Z · Reviewed through 2026-09-09
+Updated: 2026-09-10T04:10:28Z · Reviewed through 2026-09-10
 
-- native: TRAK Staging Build 43 is available in internal TestFlight. It retains Build 42 and adds early graph preparation, protected cached history, EPA+DHA cache coverage, a faster graph slide and the continuous Coach tick. All 4,290 complete app tests and signed-artifact checks pass. Installation and physical phone observations are recorded separately.
-- backend: Staging backend 2721 is live and its running source is verified. It fixes the missing iodine read contract without changing nutrient values or inventing a recommended target. All 101 focused tests and 174 subtests pass. The earlier broader test-fixture gaps remain separately tracked. Production backend 2716 was released separately for recipe import/save corrections; this staging release did not modify it.
-- next: Next phone build: restore the standard nutrient-graph transition speed while retaining the faster data preparation and cache. This correction is tested but not yet on phones. Astra owns its staging delivery, the complete release list and separate food Retry follow-up.
+- native: TRAK Staging Build 44 is installed in place on the test phone and launches. It retains Build 43 and restores the normal graph transition speed while keeping earlier preparation, history retention and swipe-back. Saved preferences are unchanged across installation. It is also available in internal TestFlight; animation feel is checked separately. Phone feedback still reports late range shading/bars and an outer-edge gap; these are active fixes, not accepted graph behavior.
+- backend: Staging backend 2721 is live and its running source is verified. It fixes the missing iodine read contract without changing nutrient values or inventing a recommended target. All 101 focused tests and 174 subtests pass. The earlier broader test-fixture gaps remain separately tracked. Production backend 2717 was released separately to preserve original recipe amounts and household units, alongside earlier import/save recovery. This staging release did not modify production.
+- next: Test the installed Build 44 graph slide against the other Insights screens. Astra fixes the newly reported incomplete chart drawing and edge gap, maintains the complete staging-to-production list and owns follow-up regressions. Production promotion remains a separate reviewed release.
 
 > Public, read-only project status. No login needed.
 
@@ -12,9 +12,17 @@ Updated: 2026-09-09T20:30:58Z · Reviewed through 2026-09-09
 
 > Updates appear here after the shared checklist is published. Local edits and chat messages do not update it.
 
-> Reconciled through 9 September. Released changes, local fixes and reported phone results are tracked separately. This board update does not release a TRAK app build.
+> Reconciled through 10 September. Released changes, local fixes and reported phone results are tracked separately. This board update does not release a TRAK app build.
 
 ## Known issue
+
+### Draw complete nutrient graphs and align target-range edges
+
+ID: nutrient-graph-complete-drawing-and-edges · Coach & insights · Reviewed 2026-09-10
+
+On installed Build 44, the shaded range and some bars finish appearing 1–2 seconds after the screen opens. The target line and shading also stop before the outer bar edges. The exact nutrient and timeframe were not remembered.
+
+Next: Astra owns diagnosis and correction, preserves the standard transition speed, and verifies the complete first frame and plot edges before another phone build.
 
 ### Repair older nutrient test-database fixtures
 
@@ -74,14 +82,6 @@ Next: Astra captures and diagnoses the failed request using the retained Build 4
 
 ## Next phone build
 
-### Match nutrient graph transitions to the other screens
-
-ID: micronutrient-graph-standard-transition · Coach & insights · Reviewed 2026-09-09
-
-Build 43 used a special 200 ms graph animation, which felt too fast. The tested correction removes that override and uses the same standard screen transition as the rest of Insights. Earlier data preparation, cached history, complete first-frame values and swipe-back are preserved.
-
-Next: Astra includes this in the next staging build. It is committed and tested with 97 focused checks, but has not been built or uploaded. Compare the graph slide with the other screens after that build is installed.
-
 ### Native code organization
 
 ID: native-code-organisation-server-companion-later · Release & reliability · Reviewed 2026-08-31
@@ -99,6 +99,14 @@ A local release gate checks the signed iPhone and Android artifacts and requires
 Next: The release owner must use the gate for the next candidate, verify matching platform artifacts and collect the required phone acceptance before wider promotion.
 
 ## Needs checking
+
+### Match nutrient graph transitions to the other screens
+
+ID: micronutrient-graph-standard-transition · Coach & insights · Reviewed 2026-09-10
+
+Build 44 removes the special 200 ms graph animation and uses the same standard screen transition as the rest of Insights. Earlier data preparation, cached history and swipe-back are preserved.
+
+Next: Build 44 is installed in place and launches; it is also available in internal TestFlight. Compare the graph slide with the other screens now. Astra owns any remaining feedback; 50 Insights checks and the prior 97 focused checks pass.
 
 ### Make iodine graphs load
 
@@ -518,11 +526,11 @@ Next: On Build 41, confirm the white nutrient cards stand out against the grey b
 
 ### Remove the delay when reopening nutrient graphs
 
-ID: micronutrient-graph-repeat-tap-delay · Coach & insights · Reviewed 2026-09-09
+ID: micronutrient-graph-repeat-tap-delay · Coach & insights · Reviewed 2026-09-10
 
-Build 43 fixes reproduced preparation and cache gaps: the list starts one history batch early, preserves wider histories as other graphs open, and retains EPA+DHA data already returned by the server. Its platform slide is 200ms instead of 500ms, with swipe-back and complete graph/Today data preserved. New regressions and the full app suites pass.
+Build 44 retains the preparation and cache fixes from Build 43: the list starts one history batch early, preserves wider histories as other graphs open, and retains EPA+DHA data already returned by the server. It restores the normal shared slide, preserving swipe-back and the prior data-preparation code.
 
-Next: Build 43 feedback: the graph slide feels too fast compared with other screens. A separate tested correction restores standard transition timing for the next build while preserving this data preparation/cache work. Astra checks any remaining pre-transition delay separately.
+Next: Build 44 phone feedback: target-range shading and some bars finish appearing 1–2 seconds after opening. The target/range also leave an outer-edge gap. Astra is tracing the data/render sequence and correcting the geometry; this remains unaccepted.
 
 ### Goal-rate editing from plan review includes goal weight
 
@@ -730,9 +738,9 @@ Next: Compare uncached latency, food-ranking parity, catalogue licensing/freshne
 
 ### Staging changes awaiting production
 
-ID: staging-changes-awaiting-production · Production promotion · Reviewed 2026-09-09
+ID: staging-changes-awaiting-production · Production promotion · Reviewed 2026-09-10
 
-Open the dedicated visual release list to see all 18 staging change groups, each remaining production check, unfinished fixes and newer production work to preserve. It includes Staging Build 43 and backend 2721. This is a release inventory; individual acceptance and production promotion remain separately recorded.
+Open the dedicated visual release list to see all 18 staging change groups, each remaining production check, unfinished fixes and newer production work to preserve. It includes Staging Build 44 and backend 2721. This is a release inventory; individual acceptance and production promotion remain separately recorded.
 
 Next: Full visual list: https://trak-checklist.hassanali0076.chatgpt.site/staging-to-production. Astra maintains the shared STAGING\_TO\_PRODUCTION.md source after every staging release or production port. The old checklist anchor also opens the full list. Production promotion requires reviewed integration and its own release evidence.
 

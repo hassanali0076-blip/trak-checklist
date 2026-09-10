@@ -1,20 +1,24 @@
 {
   "schemaVersion": 1,
   "title": "TRAK — master checklist",
-  "updatedAt": "2026-09-09T20:30:58Z",
-  "reviewedThrough": "2026-09-09",
+  "updatedAt": "2026-09-10T04:10:28Z",
+  "reviewedThrough": "2026-09-10",
   "release": {
-    "native": "TRAK Staging Build 43 is available in internal TestFlight. It retains Build 42 and adds early graph preparation, protected cached history, EPA+DHA cache coverage, a faster graph slide and the continuous Coach tick. All 4,290 complete app tests and signed-artifact checks pass. Installation and physical phone observations are recorded separately.",
-    "backend": "Staging backend 2721 is live and its running source is verified. It fixes the missing iodine read contract without changing nutrient values or inventing a recommended target. All 101 focused tests and 174 subtests pass. The earlier broader test-fixture gaps remain separately tracked. Production backend 2716 was released separately for recipe import/save corrections; this staging release did not modify it.",
-    "next": "Next phone build: restore the standard nutrient-graph transition speed while retaining the faster data preparation and cache. This correction is tested but not yet on phones. Astra owns its staging delivery, the complete release list and separate food Retry follow-up."
+    "native": "TRAK Staging Build 44 is installed in place on the test phone and launches. It retains Build 43 and restores the normal graph transition speed while keeping earlier preparation, history retention and swipe-back. Saved preferences are unchanged across installation. It is also available in internal TestFlight; animation feel is checked separately. Phone feedback still reports late range shading/bars and an outer-edge gap; these are active fixes, not accepted graph behavior.",
+    "backend": "Staging backend 2721 is live and its running source is verified. It fixes the missing iodine read contract without changing nutrient values or inventing a recommended target. All 101 focused tests and 174 subtests pass. The earlier broader test-fixture gaps remain separately tracked. Production backend 2717 was released separately to preserve original recipe amounts and household units, alongside earlier import/save recovery. This staging release did not modify production.",
+    "next": "Test the installed Build 44 graph slide against the other Insights screens. Astra fixes the newly reported incomplete chart drawing and edge gap, maintains the complete staging-to-production list and owns follow-up regressions. Production promotion remains a separate reviewed release."
   },
   "notes": [
     "Public, read-only project status. No login needed.",
     "Historical checks are retained separately; a new regression is not closed by an older sign-off.",
     "Updates appear here after the shared checklist is published. Local edits and chat messages do not update it.",
-    "Reconciled through 9 September. Released changes, local fixes and reported phone results are tracked separately. This board update does not release a TRAK app build."
+    "Reconciled through 10 September. Released changes, local fixes and reported phone results are tracked separately. This board update does not release a TRAK app build."
   ],
   "changes": [
+    {
+      "date": "2026-09-10",
+      "text": "Build 44 is installed directly and launches, with saved preferences unchanged. It restores the normal graph transition while preserving prior staging changes. It is also available in internal TestFlight. Phone feedback reports delayed shading/bars and an outer-edge gap; these are actively being fixed. The release inventory now covers 439 native and 142 backend/repository paths, protecting newer production widget configuration and backend 2717 recipe source amounts. The release evidence retains two intermittent full-run sync-test failures and the passing baseline/candidate reruns."
+    },
     {
       "date": "2026-09-09",
       "text": "Nutrient graphs: the user rejected Build 43’s faster slide. The next-build correction restores the standard screen transition without undoing data preparation or caching; 97 focused checks pass. Not built/uploaded yet."
@@ -254,22 +258,31 @@
   ],
   "tasks": [
     {
+      "id": "nutrient-graph-complete-drawing-and-edges",
+      "title": "Draw complete nutrient graphs and align target-range edges",
+      "area": "Coach & insights",
+      "status": "issue",
+      "summary": "On installed Build 44, the shaded range and some bars finish appearing 1–2 seconds after the screen opens. The target line and shading also stop before the outer bar edges. The exact nutrient and timeframe were not remembered.",
+      "nextStep": "Astra owns diagnosis and correction, preserves the standard transition speed, and verifies the complete first frame and plot edges before another phone build.",
+      "updated": "2026-09-10"
+    },
+    {
       "id": "micronutrient-graph-standard-transition",
       "title": "Match nutrient graph transitions to the other screens",
       "area": "Coach & insights",
-      "status": "next_release",
-      "summary": "Build 43 used a special 200 ms graph animation, which felt too fast. The tested correction removes that override and uses the same standard screen transition as the rest of Insights. Earlier data preparation, cached history, complete first-frame values and swipe-back are preserved.",
-      "nextStep": "Astra includes this in the next staging build. It is committed and tested with 97 focused checks, but has not been built or uploaded. Compare the graph slide with the other screens after that build is installed.",
-      "updated": "2026-09-09"
+      "status": "testing",
+      "summary": "Build 44 removes the special 200 ms graph animation and uses the same standard screen transition as the rest of Insights. Earlier data preparation, cached history and swipe-back are preserved.",
+      "nextStep": "Build 44 is installed in place and launches; it is also available in internal TestFlight. Compare the graph slide with the other screens now. Astra owns any remaining feedback; 50 Insights checks and the prior 97 focused checks pass.",
+      "updated": "2026-09-10"
     },
     {
       "id": "staging-changes-awaiting-production",
       "title": "Staging changes awaiting production",
       "area": "Production promotion",
       "status": "active",
-      "summary": "Open the dedicated visual release list to see all 18 staging change groups, each remaining production check, unfinished fixes and newer production work to preserve. It includes Staging Build 43 and backend 2721. This is a release inventory; individual acceptance and production promotion remain separately recorded.",
+      "summary": "Open the dedicated visual release list to see all 18 staging change groups, each remaining production check, unfinished fixes and newer production work to preserve. It includes Staging Build 44 and backend 2721. This is a release inventory; individual acceptance and production promotion remain separately recorded.",
       "nextStep": "Full visual list: https://trak-checklist.hassanali0076.chatgpt.site/staging-to-production. Astra maintains the shared STAGING_TO_PRODUCTION.md source after every staging release or production port. The old checklist anchor also opens the full list. Production promotion requires reviewed integration and its own release evidence.",
-      "updated": "2026-09-09"
+      "updated": "2026-09-10"
     },
     {
       "id": "preserve-production-work-during-staging-promotion",
@@ -1626,9 +1639,9 @@
       "title": "Remove the delay when reopening nutrient graphs",
       "area": "Coach & insights",
       "status": "testing",
-      "summary": "Build 43 fixes reproduced preparation and cache gaps: the list starts one history batch early, preserves wider histories as other graphs open, and retains EPA+DHA data already returned by the server. Its platform slide is 200ms instead of 500ms, with swipe-back and complete graph/Today data preserved. New regressions and the full app suites pass.",
-      "nextStep": "Build 43 feedback: the graph slide feels too fast compared with other screens. A separate tested correction restores standard transition timing for the next build while preserving this data preparation/cache work. Astra checks any remaining pre-transition delay separately.",
-      "updated": "2026-09-09"
+      "summary": "Build 44 retains the preparation and cache fixes from Build 43: the list starts one history batch early, preserves wider histories as other graphs open, and retains EPA+DHA data already returned by the server. It restores the normal shared slide, preserving swipe-back and the prior data-preparation code.",
+      "nextStep": "Build 44 phone feedback: target-range shading and some bars finish appearing 1–2 seconds after opening. The target/range also leave an outer-edge gap. Astra is tracing the data/render sequence and correcting the geometry; this remains unaccepted.",
+      "updated": "2026-09-10"
     },
     {
       "id": "refresh-staging-ios-provisioning",
