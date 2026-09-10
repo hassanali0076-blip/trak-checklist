@@ -5,22 +5,21 @@ production promotion. [Visual checklist](https://trak-checklist.hassanali0076.ch
 
 Current staging is **app Build 45 + backend 2721**. Build 45's reported graph
 fix is accepted on the phone. Regular TRAK retains its separate production build;
-production backend **2718** is independently confirmed live.
+production backend **2718** was the verified baseline before the 2722 deployment.
 
 Astra has brought all 18 staging groups onto the latest production source in
 isolated candidates, preserving widgets, Health, search identities and recipe
-household amounts. **This is not deployed yet.** The combined backend passes
+household amounts. **Manual release is underway: backend 2722 and native Build 475.** The combined backend passes
 1,826 tests and 348 subtests; a separate disposable PostgreSQL run passes 90
 checks, including real transactions and offline replay. The combined app passes
 4,261 current sign-in tests and 122 older sign-in tests, with no failures.
-Unsigned iOS compilation also passes. Hosted checks cannot currently start;
-the equivalent checks have passed locally. Signed release and artifact acceptance
-remain separate steps.
+Unsigned iOS compilation also passes. The approved manual path uses those
+verified local checks. Build 475 is running its signed release gate.
 
-The production database needs two additive tables for serving-calculation
-validation. A read-only dry run confirmed they are missing and made no changes.
-The normal older deployment migration will not create them. Astra owns the
-reviewed migration and release sequence; no live data has been changed.
+The two required serving-calculation tables have now been added to the
+independently verified production database. Readback confirms both; rerunning
+the migration makes zero changes. Existing food and account records were
+untouched. Backend 2722 has merged and is deploying.
 
 The previous 443/142 file counts were an old comparison snapshot. The new
 candidate inventory records the actual integrated changes and deliberate

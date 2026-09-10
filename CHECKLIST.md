@@ -1,10 +1,10 @@
 # TRAK — master checklist
 
-Updated: 2026-09-10T07:28:43Z · Reviewed through 2026-09-10
+Updated: 2026-09-10T07:55:26Z · Reviewed through 2026-09-10
 
 - native: TRAK Staging Build 45 is installed in place and running on the test phone. It corrects incomplete Standard reference shading, older values changing the visible bar scale, and target-range edge gaps. It retains the normal transition and earlier staging changes. Saved preferences are unchanged across installation; regular TRAK 473 is intact. It is also available in internal TestFlight, verified valid and in beta testing. All 4,296 app tests pass, with 14 existing skips; six rendered regressions fail on the prior source and pass with the fix. The reported graph rendering and edge fix is now accepted on the phone; unrelated feature checks remain separate.
-- backend: Production backend 2718 is verified live; staging 2721 is unchanged. The isolated combined production candidate passes 1,826 tests and 348 subtests, plus 90 real PostgreSQL checks. Two additive serving-calculation tables are required before release; the production dry run made no writes.
-- next: The combined app passes 4,261 current sign-in tests and 122 older sign-in tests; the backend and real database checks also pass. Unsigned iOS compilation also passes. Hosted checks cannot currently start. Next are the guarded database migration, backend release and signed app release checks. Production has not changed.
+- backend: The approved manual release is underway. Both required serving-calculation tables are applied to production, independently verified, and confirmed safe to rerun with no changes. Backend 2722 has merged and is deploying. Staging backend 2721 is unchanged.
+- next: Astra is verifying the production backend while Build 475 runs its signed release gate. The app includes all 18 staging groups on top of the current production widget source. The existing local-check manual release path is approved; there is no hosted-check blocker.
 
 > Public, read-only project status. No login needed.
 
@@ -708,9 +708,9 @@ Next: Compare uncached latency, food-ranking parity, catalogue licensing/freshne
 
 ID: staging-changes-awaiting-production · Production promotion · Reviewed 2026-09-10
 
-All 18 staging groups are included in isolated production candidates, with newer widgets, Health, Search and recipe work preserved. The app passes 4,383 tests across both sign-in paths; backend and real database checks pass. Unsigned iOS compilation also passes. Production is unchanged.
+All 18 staging groups are integrated with newer production widgets, Health, Search and recipe work preserved. The 4,383 app tests and backend/database checks pass. The guarded schema migration is complete; backend 2722 is deploying and native Build 475 is in its signed release gate.
 
-Next: Restore hosted checks, then the guarded schema/backend/app release sequence and required signed-artifact acceptance.
+Next: Astra: verify the live backend, sign and deliver Build 475, then record the actual delivery and remaining device acceptance.
 
 ### Keep newer production work when promoting staging
 
@@ -718,7 +718,7 @@ ID: preserve-production-work-during-staging-promotion · Production promotion ·
 
 The combined source retains production widgets and picker corrections, automatic Health pickup and Health writes, saved-food Search cache/icon corrections, AI/voice/recipe/recurring identity and household amounts, plus production release configuration. Staging platform/signing defaults were reconciled against the production project.
 
-Next: Combined source review, app tests and unsigned iOS compilation pass. Complete hosted checks and signed artifact verification before release.
+Next: Production Build 474 and its widget source are verified as the integration base. Complete signed Build 475 artifact verification while preserving these changes.
 
 ### Promote staging micronutrient changes
 
