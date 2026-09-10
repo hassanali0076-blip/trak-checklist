@@ -211,6 +211,14 @@ both backends, all eighteen staging groups and the approved designs are preserve
 
 Build 477 corrects the earlier launcher-size calculation. A separate visual
 review finds excess space between the small calorie ring and macro strip, and
-between rows in the taller small Macros widget. Astra will prepare mockups for
-Aadam to review before native changes. The current release has not been changed
-by this report; passing render checks do not close the new spacing concern.
+between rows in the taller small Macros widget. Current/proposed mockups are
+prepared for Aadam to review before native changes. They include square/taller
+sizes and illustrative corner-roundness controls to explore Samsung's shape
+concern; those controls are not verified Samsung presets. The current release
+has not changed, and passing render checks do not close the spacing concern.
+
+Samsung acceptance must use actual One UI: record the model/version and options
+available to TRAK, test supported resize sizes and corner clipping, and confirm
+settings survive resizing/restart. Rings, values, shortcuts and the macro strip
+must remain clear of the edges. Pixel/emulator evidence alone does not establish
+Samsung compatibility.

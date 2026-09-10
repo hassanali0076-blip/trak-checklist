@@ -1,6 +1,6 @@
 # TRAK — master checklist
 
-Updated: 2026-09-10T17:03:30Z · Reviewed through 2026-09-10
+Updated: 2026-09-10T17:13:31Z · Reviewed through 2026-09-10
 
 - native: Regular iOS 476 remains available in internal TestFlight. Signed Android 477 is ready for the established manual Firebase upload, adding the approved widget sizing correction. Its exact APK passes 84 native host cases and all renders match the user-approved images. All 18 staging groups, approved widget designs and earlier production work are retained. This task has not uploaded Android 477 to Firebase. Staging 45 remains unchanged.
 - backend: Production backend 2722 is live and independently verified. The two-table serving-calculation migration is applied, read back and safe to rerun. Current native-contract searches return complete View all data; paired ordered results match the baseline. Server timing passes; Mac transport outliers are recorded separately and do not establish phone or VPN speed.
@@ -764,9 +764,9 @@ Next: Prepare this separate backend correction on the latest staging source befo
 
 ID: android-widget-spacing · Widgets · Reviewed 2026-09-10
 
-Current/proposed spacing mockups are prepared for the small Android calorie and Macros widgets. They bring the calorie macro strip up, slightly enlarge its ring in the taller size, and centre the four-ring grid with equal gaps. Square/taller shapes, light/dark and different example values are available for review. These are proposals; Build 477 and the native layouts have not changed.
+Current/proposed spacing mockups are prepared for the small Android calorie and Macros widgets. They bring the calorie macro strip up, slightly enlarge its ring in the taller size, and centre the four-ring grid with equal gaps. Size and illustrative corner-roundness controls now cover Samsung shape concerns, alongside light/dark and different example values. The corner choices are stress cases, not verified Samsung presets. Build 477 and native layouts have not changed.
 
-Next: Aadam reviews the spacing mockups. Astra applies only the accepted tweaks, then compares actual native renders across square and taller Android sizes before another build.
+Next: Aadam reviews the spacing mockups. Astra applies only accepted tweaks, then compares native renders across supported sizes. Samsung acceptance must record the actual model/One UI version and offered controls, check corner clipping and min/max/intermediate resizing, and confirm settings persist after resizing/restart. Pixel or emulator results alone cannot establish Samsung compatibility.
 
 ## Resolved live
 
