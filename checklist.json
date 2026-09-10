@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "title": "TRAK — master checklist",
-  "updatedAt": "2026-09-10T09:43:41Z",
+  "updatedAt": "2026-09-10T10:52:48Z",
   "reviewedThrough": "2026-09-10",
   "release": {
     "native": "Regular TRAK 475 is available in internal TestFlight. It includes all 18 staging groups plus food-read recovery and immediate Recipe Edit, built on production 474 with widgets and Health work retained. Both signed packages pass verification. The matching Android APK is prepared for the established manual Firebase upload; it has not been uploaded to Firebase. Staging 45 remains unchanged and its reported graph fix remains accepted.",
@@ -15,6 +15,10 @@
     "Reconciled through 10 September. Released changes, local fixes and reported phone results are tracked separately. This board update does not release a TRAK app build."
   ],
   "changes": [
+    {
+      "date": "2026-09-10",
+      "text": "Android widget loading repair passes all six native layouts locally. Shared widget data/account/day-state repairs have regression coverage. Small Macros polish is approved; all other widget previews are ready for design review. No new app build is distributed; Android configuration, final combined builds and phone acceptance remain."
+    },
     {
       "date": "2026-09-10",
       "text": "Added a deferred iPhone Duo design and compatibility review, covering folded/unfolded layouts, Split View, state preservation, charts, editors and widgets. Apple’s announcement was checked; no TRAK implementation or new release is included."
@@ -301,9 +305,9 @@
       "id": "android-widgets-cannot-load",
       "title": "Fix Android widgets showing “Can’t load widget”",
       "area": "Widgets",
-      "status": "issue",
-      "summary": "Reported on Pixel 9. An Android runtime check of the actual signed Build 475 APK reproduces failure in five of six widget layouts: Today small/wide, Macros and Quick actions small/wide. The Nutrient layout passes this rendering check. Ordinary app-view inflation passes all six, so earlier build and layout checks did not cover this failure. Missing widget-picker search results are also reported; their cause is not yet independently verified.",
-      "nextStep": "Astra owns the narrow Android rendering repair and a regression check using the real widget renderer. Then verify adding, finding and using each widget on Pixel 9. No fix or new build is distributed yet.",
+      "status": "active",
+      "summary": "The loading failure is repaired in a local candidate. All six layouts now pass the real Android widget renderer on API 36, with all four providers registered; released Build 475 failed five layouts. Nine native data-state cases also pass. No updated app has been distributed. The separate Pixel 9 widget-picker search symptom still needs phone verification.",
+      "nextStep": "Astra will finish the combined native build and remaining widget work, then deliver the candidate for Pixel 9 picker, add, refresh and tap testing. Do not treat emulator registration as confirmation of launcher search.",
       "updated": "2026-09-10"
     },
     {
@@ -1741,9 +1745,9 @@
       "id": "widget-layout-review-small-macros",
       "title": "Improve widget layouts, starting with small Macros",
       "area": "Widgets",
-      "status": "issue",
-      "summary": "Review completed against Build 475 source. Small iOS Macros lacks clear remaining/consumed context and has very small labels. Android configuration is absent, micronutrient choices are incomplete, and shared refresh, day-specific targets and account-state handling need correction. The existing iOS simulator view is supporting evidence, not new Build 475 phone acceptance. No app fix has been made.",
-      "nextStep": "Astra owns follow-up: repair Android loading first, then confirmed shared-state issues, then refine layouts and configuration. Verify all sizes, day-specific targets, account changes, light/dark appearance and real phone behavior before release.",
+      "status": "active",
+      "summary": "Aadam approved the Small Macros direction: larger rings, smaller lighter values and labels inside. Previews now cover all iOS and Android widget sizes with current/tweaked, theme and day-state controls. Shared target, nutrient, account and stale-day fixes are implemented locally with focused regression coverage. The visual changes are not applied in the app or distributed.",
+      "nextStep": "Aadam reviews the remaining widget mockups. Astra will apply the accepted polish, finish Android configuration and size handling, review and rebuild the combined candidate, then verify native appearance and phone behavior before release.",
       "updated": "2026-09-10"
     },
     {

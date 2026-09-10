@@ -1,6 +1,6 @@
 # TRAK — master checklist
 
-Updated: 2026-09-10T09:43:41Z · Reviewed through 2026-09-10
+Updated: 2026-09-10T10:52:48Z · Reviewed through 2026-09-10
 
 - native: Regular TRAK 475 is available in internal TestFlight. It includes all 18 staging groups plus food-read recovery and immediate Recipe Edit, built on production 474 with widgets and Health work retained. Both signed packages pass verification. The matching Android APK is prepared for the established manual Firebase upload; it has not been uploaded to Firebase. Staging 45 remains unchanged and its reported graph fix remains accepted.
 - backend: Production backend 2722 is live and independently verified. The two-table serving-calculation migration is applied, read back and safe to rerun. Current native-contract searches return complete View all data; paired ordered results match the baseline. Server timing passes; Mac transport outliers are recorded separately and do not establish phone or VPN speed.
@@ -15,14 +15,6 @@ Updated: 2026-09-10T09:43:41Z · Reviewed through 2026-09-10
 > Reconciled through 10 September. Released changes, local fixes and reported phone results are tracked separately. This board update does not release a TRAK app build.
 
 ## Known issue
-
-### Fix Android widgets showing “Can’t load widget”
-
-ID: android-widgets-cannot-load · Widgets · Reviewed 2026-09-10
-
-Reported on Pixel 9. An Android runtime check of the actual signed Build 475 APK reproduces failure in five of six widget layouts: Today small/wide, Macros and Quick actions small/wide. The Nutrient layout passes this rendering check. Ordinary app-view inflation passes all six, so earlier build and layout checks did not cover this failure. Missing widget-picker search results are also reported; their cause is not yet independently verified.
-
-Next: Astra owns the narrow Android rendering repair and a regression check using the real widget renderer. Then verify adding, finding and using each widget on Pixel 9. No fix or new build is distributed yet.
 
 ### Regional product typos can miss a valid result
 
@@ -63,14 +55,6 @@ ID: grocery-refresh-scheduling-and-completion-receipts · Search & catalogue · 
 Nightly catalogue maintenance completed through the audit date, but recent grocery triggers failed before running and the latest successful trigger did not establish refresh completion. Reliable recent grocery results remain unverified.
 
 Next: The operations owner must inspect the last runner outcome and restore scheduling on existing infrastructure, with durable start/completion/failure records and missed-run alerts. No scheduler change was made by the audit.
-
-### Improve widget layouts, starting with small Macros
-
-ID: widget-layout-review-small-macros · Widgets · Reviewed 2026-09-10
-
-Review completed against Build 475 source. Small iOS Macros lacks clear remaining/consumed context and has very small labels. Android configuration is absent, micronutrient choices are incomplete, and shared refresh, day-specific targets and account-state handling need correction. The existing iOS simulator view is supporting evidence, not new Build 475 phone acceptance. No app fix has been made.
-
-Next: Astra owns follow-up: repair Android loading first, then confirmed shared-state issues, then refine layouts and configuration. Verify all sizes, day-specific targets, account changes, light/dark appearance and real phone behavior before release.
 
 ## Next phone build
 
@@ -720,6 +704,14 @@ Next: Astra owns the future review. Start with Apple’s official iPhone Duo/iOS
 
 ## In progress
 
+### Fix Android widgets showing “Can’t load widget”
+
+ID: android-widgets-cannot-load · Widgets · Reviewed 2026-09-10
+
+The loading failure is repaired in a local candidate. All six layouts now pass the real Android widget renderer on API 36, with all four providers registered; released Build 475 failed five layouts. Nine native data-state cases also pass. No updated app has been distributed. The separate Pixel 9 widget-picker search symptom still needs phone verification.
+
+Next: Astra will finish the combined native build and remaining widget work, then deliver the candidate for Pixel 9 picker, add, refresh and tap testing. Do not treat emulator registration as confirmation of launcher search.
+
 ### Complete the full Coach effectiveness review
 
 ID: coach-outcome-evaluation-before-full-signoff · Coach & insights · Reviewed 2026-09-10
@@ -751,6 +743,14 @@ ID: recipe-saving-preserves-nutrition-precision · Recipes & custom foods · Rev
 The larger Astra/Sol pilot reproduced the 400-to-399 calorie loss during diary snapshot creation. A reviewed one-line local fix preserves fractional ingredient calories. Four new real-route cases pass, including the published daily total, recipe edits, Tune and unlink. The same four older test failures occur on the unchanged baseline and remain recorded. This fix is not in Build 40 or live backend 2719.
 
 Next: Prepare this separate backend correction on the latest staging source before its own release. Preserve old diary snapshots; retain the four recorded test gaps. Graft helped find supporting files but missed the decisive backend helper, so no token saving is claimed.
+
+### Improve widget layouts, starting with small Macros
+
+ID: widget-layout-review-small-macros · Widgets · Reviewed 2026-09-10
+
+Aadam approved the Small Macros direction: larger rings, smaller lighter values and labels inside. Previews now cover all iOS and Android widget sizes with current/tweaked, theme and day-state controls. Shared target, nutrient, account and stale-day fixes are implemented locally with focused regression coverage. The visual changes are not applied in the app or distributed.
+
+Next: Aadam reviews the remaining widget mockups. Astra will apply the accepted polish, finish Android configuration and size handling, review and rebuild the combined candidate, then verify native appearance and phone behavior before release.
 
 ## Resolved live
 
