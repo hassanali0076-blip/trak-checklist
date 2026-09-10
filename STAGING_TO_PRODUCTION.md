@@ -187,3 +187,16 @@ and new device acceptance are separate. Build 45 graph acceptance remains valid;
 there is no need to repeat that test merely because the checklist changed.
 Updating this list deploys neither the app nor the backend. Research and other
 unimplemented master-checklist requests are separate from this release.
+
+## Android widget sizing correction awaiting release
+
+A phone report after Build 476 exposed tiny rings and excessive empty space.
+The released APK reproduces the problem: all four providers combine launcher
+width/height bounds from different orientations. The tested correction restores
+the approved sizes and wide Search layout using the actual available space.
+It passes 84 native cases, including portrait and landscape host selection.
+
+This correction is not in distributed 476. Astra owns the next Android build;
+Aadam retains the established manual APK upload route and Pixel review. No new
+iOS or backend release is needed for this Android-only correction. All eighteen
+previous staging groups and the approved widget designs remain preserved.
