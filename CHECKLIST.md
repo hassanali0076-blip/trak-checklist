@@ -1,6 +1,6 @@
 # TRAK — master checklist
 
-Updated: 2026-09-10T17:13:31Z · Reviewed through 2026-09-10
+Updated: 2026-09-10T17:36:45Z · Reviewed through 2026-09-10
 
 - native: Regular iOS 476 remains available in internal TestFlight. Signed Android 477 is ready for the established manual Firebase upload, adding the approved widget sizing correction. Its exact APK passes 84 native host cases and all renders match the user-approved images. All 18 staging groups, approved widget designs and earlier production work are retained. This task has not uploaded Android 477 to Firebase. Staging 45 remains unchanged.
 - backend: Production backend 2722 is live and independently verified. The two-table serving-calculation migration is applied, read back and safe to rerun. Current native-contract searches return complete View all data; paired ordered results match the baseline. Server timing passes; Mac transport outliers are recorded separately and do not establish phone or VPN speed.
@@ -760,13 +760,13 @@ The larger Astra/Sol pilot reproduced the 400-to-399 calorie loss during diary s
 
 Next: Prepare this separate backend correction on the latest staging source before its own release. Preserve old diary snapshots; retain the four recorded test gaps. Graft helped find supporting files but missed the decisive backend helper, so no token saving is claimed.
 
-### Balance spacing in small Android widgets
+### Balance spacing across Android widgets
 
 ID: android-widget-spacing · Widgets · Reviewed 2026-09-10
 
-Current/proposed spacing mockups are prepared for the small Android calorie and Macros widgets. They bring the calorie macro strip up, slightly enlarge its ring in the taller size, and centre the four-ring grid with equal gaps. Size and illustrative corner-roundness controls now cover Samsung shape concerns, alongside light/dark and different example values. The corner choices are stress cases, not verified Samsung presets. Build 477 and native layouts have not changed.
+A revised gallery now shows all seven main Android widget layouts together for review. Small calorie and Macros rings are larger, the calorie strip sits higher, and nutrient, action and wide-widget content has more balanced spacing. The preview includes square/taller sizes, light/dark, empty/logged/long values and illustrative corner shapes. This replaces the earlier two-widget proposal. Native Build 477 has not changed.
 
-Next: Aadam reviews the spacing mockups. Astra applies only accepted tweaks, then compares native renders across supported sizes. Samsung acceptance must record the actual model/One UI version and offered controls, check corner clipping and min/max/intermediate resizing, and confirm settings persist after resizing/restart. Pixel or emulator results alone cannot establish Samsung compatibility.
+Next: Aadam reviews the full gallery. Astra applies only accepted tweaks, then compares actual native renders across supported sizes. Samsung acceptance must record the actual model/One UI version and offered controls, test clipping/resizing and settings persistence. Browser mockups and Pixel/emulator results alone cannot establish Samsung compatibility.
 
 ## Resolved live
 

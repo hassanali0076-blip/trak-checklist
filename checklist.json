@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "title": "TRAK — master checklist",
-  "updatedAt": "2026-09-10T17:13:31Z",
+  "updatedAt": "2026-09-10T17:36:45Z",
   "reviewedThrough": "2026-09-10",
   "release": {
     "native": "Regular iOS 476 remains available in internal TestFlight. Signed Android 477 is ready for the established manual Firebase upload, adding the approved widget sizing correction. Its exact APK passes 84 native host cases and all renders match the user-approved images. All 18 staging groups, approved widget designs and earlier production work are retained. This task has not uploaded Android 477 to Firebase. Staging 45 remains unchanged.",
@@ -15,6 +15,10 @@
     "Reconciled through 10 September. Released changes, local fixes and reported phone results are tracked separately. This board update does not release a TRAK app build."
   ],
   "changes": [
+    {
+      "date": "2026-09-10",
+      "text": "Revised spacing mockups now show all seven main Android widgets together. Larger small rings, a higher calorie strip and balanced wide-layout spacing are awaiting review; the native app has not changed."
+    },
     {
       "date": "2026-09-10",
       "text": "Samsung shape and resize compatibility is included in the Android spacing review. Mockups now separate size from illustrative corner roundness; actual One UI verification is required before claiming Samsung support. No native layout or app release changed."
@@ -1794,11 +1798,11 @@
     },
     {
       "id": "android-widget-spacing",
-      "title": "Balance spacing in small Android widgets",
+      "title": "Balance spacing across Android widgets",
       "area": "Widgets",
       "status": "active",
-      "summary": "Current/proposed spacing mockups are prepared for the small Android calorie and Macros widgets. They bring the calorie macro strip up, slightly enlarge its ring in the taller size, and centre the four-ring grid with equal gaps. Size and illustrative corner-roundness controls now cover Samsung shape concerns, alongside light/dark and different example values. The corner choices are stress cases, not verified Samsung presets. Build 477 and native layouts have not changed.",
-      "nextStep": "Aadam reviews the spacing mockups. Astra applies only accepted tweaks, then compares native renders across supported sizes. Samsung acceptance must record the actual model/One UI version and offered controls, check corner clipping and min/max/intermediate resizing, and confirm settings persist after resizing/restart. Pixel or emulator results alone cannot establish Samsung compatibility.",
+      "summary": "A revised gallery now shows all seven main Android widget layouts together for review. Small calorie and Macros rings are larger, the calorie strip sits higher, and nutrient, action and wide-widget content has more balanced spacing. The preview includes square/taller sizes, light/dark, empty/logged/long values and illustrative corner shapes. This replaces the earlier two-widget proposal. Native Build 477 has not changed.",
+      "nextStep": "Aadam reviews the full gallery. Astra applies only accepted tweaks, then compares actual native renders across supported sizes. Samsung acceptance must record the actual model/One UI version and offered controls, test clipping/resizing and settings persistence. Browser mockups and Pixel/emulator results alone cannot establish Samsung compatibility.",
       "updated": "2026-09-10"
     }
   ]
