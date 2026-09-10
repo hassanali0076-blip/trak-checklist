@@ -3,15 +3,15 @@
 Updated 10 September 2026. Astra maintains this list at every staging release and
 production promotion. [Visual checklist](https://trak-checklist.hassanali0076.chatgpt.site/staging-to-production).
 
-Current staging is **app Build 44 + backend 2721**. Build 44 is installed in
-place and launches on the test phone; it is also available in internal TestFlight.
-Saved preferences are unchanged across installation. Regular TRAK is **Build 472**
-in internal TestFlight, with **production backend 2717**. This does not claim a
-public App Store release. The comparison records the current production source
-line; its exact binding to the Build 472 archive still needs a release receipt.
+Current staging is **app Build 45 + backend 2721**. Build 45 is installed in
+place and running on the test phone. Saved preferences are unchanged across
+installation; TestFlight upload is underway. Regular TRAK **Build 473** is
+independently confirmed installed, with production backend 2717. This does not
+claim a public App Store release. The production source-to-archive binding still
+needs an independent release receipt.
 
-The private release ledger records every differing tracked file: **439 native
-paths and 142 backend/repository paths**. These are files, not 581 features or
+The private release ledger records every differing tracked file: **443 native
+paths and 142 backend/repository paths**. These are files, not 585 features or
 a patch to copy. Some differences are newer production work to preserve.
 
 ## Already on staging; still awaiting production integration
@@ -32,7 +32,7 @@ a patch to copy. Some differences are newer production work to preserve.
 | Clearer calorie-minimum copy and Recommended badge | Keep the displayed minimum calculated for the person. |
 | Nutrient rails, legends, references, precision and EPA+DHA consistency | Preserve provenance and unknown-data handling. |
 | Full-screen food nutrients, serving in the title, requested zero display and light-mode background | Keep missing-data status distinct from the displayed number. |
-| Faster prepared nutrient graphs, short ALL history, retries and navigation safeguards | Build 44 retains earlier history preparation and caching, restores normal screen-transition speed, and retains swipe-back. Complete chart drawing is still failing phone acceptance; see the active fix below. |
+| Faster prepared nutrient graphs, short ALL history, retries and navigation safeguards | Build 45 retains earlier preparation, normal transition and swipe-back, and corrects first-frame shading, bar scaling and reference edges. Phone acceptance of the new fix is separate. |
 | Clearer initial food nutrient loading and failure diagnostics | Intermittent final Retry is still unresolved. |
 | Recipe unlink preserves fractional nutrition | Earlier recipe-save rounding is a separate pilot. |
 | Native runtime/environment guards, packaging and share-link isolation | Reconcile production signing, links and configuration; retain production-only work. |
@@ -65,11 +65,23 @@ on the prior build source and twice on this candidate; 50 Insights checks and
 the prior 97 focused graph checks pass. The initial failures remain in the
 release evidence; the full run is not described as all green.
 
+## Added in Build 45
+
+Standard shading no longer depends on how much history has loaded. Bars and
+scale use the same N-day window as the displayed average, and target/range
+segments reach the plot edges while Custom history gaps remain unknown. Normal
+screen motion is retained. Build 45 is installed directly with saved preferences
+unchanged; TestFlight upload is in progress.
+
+All 4,296 app tests pass, with 14 existing skips. Six rendered regression cases
+fail on Build 44 and the production source and pass with these corrections.
+Signed exports and launch assets pass their checks. Check Vitamin A's first
+opening on the phone; a successful build or launch alone is not visual acceptance.
+
 ## Fixes not delivered yet
 
 | Work | Current state |
 | --- | --- |
-| Nutrient graphs finish shading/bars late and leave a target-range edge gap | Reported on installed Build44. Astra is tracing the data/render sequence and correcting the geometry; no follow-up fix is delivered yet. |
 | Food micronutrients sometimes finish with Retry | Still needs the failed request diagnosis. |
 | Recipe-save precision pilot | Separate local candidate, not the delivered recipe-unlink fix. |
 | Older backend test-database gaps | Twelve broader failures reproduce unchanged on the staging baseline. Repair/verify the fixtures before broader integration sign-off; do not describe the full suite as passing. |
@@ -95,10 +107,10 @@ owner, remaining checks and production completion evidence. The private checker
 detects a stale file inventory or changed fetched production source. A green
 build or an old commit message does not close phone regressions.
 
-Next: compare the installed Build 44 graph transition with other Insights
-screens. Astra fixes the newly reported delayed chart drawing and outer-edge gap,
-maintains this list and owns
-follow-up regressions. Production integration remains a separate reviewed
-release; updating this list deploys neither the app nor the backend. The
+Next: check the first opening of Vitamin A on installed Build 45 for complete
+shading and bars, aligned edges and normal motion. Astra completes TestFlight
+delivery, maintains this list and handles feedback. Production integration
+remains a separate reviewed release; updating this list deploys neither the
+app nor the backend. The
 broader master checklist retains research and unimplemented requests; those
 are not staging-delivered features.
