@@ -1,6 +1,6 @@
 # TRAK — master checklist
 
-Updated: 2026-09-10T14:47:29Z · Reviewed through 2026-09-10
+Updated: 2026-09-10T16:48:09Z · Reviewed through 2026-09-10
 
 - native: Regular iOS 476 remains available in internal TestFlight. Signed Android 477 is ready for the established manual Firebase upload, adding the approved widget sizing correction. Its exact APK passes 84 native host cases and all renders match the user-approved images. All 18 staging groups, approved widget designs and earlier production work are retained. This task has not uploaded Android 477 to Firebase. Staging 45 remains unchanged.
 - backend: Production backend 2722 is live and independently verified. The two-table serving-calculation migration is applied, read back and safe to rerun. Current native-contract searches return complete View all data; paired ordered results match the baseline. Server timing passes; Mac transport outliers are recorded separately and do not establish phone or VPN speed.
@@ -55,6 +55,14 @@ ID: grocery-refresh-scheduling-and-completion-receipts · Search & catalogue · 
 Nightly catalogue maintenance completed through the audit date, but recent grocery triggers failed before running and the latest successful trigger did not establish refresh completion. Reliable recent grocery results remain unverified.
 
 Next: The operations owner must inspect the last runner outcome and restore scheduling on existing infrastructure, with durable start/completion/failure records and missed-run alerts. No scheduler change was made by the audit.
+
+### Balance spacing in small Android widgets
+
+ID: android-widget-spacing · Widgets · Reviewed 2026-09-10
+
+After the Build 477 size-selection correction, the taller Android renders still show excessive separation between the calorie ring and the P/F/C strip, with the strip close to the bottom. The small four-ring widget also has a larger vertical gap than horizontal gap. The square layout is more compact. Passing rendering checks do not establish that this spacing is visually accepted.
+
+Next: Astra prepares mockups that group the calorie ring and macro strip, balance the four-ring gaps and retain the existing style and P/F/C order. Aadam reviews before any native layout change. Compare both square and taller Android sizes.
 
 ## Next phone build
 
@@ -544,9 +552,9 @@ Next: Astra owns reported Recipe Edit regressions on 475; retain Save & Log, com
 
 ID: widget-layout-review-small-macros · Widgets · Reviewed 2026-09-10
 
-The complete widget gallery was approved and implemented in regular TRAK 476. It includes lighter ring values, labels inside, matching iOS/Android polish, P/F/C ordering (kcal/P above F/C in 2x2), neutral actions, a thinner weighing-scale dial, matched scan stroke and wide Search with four actions. Native ring checks confirm continuous fill within the bounds. iOS remains available in internal TestFlight. Android 477 adds the launcher-sizing correction reported after 476 and is signed and ready for manual upload; all 84 exact-APK renders match approval.
+The complete widget gallery was approved and implemented in regular TRAK 476. It includes lighter ring values, labels inside, matching iOS/Android polish, P/F/C ordering (kcal/P above F/C in 2x2), neutral actions, a thinner weighing-scale dial, matched scan stroke and wide Search with four actions. Native ring checks confirm continuous fill within the bounds. iOS remains available in internal TestFlight. Android 477 adds the launcher-sizing correction reported after 476 and is signed and ready for manual upload; all 84 exact-APK renders match approval. A further spacing concern in taller Android widgets is now tracked separately under Balance spacing in small Android widgets; no further layout tweak has been implemented.
 
-Next: Aadam uploads Android 477 and reviews the corrected native layouts on Pixel 9. Astra handles any reported regression. The approved gallery is retained. Older iOS Edit Widget rows may still retain archived choices until edited or re-added.
+Next: Astra previews the new Android spacing refinements for Aadam to review before implementation. Manual Android 477 upload and Pixel observation remain separate; the sizing correction and P/F/C order are preserved. Older iOS Edit Widget rows may still retain archived choices until edited or re-added.
 
 ### Fix Android widget sizing after Build 476
 

@@ -206,3 +206,11 @@ The APK is ready for Aadam's established manual upload route, followed by Pixel
 review. This task has not uploaded it to Firebase or confirmed physical-phone
 acceptance. Astra owns any reported regression. Distributed iOS remains 476;
 both backends, all eighteen staging groups and the approved designs are preserved.
+
+## Further Android spacing review
+
+Build 477 corrects the earlier launcher-size calculation. A separate visual
+review finds excess space between the small calorie ring and macro strip, and
+between rows in the taller small Macros widget. Astra will prepare mockups for
+Aadam to review before native changes. The current release has not been changed
+by this report; passing render checks do not close the new spacing concern.
