@@ -1,6 +1,6 @@
 # TRAK — master checklist
 
-Updated: 2026-09-10T07:23:28Z · Reviewed through 2026-09-10
+Updated: 2026-09-10T07:28:43Z · Reviewed through 2026-09-10
 
 - native: TRAK Staging Build 45 is installed in place and running on the test phone. It corrects incomplete Standard reference shading, older values changing the visible bar scale, and target-range edge gaps. It retains the normal transition and earlier staging changes. Saved preferences are unchanged across installation; regular TRAK 473 is intact. It is also available in internal TestFlight, verified valid and in beta testing. All 4,296 app tests pass, with 14 existing skips; six rendered regressions fail on the prior source and pass with the fix. The reported graph rendering and edge fix is now accepted on the phone; unrelated feature checks remain separate.
 - backend: Production backend 2718 is verified live; staging 2721 is unchanged. The isolated combined production candidate passes 1,826 tests and 348 subtests, plus 90 real PostgreSQL checks. Two additive serving-calculation tables are required before release; the production dry run made no writes.

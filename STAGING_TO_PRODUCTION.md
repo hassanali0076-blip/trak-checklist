@@ -7,8 +7,6 @@ Current staging is **app Build 45 + backend 2721**. Build 45's reported graph
 fix is accepted on the phone. Regular TRAK retains its separate production build;
 production backend **2718** is independently confirmed live.
 
-## Release readiness
-
 Astra has brought all 18 staging groups onto the latest production source in
 isolated candidates, preserving widgets, Health, search identities and recipe
 household amounts. **This is not deployed yet.** The combined backend passes

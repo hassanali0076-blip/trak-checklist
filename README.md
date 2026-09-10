@@ -32,6 +32,9 @@ production protections current at each release. The visual page reads it on
 load; use Refresh list to check the new publication. Data-only edits to this
 ledger do not require a website rebuild. Keep headings, paragraphs, bullet
 lists and two-column tables; do not add raw HTML or private diagnostics.
+The first level-two section must contain the two-column staging change table;
+the deployed reader gets its change count from that section. Put release-readiness
+prose in the introduction before it. `node scripts/check.mjs` guards this contract.
 The original `/#staging-changes-awaiting-production` link opens the full view.
 
 ## Status meanings
