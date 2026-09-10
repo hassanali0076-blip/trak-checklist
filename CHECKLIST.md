@@ -1,10 +1,10 @@
 # TRAK — master checklist
 
-Updated: 2026-09-10T13:59:20Z · Reviewed through 2026-09-10
+Updated: 2026-09-10T14:47:29Z · Reviewed through 2026-09-10
 
-- native: Regular TRAK 476 is available in internal TestFlight. It adds the approved widget polish, P/F/C order, wide Search and four actions, Android widget loading/settings repairs, and confirmed diary/target refresh. All 18 staging groups and the production work already delivered in 475 are retained. Both signed packages pass verification. Matching Android 476 is prepared for the established manual Firebase upload; this task has not uploaded it to Firebase. Staging 45 remains unchanged.
+- native: Regular iOS 476 remains available in internal TestFlight. Signed Android 477 is ready for the established manual Firebase upload, adding the approved widget sizing correction. Its exact APK passes 84 native host cases and all renders match the user-approved images. All 18 staging groups, approved widget designs and earlier production work are retained. This task has not uploaded Android 477 to Firebase. Staging 45 remains unchanged.
 - backend: Production backend 2722 is live and independently verified. The two-table serving-calculation migration is applied, read back and safe to rerun. Current native-contract searches return complete View all data; paired ordered results match the baseline. Server timing passes; Mac transport outliers are recorded separately and do not establish phone or VPN speed.
-- next: Astra packages the Android widget sizing correction reported after 476. It is tested locally but not in the distributed APK; Aadam retains the usual manual upload step and Pixel observation. Regular iOS 476, staging 45 and both backends are unchanged.
+- next: Aadam uploads the signed Android 477 APK through the usual manual route and checks the widgets on Pixel 9. Astra handles any reported regression. The source is merged and packaging is complete; phone acceptance remains separate. Regular iOS 476 and both backends are unchanged.
 
 > Public, read-only project status. No login needed.
 
@@ -73,14 +73,6 @@ ID: signed-artifact-release-and-promotion-checks · Release & reliability · Rev
 A local release gate checks the signed iPhone and Android artifacts and requires recorded phone acceptance for claimed features. Release checks can run on the release Mac. Build 470 remains internal-only; these new protections do not retrospectively approve its unresolved nutrient issues.
 
 Next: The release owner must use the gate for the next candidate, verify matching platform artifacts and collect the required phone acceptance before wider promotion.
-
-### Fix Android widget sizing after Build 476
-
-ID: android-widget-launcher-sizing · Widgets · Reviewed 2026-09-10
-
-The phone report of tiny rings and excessive gaps was reproduced in the signed Android 476 APK. All four providers combined width and height bounds from different orientations. A shared correction restores the approved ring sizes and wide Search layout. The candidate passes 56 original native cases plus 28 actual-host size/orientation checks; released 476 fails 12 of the new portrait checks. This correction is not yet in a distributed build.
-
-Next: Astra packages the tested correction in the next Android release. Aadam uses the established manual APK upload route and checks the resulting widgets on Pixel 9. Existing designs, P/F/C ordering, values and iOS remain unchanged.
 
 ## Needs checking
 
@@ -552,9 +544,17 @@ Next: Astra owns reported Recipe Edit regressions on 475; retain Save & Log, com
 
 ID: widget-layout-review-small-macros · Widgets · Reviewed 2026-09-10
 
-The complete widget gallery was approved and implemented in regular TRAK 476. It includes lighter ring values, labels inside, matching iOS/Android polish, P/F/C ordering (kcal/P above F/C in 2x2), neutral actions, a thinner weighing-scale dial, matched scan stroke and wide Search with four actions. Native ring checks confirm continuous fill within the bounds. iOS is available in internal TestFlight; matching signed Android is ready for manual upload. A subsequent Android phone report exposed incorrect launcher sizing; the tested correction is tracked separately under Fix Android widget sizing after Build 476 and awaits a new Android release.
+The complete widget gallery was approved and implemented in regular TRAK 476. It includes lighter ring values, labels inside, matching iOS/Android polish, P/F/C ordering (kcal/P above F/C in 2x2), neutral actions, a thinner weighing-scale dial, matched scan stroke and wide Search with four actions. Native ring checks confirm continuous fill within the bounds. iOS remains available in internal TestFlight. Android 477 adds the launcher-sizing correction reported after 476 and is signed and ready for manual upload; all 84 exact-APK renders match approval.
 
-Next: Astra includes the launcher-sizing correction in the next Android release; Aadam reviews the corrected native layouts on the Pixel. The approved gallery is retained. Older iOS Edit Widget rows may still retain archived choices until edited or re-added.
+Next: Aadam uploads Android 477 and reviews the corrected native layouts on Pixel 9. Astra handles any reported regression. The approved gallery is retained. Older iOS Edit Widget rows may still retain archived choices until edited or re-added.
+
+### Fix Android widget sizing after Build 476
+
+ID: android-widget-launcher-sizing · Widgets · Reviewed 2026-09-10
+
+The reported tiny rings and excessive gaps were reproduced in signed Android 476. All four providers combined size bounds from different orientations. The shared correction is merged and packaged in signed Android 477, restoring the approved ring sizes and wide Search layout. The exact APK passes 84 native host cases, and all 84 renders are identical to the approved images. It is ready for manual upload; physical Pixel acceptance has not yet been confirmed.
+
+Next: Aadam uploads Android 477 through the established manual APK route and checks its widgets on Pixel 9. Astra handles any regression. Existing designs, P/F/C ordering, values and distributed iOS 476 are preserved.
 
 ## Planned
 

@@ -3,11 +3,11 @@
 Updated 10 September 2026. Astra maintains this release record.
 [Visual checklist](https://trak-checklist.hassanali0076.chatgpt.site/staging-to-production).
 
-**Regular TRAK Build 476 is available in internal TestFlight. Production backend
-2722 remains live.** All 18 staging groups below are retained from 475, together
+**Regular iOS Build 476 is available in internal TestFlight. Signed Android 477
+is ready for manual upload. Production backend 2722 remains live.** All 18 staging groups below are retained from 475, together
 with the newer production Health work and recipe household amounts. Build 476
 adds the approved widget designs and functional repairs described below. Both
-signed app packages pass verification. Matching Android 476 is ready for the
+signed app packages pass verification. Android 477 adds the approved sizing correction and is ready for the
 established manual Firebase upload; this task has not uploaded it to Firebase.
 This is an internal production-app release. Public store release and new
 physical-phone acceptance are separate.
@@ -165,8 +165,8 @@ code was already compiled; the entire suite was rerun with frozen inputs and
 passed. The original failed run is retained, not described as green. Hosted
 checks could not execute; the approved manual path used the local evidence.
 
-Next: Aadam updates to 476 and uses the matching Android APK through the existing
-manual route, then checks Pixel picker/add/refresh. Astra handles any regression.
+Next: Aadam uses iOS 476 and uploads the corrected Android 477 APK through the
+existing manual route, then checks Pixel picker/add/refresh. Astra handles any regression.
 Old iOS Edit Widget rows may retain archived Carbs/Fat labels until edited or
 re-added; the standard rendered order is P/F/C. Phone tint, resizing, taps and
 OS refresh scheduling are separate from simulator evidence. These items are
@@ -188,15 +188,21 @@ there is no need to repeat that test merely because the checklist changed.
 Updating this list deploys neither the app nor the backend. Research and other
 unimplemented master-checklist requests are separate from this release.
 
-## Android widget sizing correction awaiting release
+## Android 477 widget sizing correction ready for manual upload
 
 A phone report after Build 476 exposed tiny rings and excessive empty space.
 The released APK reproduces the problem: all four providers combine launcher
-width/height bounds from different orientations. The tested correction restores
-the approved sizes and wide Search layout using the actual available space.
-It passes 84 native cases, including portrait and landscape host selection.
+width/height bounds from different orientations. The approved correction is
+merged and packaged in signed Android 477, restoring the approved sizes and
+wide Search layout using the actual available space.
 
-This correction is not in distributed 476. Astra owns the next Android build;
-Aadam retains the established manual APK upload route and Pixel review. No new
-iOS or backend release is needed for this Android-only correction. All eighteen
-previous staging groups and the approved widget designs remain preserved.
+The exact signed APK passes all 84 native cases, including portrait and
+landscape host selection. All 84 renders are identical to the images approved
+by Aadam. Production signing and artifact checks pass. The unchanged app logic
+retains the recorded full-suite evidence, with fresh coverage for Android-only
+release notes. No new full-suite run is claimed for this bounded correction.
+
+The APK is ready for Aadam's established manual upload route, followed by Pixel
+review. This task has not uploaded it to Firebase or confirmed physical-phone
+acceptance. Astra owns any reported regression. Distributed iOS remains 476;
+both backends, all eighteen staging groups and the approved designs are preserved.
