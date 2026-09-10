@@ -127,6 +127,14 @@ Scan and Log weight actions. Other widget nodes and bindings are unchanged.
 The final Android release passes fatal lint and signature checks. iOS widget
 signatures, App Groups and Apple Health permissions also pass verification.
 
+## Widget layout review queued
+
+Widget layouts need refinement, starting with the small Macros widget on iOS.
+Only iOS has been observed so far; Android layouts need comparison. This work
+is deferred for later and is separate from the completed Android duplicate-row
+correction above. No widget layout changes or new app build were made for this
+request.
+
 ## How this stays current
 
 Astra updates both this public list and the private source ledger for each

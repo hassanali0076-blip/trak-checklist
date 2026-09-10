@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "title": "TRAK — master checklist",
-  "updatedAt": "2026-09-10T09:03:44Z",
+  "updatedAt": "2026-09-10T09:19:08Z",
   "reviewedThrough": "2026-09-10",
   "release": {
     "native": "Regular TRAK 475 is available in internal TestFlight. It includes all 18 staging groups plus food-read recovery and immediate Recipe Edit, built on production 474 with widgets and Health work retained. Both signed packages pass verification. The matching Android APK is prepared for the established manual Firebase upload; it has not been uploaded to Firebase. Staging 45 remains unchanged and its reported graph fix remains accepted.",
@@ -15,6 +15,10 @@
     "Reconciled through 10 September. Released changes, local fixes and reported phone results are tracked separately. This board update does not release a TRAK app build."
   ],
   "changes": [
+    {
+      "date": "2026-09-10",
+      "text": "Queued widget layout improvements for later, starting with the small Macros widget on iOS. Android layout review remains separate; no app changes or new release were made."
+    },
     {
       "date": "2026-09-10",
       "text": "Manual production release complete for backend 2722 and regular TRAK 475 internal TestFlight. All 18 staging groups are included with newer production work preserved; matching Android APK is signed and prepared for manual Firebase upload. Food-read recovery, immediate Recipe Edit and the Android small Today shortcut cleanup are included."
@@ -1714,6 +1718,15 @@
       "status": "history",
       "summary": "The production widget layout contained seven identical shortcut rows. Build 475 removes six duplicate insertions and keeps one bottom row with the same Search, Scan and Log weight actions. All other widget nodes and binding IDs are unchanged. The final Android release passes fatal lint and signature checks; the matching APK is ready for manual distribution.",
       "nextStep": "Keep the corrected layout in future production builds. Android phone appearance remains separate from the passing release build.",
+      "updated": "2026-09-10"
+    },
+    {
+      "id": "widget-layout-review-small-macros",
+      "title": "Improve widget layouts, starting with small Macros",
+      "area": "Widgets",
+      "status": "planned",
+      "summary": "Widget layouts need visual refinement. The small Macros widget on iOS is the first reported example. Only iOS has been observed so far; Android layouts still need comparison. This is queued for later, with no layout changes made.",
+      "nextStep": "Resume with a visual review of the small Macros widget on iOS, then review the other widget sizes and Android layouts. Preserve nutrition values, configuration and tap actions.",
       "updated": "2026-09-10"
     }
   ]
