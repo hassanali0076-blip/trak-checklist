@@ -1,6 +1,6 @@
 # TRAK — master checklist
 
-Updated: 2026-09-10T16:48:09Z · Reviewed through 2026-09-10
+Updated: 2026-09-10T17:03:30Z · Reviewed through 2026-09-10
 
 - native: Regular iOS 476 remains available in internal TestFlight. Signed Android 477 is ready for the established manual Firebase upload, adding the approved widget sizing correction. Its exact APK passes 84 native host cases and all renders match the user-approved images. All 18 staging groups, approved widget designs and earlier production work are retained. This task has not uploaded Android 477 to Firebase. Staging 45 remains unchanged.
 - backend: Production backend 2722 is live and independently verified. The two-table serving-calculation migration is applied, read back and safe to rerun. Current native-contract searches return complete View all data; paired ordered results match the baseline. Server timing passes; Mac transport outliers are recorded separately and do not establish phone or VPN speed.
@@ -55,14 +55,6 @@ ID: grocery-refresh-scheduling-and-completion-receipts · Search & catalogue · 
 Nightly catalogue maintenance completed through the audit date, but recent grocery triggers failed before running and the latest successful trigger did not establish refresh completion. Reliable recent grocery results remain unverified.
 
 Next: The operations owner must inspect the last runner outcome and restore scheduling on existing infrastructure, with durable start/completion/failure records and missed-run alerts. No scheduler change was made by the audit.
-
-### Balance spacing in small Android widgets
-
-ID: android-widget-spacing · Widgets · Reviewed 2026-09-10
-
-After the Build 477 size-selection correction, the taller Android renders still show excessive separation between the calorie ring and the P/F/C strip, with the strip close to the bottom. The small four-ring widget also has a larger vertical gap than horizontal gap. The square layout is more compact. Passing rendering checks do not establish that this spacing is visually accepted.
-
-Next: Astra prepares mockups that group the calorie ring and macro strip, balance the four-ring gaps and retain the existing style and P/F/C order. Aadam reviews before any native layout change. Compare both square and taller Android sizes.
 
 ## Next phone build
 
@@ -767,6 +759,14 @@ ID: recipe-saving-preserves-nutrition-precision · Recipes & custom foods · Rev
 The larger Astra/Sol pilot reproduced the 400-to-399 calorie loss during diary snapshot creation. A reviewed one-line local fix preserves fractional ingredient calories. Four new real-route cases pass, including the published daily total, recipe edits, Tune and unlink. The same four older test failures occur on the unchanged baseline and remain recorded. This fix is not in Build 40 or live backend 2719.
 
 Next: Prepare this separate backend correction on the latest staging source before its own release. Preserve old diary snapshots; retain the four recorded test gaps. Graft helped find supporting files but missed the decisive backend helper, so no token saving is claimed.
+
+### Balance spacing in small Android widgets
+
+ID: android-widget-spacing · Widgets · Reviewed 2026-09-10
+
+Current/proposed spacing mockups are prepared for the small Android calorie and Macros widgets. They bring the calorie macro strip up, slightly enlarge its ring in the taller size, and centre the four-ring grid with equal gaps. Square/taller shapes, light/dark and different example values are available for review. These are proposals; Build 477 and the native layouts have not changed.
+
+Next: Aadam reviews the spacing mockups. Astra applies only the accepted tweaks, then compares actual native renders across square and taller Android sizes before another build.
 
 ## Resolved live
 

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "title": "TRAK — master checklist",
-  "updatedAt": "2026-09-10T16:48:09Z",
+  "updatedAt": "2026-09-10T17:03:30Z",
   "reviewedThrough": "2026-09-10",
   "release": {
     "native": "Regular iOS 476 remains available in internal TestFlight. Signed Android 477 is ready for the established manual Firebase upload, adding the approved widget sizing correction. Its exact APK passes 84 native host cases and all renders match the user-approved images. All 18 staging groups, approved widget designs and earlier production work are retained. This task has not uploaded Android 477 to Firebase. Staging 45 remains unchanged.",
@@ -15,6 +15,10 @@
     "Reconciled through 10 September. Released changes, local fixes and reported phone results are tracked separately. This board update does not release a TRAK app build."
   ],
   "changes": [
+    {
+      "date": "2026-09-10",
+      "text": "Android spacing mockups are prepared for review, with current/proposed calorie and Macros layouts and square/taller examples. No native implementation or app release changed."
+    },
     {
       "date": "2026-09-10",
       "text": "Saved the completed Android 477 release and preview galleries. Recorded a separate Android spacing concern: large ring-to-footer gap and widely separated rows in taller small widgets. Further tweaks require mockup review; no native layout or release changed in this save."
@@ -1788,9 +1792,9 @@
       "id": "android-widget-spacing",
       "title": "Balance spacing in small Android widgets",
       "area": "Widgets",
-      "status": "issue",
-      "summary": "After the Build 477 size-selection correction, the taller Android renders still show excessive separation between the calorie ring and the P/F/C strip, with the strip close to the bottom. The small four-ring widget also has a larger vertical gap than horizontal gap. The square layout is more compact. Passing rendering checks do not establish that this spacing is visually accepted.",
-      "nextStep": "Astra prepares mockups that group the calorie ring and macro strip, balance the four-ring gaps and retain the existing style and P/F/C order. Aadam reviews before any native layout change. Compare both square and taller Android sizes.",
+      "status": "active",
+      "summary": "Current/proposed spacing mockups are prepared for the small Android calorie and Macros widgets. They bring the calorie macro strip up, slightly enlarge its ring in the taller size, and centre the four-ring grid with equal gaps. Square/taller shapes, light/dark and different example values are available for review. These are proposals; Build 477 and the native layouts have not changed.",
+      "nextStep": "Aadam reviews the spacing mockups. Astra applies only the accepted tweaks, then compares actual native renders across square and taller Android sizes before another build.",
       "updated": "2026-09-10"
     }
   ]
