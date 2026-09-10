@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "title": "TRAK — master checklist",
-  "updatedAt": "2026-09-10T09:40:37Z",
+  "updatedAt": "2026-09-10T09:43:41Z",
   "reviewedThrough": "2026-09-10",
   "release": {
     "native": "Regular TRAK 475 is available in internal TestFlight. It includes all 18 staging groups plus food-read recovery and immediate Recipe Edit, built on production 474 with widgets and Health work retained. Both signed packages pass verification. The matching Android APK is prepared for the established manual Firebase upload; it has not been uploaded to Firebase. Staging 45 remains unchanged and its reported graph fix remains accepted.",
@@ -15,6 +15,10 @@
     "Reconciled through 10 September. Released changes, local fixes and reported phone results are tracked separately. This board update does not release a TRAK app build."
   ],
   "changes": [
+    {
+      "date": "2026-09-10",
+      "text": "Added a deferred iPhone Duo design and compatibility review, covering folded/unfolded layouts, Split View, state preservation, charts, editors and widgets. Apple’s announcement was checked; no TRAK implementation or new release is included."
+    },
     {
       "date": "2026-09-10",
       "text": "Widget review found a reproducible Android Build 475 loading failure plus layout and setup gaps. Five of six released Android layouts fail the actual widget renderer. Recorded Pixel 9 picker-search report separately. No application code or release changed."
@@ -1740,6 +1744,15 @@
       "status": "issue",
       "summary": "Review completed against Build 475 source. Small iOS Macros lacks clear remaining/consumed context and has very small labels. Android configuration is absent, micronutrient choices are incomplete, and shared refresh, day-specific targets and account-state handling need correction. The existing iOS simulator view is supporting evidence, not new Build 475 phone acceptance. No app fix has been made.",
       "nextStep": "Astra owns follow-up: repair Android loading first, then confirmed shared-state issues, then refine layouts and configuration. Verify all sizes, day-specific targets, account changes, light/dark appearance and real phone behavior before release.",
+      "updated": "2026-09-10"
+    },
+    {
+      "id": "iphone-duo-foldable-design-review",
+      "title": "Review TRAK design for iPhone Duo and folding displays",
+      "area": "Design",
+      "status": "planned",
+      "summary": "Deferred design and implementation review requested for iPhone Duo. Apple’s 9 September announcement confirms separate outer/inner displays, folding and orientation changes, and Split View multitasking. Review compact and expanded layouts, navigation, food Search/editor, recipes, Coach, charts, keyboard/sheets and widgets. Preserve searches, scroll position and unsaved food edits when the available screen size changes. Consider useful wider layouts rather than simply enlarging the current phone UI. No design, code change or compatibility claim has been made.",
+      "nextStep": "Astra owns the future review. Start with Apple’s official iPhone Duo/iOS SDK guidance and current Flutter support, then audit the latest TRAK release across outer, inner and narrow Split View sizes. Present proposed layouts and a focused resize/state-preservation test plan before implementation. Include existing iPhones and Android foldables in regression scope. Source: https://www.apple.com/newsroom/2026/09/apple-unveils-iphone-duo/",
       "updated": "2026-09-10"
     }
   ]

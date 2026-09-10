@@ -1,6 +1,6 @@
 # TRAK — master checklist
 
-Updated: 2026-09-10T09:40:37Z · Reviewed through 2026-09-10
+Updated: 2026-09-10T09:43:41Z · Reviewed through 2026-09-10
 
 - native: Regular TRAK 475 is available in internal TestFlight. It includes all 18 staging groups plus food-read recovery and immediate Recipe Edit, built on production 474 with widgets and Health work retained. Both signed packages pass verification. The matching Android APK is prepared for the established manual Firebase upload; it has not been uploaded to Firebase. Staging 45 remains unchanged and its reported graph fix remains accepted.
 - backend: Production backend 2722 is live and independently verified. The two-table serving-calculation migration is applied, read back and safe to rerun. Current native-contract searches return complete View all data; paired ordered results match the baseline. Server timing passes; Mac transport outliers are recorded separately and do not establish phone or VPN speed.
@@ -709,6 +709,14 @@ ID: food-search-engine-alternatives-measured-first · Search & catalogue · Revi
 Typesense, Meilisearch and a managed food API were reviewed as options. No migration is selected. TRAK already maintains an imported catalogue, and the outstanding phone/network delay must be measured before paying to replace search infrastructure.
 
 Next: Compare uncached latency, food-ranking parity, catalogue licensing/freshness and total operating cost only if the measured bottleneck justifies a migration. Preserve current food identification and immediate View all.
+
+### Review TRAK design for iPhone Duo and folding displays
+
+ID: iphone-duo-foldable-design-review · Design · Reviewed 2026-09-10
+
+Deferred design and implementation review requested for iPhone Duo. Apple’s 9 September announcement confirms separate outer/inner displays, folding and orientation changes, and Split View multitasking. Review compact and expanded layouts, navigation, food Search/editor, recipes, Coach, charts, keyboard/sheets and widgets. Preserve searches, scroll position and unsaved food edits when the available screen size changes. Consider useful wider layouts rather than simply enlarging the current phone UI. No design, code change or compatibility claim has been made.
+
+Next: Astra owns the future review. Start with Apple’s official iPhone Duo/iOS SDK guidance and current Flutter support, then audit the latest TRAK release across outer, inner and narrow Split View sizes. Present proposed layouts and a focused resize/state-preservation test plan before implementation. Include existing iPhones and Android foldables in regression scope. Source: https://www.apple.com/newsroom/2026/09/apple-unveils-iphone-duo/
 
 ## In progress
 
