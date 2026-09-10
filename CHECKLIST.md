@@ -1,10 +1,10 @@
 # TRAK — master checklist
 
-Updated: 2026-09-10T08:13:02Z · Reviewed through 2026-09-10
+Updated: 2026-09-10T08:59:22Z · Reviewed through 2026-09-10
 
-- native: TRAK Staging Build 45 is installed in place and running on the test phone. It corrects incomplete Standard reference shading, older values changing the visible bar scale, and target-range edge gaps. It retains the normal transition and earlier staging changes. Saved preferences are unchanged across installation; regular TRAK 473 is intact. It is also available in internal TestFlight, verified valid and in beta testing. All 4,296 app tests pass, with 14 existing skips; six rendered regressions fail on the prior source and pass with the fix. The reported graph rendering and edge fix is now accepted on the phone; unrelated feature checks remain separate.
-- backend: Production backend 2722 is live and independently verified. The serving-calculation migration is applied and safe to rerun. Warm app search passes in UK and US checks, with complete View all rows. Staging backend 2721 is unchanged.
-- next: Build 475 is compiling and signing for regular TRAK. Two test-fixture corrections passed: selecting the archived release notes and waiting for background retry completion. The remaining app checks pass; no app behaviour changed to resolve those test failures.
+- native: Regular TRAK 475 is available in internal TestFlight. It includes all 18 staging groups plus food-read recovery and immediate Recipe Edit, built on production 474 with widgets and Health work retained. Both signed packages pass verification. The matching Android APK is prepared for the established manual Firebase upload; it has not been uploaded to Firebase. Staging 45 remains unchanged and its reported graph fix remains accepted.
+- backend: Production backend 2722 is live and independently verified. The two-table serving-calculation migration is applied, read back and safe to rerun. Current native-contract searches return complete View all data; paired ordered results match the baseline. Server timing passes; Mac transport outliers are recorded separately and do not establish phone or VPN speed.
+- next: Update regular TRAK to 475 in TestFlight. Astra handles reported regressions and maintains the release list. Public App Store release and new physical-phone acceptance are separate; the accepted staging graph and maintenance evidence does not need repeating merely because of this promotion.
 
 > Public, read-only project status. No login needed.
 
@@ -58,14 +58,6 @@ Next: The operations owner must inspect the last runner outcome and restore sche
 
 ## Next phone build
 
-### Repair older nutrient test-database fixtures
-
-ID: backend-nutrient-test-fixture-schema-gaps · Release verification · Reviewed 2026-09-10
-
-The integration candidate repairs the stale test schemas and fixtures, preserves account and transaction checks, and passes 1,826 backend tests plus 348 subtests. A separate real PostgreSQL run passes 90 checks. These results apply to the combined candidate; the original staging source is unchanged.
-
-Next: Keep the repaired fixtures and pinned combined test manifest with the reviewed backend release. Hosted checks still need to run.
-
 ### Native code organization
 
 ID: native-code-organisation-server-companion-later · Release & reliability · Reviewed 2026-08-31
@@ -82,31 +74,15 @@ A local release gate checks the signed iPhone and Android artifacts and requires
 
 Next: The release owner must use the gate for the next candidate, verify matching platform artifacts and collect the required phone acceptance before wider promotion.
 
-### Search foods sometimes fail to load micronutrients
-
-ID: search-food-micronutrients-intermittent-retry · Food editing · Reviewed 2026-09-10
-
-The candidate recovers when a same-account Health refresh invalidates a pending food nutrient read, and automatically retries one temporary request failure. All 21 focused cache/recovery checks pass, including account isolation and bounded retry. This reproduces two failure classes; it does not conclusively identify the original phone incident.
-
-Next: Include the correction in the reviewed release and verify actual food opens on the delivered app. No new phone build contains it yet.
-
-### Recipe Edit opens immediately
-
-ID: recipe-editor-opens-without-waiting-for-detail · Recipes & custom foods · Reviewed 2026-09-10
-
-The candidate opens the edit screen immediately while complete ingredients load, avoids nutrient enrichment on this path, retries one temporary failure and shows an actionable Retry screen. The 18-ingredient regression retains original household amounts and one gram basis. An old cached recipe is not silently reopened for editing.
-
-Next: Include in the reviewed release, preserving Save & Log and account isolation; verify on the delivered app.
-
 ## Needs checking
 
 ### Match nutrient graph transitions to the other screens
 
 ID: micronutrient-graph-standard-transition · Coach & insights · Reviewed 2026-09-10
 
-Build 45 retains the Build 44 correction: it removes the special 200 ms graph animation and uses the same standard screen transition as the rest of Insights. Earlier data preparation, cached history and swipe-back are preserved.
+Build 45 retains the Build 44 correction: it removes the special 200 ms graph animation and uses the same standard screen transition as the rest of Insights. Earlier data preparation, cached history and swipe-back are preserved. Retained in regular TRAK 475, available in internal TestFlight.
 
-Next: Build 45 is installed and available in internal TestFlight. Compare the graph slide with the other screens; it uses the normal transition. The full 4,296 app tests pass. Astra owns any feedback.
+Next: Regular TRAK 475 is available in internal TestFlight and retains the normal Insights transition. Staging 45 remains the directly installed build; its accepted graph result is retained. Astra owns any new motion feedback.
 
 ### Make iodine graphs load
 
@@ -118,19 +94,19 @@ Next: Open iodine in TRAK Staging. The backend correction also works with the ex
 
 ### Keep the Coach acceptance tick smooth
 
-ID: coach-accept-tick-pauses-mid-stroke · Coach & insights · Reviewed 2026-09-09
+ID: coach-accept-tick-pauses-mid-stroke · Coach & insights · Reviewed 2026-09-10
 
-Build 43 includes the tested correction for the Build 42 tick freeze. The stroke now draws continuously from the tap instead of pausing partway through or restarting after the response. Successful saving still controls confirmation and return; late failure restores the review.
+Build 43 includes the tested correction for the Build 42 tick freeze. The stroke now draws continuously from the tap instead of pausing partway through or restarting after the response. Successful saving still controls confirmation and return; late failure restores the review. Retained in regular TRAK 475, available in internal TestFlight.
 
-Next: Install Build 43 and accept a Coach review. Check the uninterrupted tick and correctly saved plan; Astra owns any follow-up.
+Next: Install regular TRAK 475 and accept a Coach review. Check the uninterrupted tick and correctly saved plan; Astra owns any follow-up.
 
 ### Recipes and custom foods appear missing
 
-ID: verify-saved-library-visibility-after-the-filter-correction · Recipes & custom foods · Reviewed 2026-09-08
+ID: verify-saved-library-visibility-after-the-filter-correction · Recipes & custom foods · Reviewed 2026-09-10
 
-The saved-library and Search projection corrections are retained in later regular and staging releases. Missing records were not established; the reported problem was delayed or filtered presentation. Complete current-phone acceptance remains open.
+The saved-library and Search projection corrections are retained in later regular and staging releases. Missing records were not established; the reported problem was delayed or filtered presentation. Complete current-phone acceptance remains open. Retained in regular TRAK 475, available in internal TestFlight.
 
-Next: On Staging Build 33, open Recipes and Foods after a catalogue query and confirm both complete libraries appear, remain loggable and ignore the unrelated catalogue filter. Preserve existing data.
+Next: On regular TRAK 475, open Recipes and Foods after a catalogue query and confirm both complete libraries appear, remain loggable and ignore the unrelated catalogue filter. Preserve existing data.
 
 ### Offline and restart food-log recovery
 
@@ -190,11 +166,11 @@ Next: Check exact oat milk, onion portion scaling and the zero-to-filled macro-r
 
 ### Recipes keep the same serving everywhere
 
-ID: recipes-use-one-serving-across-every-search-surface · Recipes & custom foods · Reviewed 2026-09-08
+ID: recipes-use-one-serving-across-every-search-surface · Recipes & custom foods · Reviewed 2026-09-10
 
-The shared current-recipe projection and preserved AI/private-food identity are included in later release work. Old diary snapshots remain historical. The cross-surface phone check still needs explicit acceptance.
+The shared current-recipe projection and preserved AI/private-food identity are included in later release work. Old diary snapshots remain historical. The cross-surface phone check still needs explicit acceptance. Retained in regular TRAK 475, available in internal TestFlight.
 
-Next: On Staging Build 33, open the same recipe through Recipes, My foods and Previously logged. Confirm the named serving, amount, unit and nutrition agree, then save and reopen a new log.
+Next: On regular TRAK 475, open the same recipe through Recipes, My foods and Previously logged. Confirm the named serving, amount, unit and nutrition agree, then save and reopen a new log.
 
 ### Food projections share one source of truth
 
@@ -214,11 +190,11 @@ Next: Compare diary, Insights, Coach, remaining macros and goal summaries on day
 
 ### Immediate or offline reopen can hide a serving choice
 
-ID: the-unit-chosen-in-food-editor-stays-chosen-everywhere · Food editing · Reviewed 2026-09-08
+ID: the-unit-chosen-in-food-editor-stays-chosen-everywhere · Food editing · Reviewed 2026-09-10
 
-Existing grams-versus-scoops and pending/offline diary protections are retained. The newly reported calculator default was a separate missing save path and now has its own unreleased fix card.
+Existing grams-versus-scoops and pending/offline diary protections are retained. The newly reported calculator default was a separate missing save path and has its own delivered correction and acceptance card. Retained in regular TRAK 475, available in internal TestFlight.
 
-Next: On Staging Build 33, log a food in grams that also offers Scoop and immediately reopen online and offline. Confirm the unit and exact portions survive with unchanged nutrition. Test calculator default memory in the next build containing that fix.
+Next: In regular TRAK 475, retain exact grams or named portions on immediate online/offline diary reopen. The calculator default is also delivered and has its own acceptance card; existing diary amounts must not change.
 
 ### iPhone inactive-state diagnostics need refinement
 
@@ -278,11 +254,11 @@ Next: On the current staging build, test scheduled logging, Log all today and on
 
 ### Edit a database food’s serving size
 
-ID: edit-the-serving-size-of-a-database-food · Food editing · Reviewed 2026-09-08
+ID: edit-the-serving-size-of-a-database-food · Food editing · Reviewed 2026-09-10
 
-The serving/unit/icon editor is released, with later corrections for first-frame layout, Review state and stale post-save projections. It remains separate from calculator default memory. Complete save-and-reopen phone acceptance is still open.
+The serving/unit/icon editor is released, with later corrections for first-frame layout, Review state and stale post-save projections. It remains separate from calculator default memory. Complete save-and-reopen phone acceptance is still open. Retained in regular TRAK 475, available in internal TestFlight.
 
-Next: On Staging Build 33, confirm Edit opens promptly with the correct name, icon and Serving card. Change amount and unit; check Nutrition, Review, save/reopen, supported units, dark mode and larger text.
+Next: On regular TRAK 475, confirm Edit opens promptly with the correct name, icon and Serving card. Change amount and unit; check Nutrition, Review, save/reopen, supported units, dark mode and larger text.
 
 ### Delete Undo appears without waiting for sync
 
@@ -334,91 +310,91 @@ Next: Publish a new scale weight while TRAK is open, then test a short app switc
 
 ### Roll-On staging behaviour and minimum targets
 
-ID: rollon-staging-behaviour-and-shared-minimum · Coach & insights · Reviewed 2026-09-08
+ID: rollon-staging-behaviour-and-shared-minimum · Coach & insights · Reviewed 2026-09-10
 
-The earlier staging failure still needs a final phone pass. The reviewed Coach/Roll-On packet is now in Staging Build 37 with the shared personal minimum, cache and missing-profile handling. Combined automated checks passed; this does not close the reported phone issue.
+The earlier staging failure still needs a final phone pass. The reviewed Coach/Roll-On packet is now in Staging Build 37 with the shared personal minimum, cache and missing-profile handling. Combined automated checks passed; this does not close the reported phone issue. Retained in regular TRAK 475, available in internal TestFlight.
 
-Next: On Build 37, reproduce the reported day/action and verify allocation, Why details, incomplete profiles, changed minimums and preserved historical targets.
+Next: On regular TRAK 475, reproduce the reported day/action and verify allocation, Why details, incomplete profiles, changed minimums and preserved historical targets.
 
 ### Coach weekly check-in shows and applies the correct calories
 
-ID: weekly-coach-review-displays-and-applies-one-valid-plan · Coach & insights · Reviewed 2026-09-08
+ID: weekly-coach-review-displays-and-applies-one-valid-plan · Coach & insights · Reviewed 2026-09-10
 
-The repair for zero-calorie first plans and incorrect repeat plans is retained in distributed Staging Build 39 with backend 2718. It keeps one review per period and applies the displayed current calories and macros. The newly reported checklist-animation timing issue is tracked separately.
+The repair for zero-calorie first plans and incorrect repeat plans is retained in distributed Staging Build 39 with backend 2718. It keeps one review per period and applies the displayed current calories and macros. The newly reported checklist-animation timing issue is tracked separately. Retained in regular TRAK 475, available in internal TestFlight.
 
 Next: Verify first check-in, redo, reopen and accept in the current staging app. All screens should show the same saved calories and macros; keep calculation correctness separate from the animation repair.
 
 ### Use the agreed personal calorie minimum everywhere
 
-ID: personal-calorie-minimum-used-by-coach-goals-and-rollon · Coach & insights · Reviewed 2026-09-08
+ID: personal-calorie-minimum-used-by-coach-goals-and-rollon · Coach & insights · Reviewed 2026-09-10
 
-The agreed height/weight-based Standard minimum and optional Low setting are included with the Coach/Roll-On packet in Staging Build 37 and its paired backend. Explicit user choices are preserved and missing profile details are handled explicitly. Regular TRAK promotion and phone acceptance remain open.
+The agreed height/weight-based Standard minimum and optional Low setting are included with the Coach/Roll-On packet in Staging Build 37 and its paired backend. Explicit user choices are preserved and missing profile details are handled explicitly. Regular TRAK delivery is complete; new phone acceptance is separate. Retained in regular TRAK 475, available in internal TestFlight.
 
-Next: On staging, validate Standard and Low with representative profiles and confirm Coach, goal setup and Roll-On use the same minimum before regular rollout.
+Next: The shared minimum is delivered in regular TRAK 475/backend 2722. Astra owns any profile-specific inconsistency reported across Coach, goal setup or Roll-On; retain explicit user choices.
 
 ### Test Coach check-ins without waiting a week
 
-ID: repeat-coach-checkins-without-waiting-a-week · Coach & insights · Reviewed 2026-09-08
+ID: repeat-coach-checkins-without-waiting-a-week · Coach & insights · Reviewed 2026-09-10
 
-Distributed Staging Build 39 retains the Build 38 URL correction for the test controls, paired with backend 2718. Automated request coverage passes; physical phone acceptance remains open.
+Staging Build 45/backend 2721 retain Repeat test check-in and Start next test week, including the earlier URL correction. Automated coverage passes; these controls remain exclusive to staging and are deliberately gated off in production 475/backend 2722.
 
-Next: On Build 39, confirm Repeat test check-in and Start next test week complete without the previous connection failure. These controls reuse recorded data; they do not generate a week of weight or food history. Maintenance decisions remain accepted on the reviewed simulations.
+Next: Use the controls in staging 45 for ordinary check-in testing. They reuse recorded data and do not invent a week of history. Accepted maintenance simulations remain valid.
 
 ### Micronutrient details open with the correct complete view
 
-ID: micronutrient-details-open-with-complete-current-data · Coach & insights · Reviewed 2026-09-09
+ID: micronutrient-details-open-with-complete-current-data · Coach & insights · Reviewed 2026-09-10
 
-Build 40 now prepares the selected complete nutrient view before navigation. Delayed-response and account/date/route checks passed; the phone check remains open.
+Regular TRAK 475 includes the complete shared nutrient preparation and covering caches developed through staging 45, plus the accepted shading, bars and edge corrections. Account/date/route guards and normal screen motion are retained.
 
-Next: On Build 41, cold-open a saved nutrient timeframe, including 6 months, and confirm the correct complete view appears.
+Next: Astra handles any new incomplete-data report on 475, including saved long timeframes. Preserve the accepted staging graph evidence.
 
 ### All shows the full recorded nutrient history
 
-ID: micronutrient-all-range-uses-recorded-history · Coach & insights · Reviewed 2026-09-08
+ID: micronutrient-all-range-uses-recorded-history · Coach & insights · Reviewed 2026-09-10
 
-Staging Build 34 contains the correction for 1Y to All remaining stuck at one year when recorded history is shorter. It uses the actual history span and retains Build 33 work. A related regular Build 470 correction remains separate; full phone acceptance is still open.
+Staging Build 34 contains the correction for 1Y to All remaining stuck at one year when recorded history is shorter. It uses the actual history span and retains Build 33 work. A related regular Build 470 correction remains separate; full phone acceptance is still open. Retained in regular TRAK 475, available in internal TestFlight.
 
-Next: On the latest Staging Build 37, test repeated 1Y to All switching with less than and more than a year of history, including empty history, without closing the screen.
+Next: On regular TRAK 475, test repeated 1Y to All switching with less than and more than a year of history, including empty history, without closing the screen.
 
 ### Nutrient target markers remain visible
 
-ID: micronutrient-target-markers-remain-visible · Coach & insights · Reviewed 2026-09-09
+ID: micronutrient-target-markers-remain-visible · Coach & insights · Reviewed 2026-09-10
 
-Build 40 restores the historical light and dark nutrient rail colours. Astra reviewed rendered examples and marker/range tests; nutrient values and target calculations are preserved.
+Build 40 restores the historical light and dark nutrient rail colours. Astra reviewed rendered examples and marker/range tests; nutrient values and target calculations are preserved. Retained in regular TRAK 475, available in internal TestFlight.
 
-Next: On Build 41, check rail contrast and visible target markers across nutrient screens and Food Editor.
+Next: On regular TRAK 475, check rail contrast and visible target markers across nutrient screens and Food Editor.
 
 ### Nutrient values and spacing match the agreed design
 
-ID: micronutrient-formatting-and-spacing · Coach & insights · Reviewed 2026-09-08
+ID: micronutrient-formatting-and-spacing · Coach & insights · Reviewed 2026-09-10
 
-Staging Builds 29/30 added the agreed numeric presentation and tighter legend-to-Today spacing, retained by Build 33. Further regular Build 470 formatting corrections are local and unreleased. These are presentation changes, not nutrition-data changes.
+Staging Builds 29/30 added the agreed numeric presentation and tighter legend-to-Today spacing, retained by Build 33. The subsequent regular formatting corrections are retained in the combined production source. These are presentation changes, not nutrition-data changes. Retained in regular TRAK 475, available in internal TestFlight.
 
 Next: Check Today, Daily average, History, tooltips, percentages and small positive values on the intended build. Retain stored precision and verify the final regular/staging formatting agrees.
 
 ### Micronutrient coverage loads in regular TRAK
 
-ID: micronutrient-coverage-production-retry-error · Coach & insights · Reviewed 2026-09-08
+ID: micronutrient-coverage-production-retry-error · Coach & insights · Reviewed 2026-09-10
 
 Build 470 restored the intended nutrient screen, then production backend 2715 fixed the coverage endpoint that was returning an error because of an environment mismatch. The backend correction is verified live. The full phone experience, including separate chart issues, remains open.
 
-Next: Retry coverage in existing regular Build 470; no new app build is needed for the endpoint repair. Record the phone result and keep any range or marker defect on its own card.
+Next: The endpoint correction is retained in backend 2722 and regular TRAK 475. Astra owns any new coverage-load failure; retain graph defects as separate regression cards.
 
 ### Show weight units before Small, Medium and Large
 
-ID: weight-units-before-named-food-portions · Food editing · Reviewed 2026-09-08
+ID: weight-units-before-named-food-portions · Food editing · Reviewed 2026-09-10
 
-Staging Build 30 changed the serving-chip order to g, oz, lb before named portions such as Small, Medium and Large. Build 33 retains it. The change does not alter portion weights or food ranking.
+Staging Build 30 changed the serving-chip order to g, oz, lb before named portions such as Small, Medium and Large. Build 33 retains it. The change does not alter portion weights or food ranking. Retained in regular TRAK 475, available in internal TestFlight.
 
-Next: Check several foods with named servings on Build 33, including scroll/overflow behaviour and correct calories after selecting a weight unit or named portion.
+Next: Check several foods with named servings on regular TRAK 475, including scroll/overflow behaviour and correct calories after selecting a weight unit or named portion.
 
 ### Remember the serving set with the pack calculator
 
-ID: remember-calculator-serving-when-food-is-reopened · Food editing · Reviewed 2026-09-08
+ID: remember-calculator-serving-when-food-is-reopened · Food editing · Reviewed 2026-09-10
 
-Staging Build 34 includes the fix that saves calculated grams to the account and restores them through Search, Recents, barcode and restart. For example, 500 g divided by four servings reopens at 125 g. Phone acceptance remains open.
+Staging Build 34 includes the fix that saves calculated grams to the account and restores them through Search, Recents, barcode and restart. For example, 500 g divided by four servings reopens at 125 g. Phone acceptance remains open. Retained in regular TRAK 475, available in internal TestFlight.
 
-Next: On the latest Staging Build 37, test every reopening route, correct calories, manual overrides, existing diary amounts and account switching. A failed save must be reported; cold offline restoration and older web-app preference migration are not included.
+Next: On regular TRAK 475, test every reopening route, correct calories, manual overrides, existing diary amounts and account switching. A failed save must be reported; cold offline restoration and older web-app preference migration are not included.
 
 ### Blueberries entered in grams must not become cups
 
@@ -454,35 +430,35 @@ Next: On staging, change a goal on a day without a saved estimate, then check ea
 
 ### Coach maintenance range matches the selected tolerance
 
-ID: coach-maintenance-range-matches-selected-tolerance · Coach & insights · Reviewed 2026-09-08
+ID: coach-maintenance-range-matches-selected-tolerance · Coach & insights · Reviewed 2026-09-10
 
-The maintenance policy is accepted on independently reviewed simulations and is now integrated into live staging backend 2717, paired with Build 38. The accepted controller logic and confidence calculation are preserved in the integrated runtime. Existing simulation evidence remains valid; production promotion is still outstanding.
+The maintenance policy is accepted on independently reviewed simulations and is now integrated into live staging backend 2717, paired with Build 38. The accepted controller logic and confidence calculation are preserved in the integrated runtime. Existing simulation evidence remains valid; the policy is also live on production backend 2722. Retained in regular TRAK 475, available in internal TestFlight.
 
-Next: The staging owner retains ordinary release compatibility checks and prepares a separately approved regular TRAK promotion. Do not repeat the accepted maintenance simulations or require prepared phone weight histories unless relevant code changes invalidate that evidence.
+Next: The accepted maintenance policy is live in production 2722 and paired with 475. Reuse its reviewed simulations; do not require prepared phone histories or rerun them unless relevant logic changes. Broader Coach effectiveness remains separately tracked.
 
 ### Coach Accept responds immediately
 
-ID: coach-accept-animation-starts-without-save-delay · Coach & insights · Reviewed 2026-09-09
+ID: coach-accept-animation-starts-without-save-delay · Coach & insights · Reviewed 2026-09-10
 
-Build 43 starts feedback immediately and includes the continuous tick correction. The animation does not hold mid-stroke for the network. Confirmation and return still require a successful save, and failed-save recovery is preserved.
+Build 43 starts feedback immediately and includes the continuous tick correction. The animation does not hold mid-stroke for the network. Confirmation and return still require a successful save, and failed-save recovery is preserved. Retained in regular TRAK 475, available in internal TestFlight.
 
-Next: Check Coach Accept in Build 43. Astra owns follow-up; use the staging repeat-check-in controls for ordinary testing.
+Next: The immediate, continuous feedback is delivered in regular TRAK 475. Astra owns any reported regression. Staging 45 retains repeat-check-in controls for testing; production keeps the ordinary weekly cycle.
 
 ### Coach result waits for its review checklist
 
-ID: coach-result-waits-for-review-checklist · Coach & insights · Reviewed 2026-09-09
+ID: coach-result-waits-for-review-checklist · Coach & insights · Reviewed 2026-09-10
 
-Build 40 waits for both Coach data and the completed review checklist before showing the result. Slow responses, retry, reduced motion and leaving the screen are covered by tests.
+Build 40 waits for both Coach data and the completed review checklist before showing the result. Slow responses, retry, reduced motion and leaving the screen are covered by tests. Retained in regular TRAK 475, available in internal TestFlight.
 
-Next: On Build 40, repeat a staging Coach check-in and confirm the checklist finishes before its result appears.
+Next: Regular TRAK 475 includes the loading-checklist fix. For repeatable testing, use staging 45 and confirm the checklist finishes before its result appears; production retains the normal weekly cycle.
 
 ### Daily targets show saved cycling values immediately
 
-ID: cycling-save-updates-daily-targets-first-frame · Coach & insights · Reviewed 2026-09-09
+ID: cycling-save-updates-daily-targets-first-frame · Coach & insights · Reviewed 2026-09-10
 
-Build 40 carries the exact saved cycling week through the real settings flow, so the first returned Insights card has the saved calories and macros. Cancellation, account changes and later target edits are covered.
+Build 40 carries the exact saved cycling week through the real settings flow, so the first returned Insights card has the saved calories and macros. Cancellation, account changes and later target edits are covered. Retained in regular TRAK 475, available in internal TestFlight.
 
-Next: On Build 41, save a different cycling plan and confirm the first returned daily-target card immediately matches it.
+Next: On regular TRAK 475, save a different cycling plan and confirm the first returned daily-target card immediately matches it.
 
 ### EPA + DHA uses the combined 0.25 g target
 
@@ -494,43 +470,43 @@ Next: On Build 40, verify the combined target and intake in overview/detail/cove
 
 ### Edit goal returns with updated daily targets
 
-ID: edit-goal-rate-updates-cycling-targets-on-return · Coach & insights · Reviewed 2026-09-09
+ID: edit-goal-rate-updates-cycling-targets-on-return · Coach & insights · Reviewed 2026-09-10
 
-Build 41 prepares the current daily targets before returning from Edit goal after a weekly loss-rate change, including different calories by day. It uses the existing target resolver; target calculations are unchanged.
+Build 41 prepares the current daily targets before returning from Edit goal after a weekly loss-rate change, including different calories by day. It uses the existing target resolver; target calculations are unchanged. Retained in regular TRAK 475, available in internal TestFlight.
 
-Next: On Build 41, change weekly loss rate, update the plan and confirm the first returned Insights targets match the new plan. Check both uniform and cycling targets.
+Next: On regular TRAK 475, change weekly loss rate, update the plan and confirm the first returned Insights targets match the new plan. Check both uniform and cycling targets.
 
 ### Explain the Standard and Low calorie minimums
 
-ID: calorie-minimum-explanations-and-recommended-badge · Coach & insights · Reviewed 2026-09-09
+ID: calorie-minimum-explanations-and-recommended-badge · Coach & insights · Reviewed 2026-09-10
 
-Build 41 explains the Standard and Low allowances, marks Standard as Recommended and removes the size-based sentence. Displayed minimums remain calculated for the profile; the minimum policy is unchanged.
+Build 41 explains the Standard and Low allowances, marks Standard as Recommended and removes the size-based sentence. Displayed minimums remain calculated for the profile; the minimum policy is unchanged. Retained in regular TRAK 475, available in internal TestFlight.
 
-Next: Review the wording and calculated Standard/Low amounts in Build 41, including larger text.
+Next: Review the wording and calculated Standard/Low amounts in regular TRAK 475, including larger text.
 
 ### Food micronutrients open full-screen with the serving shown
 
-ID: food-micronutrients-fullscreen-serving-caption · Food editing · Reviewed 2026-09-09
+ID: food-micronutrients-fullscreen-serving-caption · Food editing · Reviewed 2026-09-10
 
-Build 41 opens Food Editor micronutrients as a full screen, puts the serving in brackets after the food name and displays unit-bearing zero for blank food amounts. Missing nutrition remains unknown internally. Embedded recipe and meal panels keep their parent layout.
+Build 41 opens Food Editor micronutrients as a full screen, puts the serving in brackets after the food name and displays unit-bearing zero for blank food amounts. Missing nutrition remains unknown internally. Embedded recipe and meal panels keep their parent layout. Retained in regular TRAK 475, available in internal TestFlight.
 
-Next: On Build 41, check food and recipe serving captions, full-screen opening, back navigation and blank values in light and dark mode.
+Next: On regular TRAK 475, check food and recipe serving captions, full-screen opening, back navigation and blank values in light and dark mode.
 
 ### Restore the light-grey micronutrient background
 
-ID: micronutrient-overview-light-background · Coach & insights · Reviewed 2026-09-09
+ID: micronutrient-overview-light-background · Coach & insights · Reviewed 2026-09-10
 
-Build 41 restores the light-grey background behind the main micronutrient overview so white cards remain visible. Dark mode is unchanged. Existing visual references verify the intended colours.
+Build 41 restores the light-grey background behind the main micronutrient overview so white cards remain visible. Dark mode is unchanged. Existing visual references verify the intended colours. Retained in regular TRAK 475, available in internal TestFlight.
 
-Next: On Build 41, confirm the white nutrient cards stand out against the grey background in light mode.
+Next: On regular TRAK 475, confirm the white nutrient cards stand out against the grey background in light mode.
 
 ### Remove the delay when reopening nutrient graphs
 
 ID: micronutrient-graph-repeat-tap-delay · Coach & insights · Reviewed 2026-09-10
 
-Build 45 retains early shared history preparation, covering caches and the normal transition. It adds stable first-frame Standard references, matching N-day bars/scale and corrected plot edges after the Build 44 phone report. Installed directly and available in TestFlight; automated checks pass and phone acceptance is tracked separately.
+Build 45 retains early shared history preparation, covering caches and the normal transition. It adds stable first-frame Standard references, matching N-day bars/scale and corrected plot edges after the Build 44 phone report. Installed directly and available in TestFlight; automated checks pass and phone acceptance is tracked separately. Retained in regular TRAK 475, available in internal TestFlight.
 
-Next: Check the first and repeated opening of Vitamin A in Build 45. Astra owns feedback.
+Next: The reported graph rendering fix was accepted on staging 45 and is included in regular TRAK 475. Astra owns any new timing report; keep cold-open observations separate from the accepted rendering fix.
 
 ### Goal-rate editing from plan review includes goal weight
 
@@ -539,6 +515,22 @@ ID: goal-review-rate-edit-includes-goal-weight · Coach & insights · Reviewed 2
 Build 42 opens goal weight, then goal rate, when editing Goal rate from the plan review. It returns to the review before the final Update plan. Related goal and Insights checks and the full app suites pass; target calculations are unchanged.
 
 Next: On Build 43, check the full edit-and-save sequence and the returned daily targets. Astra owns any remaining regression.
+
+### Search foods sometimes fail to load micronutrients
+
+ID: search-food-micronutrients-intermittent-retry · Food editing · Reviewed 2026-09-10
+
+Regular TRAK 475 now recovers when a same-account Health refresh invalidates a pending food nutrient read, and retries one temporary request failure. All 21 focused cache/recovery checks pass, including account isolation and the shared retry limit. It is available in internal TestFlight. These fixes cover reproduced failure classes; the original phone incident was not conclusively traced.
+
+Next: Astra owns any recurrence while opening Search foods in 475. Record the exact food and route if it occurs; the fix is delivered, with new phone acceptance tracked separately.
+
+### Recipe Edit opens immediately
+
+ID: recipe-editor-opens-without-waiting-for-detail · Recipes & custom foods · Reviewed 2026-09-10
+
+Regular TRAK 475 opens Recipe Edit immediately while complete ingredients load, avoids unnecessary nutrient enrichment, retries one temporary failure and retains an actionable Retry screen. The 18-ingredient regression preserves original household amounts and one gram basis. An old cached recipe is not silently reopened for editing. Available in internal TestFlight.
+
+Next: Astra owns reported Recipe Edit regressions on 475; retain Save & Log, complete ingredients and account isolation. Delivery is complete; new phone acceptance is separate.
 
 ## Planned
 
@@ -704,51 +696,11 @@ Next: Compare uncached latency, food-ranking parity, catalogue licensing/freshne
 
 ## In progress
 
-### Staging changes awaiting production
-
-ID: staging-changes-awaiting-production · Production promotion · Reviewed 2026-09-10
-
-All 18 staging groups are integrated with newer production work preserved. Backend 2722 and its migration are now live and verified; warm app Search passes, and original/new result ordering matches in the comparison. Native Build 475 is compiling and signing.
-
-Next: Astra: verify the signed artifacts, deliver Build 475 to internal TestFlight, and record Android delivery and remaining device acceptance.
-
-### Keep newer production work when promoting staging
-
-ID: preserve-production-work-during-staging-promotion · Production promotion · Reviewed 2026-09-10
-
-The combined source retains production widgets and picker corrections, automatic Health pickup and Health writes, saved-food Search cache/icon corrections, AI/voice/recipe/recurring identity and household amounts, plus production release configuration. Staging platform/signing defaults were reconciled against the production project.
-
-Next: Production Build 474 and its widget source are verified as the integration base. Complete signed Build 475 artifact verification while preserving these changes.
-
-### Promote staging micronutrient changes
-
-ID: staging-promotion-micronutrients · Production promotion · Reviewed 2026-09-10
-
-Already on staging: nutrient rails, references, legends and precision; EPA+DHA agreement; full-screen food nutrients and serving captions; zero display and light-mode background; complete graph/Today data and navigation guards. Build 45 retains early history preparation and caches, restores normal screen motion and corrects first-frame shading, bar scaling and edges. The reported graph fix has phone sign-off; backend 2721 adds iodine reads.
-
-Next: Included in the tested, compiled candidate. Complete hosted checks and the guarded release sequence, preserving the acceptance scope recorded in the full release list.
-
-### Promote staging Coach and goal changes
-
-ID: staging-promotion-coach-and-goals · Production promotion · Reviewed 2026-09-10
-
-Already on staging: personal minimum and copy, coherent reviews, maintenance correction and post-goal simulations, immediate daily/cycling targets, goal-weight/rate review editing, unit/slider fixes and Coach loading/Accept feedback. Build 43 includes the continuous tick correction.
-
-Next: Included in the tested, compiled candidate. Complete hosted checks and the guarded release sequence, preserving the acceptance scope recorded in the full release list.
-
-### Promote staging Search and food changes
-
-ID: staging-promotion-search-and-food · Production promotion · Reviewed 2026-09-10
-
-Already on staging: dedicated native iOS search transport and diagnostics; remembered calculator servings; g/oz/lb before named portions; validated food calculations with offline recovery; Add commits the selected-food list; recipe unlink keeps fractional nutrition. These changes are included in the combined source candidate and awaiting release checks.
-
-Next: Included in the tested, compiled candidate. Complete hosted checks and the guarded release sequence, preserving the acceptance scope recorded in the full release list.
-
 ### Complete the full Coach effectiveness review
 
-ID: coach-outcome-evaluation-before-full-signoff · Coach & insights · Reviewed 2026-09-08
+ID: coach-outcome-evaluation-before-full-signoff · Coach & insights · Reviewed 2026-09-10
 
-The accepted maintenance policy is now integrated into staging backend 2717. Its reviewed simulations improve the original maintenance journeys from 20/34 to 30/34 inside the selected range after eight weeks and 25/34 to 34/34 after sixteen. The wider eligible comparison improves from 48/60 to 51/60 and 56/60 to 60/60, while calorie reversals fall from 87 to 8. Only 60 of 120 wider conditions reached maintenance; the remaining conditions are unmeasured after that transition. The original broader effectiveness failure is preserved.
+The accepted maintenance policy is now integrated into staging and live production backend 2722. Its reviewed simulations improve the original maintenance journeys from 20/34 to 30/34 inside the selected range after eight weeks and 25/34 to 34/34 after sixteen. The wider eligible comparison improves from 48/60 to 51/60 and 56/60 to 60/60, while calorie reversals fall from 87 to 8. Only 60 of 120 wider conditions reached maintenance; the remaining conditions are unmeasured after that transition. The original broader effectiveness failure is preserved.
 
 Next: Broader effectiveness questions, including journeys that did not reach their first goal, remain separate from the accepted and staging-integrated maintenance policy. The Coach review owner should investigate those questions without changing the accepted simulation thresholds or reopening completed maintenance work.
 
@@ -782,9 +734,9 @@ Next: Prepare this separate backend correction on the latest staging source befo
 
 ID: nutrient-graph-complete-drawing-and-edges · Coach & insights · Reviewed 2026-09-10
 
-Build 45 corrects incomplete Standard shading and a chart-window mismatch that allowed older history to change the visible bars and scale. Target and range segments now meet the plot edges while historical Custom gaps remain unknown. It is installed directly; internal TestFlight availability is confirmed. All six rendered regressions pass, as does the full app suite. Phone feedback on 10 September confirms the reported graph fix looks good.
+Build 45 corrects incomplete Standard shading and a chart-window mismatch that allowed older history to change the visible bars and scale. Target and range segments now meet the plot edges while historical Custom gaps remain unknown. It is installed directly; internal TestFlight availability is confirmed. All six rendered regressions pass, as does the full app suite. Phone feedback on 10 September confirms the reported graph fix looks good. The accepted corrections are also included in regular TRAK 475.
 
-Next: Include the accepted fix in reviewed production integration. Preserve historical Custom gaps and standard motion; wider feature checks remain separate.
+Next: Astra preserves the accepted graph fix, historical Custom gaps and standard motion in future work. No repeated test is required solely because it was promoted.
 
 ### Search History matches stay visible
 
@@ -819,6 +771,54 @@ The same active staging profile signed Builds 42 and 43 successfully with Health
 Next: Use the verified staging profile for subsequent builds and recheck it if shared Apple capabilities change again.
 
 ## Earlier sign-off
+
+### Staging changes awaiting production
+
+ID: staging-changes-awaiting-production · Production promotion · Reviewed 2026-09-10
+
+All 18 staging change groups are now in regular TRAK Build 475, available in internal TestFlight, with production backend 2722 live. Signed iOS and Android packages pass verification. The matching Android APK is prepared for the existing manual Firebase upload. New device acceptance and public App Store release are separate.
+
+Next: Astra maintains this delivery record and handles reported regressions. Update regular TRAK to 475 in TestFlight; the already accepted Build 45 graph result remains valid.
+
+### Keep newer production work when promoting staging
+
+ID: preserve-production-work-during-staging-promotion · Production promotion · Reviewed 2026-09-10
+
+Build 475 was built on the verified production Build 474 widget source. It retains widgets and picker corrections, Health weight pickup and Apple Health/Health Connect writes, saved-food cache and icons, AI/voice/recipe/recurring identity and household amounts. Signed artifacts retain production identity, App Groups and Health permissions. Android release lint also caught and corrected six duplicate shortcut rows inherited from the production small Today widget.
+
+Next: Preserve this combined production source for later work. Source, signing and regression evidence is recorded; no new physical Health-write or widget acceptance is inferred.
+
+### Promote staging micronutrient changes
+
+ID: staging-promotion-micronutrients · Production promotion · Reviewed 2026-09-10
+
+Included in regular TRAK 475 and production backend 2722: nutrient rails, references, legends and precision; EPA+DHA agreement; full-screen food nutrients and serving captions; zero display and light-mode background; complete graph/Today data and navigation guards. Build 45 retains early history preparation and caches, restores normal screen motion and corrects first-frame shading, bar scaling and edges. The reported graph fix has phone sign-off; backend 2721 adds iodine reads.
+
+Next: Promotion is complete for the backend and internal iPhone app. Astra retains feature-specific acceptance and regression records; Android uses the prepared signed APK for the existing manual upload.
+
+### Promote staging Coach and goal changes
+
+ID: staging-promotion-coach-and-goals · Production promotion · Reviewed 2026-09-10
+
+Included in regular TRAK 475 and production backend 2722: personal minimum and copy, coherent reviews, maintenance correction and post-goal simulations, immediate daily/cycling targets, goal-weight/rate review editing, unit/slider fixes and Coach loading/Accept feedback. Build 43 includes the continuous tick correction.
+
+Next: Promotion is complete for the backend and internal iPhone app. Astra retains feature-specific acceptance and regression records; Android uses the prepared signed APK for the existing manual upload.
+
+### Promote staging Search and food changes
+
+ID: staging-promotion-search-and-food · Production promotion · Reviewed 2026-09-10
+
+Included in regular TRAK 475 and production backend 2722: dedicated native iOS search transport and diagnostics; remembered calculator servings; g/oz/lb before named portions; validated food calculations with offline recovery; Add commits the selected-food list; recipe unlink keeps fractional nutrition. Both signed packages pass verification and iOS 475 is available in internal TestFlight.
+
+Next: Promotion is complete for the backend and internal iPhone app. Astra retains feature-specific acceptance and regression records; Android uses the prepared signed APK for the existing manual upload.
+
+### Repair older nutrient test-database fixtures
+
+ID: backend-nutrient-test-fixture-schema-gaps · Release verification · Reviewed 2026-09-10
+
+The repaired test schemas and fixtures are merged with production backend 2722. The combined suite passes 1,826 tests and 348 subtests, with 90 separate real PostgreSQL checks. Ownership, cancellation and transaction assertions are preserved. Verified local equivalents were used under the standing manual release rule; hosted jobs did not execute.
+
+Next: Keep the current fixtures and pinned combined test manifest in future backend work. This repair is complete.
 
 ### Build 461 backend, database and worker prerequisites are live
 
@@ -1291,3 +1291,11 @@ ID: health-on-iphone-pixel-and-samsung · Release & reliability · Reviewed 2026
 Recorded complete in an earlier release or verification checkpoint. This is historical coverage, not a fresh test of every current device.
 
 Next: Keep covered by regression tests; track any newly reported regression separately.
+
+### Keep one shortcut row in the Android small Today widget
+
+ID: android-small-today-widget-duplicate-shortcuts · Release verification · Reviewed 2026-09-10
+
+The production widget layout contained seven identical shortcut rows. Build 475 removes six duplicate insertions and keeps one bottom row with the same Search, Scan and Log weight actions. All other widget nodes and binding IDs are unchanged. The final Android release passes fatal lint and signature checks; the matching APK is ready for manual distribution.
+
+Next: Keep the corrected layout in future production builds. Android phone appearance remains separate from the passing release build.

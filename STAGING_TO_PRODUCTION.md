@@ -1,39 +1,46 @@
-# Staging changes awaiting production
+# Staging changes promoted to regular TRAK
 
-Updated 10 September 2026. Astra maintains this list at every staging release and
-production promotion. [Visual checklist](https://trak-checklist.hassanali0076.chatgpt.site/staging-to-production).
+Updated 10 September 2026. Astra maintains this release record.
+[Visual checklist](https://trak-checklist.hassanali0076.chatgpt.site/staging-to-production).
 
-Current staging is **app Build 45 + backend 2721**. Build 45's reported graph
-fix is accepted on the phone. Regular TRAK retains its separate production build;
-production backend **2722** is now verified live.
+**Regular TRAK Build 475 is available in internal TestFlight. Production backend
+2722 is live and verified.** All 18 staging groups below are included, together
+with the newer production widgets, Health work and recipe household amounts.
+Both signed app packages pass verification. The matching Android APK is ready
+for the established manual Firebase upload; it has not been uploaded to Firebase.
+This is an internal production-app release. A public App Store release and
+new physical-phone acceptance are separate.
 
-Astra has brought all 18 staging groups onto the latest production source in
-isolated candidates, preserving widgets, Health, search identities and recipe
-household amounts. **Manual release is underway: backend 2722 and native Build 475.** The combined backend passes
-1,826 tests and 348 subtests; a separate disposable PostgreSQL run passes 90
-checks, including real transactions and offline replay. The combined app passes
-4,261 current sign-in tests and 122 older sign-in tests, with no failures.
-Unsigned iOS compilation also passes. The approved manual path uses those
-verified local checks. Build 475 is compiling and signing after the app checks and two test-fixture corrections.
+Staging remains **Build 45 + backend 2721**. Its reported graph rendering and
+edge fix is accepted on the phone and retained in 475. The accepted maintenance
+simulation evidence remains valid. Neither needs repeating just because the
+release record changed.
 
-The two required serving-calculation tables have now been added to the
-independently verified production database. Readback confirms both; rerunning
-the migration makes zero changes. Existing food and account records were
-untouched. Backend 2722 is now live and independently verified.
+The backend passes 1,826 tests and 348 subtests, plus 90 separate PostgreSQL
+checks. The final app evidence covers 4,261 current sign-in tests and 122 older
+sign-in tests. Two fixtures needed correction during the release rerun; their
+complete files pass and the original failed invocation remains recorded. The
+final evidence combines unchanged passing partitions with those corrected
+cases. The approved manual path used verified local equivalents; hosted jobs
+did not execute.
 
-The previous 443/142 file counts were an old comparison snapshot. The new
-candidate inventory records the actual integrated changes and deliberate
-production protections. It is not a blanket copy of staging.
+The two required serving-calculation tables were created on the independently
+verified production database. Readback passes and rerunning makes zero changes;
+existing food, nutrition and account rows were untouched. All 30 current Search
+checks returned complete View all data, and all 15 paired ordered-result
+comparisons match. Server processing medians are below 90 ms; the Mac network
+probe still has intermittent transport delays, so this is not a new phone/VPN
+speed sign-off.
 
-## All 18 staging groups included in the candidate
+## All 18 staging groups included in regular TRAK 475
 
-| Change | Remaining check before production |
+| Change | Delivery and acceptance |
 | --- | --- |
-| Dedicated native iOS search connection, fallback and transport diagnostics | Preserve ranking and immediate View all; retain cold/warm VPN test coverage. |
+| Dedicated native iOS search connection, fallback and transport diagnostics | Delivered in 475. Full ordered results match; complete View all is retained. Server timing passes; phone/VPN speed is a separate observation. |
 | Search timing and background diagnostic uploads | Keep diagnostic privacy and environment controls. |
 | Remember the calculator's personal serving amount across Search, Recents and barcode | Reopen, restart and account-isolation acceptance. |
 | Put g, oz and lb before named serving chips | Preserve each food's conversions and portion definitions. |
-| Validate food calculations and recover rejected offline writes safely | Schema, account-isolation and replay checks; retain newer production food fixes. |
+| Validate food calculations and recover rejected offline writes safely | Production migration and account/replay checks pass. Newer production food fixes are retained. |
 | Food editor Add includes the existing selected-food list | Check all relevant food entry points. |
 | Personal calorie minimum and reliable, consistently saved Coach reviews | Keep manual targets and one current-target publication path. |
 | Maintenance corrections and simulations that represent choices after reaching a goal | Reuse the reviewed evidence and retain the separate broader simulation limitations. |
@@ -44,9 +51,9 @@ production protections. It is not a blanket copy of staging.
 | Nutrient rails, legends, references, precision and EPA+DHA consistency | Preserve provenance and unknown-data handling. |
 | Full-screen food nutrients, serving in the title, requested zero display and light-mode background | Keep missing-data status distinct from the displayed number. |
 | Faster prepared nutrient graphs, short ALL history, retries and navigation safeguards | Build 45 retains earlier preparation, normal transition and swipe-back, and corrects first-frame shading, bar scaling and reference edges. The reported Build 45 graph fix has phone acceptance. |
-| Clearer initial food nutrient loading and failure diagnostics | The candidate now recovers an interrupted same-account read and one transient failure; phone verification remains separate. |
+| Clearer initial food nutrient loading and failure diagnostics | Build 475 now recovers an interrupted same-account read and one transient failure; phone verification remains separate. |
 | Recipe unlink preserves fractional nutrition | Earlier recipe-save rounding is a separate pilot. |
-| Native runtime/environment guards, packaging and share-link isolation | Reconcile production signing, links and configuration; retain production-only work. |
+| Native runtime/environment guards, packaging and share-link isolation | Both signed artifacts pass production identity and configuration checks. Production-only work is retained. |
 
 ## Staging-only testing tools
 
@@ -88,20 +95,20 @@ All 4,296 app tests pass, with 14 existing skips. Six rendered regression cases
 fail on Build 44 and the production source and pass with these corrections.
 Signed exports and launch assets pass their checks. Phone feedback on 10 September
 confirms the reported graph rendering and edge fix looks good. This accepts that
-fix; it does not close unrelated checks or the production integration gate.
+fix; it does not close unrelated feature checks.
 
-## Fixes not delivered yet
+## Additional delivery and separate work
 
 | Work | Current state |
 | --- | --- |
-| Food micronutrients sometimes finish with Retry | A same-account Health refresh and a first temporary server failure now recover automatically. All 21 focused cache/recovery tests pass, including account isolation. The original phone incident has not been conclusively traced; this new correction is not yet on the phone. |
-| Recipe Edit waits before opening | The candidate opens the editor immediately with a loading state, fetches full ingredients without nutrient enrichment, retries one transient failure and offers Retry if needed. Household amounts remain intact. It does not silently edit an old cached recipe. |
+| Food micronutrients sometimes finish with Retry | A same-account Health refresh and a first temporary server failure now recover automatically. All 21 focused cache/recovery tests pass, including account isolation. Included in 475 internal TestFlight. The original phone incident was not conclusively traced; new phone acceptance is separate. |
+| Recipe Edit waits before opening | Build 475 opens the editor immediately with a loading state, fetches full ingredients without nutrient enrichment, retries one transient failure and offers Retry if needed. Household amounts remain intact. It does not silently edit an old cached recipe. |
 | Recipe-save precision pilot | Separate local candidate; excluded from this batch because it was not delivered by staging. |
-| Older backend test-database gaps | Repaired in the integration candidate. The combined backend and real PostgreSQL checks now pass, with account, cancellation and transaction checks retained. |
+| Older backend test-database gaps | Repaired and merged with production backend 2722. The combined backend and real PostgreSQL checks pass, with account, cancellation and transaction checks retained. |
 
-## Keep the newer production work
+## Newer production work preserved
 
-Production already has work missing from staging. A promotion must preserve:
+Build 475/backend 2722 preserve this newer production work:
 
 - Home-screen widgets and their sign-out, snapshot and deep-link integration, including newer selectable nutrient rings, configurable Quick actions and fibre data.
 - Automatic Health weight pickup, Apple Health writes and Health Connect behaviour.
@@ -110,7 +117,15 @@ Production already has work missing from staging. A promotion must preserve:
 - AI, voice, recipe and recurring-food identity, icons and serving calculations.
 - Production release checks, configuration, current release notes and signing.
 - The separately released backend 2716 recipe matching and recovery when an AI ingredient identity becomes stale.
-- Backend 2718 persists original recipe household amounts alongside one gram calculation total, supports household-unit editing, and avoids counting the same amount twice. These newer production changes are preserved in the combined candidate.
+- Backend 2718 persists original recipe household amounts alongside one gram calculation total, supports household-unit editing, and avoids counting the same amount twice. These newer production changes are preserved in the delivered release.
+
+## Android small Today widget correction
+
+The production layout contained seven identical shortcut rows. The release
+check caught duplicate IDs; 475 keeps one bottom row with the same Search,
+Scan and Log weight actions. Other widget nodes and bindings are unchanged.
+The final Android release passes fatal lint and signature checks. iOS widget
+signatures, App Groups and Apple Health permissions also pass verification.
 
 ## How this stays current
 
@@ -120,9 +135,10 @@ owner, remaining checks and production completion evidence. The private checker
 detects a stale file inventory or changed fetched production source. A green
 build or an old commit message does not close phone regressions.
 
-Next: Astra completes hosted checks and immutable release review,
-then handles the guarded database migration, backend verification and production
-app build through the release process. Build 45 graph acceptance remains valid;
+The backend and internal iPhone release are complete. Astra maintains the
+release record and handles reported regressions. The signed Android package
+is prepared for the established manual upload. Public App Store promotion
+and new device acceptance are separate. Build 45 graph acceptance remains valid;
 there is no need to repeat that test merely because the checklist changed.
 Updating this list deploys neither the app nor the backend. Research and other
 unimplemented master-checklist requests are separate from this release.
