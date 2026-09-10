@@ -1,6 +1,6 @@
 # TRAK — master checklist
 
-Updated: 2026-09-10T17:36:45Z · Reviewed through 2026-09-10
+Updated: 2026-09-10T17:43:41Z · Reviewed through 2026-09-10
 
 - native: Regular iOS 476 remains available in internal TestFlight. Signed Android 477 is ready for the established manual Firebase upload, adding the approved widget sizing correction. Its exact APK passes 84 native host cases and all renders match the user-approved images. All 18 staging groups, approved widget designs and earlier production work are retained. This task has not uploaded Android 477 to Firebase. Staging 45 remains unchanged.
 - backend: Production backend 2722 is live and independently verified. The two-table serving-calculation migration is applied, read back and safe to rerun. Current native-contract searches return complete View all data; paired ordered results match the baseline. Server timing passes; Mac transport outliers are recorded separately and do not establish phone or VPN speed.
@@ -55,6 +55,38 @@ ID: grocery-refresh-scheduling-and-completion-receipts · Search & catalogue · 
 Nightly catalogue maintenance completed through the audit date, but recent grocery triggers failed before running and the latest successful trigger did not establish refresh completion. Reliable recent grocery results remain unverified.
 
 Next: The operations owner must inspect the last runner outcome and restore scheduling on existing infrastructure, with durable start/completion/failure records and missed-run alerts. No scheduler change was made by the audit.
+
+### Find why barberries cannot be found
+
+ID: search-barberries-missing · Search · Reviewed 2026-09-10
+
+Barberries could not be found in food Search. User report captured for later investigation; catalogue coverage and search behaviour have not yet been checked.
+
+Next: Astra investigates later: reproduce the exact query and region on the relevant build, distinguish missing catalogue data from matching/filtering, and preserve existing ranking and immediate View all.
+
+### Check inconsistent default serving units
+
+ID: food-serving-default-consistency · Food editor · Reviewed 2026-09-10
+
+Reported example: sunflower seeds defaults to 1 teaspoon, while pumpkin seeds defaults to grams. Recorded for investigation; it is not yet known whether this follows the food source, a remembered serving or an unintended default.
+
+Next: Astra compares the exact food entries and selection paths later. Check first-use defaults versus saved serving preferences and package/serving persistence; avoid changing nutrition conversions or forcing all foods to grams without establishing the intended behaviour.
+
+### Fix food-detail display toggles having no effect
+
+ID: food-card-detail-toggles · Settings · Reviewed 2026-09-10
+
+Food-card detail settings reportedly do not work, including Show macros and Show serving size. The report also references card density. Captured for later reproduction; the exact screen and build are not yet pinned.
+
+Next: Astra checks the card-density and food-detail controls, immediate rendering and persistence after reopening/restart. Confirm the affected screens and verify that each toggle changes the intended detail without disturbing other display preferences.
+
+### Align the Adjust chip with its text
+
+ID: food-editor-adjust-alignment · Food editor · Reviewed 2026-09-10
+
+The Adjust chip in the food editor is reported to be misaligned with the Adjust text. Captured for later review; no visual fix has been implemented.
+
+Next: Astra reproduces the alignment issue on the relevant platform/build, checks text scaling and light/dark mode, and makes a minimal layout correction after reviewing the actual screen.
 
 ## Next phone build
 

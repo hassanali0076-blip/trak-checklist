@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "title": "TRAK — master checklist",
-  "updatedAt": "2026-09-10T17:36:45Z",
+  "updatedAt": "2026-09-10T17:43:41Z",
   "reviewedThrough": "2026-09-10",
   "release": {
     "native": "Regular iOS 476 remains available in internal TestFlight. Signed Android 477 is ready for the established manual Firebase upload, adding the approved widget sizing correction. Its exact APK passes 84 native host cases and all renders match the user-approved images. All 18 staging groups, approved widget designs and earlier production work are retained. This task has not uploaded Android 477 to Firebase. Staging 45 remains unchanged.",
@@ -15,6 +15,10 @@
     "Reconciled through 10 September. Released changes, local fixes and reported phone results are tracked separately. This board update does not release a TRAK app build."
   ],
   "changes": [
+    {
+      "date": "2026-09-10",
+      "text": "Four user reports saved for later investigation: barberries missing from Search, inconsistent seed-serving defaults, food-card detail/density controls, and the food-editor Adjust alignment. Reports are not yet independently reproduced."
+    },
     {
       "date": "2026-09-10",
       "text": "Revised spacing mockups now show all seven main Android widgets together. Larger small rings, a higher calorie strip and balanced wide-layout spacing are awaiting review; the native app has not changed."
@@ -1803,6 +1807,42 @@
       "status": "active",
       "summary": "A revised gallery now shows all seven main Android widget layouts together for review. Small calorie and Macros rings are larger, the calorie strip sits higher, and nutrient, action and wide-widget content has more balanced spacing. The preview includes square/taller sizes, light/dark, empty/logged/long values and illustrative corner shapes. This replaces the earlier two-widget proposal. Native Build 477 has not changed.",
       "nextStep": "Aadam reviews the full gallery. Astra applies only accepted tweaks, then compares actual native renders across supported sizes. Samsung acceptance must record the actual model/One UI version and offered controls, test clipping/resizing and settings persistence. Browser mockups and Pixel/emulator results alone cannot establish Samsung compatibility.",
+      "updated": "2026-09-10"
+    },
+    {
+      "id": "search-barberries-missing",
+      "title": "Find why barberries cannot be found",
+      "area": "Search",
+      "status": "issue",
+      "summary": "Barberries could not be found in food Search. User report captured for later investigation; catalogue coverage and search behaviour have not yet been checked.",
+      "nextStep": "Astra investigates later: reproduce the exact query and region on the relevant build, distinguish missing catalogue data from matching/filtering, and preserve existing ranking and immediate View all.",
+      "updated": "2026-09-10"
+    },
+    {
+      "id": "food-serving-default-consistency",
+      "title": "Check inconsistent default serving units",
+      "area": "Food editor",
+      "status": "issue",
+      "summary": "Reported example: sunflower seeds defaults to 1 teaspoon, while pumpkin seeds defaults to grams. Recorded for investigation; it is not yet known whether this follows the food source, a remembered serving or an unintended default.",
+      "nextStep": "Astra compares the exact food entries and selection paths later. Check first-use defaults versus saved serving preferences and package/serving persistence; avoid changing nutrition conversions or forcing all foods to grams without establishing the intended behaviour.",
+      "updated": "2026-09-10"
+    },
+    {
+      "id": "food-card-detail-toggles",
+      "title": "Fix food-detail display toggles having no effect",
+      "area": "Settings",
+      "status": "issue",
+      "summary": "Food-card detail settings reportedly do not work, including Show macros and Show serving size. The report also references card density. Captured for later reproduction; the exact screen and build are not yet pinned.",
+      "nextStep": "Astra checks the card-density and food-detail controls, immediate rendering and persistence after reopening/restart. Confirm the affected screens and verify that each toggle changes the intended detail without disturbing other display preferences.",
+      "updated": "2026-09-10"
+    },
+    {
+      "id": "food-editor-adjust-alignment",
+      "title": "Align the Adjust chip with its text",
+      "area": "Food editor",
+      "status": "issue",
+      "summary": "The Adjust chip in the food editor is reported to be misaligned with the Adjust text. Captured for later review; no visual fix has been implemented.",
+      "nextStep": "Astra reproduces the alignment issue on the relevant platform/build, checks text scaling and light/dark mode, and makes a minimal layout correction after reviewing the actual screen.",
       "updated": "2026-09-10"
     }
   ]
