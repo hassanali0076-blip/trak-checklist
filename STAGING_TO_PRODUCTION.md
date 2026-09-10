@@ -1,4 +1,4 @@
-# Staging changes promoted to regular TRAK
+# Staging changes awaiting production
 
 Updated 10 September 2026. Astra maintains this release record.
 [Visual checklist](https://trak-checklist.hassanali0076.chatgpt.site/staging-to-production).

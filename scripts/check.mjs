@@ -9,6 +9,9 @@ console.log('Valid public checklist: '+b.tasks.length+' items; Markdown matches.
 // The deployed release page reads its change count from the first H2 section.
 // Keep readiness prose in the introduction, before the first group table.
 const release=readFileSync(new URL('../STAGING_TO_PRODUCTION.md',import.meta.url),'utf8');
+if(release.trim().split(/\r?\n/)[0] !== '# Staging changes awaiting production') {
+  throw Error('Keep the deployed release reader title exactly: # Staging changes awaiting production');
+}
 const firstSection=release.split(/^## /m)[1] || '';
 const rows=firstSection.split(/\r?\n/).filter(line=>line.trim().startsWith('|'));
 if(rows.length<3 || rows.some(line=>line.trim().slice(1,-1).split('|').length!==2)) {
