@@ -3,12 +3,14 @@
 Updated 10 September 2026. Astra maintains this release record.
 [Visual checklist](https://trak-checklist.hassanali0076.chatgpt.site/staging-to-production).
 
-**Regular iOS Build 476 is available in internal TestFlight. Signed Android 477
-is ready for manual upload. Production backend 2722 remains live.** All 18 staging groups below are retained from 475, together
-with the newer production Health work and recipe household amounts. Build 476
-adds the approved widget designs and functional repairs described below. Both
-signed app packages pass verification. Android 477 adds the approved sizing correction and is ready for the
-established manual Firebase upload; this task has not uploaded it to Firebase.
+**Regular iOS Build 476 is available in internal TestFlight. Signed Android 478
+is ready for manual upload. Production backend 2722 remains live.** All 18 staging
+groups below are retained from 475, together with newer production Health work
+and recipe household amounts. Android 478 includes the approved seven-widget
+spacing refinements, full nutrient unit words, larger-text fixes and responsive
+launcher sizing. Its exact APK passes 136 native rendering cases and 52 stronger
+corner-mask checks. Paired production identity and signing checks pass; the
+matching iOS archive is private verification only, with no iOS upload.
 This is an internal production-app release. Public store release and new
 physical-phone acceptance are separate.
 
@@ -207,19 +209,27 @@ review. This task has not uploaded it to Firebase or confirmed physical-phone
 acceptance. Astra owns any reported regression. Distributed iOS remains 476;
 both backends, all eighteen staging groups and the approved designs are preserved.
 
-## Further Android spacing review
+## Android 478 approved widget spacing ready for manual upload
 
-Build 477 corrects the earlier launcher-size calculation. A separate visual
-review finds excess space between the small calorie ring and macro strip, and
-between rows in the taller small Macros widget. The revised gallery now shows
-all seven main Android layouts together, with larger small rings, a higher
-calorie strip and balanced spacing in nutrient, action and wide layouts. Aadam
-reviews these proposals before native changes. Square/taller sizes and
-illustrative corner-roundness controls cover Samsung's shape concern; they are
-not verified Samsung presets. The current release has not changed.
+All seven Android layouts were approved and implemented: larger centered small
+rings, tighter P/F/C spacing on the small calorie card, clearer single-nutrient
+names and full unit words, larger/lower wide shortcuts and better macro readouts.
+The existing ranking, nutrition calculations, widget data, settings and taps are
+preserved. Review also caught larger-text clipping and older-Android static-size
+issues; both are corrected and covered by the expanded checks.
 
-Samsung acceptance must use actual One UI: record the model/version and options
-available to TRAK, test supported resize sizes and corner clipping, and confirm
-settings survive resizing/restart. Rings, values, shortcuts and the macro strip
-must remain clear of the edges. Pixel/emulator evidence alone does not establish
-Samsung compatibility.
+The source is merged into the native production line and the APK is signed.
+All 136 exact-APK rendering cases and 52 stronger corner-mask checks pass. The
+56 standard native images match the reviewed implementation exactly. Settings,
+ring-fill, snapshot, larger-text and custom-label checks pass. The unchanged
+Flutter logic retains its recorded full-suite evidence; no new full run is claimed.
+
+Samsung-relevant launcher dimensions, system corners and compact landscape
+layouts are included. The corner masks and older-Android branch tests are
+synthetic. Actual One UI acceptance should record the model/version, inspect
+which controls are offered, and check resizing, clipping and saved options.
+
+Next: Aadam uploads Android 478 through the established manual route and reviews
+the widgets. Astra handles any concrete regression. This task has not uploaded
+Android to Firebase or claimed physical Samsung acceptance. iOS stays on 476;
+both backends, all eighteen staging groups and earlier production work remain.

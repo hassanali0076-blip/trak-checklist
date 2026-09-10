@@ -1,10 +1,10 @@
 # TRAK — master checklist
 
-Updated: 2026-09-10T17:43:41Z · Reviewed through 2026-09-10
+Updated: 2026-09-10T18:50:49Z · Reviewed through 2026-09-10
 
-- native: Regular iOS 476 remains available in internal TestFlight. Signed Android 477 is ready for the established manual Firebase upload, adding the approved widget sizing correction. Its exact APK passes 84 native host cases and all renders match the user-approved images. All 18 staging groups, approved widget designs and earlier production work are retained. This task has not uploaded Android 477 to Firebase. Staging 45 remains unchanged.
+- native: Regular iOS 476 remains available in internal TestFlight. Signed Android 478 is ready for manual upload with all seven approved widget spacing refinements, readable nutrient unit words, larger-text fixes and responsive launcher sizing. Its exact APK passes 136 native rendering cases and 52 stronger-corner checks. All 18 staging groups and earlier production work are retained. This task has not uploaded Android 478 to Firebase. Staging 45 is unchanged.
 - backend: Production backend 2722 is live and independently verified. The two-table serving-calculation migration is applied, read back and safe to rerun. Current native-contract searches return complete View all data; paired ordered results match the baseline. Server timing passes; Mac transport outliers are recorded separately and do not establish phone or VPN speed.
-- next: Aadam uploads the signed Android 477 APK through the usual manual route and checks the widgets on Pixel 9. Astra handles any reported regression. The source is merged and packaging is complete; phone acceptance remains separate. Regular iOS 476 and both backends are unchanged.
+- next: Aadam uploads Android 478 through the usual manual route and reviews the widgets on the phone. Astra handles any reported regression. Source integration and packaging are complete. Samsung-relevant dimensions and corner clearance are tested synthetically; actual One UI controls and physical phone acceptance are separate. Regular iOS 476 and both backends are unchanged.
 
 > Public, read-only project status. No login needed.
 
@@ -114,7 +114,7 @@ ID: android-widgets-cannot-load · Widgets · Reviewed 2026-09-10
 
 The loading repair is included in Build 476, available in internal TestFlight with matching release-signed Android prepared for manual upload. All 12 widget layouts and 224 debug render states pass; the exact signed release also passes 56 populated cases through a real widget host; released 475 failed five original layouts. Four providers and per-widget settings are included. Pixel 9 picker-search and physical add/refresh acceptance remain separate from emulator evidence.
 
-Next: Aadam distributes the prepared Android 476 through the established manual route, then confirms the widgets appear, add and refresh on Pixel 9. Astra owns any remaining launcher or widget failure. Do not describe the Pixel report as resolved until that observation is confirmed.
+Next: The existing correction is retained in signed Android 478, whose exact APK passes native provider, host, resize and rendering checks. Aadam uploads 478 and checks picker visibility, adding, resizing, values and taps on the phone. Astra handles any reported regression; packaging is not physical-phone acceptance.
 
 ### Match nutrient graph transitions to the other screens
 
@@ -576,9 +576,9 @@ Next: Astra owns reported Recipe Edit regressions on 475; retain Save & Log, com
 
 ID: widget-layout-review-small-macros · Widgets · Reviewed 2026-09-10
 
-The complete widget gallery was approved and implemented in regular TRAK 476. It includes lighter ring values, labels inside, matching iOS/Android polish, P/F/C ordering (kcal/P above F/C in 2x2), neutral actions, a thinner weighing-scale dial, matched scan stroke and wide Search with four actions. Native ring checks confirm continuous fill within the bounds. iOS remains available in internal TestFlight. Android 477 adds the launcher-sizing correction reported after 476 and is signed and ready for manual upload; all 84 exact-APK renders match approval. A further spacing concern in taller Android widgets is now tracked separately under Balance spacing in small Android widgets; no further layout tweak has been implemented.
+The approved original widget designs are in iOS 476 and Android 476 onward, including P/F/C ordering, lighter ring values, neutral actions and wide Search. Android 478 now adds the approved seven-layout spacing refinements and fixes larger-text clipping, with native renders and paired signing verified. The Android APK is ready for manual upload; iOS remains 476.
 
-Next: Astra previews the new Android spacing refinements for Aadam to review before implementation. Manual Android 477 upload and Pixel observation remain separate; the sizing correction and P/F/C order are preserved. Older iOS Edit Widget rows may still retain archived choices until edited or re-added.
+Next: Aadam reviews Android 478 after manual upload. Astra handles reported regressions. Older iOS Edit Widget rows may retain archived choices until edited or re-added.
 
 ### Fix Android widget sizing after Build 476
 
@@ -586,7 +586,15 @@ ID: android-widget-launcher-sizing · Widgets · Reviewed 2026-09-10
 
 The reported tiny rings and excessive gaps were reproduced in signed Android 476. All four providers combined size bounds from different orientations. The shared correction is merged and packaged in signed Android 477, restoring the approved ring sizes and wide Search layout. The exact APK passes 84 native host cases, and all 84 renders are identical to the approved images. It is ready for manual upload; physical Pixel acceptance has not yet been confirmed.
 
-Next: Aadam uploads Android 477 through the established manual APK route and checks its widgets on Pixel 9. Astra handles any regression. Existing designs, P/F/C ordering, values and distributed iOS 476 are preserved.
+Next: The existing correction is retained in signed Android 478, whose exact APK passes native provider, host, resize and rendering checks. Aadam uploads 478 and checks picker visibility, adding, resizing, values and taps on the phone. Astra handles any reported regression; packaging is not physical-phone acceptance.
+
+### Balance spacing across Android widgets
+
+ID: android-widget-spacing · Widgets · Reviewed 2026-09-10
+
+The full seven-layout gallery was approved and implemented in signed Android 478. Small calorie and Macros rings are larger and centered, the P/F/C totals are closer together, wide shortcuts are larger and lower, and single-nutrient units use full words. Layouts fit launcher dimensions and system corners. Larger-text and older-Android fallback issues found during review are corrected. The exact APK passes 136 rendering cases and 52 stronger-corner checks; paired signing checks pass.
+
+Next: Aadam uploads Android 478 and reviews the widgets on the phone. Astra owns any reported regression. A physical Samsung check should record the model and One UI version, inspect the controls actually offered, and test resizing, clipping and saved choices. Synthetic host and corner-mask checks are not physical Samsung acceptance.
 
 ## Planned
 
@@ -791,14 +799,6 @@ ID: recipe-saving-preserves-nutrition-precision · Recipes & custom foods · Rev
 The larger Astra/Sol pilot reproduced the 400-to-399 calorie loss during diary snapshot creation. A reviewed one-line local fix preserves fractional ingredient calories. Four new real-route cases pass, including the published daily total, recipe edits, Tune and unlink. The same four older test failures occur on the unchanged baseline and remain recorded. This fix is not in Build 40 or live backend 2719.
 
 Next: Prepare this separate backend correction on the latest staging source before its own release. Preserve old diary snapshots; retain the four recorded test gaps. Graft helped find supporting files but missed the decisive backend helper, so no token saving is claimed.
-
-### Balance spacing across Android widgets
-
-ID: android-widget-spacing · Widgets · Reviewed 2026-09-10
-
-A revised gallery now shows all seven main Android widget layouts together for review. Small calorie and Macros rings are larger, the calorie strip sits higher, and nutrient, action and wide-widget content has more balanced spacing. The preview includes square/taller sizes, light/dark, empty/logged/long values and illustrative corner shapes. This replaces the earlier two-widget proposal. Native Build 477 has not changed.
-
-Next: Aadam reviews the full gallery. Astra applies only accepted tweaks, then compares actual native renders across supported sizes. Samsung acceptance must record the actual model/One UI version and offered controls, test clipping/resizing and settings persistence. Browser mockups and Pixel/emulator results alone cannot establish Samsung compatibility.
 
 ## Resolved live
 
