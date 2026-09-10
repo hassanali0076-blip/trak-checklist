@@ -1,6 +1,6 @@
 # TRAK — master checklist
 
-Updated: 2026-09-10T09:19:08Z · Reviewed through 2026-09-10
+Updated: 2026-09-10T09:40:37Z · Reviewed through 2026-09-10
 
 - native: Regular TRAK 475 is available in internal TestFlight. It includes all 18 staging groups plus food-read recovery and immediate Recipe Edit, built on production 474 with widgets and Health work retained. Both signed packages pass verification. The matching Android APK is prepared for the established manual Firebase upload; it has not been uploaded to Firebase. Staging 45 remains unchanged and its reported graph fix remains accepted.
 - backend: Production backend 2722 is live and independently verified. The two-table serving-calculation migration is applied, read back and safe to rerun. Current native-contract searches return complete View all data; paired ordered results match the baseline. Server timing passes; Mac transport outliers are recorded separately and do not establish phone or VPN speed.
@@ -15,6 +15,14 @@ Updated: 2026-09-10T09:19:08Z · Reviewed through 2026-09-10
 > Reconciled through 10 September. Released changes, local fixes and reported phone results are tracked separately. This board update does not release a TRAK app build.
 
 ## Known issue
+
+### Fix Android widgets showing “Can’t load widget”
+
+ID: android-widgets-cannot-load · Widgets · Reviewed 2026-09-10
+
+Reported on Pixel 9. An Android runtime check of the actual signed Build 475 APK reproduces failure in five of six widget layouts: Today small/wide, Macros and Quick actions small/wide. The Nutrient layout passes this rendering check. Ordinary app-view inflation passes all six, so earlier build and layout checks did not cover this failure. Missing widget-picker search results are also reported; their cause is not yet independently verified.
+
+Next: Astra owns the narrow Android rendering repair and a regression check using the real widget renderer. Then verify adding, finding and using each widget on Pixel 9. No fix or new build is distributed yet.
 
 ### Regional product typos can miss a valid result
 
@@ -55,6 +63,14 @@ ID: grocery-refresh-scheduling-and-completion-receipts · Search & catalogue · 
 Nightly catalogue maintenance completed through the audit date, but recent grocery triggers failed before running and the latest successful trigger did not establish refresh completion. Reliable recent grocery results remain unverified.
 
 Next: The operations owner must inspect the last runner outcome and restore scheduling on existing infrastructure, with durable start/completion/failure records and missed-run alerts. No scheduler change was made by the audit.
+
+### Improve widget layouts, starting with small Macros
+
+ID: widget-layout-review-small-macros · Widgets · Reviewed 2026-09-10
+
+Review completed against Build 475 source. Small iOS Macros lacks clear remaining/consumed context and has very small labels. Android configuration is absent, micronutrient choices are incomplete, and shared refresh, day-specific targets and account-state handling need correction. The existing iOS simulator view is supporting evidence, not new Build 475 phone acceptance. No app fix has been made.
+
+Next: Astra owns follow-up: repair Android loading first, then confirmed shared-state issues, then refine layouts and configuration. Verify all sizes, day-specific targets, account changes, light/dark appearance and real phone behavior before release.
 
 ## Next phone build
 
@@ -693,14 +709,6 @@ ID: food-search-engine-alternatives-measured-first · Search & catalogue · Revi
 Typesense, Meilisearch and a managed food API were reviewed as options. No migration is selected. TRAK already maintains an imported catalogue, and the outstanding phone/network delay must be measured before paying to replace search infrastructure.
 
 Next: Compare uncached latency, food-ranking parity, catalogue licensing/freshness and total operating cost only if the measured bottleneck justifies a migration. Preserve current food identification and immediate View all.
-
-### Improve widget layouts, starting with small Macros
-
-ID: widget-layout-review-small-macros · Widgets · Reviewed 2026-09-10
-
-Widget layouts need visual refinement. The small Macros widget on iOS is the first reported example. Only iOS has been observed so far; Android layouts still need comparison. This is queued for later, with no layout changes made.
-
-Next: Resume with a visual review of the small Macros widget on iOS, then review the other widget sizes and Android layouts. Preserve nutrition values, configuration and tap actions.
 
 ## In progress
 

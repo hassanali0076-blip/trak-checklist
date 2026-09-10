@@ -11,6 +11,10 @@ for the established manual Firebase upload; it has not been uploaded to Firebase
 This is an internal production-app release. A public App Store release and
 new physical-phone acceptance are separate.
 
+**New widget issue:** Build 475 Android widget loading fails in runtime testing.
+The release/build checks above do not constitute widget acceptance. See the
+widget review below for the reproduced failure and next actions.
+
 Staging remains **Build 45 + backend 2721**. Its reported graph rendering and
 edge fix is accepted on the phone and retained in 475. The accepted maintenance
 simulation evidence remains valid. Neither needs repeating just because the
@@ -127,13 +131,21 @@ Scan and Log weight actions. Other widget nodes and bindings are unchanged.
 The final Android release passes fatal lint and signature checks. iOS widget
 signatures, App Groups and Apple Health permissions also pass verification.
 
-## Widget layout review queued
+## Widget review: Android loading failure and follow-up work
 
-Widget layouts need refinement, starting with the small Macros widget on iOS.
-Only iOS has been observed so far; Android layouts need comparison. This work
-is deferred for later and is separate from the completed Android duplicate-row
-correction above. No widget layout changes or new app build were made for this
-request.
+A Pixel 9 report of “Can’t load widget” was reproduced using the actual signed
+Build 475 APK on Android. Five of six layouts fail the home-screen widget
+renderer; the Nutrient layout passes that check. All six work as ordinary app
+views, which explains why the earlier build/layout checks did not catch this.
+All four providers register. Missing widget-picker search results were also
+reported and still need separate Pixel verification.
+
+The wider review found small iOS Macros readability problems, missing Android
+configuration, incomplete nutrient selection, and refresh/day-specific target
+handling that needs correction. Review is complete; no app fix or new release
+was made. Astra owns the next work: fix Android loading and add the native
+rendering check, then address shared-state correctness and refine the layouts.
+Verify the resulting build on Pixel 9 and iOS before closing these issues.
 
 ## How this stays current
 
