@@ -5,7 +5,7 @@ production promotion. [Visual checklist](https://trak-checklist.hassanali0076.ch
 
 Current staging is **app Build 45 + backend 2721**. Build 45's reported graph
 fix is accepted on the phone. Regular TRAK retains its separate production build;
-production backend **2718** was the verified baseline before the 2722 deployment.
+production backend **2722** is now verified live.
 
 Astra has brought all 18 staging groups onto the latest production source in
 isolated candidates, preserving widgets, Health, search identities and recipe
@@ -14,12 +14,12 @@ household amounts. **Manual release is underway: backend 2722 and native Build 4
 checks, including real transactions and offline replay. The combined app passes
 4,261 current sign-in tests and 122 older sign-in tests, with no failures.
 Unsigned iOS compilation also passes. The approved manual path uses those
-verified local checks. Build 475 is running its signed release gate.
+verified local checks. Build 475 is compiling and signing after the app checks and two test-fixture corrections.
 
 The two required serving-calculation tables have now been added to the
 independently verified production database. Readback confirms both; rerunning
 the migration makes zero changes. Existing food and account records were
-untouched. Backend 2722 has merged and is deploying.
+untouched. Backend 2722 is now live and independently verified.
 
 The previous 443/142 file counts were an old comparison snapshot. The new
 candidate inventory records the actual integrated changes and deliberate

@@ -1,10 +1,10 @@
 # TRAK — master checklist
 
-Updated: 2026-09-10T07:55:26Z · Reviewed through 2026-09-10
+Updated: 2026-09-10T08:13:02Z · Reviewed through 2026-09-10
 
 - native: TRAK Staging Build 45 is installed in place and running on the test phone. It corrects incomplete Standard reference shading, older values changing the visible bar scale, and target-range edge gaps. It retains the normal transition and earlier staging changes. Saved preferences are unchanged across installation; regular TRAK 473 is intact. It is also available in internal TestFlight, verified valid and in beta testing. All 4,296 app tests pass, with 14 existing skips; six rendered regressions fail on the prior source and pass with the fix. The reported graph rendering and edge fix is now accepted on the phone; unrelated feature checks remain separate.
-- backend: The approved manual release is underway. Both required serving-calculation tables are applied to production, independently verified, and confirmed safe to rerun with no changes. Backend 2722 has merged and is deploying. Staging backend 2721 is unchanged.
-- next: Astra is verifying the production backend while Build 475 runs its signed release gate. The app includes all 18 staging groups on top of the current production widget source. The existing local-check manual release path is approved; there is no hosted-check blocker.
+- backend: Production backend 2722 is live and independently verified. The serving-calculation migration is applied and safe to rerun. Warm app search passes in UK and US checks, with complete View all rows. Staging backend 2721 is unchanged.
+- next: Build 475 is compiling and signing for regular TRAK. Two test-fixture corrections passed: selecting the archived release notes and waiting for background retry completion. The remaining app checks pass; no app behaviour changed to resolve those test failures.
 
 > Public, read-only project status. No login needed.
 
@@ -708,9 +708,9 @@ Next: Compare uncached latency, food-ranking parity, catalogue licensing/freshne
 
 ID: staging-changes-awaiting-production · Production promotion · Reviewed 2026-09-10
 
-All 18 staging groups are integrated with newer production widgets, Health, Search and recipe work preserved. The 4,383 app tests and backend/database checks pass. The guarded schema migration is complete; backend 2722 is deploying and native Build 475 is in its signed release gate.
+All 18 staging groups are integrated with newer production work preserved. Backend 2722 and its migration are now live and verified; warm app Search passes, and original/new result ordering matches in the comparison. Native Build 475 is compiling and signing.
 
-Next: Astra: verify the live backend, sign and deliver Build 475, then record the actual delivery and remaining device acceptance.
+Next: Astra: verify the signed artifacts, deliver Build 475 to internal TestFlight, and record Android delivery and remaining device acceptance.
 
 ### Keep newer production work when promoting staging
 
