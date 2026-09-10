@@ -1,10 +1,10 @@
 # TRAK — master checklist
 
-Updated: 2026-09-10T05:33:03Z · Reviewed through 2026-09-10
+Updated: 2026-09-10T05:57:03Z · Reviewed through 2026-09-10
 
-- native: TRAK Staging Build 45 is installed in place and running on the test phone. It corrects incomplete Standard reference shading, older values changing the visible bar scale, and target-range edge gaps. It retains the normal transition and earlier staging changes. Saved preferences are unchanged across installation; regular TRAK 473 is intact. It is also available in internal TestFlight, verified valid and in beta testing. All 4,296 app tests pass, with 14 existing skips; six rendered regressions fail on the prior source and pass with the fix. Phone acceptance is separate.
+- native: TRAK Staging Build 45 is installed in place and running on the test phone. It corrects incomplete Standard reference shading, older values changing the visible bar scale, and target-range edge gaps. It retains the normal transition and earlier staging changes. Saved preferences are unchanged across installation; regular TRAK 473 is intact. It is also available in internal TestFlight, verified valid and in beta testing. All 4,296 app tests pass, with 14 existing skips; six rendered regressions fail on the prior source and pass with the fix. The reported graph rendering and edge fix is now accepted on the phone; unrelated feature checks remain separate.
 - backend: Staging backend 2721 is live and its running source is verified. It fixes the missing iodine read contract without changing nutrient values or inventing a recommended target. All 101 focused tests and 174 subtests pass. The earlier broader test-fixture gaps remain separately tracked. Production backend 2717 was released separately to preserve original recipe amounts and household units, alongside earlier import/save recovery. This staging release did not modify production.
-- next: Check the first opening of Vitamin A on the installed Build 45: complete shading and bars, aligned reference edges, and the normal transition. Astra handles feedback and maintains the release list. Production integration remains a separate reviewed release.
+- next: Astra prepares the combined production release on the latest production source. Preserve newer widgets, Health and recipe fixes; complete backend schema/account/replay and combined release checks. The graph fix has phone sign-off. No production deployment has been made.
 
 > Public, read-only project status. No login needed.
 
@@ -91,14 +91,6 @@ A local release gate checks the signed iPhone and Android artifacts and requires
 Next: The release owner must use the gate for the next candidate, verify matching platform artifacts and collect the required phone acceptance before wider promotion.
 
 ## Needs checking
-
-### Draw complete nutrient graphs and align target-range edges
-
-ID: nutrient-graph-complete-drawing-and-edges · Coach & insights · Reviewed 2026-09-10
-
-Build 45 corrects incomplete Standard shading and a chart-window mismatch that allowed older history to change the visible bars and scale. Target and range segments now meet the plot edges while historical Custom gaps remain unknown. It is installed directly; internal TestFlight availability is confirmed. All six rendered regressions pass, as does the full app suite.
-
-Next: Check Vitamin A on its first opening in installed Build 45: the full shading and bars should be present together, with aligned edges and normal screen motion. Astra owns any follow-up.
 
 ### Match nutrient graph transitions to the other screens
 
@@ -544,17 +536,17 @@ Next: On Build 43, check the full edit-and-save sequence and the returned daily 
 
 ### Keep newer production work when promoting staging
 
-ID: preserve-production-work-during-staging-promotion · Production promotion · Reviewed 2026-09-09
+ID: preserve-production-work-during-staging-promotion · Production promotion · Reviewed 2026-09-10
 
-Production contains work missing from staging: widgets and their integration; automatic Health weight pickup; saved-food Search cache invalidation and icon persistence; AI/voice/recipe/recurring identity and serving fixes; production release checks, notes and signing. Copying the staging branch over production would lose these. The separately released production backend 2716 also has stricter AI recipe ingredient matching and recovery when an AI ingredient identity becomes stale; retain both.
+Production contains work missing from staging: widgets and their integration; automatic Health weight pickup; saved-food Search cache invalidation and icon persistence; AI/voice/recipe/recurring identity and serving fixes; production release checks, notes and signing. Copying the staging branch over production would lose these. The separately released production backend 2716 also has stricter AI recipe ingredient matching and recovery when an AI ingredient identity becomes stale; retain both. Fresh review also found newer widget picker corrections and backend recipe source-amount persistence with an additive schema. The previous source inventory is now stale.
 
-Next: Astra reconciles the changes on the latest production source and verifies the archive-to-source receipt. Preserve Apple Health writes and Health Connect. Keep staging test controls, API/auth destinations and signing settings isolated.
+Next: Astra reconciles both updated production branches, refreshes the reviewed inventory, then runs combined release gates. Preserve Health writes, Health Connect and recipe household amounts. No blanket staging merge.
 
 ### Promote staging micronutrient changes
 
-ID: staging-promotion-micronutrients · Production promotion · Reviewed 2026-09-09
+ID: staging-promotion-micronutrients · Production promotion · Reviewed 2026-09-10
 
-Already on staging: nutrient rails, references, legends and precision; EPA+DHA agreement; full-screen food nutrients and serving captions; zero display and light-mode background; complete graph/Today data and navigation guards. Build 43 adds early history preparation, cache retention and a 200ms slide; backend 2721 adds iodine reads.
+Already on staging: nutrient rails, references, legends and precision; EPA+DHA agreement; full-screen food nutrients and serving captions; zero display and light-mode background; complete graph/Today data and navigation guards. Build 45 retains early history preparation and caches, restores normal screen motion and corrects first-frame shading, bar scaling and edges. The reported graph fix has phone sign-off; backend 2721 adds iodine reads.
 
 Next: Astra preserves missing/provenance semantics, complete first frames and swipe-back when integrating onto the latest production line. Keep the separate intermittent food Retry issue and paired backend requirements explicit.
 
@@ -740,7 +732,7 @@ Next: Compare uncached latency, food-ranking parity, catalogue licensing/freshne
 
 ID: staging-changes-awaiting-production · Production promotion · Reviewed 2026-09-10
 
-Open the dedicated visual release list to see all 18 staging change groups, each remaining production check, unfinished fixes and newer production work to preserve. It includes Staging Build 45 and backend 2721. This is a release inventory; individual acceptance and production promotion remain separately recorded.
+Open the dedicated visual release list to see all 18 staging change groups, each remaining production check, unfinished fixes and newer production work to preserve. It includes Staging Build 45 and backend 2721. This is a release inventory; individual acceptance and production promotion remain separately recorded. Build 45 graph feedback is accepted; both production branches have advanced, so the full release still requires reviewed integration and database/release checks.
 
 Next: Full visual list: https://trak-checklist.hassanali0076.chatgpt.site/staging-to-production. Astra maintains the shared STAGING\_TO\_PRODUCTION.md source after every staging release or production port. The old checklist anchor also opens the full list. Production promotion requires reviewed integration and its own release evidence.
 
@@ -777,6 +769,14 @@ The larger Astra/Sol pilot reproduced the 400-to-399 calorie loss during diary s
 Next: Prepare this separate backend correction on the latest staging source before its own release. Preserve old diary snapshots; retain the four recorded test gaps. Graft helped find supporting files but missed the decisive backend helper, so no token saving is claimed.
 
 ## Resolved live
+
+### Draw complete nutrient graphs and align target-range edges
+
+ID: nutrient-graph-complete-drawing-and-edges · Coach & insights · Reviewed 2026-09-10
+
+Build 45 corrects incomplete Standard shading and a chart-window mismatch that allowed older history to change the visible bars and scale. Target and range segments now meet the plot edges while historical Custom gaps remain unknown. It is installed directly; internal TestFlight availability is confirmed. All six rendered regressions pass, as does the full app suite. Phone feedback on 10 September confirms the reported graph fix looks good.
+
+Next: Include the accepted fix in reviewed production integration. Preserve historical Custom gaps and standard motion; wider feature checks remain separate.
 
 ### Search History matches stay visible
 

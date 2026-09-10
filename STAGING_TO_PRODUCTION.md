@@ -14,6 +14,19 @@ The private release ledger records every differing tracked file: **443 native
 paths and 142 backend/repository paths**. These are files, not 585 features or
 a patch to copy. Some differences are newer production work to preserve.
 
+## Release readiness
+
+The reported Build 45 graph rendering and edge fix is now accepted on the phone.
+The complete staging bundle still needs reviewed production integration and
+combined release checks. Both production source branches have advanced since
+the comparison above: preserve the newer widget picker corrections and recipe
+source-amount persistence, including its database changes. The production
+backend owner's newer release receipt reports 2718; the 2717 comparison and
+443/142 file counts above are the previous verified snapshot, not current pins.
+Astra owns reconciliation, backend schema/account/offline checks and release
+verification. The intermittent food Retry issue and undeployed recipe precision
+pilot remain separate. No production deployment was made by this review.
+
 ## Already on staging; still awaiting production integration
 
 | Change | Remaining check before production |
@@ -75,8 +88,9 @@ unchanged; internal TestFlight availability is now confirmed.
 
 All 4,296 app tests pass, with 14 existing skips. Six rendered regression cases
 fail on Build 44 and the production source and pass with these corrections.
-Signed exports and launch assets pass their checks. Check Vitamin A's first
-opening on the phone; a successful build or launch alone is not visual acceptance.
+Signed exports and launch assets pass their checks. Phone feedback on 10 September
+confirms the reported graph rendering and edge fix looks good. This accepts that
+fix; it does not close unrelated checks or the production integration gate.
 
 ## Fixes not delivered yet
 
