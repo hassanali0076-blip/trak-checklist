@@ -3,17 +3,18 @@
 Updated 10 September 2026. Astra maintains this release record.
 [Visual checklist](https://trak-checklist.hassanali0076.chatgpt.site/staging-to-production).
 
-**Regular TRAK Build 475 is available in internal TestFlight. Production backend
-2722 is live and verified.** All 18 staging groups below are included, together
-with the newer production widgets, Health work and recipe household amounts.
-Both signed app packages pass verification. The matching Android APK is ready
-for the established manual Firebase upload; it has not been uploaded to Firebase.
-This is an internal production-app release. A public App Store release and
-new physical-phone acceptance are separate.
+**Regular TRAK Build 476 is available in internal TestFlight. Production backend
+2722 remains live.** All 18 staging groups below are retained from 475, together
+with the newer production Health work and recipe household amounts. Build 476
+adds the approved widget designs and functional repairs described below. Both
+signed app packages pass verification. Matching Android 476 is ready for the
+established manual Firebase upload; this task has not uploaded it to Firebase.
+This is an internal production-app release. Public store release and new
+physical-phone acceptance are separate.
 
-**New widget issue:** Build 475 Android widget loading fails in runtime testing.
-The release/build checks above do not constitute widget acceptance. See the
-widget review below for the reproduced failure and next actions.
+The earlier Android loading failure is repaired in 476 and passes native
+renderer checks. Pixel 9 picker-search and physical add/refresh observations
+remain on their own checklist task; a signed build is not phone acceptance.
 
 Staging remains **Build 45 + backend 2721**. Its reported graph rendering and
 edge fix is accepted on the phone and retained in 475. The accepted maintenance
@@ -131,21 +132,45 @@ Scan and Log weight actions. Other widget nodes and bindings are unchanged.
 The final Android release passes fatal lint and signature checks. iOS widget
 signatures, App Groups and Apple Health permissions also pass verification.
 
-## Widget review: Android loading failure and follow-up work
+## Widget repairs and approved designs in Build 476
 
-A Pixel 9 report of “Can’t load widget” was reproduced using the actual signed
-Build 475 APK on Android. Five of six layouts fail the home-screen widget
-renderer; the Nutrient layout passes that check. All six work as ordinary app
-views, which explains why the earlier build/layout checks did not catch this.
-All four providers register. Missing widget-picker search results were also
-reported and still need separate Pixel verification.
+The Pixel 9 “Can’t load widget” report was reproduced against the actual signed
+Build 475 APK: five of six layouts fail the widget renderer despite passing
+ordinary app-view inflation. Build 476 removes those unsupported elements and
+adds the native rendering check. All twelve current layouts, four providers,
+224 populated render states and configuration/data/ring cases pass on Android
+API 36. The exact signed release additionally passes 56 populated cases through
+a real widget host and public provider entry point; this exercises optimized
+code without adding production-only test hooks. Older compact-height resource fallbacks also pass; an older Android
+runtime remains a distinct compatibility check.
 
-The wider review found small iOS Macros readability problems, missing Android
-configuration, incomplete nutrient selection, and refresh/day-specific target
-handling that needs correction. Review is complete; no app fix or new release
-was made. Astra owns the next work: fix Android loading and add the native
-rendering check, then address shared-state correctness and refine the layouts.
-Verify the resulting build on Pixel 9 and iOS before closing these issues.
+The complete gallery is approved and implemented across iOS and Android:
+
+- Larger readable small Macros rings with lighter text inside. Default order
+  is P/F/C; the 2x2 arrangement is kcal/P above F/C.
+- Better wide Macros spacing without target captions; clearer mode heading.
+- A slightly smaller Nutrient ring with a larger main value.
+- Neutral, larger Quick actions, matched scan stroke and thinner scale dial.
+- Wide Search foods above four actions: Scan, Quick add, AI log and Log weight.
+- Android settings per widget, separate compact/wide choices and size handling.
+- Confirmed diary/current-target publication with account, date and readiness
+  guards, matching alcohol display, and retry after a failed write or clear.
+- Ring strokes stay inside their bounds; lower-left partial/full fill is
+  continuous. Native iOS image/pixel checks cover 54 rendered cases.
+
+The fresh full Flutter suite passes 4,287 tests with 16 skips; the separate older
+sign-in suite passes 122, focused widget/API checks pass 56, and release-gate
+checks pass 16. An earlier PCF-order run failed after the test changed while old
+code was already compiled; the entire suite was rerun with frozen inputs and
+passed. The original failed run is retained, not described as green. Hosted
+checks could not execute; the approved manual path used the local evidence.
+
+Next: Aadam updates to 476 and uses the matching Android APK through the existing
+manual route, then checks Pixel picker/add/refresh. Astra handles any regression.
+Old iOS Edit Widget rows may retain archived Carbs/Fat labels until edited or
+re-added; the standard rendered order is P/F/C. Phone tint, resizing, taps and
+OS refresh scheduling are separate from simulator evidence. These items are
+marked for checking rather than falsely closed as device-verified.
 
 ## How this stays current
 

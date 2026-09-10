@@ -1,10 +1,10 @@
 # TRAK — master checklist
 
-Updated: 2026-09-10T10:52:48Z · Reviewed through 2026-09-10
+Updated: 2026-09-10T13:25:14Z · Reviewed through 2026-09-10
 
-- native: Regular TRAK 475 is available in internal TestFlight. It includes all 18 staging groups plus food-read recovery and immediate Recipe Edit, built on production 474 with widgets and Health work retained. Both signed packages pass verification. The matching Android APK is prepared for the established manual Firebase upload; it has not been uploaded to Firebase. Staging 45 remains unchanged and its reported graph fix remains accepted.
+- native: Regular TRAK 476 is available in internal TestFlight. It adds the approved widget polish, P/F/C order, wide Search and four actions, Android widget loading/settings repairs, and confirmed diary/target refresh. All 18 staging groups and the production work already delivered in 475 are retained. Both signed packages pass verification. Matching Android 476 is prepared for the established manual Firebase upload; this task has not uploaded it to Firebase. Staging 45 remains unchanged.
 - backend: Production backend 2722 is live and independently verified. The two-table serving-calculation migration is applied, read back and safe to rerun. Current native-contract searches return complete View all data; paired ordered results match the baseline. Server timing passes; Mac transport outliers are recorded separately and do not establish phone or VPN speed.
-- next: Update regular TRAK to 475 in TestFlight. Astra handles reported regressions and maintains the release list. Public App Store release and new physical-phone acceptance are separate; the accepted staging graph and maintenance evidence does not need repeating merely because of this promotion.
+- next: Update regular TRAK to 476 in TestFlight. Aadam handles the established Android APK upload and checks Pixel 9 widget picker/add/refresh behavior. Astra handles reported regressions and maintains the checklist. Public store release and physical widget acceptance are separate; previously accepted graph and maintenance evidence need not be repeated.
 
 > Public, read-only project status. No login needed.
 
@@ -75,6 +75,14 @@ A local release gate checks the signed iPhone and Android artifacts and requires
 Next: The release owner must use the gate for the next candidate, verify matching platform artifacts and collect the required phone acceptance before wider promotion.
 
 ## Needs checking
+
+### Fix Android widgets showing “Can’t load widget”
+
+ID: android-widgets-cannot-load · Widgets · Reviewed 2026-09-10
+
+The loading repair is included in Build 476, available in internal TestFlight with matching release-signed Android prepared for manual upload. All 12 widget layouts and 224 debug render states pass; the exact signed release also passes 56 populated cases through a real widget host; released 475 failed five original layouts. Four providers and per-widget settings are included. Pixel 9 picker-search and physical add/refresh acceptance remain separate from emulator evidence.
+
+Next: Aadam distributes the prepared Android 476 through the established manual route, then confirms the widgets appear, add and refresh on Pixel 9. Astra owns any remaining launcher or widget failure. Do not describe the Pixel report as resolved until that observation is confirmed.
 
 ### Match nutrient graph transitions to the other screens
 
@@ -532,6 +540,14 @@ Regular TRAK 475 opens Recipe Edit immediately while complete ingredients load, 
 
 Next: Astra owns reported Recipe Edit regressions on 475; retain Save & Log, complete ingredients and account isolation. Delivery is complete; new phone acceptance is separate.
 
+### Improve widget layouts, starting with small Macros
+
+ID: widget-layout-review-small-macros · Widgets · Reviewed 2026-09-10
+
+The complete widget gallery was approved and implemented in regular TRAK 476. It includes lighter ring values, labels inside, matching iOS/Android polish, P/F/C ordering (kcal/P above F/C in 2x2), neutral actions, a thinner weighing-scale dial, matched scan stroke and wide Search with four actions. Native ring checks confirm continuous fill within the bounds. iOS is available in internal TestFlight; matching signed Android is ready for manual upload.
+
+Next: Aadam reviews the delivered widgets in 476; Astra handles any layout regression. Older iOS Edit Widget rows can retain archived Carbs/Fat choices until edited or re-added, while the standard rendered order is P/F/C. Physical tint, sizing and OS refresh checks remain distinct from native render tests.
+
 ## Planned
 
 ### Add first-use guides for key app features
@@ -704,14 +720,6 @@ Next: Astra owns the future review. Start with Apple’s official iPhone Duo/iOS
 
 ## In progress
 
-### Fix Android widgets showing “Can’t load widget”
-
-ID: android-widgets-cannot-load · Widgets · Reviewed 2026-09-10
-
-The loading failure is repaired in a local candidate. All six layouts now pass the real Android widget renderer on API 36, with all four providers registered; released Build 475 failed five layouts. Nine native data-state cases also pass. No updated app has been distributed. The separate Pixel 9 widget-picker search symptom still needs phone verification.
-
-Next: Astra will finish the combined native build and remaining widget work, then deliver the candidate for Pixel 9 picker, add, refresh and tap testing. Do not treat emulator registration as confirmation of launcher search.
-
 ### Complete the full Coach effectiveness review
 
 ID: coach-outcome-evaluation-before-full-signoff · Coach & insights · Reviewed 2026-09-10
@@ -743,14 +751,6 @@ ID: recipe-saving-preserves-nutrition-precision · Recipes & custom foods · Rev
 The larger Astra/Sol pilot reproduced the 400-to-399 calorie loss during diary snapshot creation. A reviewed one-line local fix preserves fractional ingredient calories. Four new real-route cases pass, including the published daily total, recipe edits, Tune and unlink. The same four older test failures occur on the unchanged baseline and remain recorded. This fix is not in Build 40 or live backend 2719.
 
 Next: Prepare this separate backend correction on the latest staging source before its own release. Preserve old diary snapshots; retain the four recorded test gaps. Graft helped find supporting files but missed the decisive backend helper, so no token saving is claimed.
-
-### Improve widget layouts, starting with small Macros
-
-ID: widget-layout-review-small-macros · Widgets · Reviewed 2026-09-10
-
-Aadam approved the Small Macros direction: larger rings, smaller lighter values and labels inside. Previews now cover all iOS and Android widget sizes with current/tweaked, theme and day-state controls. Shared target, nutrient, account and stale-day fixes are implemented locally with focused regression coverage. The visual changes are not applied in the app or distributed.
-
-Next: Aadam reviews the remaining widget mockups. Astra will apply the accepted polish, finish Android configuration and size handling, review and rebuild the combined candidate, then verify native appearance and phone behavior before release.
 
 ## Resolved live
 
@@ -800,9 +800,9 @@ Next: Use the verified staging profile for subsequent builds and recheck it if s
 
 ID: staging-changes-awaiting-production · Production promotion · Reviewed 2026-09-10
 
-All 18 staging change groups are now in regular TRAK Build 475, available in internal TestFlight, with production backend 2722 live. Signed iOS and Android packages pass verification. The matching Android APK is prepared for the existing manual Firebase upload. New device acceptance and public App Store release are separate.
+All 18 staging change groups were delivered in regular TRAK 475 and remain included in 476, now available in internal TestFlight. Build 476 additionally contains the approved widget polish and repairs. Production backend 2722 is unchanged. Both signed packages pass verification; matching Android 476 is prepared for the existing manual Firebase upload. New phone acceptance and public App Store release are separate.
 
-Next: Astra maintains this delivery record and handles reported regressions. Update regular TRAK to 475 in TestFlight; the already accepted Build 45 graph result remains valid.
+Next: Astra maintains this delivery record and handles regressions. Update regular TRAK to 476 in TestFlight; the accepted Build 45 graph result remains valid. Widget-specific Pixel checks stay on their own tasks.
 
 ### Keep newer production work when promoting staging
 
