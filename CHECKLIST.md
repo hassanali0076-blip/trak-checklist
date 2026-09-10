@@ -1,10 +1,10 @@
 # TRAK — master checklist
 
-Updated: 2026-09-10T05:57:03Z · Reviewed through 2026-09-10
+Updated: 2026-09-10T07:23:28Z · Reviewed through 2026-09-10
 
 - native: TRAK Staging Build 45 is installed in place and running on the test phone. It corrects incomplete Standard reference shading, older values changing the visible bar scale, and target-range edge gaps. It retains the normal transition and earlier staging changes. Saved preferences are unchanged across installation; regular TRAK 473 is intact. It is also available in internal TestFlight, verified valid and in beta testing. All 4,296 app tests pass, with 14 existing skips; six rendered regressions fail on the prior source and pass with the fix. The reported graph rendering and edge fix is now accepted on the phone; unrelated feature checks remain separate.
-- backend: Staging backend 2721 is live and its running source is verified. It fixes the missing iodine read contract without changing nutrient values or inventing a recommended target. All 101 focused tests and 174 subtests pass. The earlier broader test-fixture gaps remain separately tracked. Production backend 2717 was released separately to preserve original recipe amounts and household units, alongside earlier import/save recovery. This staging release did not modify production.
-- next: Astra prepares the combined production release on the latest production source. Preserve newer widgets, Health and recipe fixes; complete backend schema/account/replay and combined release checks. The graph fix has phone sign-off. No production deployment has been made.
+- backend: Production backend 2718 is verified live; staging 2721 is unchanged. The isolated combined production candidate passes 1,826 tests and 348 subtests, plus 90 real PostgreSQL checks. Two additive serving-calculation tables are required before release; the production dry run made no writes.
+- next: The combined app passes 4,261 current sign-in tests and 122 older sign-in tests; the backend and real database checks also pass. Unsigned iOS compilation also passes. Hosted checks cannot currently start. Next are the guarded database migration, backend release and signed app release checks. Production has not changed.
 
 > Public, read-only project status. No login needed.
 
@@ -15,14 +15,6 @@ Updated: 2026-09-10T05:57:03Z · Reviewed through 2026-09-10
 > Reconciled through 10 September. Released changes, local fixes and reported phone results are tracked separately. This board update does not release a TRAK app build.
 
 ## Known issue
-
-### Repair older nutrient test-database fixtures
-
-ID: backend-nutrient-test-fixture-schema-gaps · Release verification · Reviewed 2026-09-09
-
-Broader nutrient authority and recipe tests have 12 failures caused by incomplete SQLite test schemas. The unchanged staging backend and iodine candidate have the same 12 failures and 161 passes. The iodine change adds no new failing case; the full backend suite is not claimed green.
-
-Next: Astra or the owning backend maintainer updates the fixtures to the current schema and reruns the unchanged and candidate cases before broader integration sign-off. Do not delete failures or weaken assertions.
 
 ### Regional product typos can miss a valid result
 
@@ -64,15 +56,15 @@ Nightly catalogue maintenance completed through the audit date, but recent groce
 
 Next: The operations owner must inspect the last runner outcome and restore scheduling on existing infrastructure, with durable start/completion/failure records and missed-run alerts. No scheduler change was made by the audit.
 
-### Search foods sometimes fail to load micronutrients
-
-ID: search-food-micronutrients-intermittent-retry · Food editing · Reviewed 2026-09-09
-
-Build 42 now separates initial micronutrient loading from an actual failed request and includes staging-only timing/outcome diagnostics. The reported food has catalogue nutrients, but its intermittent final Retry failure remains unresolved. This release does not claim to fix that request failure.
-
-Next: Astra captures and diagnoses the failed request using the retained Build 43 diagnostics. Report the food name and whether Retry succeeds if it happens again; do not close this issue from a successful unrelated request.
-
 ## Next phone build
+
+### Repair older nutrient test-database fixtures
+
+ID: backend-nutrient-test-fixture-schema-gaps · Release verification · Reviewed 2026-09-10
+
+The integration candidate repairs the stale test schemas and fixtures, preserves account and transaction checks, and passes 1,826 backend tests plus 348 subtests. A separate real PostgreSQL run passes 90 checks. These results apply to the combined candidate; the original staging source is unchanged.
+
+Next: Keep the repaired fixtures and pinned combined test manifest with the reviewed backend release. Hosted checks still need to run.
 
 ### Native code organization
 
@@ -89,6 +81,22 @@ ID: signed-artifact-release-and-promotion-checks · Release & reliability · Rev
 A local release gate checks the signed iPhone and Android artifacts and requires recorded phone acceptance for claimed features. Release checks can run on the release Mac. Build 470 remains internal-only; these new protections do not retrospectively approve its unresolved nutrient issues.
 
 Next: The release owner must use the gate for the next candidate, verify matching platform artifacts and collect the required phone acceptance before wider promotion.
+
+### Search foods sometimes fail to load micronutrients
+
+ID: search-food-micronutrients-intermittent-retry · Food editing · Reviewed 2026-09-10
+
+The candidate recovers when a same-account Health refresh invalidates a pending food nutrient read, and automatically retries one temporary request failure. All 21 focused cache/recovery checks pass, including account isolation and bounded retry. This reproduces two failure classes; it does not conclusively identify the original phone incident.
+
+Next: Include the correction in the reviewed release and verify actual food opens on the delivered app. No new phone build contains it yet.
+
+### Recipe Edit opens immediately
+
+ID: recipe-editor-opens-without-waiting-for-detail · Recipes & custom foods · Reviewed 2026-09-10
+
+The candidate opens the edit screen immediately while complete ingredients load, avoids nutrient enrichment on this path, retries one temporary failure and shows an actionable Retry screen. The 18-ingredient regression retains original household amounts and one gram basis. An old cached recipe is not silently reopened for editing.
+
+Next: Include in the reviewed release, preserving Save & Log and account isolation; verify on the delivered app.
 
 ## Needs checking
 
@@ -534,38 +542,6 @@ Next: On Build 43, check the full edit-and-save sequence and the returned daily 
 
 ## Planned
 
-### Keep newer production work when promoting staging
-
-ID: preserve-production-work-during-staging-promotion · Production promotion · Reviewed 2026-09-10
-
-Production contains work missing from staging: widgets and their integration; automatic Health weight pickup; saved-food Search cache invalidation and icon persistence; AI/voice/recipe/recurring identity and serving fixes; production release checks, notes and signing. Copying the staging branch over production would lose these. The separately released production backend 2716 also has stricter AI recipe ingredient matching and recovery when an AI ingredient identity becomes stale; retain both. Fresh review also found newer widget picker corrections and backend recipe source-amount persistence with an additive schema. The previous source inventory is now stale.
-
-Next: Astra reconciles both updated production branches, refreshes the reviewed inventory, then runs combined release gates. Preserve Health writes, Health Connect and recipe household amounts. No blanket staging merge.
-
-### Promote staging micronutrient changes
-
-ID: staging-promotion-micronutrients · Production promotion · Reviewed 2026-09-10
-
-Already on staging: nutrient rails, references, legends and precision; EPA+DHA agreement; full-screen food nutrients and serving captions; zero display and light-mode background; complete graph/Today data and navigation guards. Build 45 retains early history preparation and caches, restores normal screen motion and corrects first-frame shading, bar scaling and edges. The reported graph fix has phone sign-off; backend 2721 adds iodine reads.
-
-Next: Astra preserves missing/provenance semantics, complete first frames and swipe-back when integrating onto the latest production line. Keep the separate intermittent food Retry issue and paired backend requirements explicit.
-
-### Promote staging Coach and goal changes
-
-ID: staging-promotion-coach-and-goals · Production promotion · Reviewed 2026-09-09
-
-Already on staging: personal minimum and copy, coherent reviews, maintenance correction and post-goal simulations, immediate daily/cycling targets, goal-weight/rate review editing, unit/slider fixes and Coach loading/Accept feedback. Build 43 includes the continuous tick correction.
-
-Next: Astra retains exact-review/current-target behaviour and the reviewed simulation evidence with its limits. Keep repeat/advance check-in controls disabled on production and preserve newer production work.
-
-### Promote staging Search and food changes
-
-ID: staging-promotion-search-and-food · Production promotion · Reviewed 2026-09-09
-
-Already on staging: dedicated native iOS search transport and diagnostics; remembered calculator servings; g/oz/lb before named portions; validated food calculations with offline recovery; Add commits the selected-food list; recipe unlink keeps fractional nutrition. These changes are awaiting production integration, not a new staging implementation.
-
-Next: Astra ports reviewed changes onto current production, preserving ranking, immediate View all, production saved-food cache/icon fixes and required database checks. The separate recipe-save precision and parsing candidates are not delivered yet.
-
 ### Add first-use guides for key app features
 
 ID: native-ftux-feature-tutorial-modals · Account & onboarding · Reviewed 2026-09-09
@@ -732,9 +708,41 @@ Next: Compare uncached latency, food-ranking parity, catalogue licensing/freshne
 
 ID: staging-changes-awaiting-production · Production promotion · Reviewed 2026-09-10
 
-Open the dedicated visual release list to see all 18 staging change groups, each remaining production check, unfinished fixes and newer production work to preserve. It includes Staging Build 45 and backend 2721. This is a release inventory; individual acceptance and production promotion remain separately recorded. Build 45 graph feedback is accepted; both production branches have advanced, so the full release still requires reviewed integration and database/release checks.
+All 18 staging groups are included in isolated production candidates, with newer widgets, Health, Search and recipe work preserved. The app passes 4,383 tests across both sign-in paths; backend and real database checks pass. Unsigned iOS compilation also passes. Production is unchanged.
 
-Next: Full visual list: https://trak-checklist.hassanali0076.chatgpt.site/staging-to-production. Astra maintains the shared STAGING\_TO\_PRODUCTION.md source after every staging release or production port. The old checklist anchor also opens the full list. Production promotion requires reviewed integration and its own release evidence.
+Next: Restore hosted checks, then the guarded schema/backend/app release sequence and required signed-artifact acceptance.
+
+### Keep newer production work when promoting staging
+
+ID: preserve-production-work-during-staging-promotion · Production promotion · Reviewed 2026-09-10
+
+The combined source retains production widgets and picker corrections, automatic Health pickup and Health writes, saved-food Search cache/icon corrections, AI/voice/recipe/recurring identity and household amounts, plus production release configuration. Staging platform/signing defaults were reconciled against the production project.
+
+Next: Combined source review, app tests and unsigned iOS compilation pass. Complete hosted checks and signed artifact verification before release.
+
+### Promote staging micronutrient changes
+
+ID: staging-promotion-micronutrients · Production promotion · Reviewed 2026-09-10
+
+Already on staging: nutrient rails, references, legends and precision; EPA+DHA agreement; full-screen food nutrients and serving captions; zero display and light-mode background; complete graph/Today data and navigation guards. Build 45 retains early history preparation and caches, restores normal screen motion and corrects first-frame shading, bar scaling and edges. The reported graph fix has phone sign-off; backend 2721 adds iodine reads.
+
+Next: Included in the tested, compiled candidate. Complete hosted checks and the guarded release sequence, preserving the acceptance scope recorded in the full release list.
+
+### Promote staging Coach and goal changes
+
+ID: staging-promotion-coach-and-goals · Production promotion · Reviewed 2026-09-10
+
+Already on staging: personal minimum and copy, coherent reviews, maintenance correction and post-goal simulations, immediate daily/cycling targets, goal-weight/rate review editing, unit/slider fixes and Coach loading/Accept feedback. Build 43 includes the continuous tick correction.
+
+Next: Included in the tested, compiled candidate. Complete hosted checks and the guarded release sequence, preserving the acceptance scope recorded in the full release list.
+
+### Promote staging Search and food changes
+
+ID: staging-promotion-search-and-food · Production promotion · Reviewed 2026-09-10
+
+Already on staging: dedicated native iOS search transport and diagnostics; remembered calculator servings; g/oz/lb before named portions; validated food calculations with offline recovery; Add commits the selected-food list; recipe unlink keeps fractional nutrition. These changes are included in the combined source candidate and awaiting release checks.
+
+Next: Included in the tested, compiled candidate. Complete hosted checks and the guarded release sequence, preserving the acceptance scope recorded in the full release list.
 
 ### Complete the full Coach effectiveness review
 
