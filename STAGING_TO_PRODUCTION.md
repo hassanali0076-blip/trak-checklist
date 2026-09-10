@@ -5,7 +5,7 @@ production promotion. [Visual checklist](https://trak-checklist.hassanali0076.ch
 
 Current staging is **app Build 45 + backend 2721**. Build 45 is installed in
 place and running on the test phone. Saved preferences are unchanged across
-installation; TestFlight upload is underway. Regular TRAK **Build 473** is
+installation; it is also available in internal TestFlight. Regular TRAK **Build 473** is
 independently confirmed installed, with production backend 2717. This does not
 claim a public App Store release. The production source-to-archive binding still
 needs an independent release receipt.
@@ -71,7 +71,7 @@ Standard shading no longer depends on how much history has loaded. Bars and
 scale use the same N-day window as the displayed average, and target/range
 segments reach the plot edges while Custom history gaps remain unknown. Normal
 screen motion is retained. Build 45 is installed directly with saved preferences
-unchanged; TestFlight upload is in progress.
+unchanged; internal TestFlight availability is now confirmed.
 
 All 4,296 app tests pass, with 14 existing skips. Six rendered regression cases
 fail on Build 44 and the production source and pass with these corrections.
@@ -108,8 +108,7 @@ detects a stale file inventory or changed fetched production source. A green
 build or an old commit message does not close phone regressions.
 
 Next: check the first opening of Vitamin A on installed Build 45 for complete
-shading and bars, aligned edges and normal motion. Astra completes TestFlight
-delivery, maintains this list and handles feedback. Production integration
+shading and bars, aligned edges and normal motion. Astra maintains this list and handles feedback. Production integration
 remains a separate reviewed release; updating this list deploys neither the
 app nor the backend. The
 broader master checklist retains research and unimplemented requests; those

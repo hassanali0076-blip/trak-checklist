@@ -1,10 +1,10 @@
 # TRAK — master checklist
 
-Updated: 2026-09-10T05:13:59Z · Reviewed through 2026-09-10
+Updated: 2026-09-10T05:33:03Z · Reviewed through 2026-09-10
 
-- native: TRAK Staging Build 45 is installed in place and running on the test phone. It corrects incomplete Standard reference shading, older values changing the visible bar scale, and target-range edge gaps. It retains the normal transition and earlier staging changes. Saved preferences are unchanged across installation; regular TRAK 473 is intact. TestFlight upload is in progress. All 4,296 app tests pass, with 14 existing skips; six rendered regressions fail on the prior source and pass with the fix. Phone acceptance is separate.
+- native: TRAK Staging Build 45 is installed in place and running on the test phone. It corrects incomplete Standard reference shading, older values changing the visible bar scale, and target-range edge gaps. It retains the normal transition and earlier staging changes. Saved preferences are unchanged across installation; regular TRAK 473 is intact. It is also available in internal TestFlight, verified valid and in beta testing. All 4,296 app tests pass, with 14 existing skips; six rendered regressions fail on the prior source and pass with the fix. Phone acceptance is separate.
 - backend: Staging backend 2721 is live and its running source is verified. It fixes the missing iodine read contract without changing nutrient values or inventing a recommended target. All 101 focused tests and 174 subtests pass. The earlier broader test-fixture gaps remain separately tracked. Production backend 2717 was released separately to preserve original recipe amounts and household units, alongside earlier import/save recovery. This staging release did not modify production.
-- next: Check the first opening of Vitamin A on the installed Build 45: complete shading and bars, aligned reference edges, and the normal transition. Astra completes TestFlight delivery, handles feedback and maintains the release list. Production integration remains a separate reviewed release.
+- next: Check the first opening of Vitamin A on the installed Build 45: complete shading and bars, aligned reference edges, and the normal transition. Astra handles feedback and maintains the release list. Production integration remains a separate reviewed release.
 
 > Public, read-only project status. No login needed.
 
@@ -96,17 +96,17 @@ Next: The release owner must use the gate for the next candidate, verify matchin
 
 ID: nutrient-graph-complete-drawing-and-edges · Coach & insights · Reviewed 2026-09-10
 
-Build 45 corrects incomplete Standard shading and a chart-window mismatch that allowed older history to change the visible bars and scale. Target and range segments now meet the plot edges while historical Custom gaps remain unknown. It is installed directly; TestFlight upload is underway. All six rendered regressions pass, as does the full app suite.
+Build 45 corrects incomplete Standard shading and a chart-window mismatch that allowed older history to change the visible bars and scale. Target and range segments now meet the plot edges while historical Custom gaps remain unknown. It is installed directly; internal TestFlight availability is confirmed. All six rendered regressions pass, as does the full app suite.
 
-Next: Check Vitamin A on its first opening in installed Build 45: the full shading and bars should be present together, with aligned edges and normal screen motion. Astra owns TestFlight completion and any follow-up.
+Next: Check Vitamin A on its first opening in installed Build 45: the full shading and bars should be present together, with aligned edges and normal screen motion. Astra owns any follow-up.
 
 ### Match nutrient graph transitions to the other screens
 
 ID: micronutrient-graph-standard-transition · Coach & insights · Reviewed 2026-09-10
 
-Build 44 removes the special 200 ms graph animation and uses the same standard screen transition as the rest of Insights. Earlier data preparation, cached history and swipe-back are preserved.
+Build 45 retains the Build 44 correction: it removes the special 200 ms graph animation and uses the same standard screen transition as the rest of Insights. Earlier data preparation, cached history and swipe-back are preserved.
 
-Next: Build 44 is installed in place and launches; it is also available in internal TestFlight. Compare the graph slide with the other screens now. Astra owns any remaining feedback; 50 Insights checks and the prior 97 focused checks pass.
+Next: Build 45 is installed and available in internal TestFlight. Compare the graph slide with the other screens; it uses the normal transition. The full 4,296 app tests pass. Astra owns any feedback.
 
 ### Make iodine graphs load
 
@@ -528,9 +528,9 @@ Next: On Build 41, confirm the white nutrient cards stand out against the grey b
 
 ID: micronutrient-graph-repeat-tap-delay · Coach & insights · Reviewed 2026-09-10
 
-Build 45 retains early shared history preparation, covering caches and the normal transition. It adds stable first-frame Standard references, matching N-day bars/scale and corrected plot edges after the Build 44 phone report. Installed directly; automated checks pass and phone acceptance is tracked separately.
+Build 45 retains early shared history preparation, covering caches and the normal transition. It adds stable first-frame Standard references, matching N-day bars/scale and corrected plot edges after the Build 44 phone report. Installed directly and available in TestFlight; automated checks pass and phone acceptance is tracked separately.
 
-Next: Check the first and repeated opening of Vitamin A in Build 45. Astra owns remaining feedback and TestFlight delivery.
+Next: Check the first and repeated opening of Vitamin A in Build 45. Astra owns feedback.
 
 ### Goal-rate editing from plan review includes goal weight
 
