@@ -1,6 +1,6 @@
 # TRAK — master checklist
 
-Updated: 2026-09-11T01:58:10Z · Reviewed through 2026-09-11
+Updated: 2026-09-11T03:06:39Z · Reviewed through 2026-09-11
 
 - native: Regular iOS 479 is available in internal TestFlight. Signed Android 479 is ready for the established manual upload. This combines reviewed serving and Tune fixes with the approved widget spacing and heading refinements. All 18 earlier staging groups and newer production work are retained. This task has not uploaded Android to Firebase; staging 45 is unchanged.
 - backend: Production backend 2722 is live and independently verified. The two-table serving-calculation migration is applied, read back and safe to rerun. Current native-contract searches return complete View all data; paired ordered results match the baseline. Server timing passes; Mac transport outliers are recorded separately and do not establish phone or VPN speed.
@@ -55,14 +55,6 @@ ID: grocery-refresh-scheduling-and-completion-receipts · Search & catalogue · 
 Nightly catalogue maintenance completed through the audit date, but recent grocery triggers failed before running and the latest successful trigger did not establish refresh completion. Reliable recent grocery results remain unverified.
 
 Next: The operations owner must inspect the last runner outcome and restore scheduling on existing infrastructure, with durable start/completion/failure records and missed-run alerts. No scheduler change was made by the audit.
-
-### Balance spacing across Android widgets
-
-ID: android-widget-spacing · Widgets · Reviewed 2026-09-11
-
-Galaxy A56 and a second Galaxy handset are reported to have too much spacing across all widget layouts. Build 479 retains the earlier launcher-size and clipping repairs, but fixed content-size limits can leave excessive blank space when cards are enlarged. Existing signed native renders show this limitation; passing clipping and corner checks did not establish balanced spacing.
-
-Next: The seven-widget adaptive-size preview is prepared for review. After approval, implement and verify the exact Android package on Galaxy A56 and the second Galaxy handset; record both One UI versions, launcher dimensions and the second model. Illustrative preview sizes do not close the phone issue.
 
 ### Find why barberries cannot be found
 
@@ -804,9 +796,17 @@ Next: Prepare this separate backend correction on the latest staging source befo
 
 ID: widget-layout-review-small-macros · Widgets · Reviewed 2026-09-11
 
-All seven Android layouts now have a combined preview using the supplied Figma typography, macro colours and open meter arcs, with darker cards and adaptive sizing. The initial closed-ring preview has been corrected. Build 479 remains unchanged.
+The updated designs are approved for iOS and Android. Native implementation is underway for Build480, including Sora text, open-arc gauges, darker cards, a small Macros heading, lighter teal dietary fibre and the designer’s angled bars.
 
-Next: Review the revised mockups before native design changes. Preserve P/F/C order, lighter text and neutral actions; verify both platforms against the agreed design.
+Next: Finish native rendering checks, review both implementations, then build and deliver the paired update. Preserve P/F/C order, neutral shortcuts, data and settings.
+
+### Balance spacing across Android widgets
+
+ID: android-widget-spacing · Widgets · Reviewed 2026-09-11
+
+The signed Build479 reproduces fixed gauge and text limits on expanded widgets. New tests also catch tall280×300 cards incorrectly selecting a wide layout. The approved correction sizes content and values together from the actual widget dimensions.
+
+Next: Pass the expanded native host, large-text and corner checks in Build480, then verify the delivered package on Galaxy A56 and the second Galaxy handset. Native emulator evidence does not establish One UI phone acceptance.
 
 ## Resolved live
 

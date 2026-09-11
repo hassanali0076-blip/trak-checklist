@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "title": "TRAK — master checklist",
-  "updatedAt": "2026-09-11T01:58:10Z",
+  "updatedAt": "2026-09-11T03:06:39Z",
   "reviewedThrough": "2026-09-11",
   "release": {
     "native": "Regular iOS 479 is available in internal TestFlight. Signed Android 479 is ready for the established manual upload. This combines reviewed serving and Tune fixes with the approved widget spacing and heading refinements. All 18 earlier staging groups and newer production work are retained. This task has not uploaded Android to Firebase; staging 45 is unchanged.",
@@ -15,6 +15,10 @@
     "Reconciled through 11 September. Released changes, local fixes and reported phone results are tracked separately. This board update does not release a TRAK app build."
   ],
   "changes": [
+    {
+      "date": "2026-09-11",
+      "text": "Approved the revised widgets for both platforms and started native Build480 work. Expanded-value and tall-card failures are reproduced on signed479; lighter teal fibre and the designer’s angled bars are included in the new scope. No480 release has been distributed yet."
+    },
     {
       "date": "2026-09-11",
       "text": "Prepared all seven widget previews using the supplied Figma design and adaptive spacing. Corrected full rings to the source open arc. Preview only: no new native build; Samsung spacing remains pending device verification."
@@ -1794,8 +1798,8 @@
       "title": "Improve widget layouts, starting with small Macros",
       "area": "Widgets",
       "status": "active",
-      "summary": "All seven Android layouts now have a combined preview using the supplied Figma typography, macro colours and open meter arcs, with darker cards and adaptive sizing. The initial closed-ring preview has been corrected. Build 479 remains unchanged.",
-      "nextStep": "Review the revised mockups before native design changes. Preserve P/F/C order, lighter text and neutral actions; verify both platforms against the agreed design.",
+      "summary": "The updated designs are approved for iOS and Android. Native implementation is underway for Build480, including Sora text, open-arc gauges, darker cards, a small Macros heading, lighter teal dietary fibre and the designer’s angled bars.",
+      "nextStep": "Finish native rendering checks, review both implementations, then build and deliver the paired update. Preserve P/F/C order, neutral shortcuts, data and settings.",
       "updated": "2026-09-11"
     },
     {
@@ -1820,9 +1824,9 @@
       "id": "android-widget-spacing",
       "title": "Balance spacing across Android widgets",
       "area": "Widgets",
-      "status": "issue",
-      "summary": "Galaxy A56 and a second Galaxy handset are reported to have too much spacing across all widget layouts. Build 479 retains the earlier launcher-size and clipping repairs, but fixed content-size limits can leave excessive blank space when cards are enlarged. Existing signed native renders show this limitation; passing clipping and corner checks did not establish balanced spacing.",
-      "nextStep": "The seven-widget adaptive-size preview is prepared for review. After approval, implement and verify the exact Android package on Galaxy A56 and the second Galaxy handset; record both One UI versions, launcher dimensions and the second model. Illustrative preview sizes do not close the phone issue.",
+      "status": "active",
+      "summary": "The signed Build479 reproduces fixed gauge and text limits on expanded widgets. New tests also catch tall280×300 cards incorrectly selecting a wide layout. The approved correction sizes content and values together from the actual widget dimensions.",
+      "nextStep": "Pass the expanded native host, large-text and corner checks in Build480, then verify the delivered package on Galaxy A56 and the second Galaxy handset. Native emulator evidence does not establish One UI phone acceptance.",
       "updated": "2026-09-11"
     },
     {
