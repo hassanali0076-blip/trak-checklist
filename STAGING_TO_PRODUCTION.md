@@ -3,15 +3,16 @@
 Updated 11 September 2026. Astra maintains this release record.
 [Visual checklist](https://trak-checklist.hassanali0076.chatgpt.site/staging-to-production).
 
-**Regular iOS Build 479 is available in internal TestFlight. Signed Android 479
-is ready for manual upload.** All 18 staging groups below and newer production
-work are retained. Build 479 combines reviewed serving and Tune fixes with the
-final approved Android macro spacing and larger wide-macro headings on both
-platforms. All 4,461 app tests pass. The exact Android APK passes 136 native
-host render/resize cases and 52 stronger-corner checks; both signed packages
-pass production identity and signing verification. This task has not uploaded
-Android to Firebase. Public store release and new physical-phone acceptance
-remain separate.
+**Regular iOS Build 480 is available in internal TestFlight. Signed Android 480
+and its changelog are ready for manual upload.** All 18 staging groups below,
+the serving/Tune fixes and newer production work are retained. Build 480 adds
+the approved widget designs: open gauges, Sora text, matching bar tracks,
+lighter teal fibre and content that grows when widgets expand. All 4,462 app
+tests pass. The exact Android APK passes 144 native host render cases, 60
+resize/corner cases and 5 expansion checks; iOS passes 77 native renders.
+Both signed packages pass production identity and signing verification.
+This task has not uploaded Android to Firebase. Public store release and
+new physical-phone acceptance remain separate.
 
 The earlier Android loading failure is repaired in 476 and passes native
 renderer checks. Pixel 9 picker-search and physical add/refresh observations

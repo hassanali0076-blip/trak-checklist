@@ -1,10 +1,10 @@
 # TRAK — master checklist
 
-Updated: 2026-09-11T03:06:39Z · Reviewed through 2026-09-11
+Updated: 2026-09-11T04:05:16Z · Reviewed through 2026-09-11
 
-- native: Regular iOS 479 is available in internal TestFlight. Signed Android 479 is ready for the established manual upload. This combines reviewed serving and Tune fixes with the approved widget spacing and heading refinements. All 18 earlier staging groups and newer production work are retained. This task has not uploaded Android to Firebase; staging 45 is unchanged.
+- native: Regular iOS 480 is available in internal TestFlight. Signed Android 480 and its changelog are ready for the established manual upload. Both include the approved widget design and adaptive sizing; all 18 earlier staging groups, serving/Tune fixes and newer production work are retained. This task has not uploaded Android to Firebase; staging 45 is unchanged.
 - backend: Production backend 2722 is live and independently verified. The two-table serving-calculation migration is applied, read back and safe to rerun. Current native-contract searches return complete View all data; paired ordered results match the baseline. Server timing passes; Mac transport outliers are recorded separately and do not establish phone or VPN speed.
-- next: Aadam updates iOS through TestFlight or uploads Android 479 through the usual route, then checks food amounts when reopening or switching units, recipe Tune and the widgets. Astra owns any reported regression. Actual Pixel/Samsung phone acceptance remains separate from the passing native host and corner checks.
+- next: Aadam updates through TestFlight or uploads Android 480 through the usual route, then reviews widgets at normal and expanded sizes on iOS, Galaxy A56 and the second Galaxy. Astra handles reported regressions. Physical One UI acceptance is separate from passing native resize, corner and rendered-output checks.
 
 > Public, read-only project status. No login needed.
 
@@ -572,6 +572,14 @@ Regular TRAK 475 opens Recipe Edit immediately while complete ingredients load, 
 
 Next: Astra owns reported Recipe Edit regressions on 475; retain Save & Log, complete ingredients and account isolation. Delivery is complete; new phone acceptance is separate.
 
+### Improve widget layouts, starting with small Macros
+
+ID: widget-layout-review-small-macros · Widgets · Reviewed 2026-09-11
+
+The approved designs are implemented and packaged in Build 480 on both platforms: Sora text, open gauges, darker cards, a small Macros heading, lighter teal dietary fibre, matching bar/ring tracks and larger calorie shortcuts. iOS is available in internal TestFlight; signed Android is ready for manual upload. All 4,462 app tests pass, alongside 77 iOS native renders and 144 exact signed-Android host renders.
+
+Next: Review the delivered widgets on the phones. Astra owns any reported mismatch; the paired builds and internal iOS upload are complete.
+
 ### Fix Android widget sizing after Build 476
 
 ID: android-widget-launcher-sizing · Widgets · Reviewed 2026-09-11
@@ -579,6 +587,14 @@ ID: android-widget-launcher-sizing · Widgets · Reviewed 2026-09-11
 The reported tiny rings and excessive gaps were reproduced in signed Android 476. All four providers combined size bounds from different orientations. The shared correction is merged and packaged in signed Android 477, restoring the approved ring sizes and wide Search layout. The exact APK passes 84 native host cases, and all 84 renders are identical to the approved images. It is ready for manual upload; physical Pixel acceptance has not yet been confirmed.
 
 Next: The existing correction is retained in signed Android 479, whose exact APK passes native provider, host, resize and rendering checks. Aadam uploads 479 and checks picker visibility, adding, resizing, values and taps on the phone. Astra handles any reported regression; packaging is not physical-phone acceptance.
+
+### Balance spacing across Android widgets
+
+ID: android-widget-spacing · Widgets · Reviewed 2026-09-11
+
+Build 480 removes the fixed-size limits so values, gauges and labels grow together. Tall cards now select the correct layout. The exact signed APK passes 60 resize/corner cases and 5 expansion cases; all 144 host images match the reviewed candidate. The earlier baseline failures and rejected pre-release text-clipping attempts are retained in private evidence.
+
+Next: Upload/install Android 480 and review all widgets at normal and expanded sizes on Galaxy A56 and the second Galaxy. Astra handles remaining spacing problems; emulator evidence does not establish One UI phone acceptance.
 
 ### Keep serving amounts consistent across food and recipe editing
 
@@ -792,22 +808,6 @@ The larger Astra/Sol pilot reproduced the 400-to-399 calorie loss during diary s
 
 Next: Prepare this separate backend correction on the latest staging source before its own release. Preserve old diary snapshots; retain the four recorded test gaps. Graft helped find supporting files but missed the decisive backend helper, so no token saving is claimed.
 
-### Improve widget layouts, starting with small Macros
-
-ID: widget-layout-review-small-macros · Widgets · Reviewed 2026-09-11
-
-The updated designs are approved for iOS and Android. Native implementation is underway for Build480, including Sora text, open-arc gauges, darker cards, a small Macros heading, lighter teal dietary fibre and the designer’s angled bars.
-
-Next: Finish native rendering checks, review both implementations, then build and deliver the paired update. Preserve P/F/C order, neutral shortcuts, data and settings.
-
-### Balance spacing across Android widgets
-
-ID: android-widget-spacing · Widgets · Reviewed 2026-09-11
-
-The signed Build479 reproduces fixed gauge and text limits on expanded widgets. New tests also catch tall280×300 cards incorrectly selecting a wide layout. The approved correction sizes content and values together from the actual widget dimensions.
-
-Next: Pass the expanded native host, large-text and corner checks in Build480, then verify the delivered package on Galaxy A56 and the second Galaxy handset. Native emulator evidence does not establish One UI phone acceptance.
-
 ## Resolved live
 
 ### Draw complete nutrient graphs and align target-range edges
@@ -854,11 +854,11 @@ Next: Use the verified staging profile for subsequent builds and recheck it if s
 
 ### Staging changes awaiting production
 
-ID: staging-changes-awaiting-production · Production promotion · Reviewed 2026-09-10
+ID: staging-changes-awaiting-production · Production promotion · Reviewed 2026-09-11
 
-All 18 staging change groups were delivered in regular TRAK 475 and remain included in 476, now available in internal TestFlight. Build 476 additionally contains the approved widget polish and repairs. Production backend 2722 is unchanged. Both signed packages pass verification; matching Android 476 is prepared for the existing manual Firebase upload. New phone acceptance and public App Store release are separate.
+All 18 staging change groups were delivered in regular TRAK 475 and remain included in Build 480. iOS 480 is available in internal TestFlight; signed Android 480 is ready for manual upload. Newer production serving, Tune and widget work is retained. Backend 2722 and staging 45 are unchanged. New phone acceptance and public store release remain separate.
 
-Next: Astra maintains this delivery record and handles regressions. Update regular TRAK to 476 in TestFlight; the accepted Build 45 graph result remains valid. Widget-specific Pixel checks stay on their own tasks.
+Next: Astra maintains this release record and handles regressions. Use Build 480 for the current widget review; prior accepted graph and maintenance results remain valid.
 
 ### Keep newer production work when promoting staging
 
