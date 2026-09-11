@@ -1,10 +1,10 @@
 # TRAK — master checklist
 
-Updated: 2026-09-11T05:03:44Z · Reviewed through 2026-09-11
+Updated: 2026-09-11T05:39:47Z · Reviewed through 2026-09-11
 
-- native: Regular iOS 481 is available in internal TestFlight for testing the latest widget corrections: Remaining fill, wide calorie/macros alignment and Clear/Tinted action visibility. Android remains 480; its signed APK and changelog are unchanged. All earlier staging groups, serving/Tune fixes and approved widget designs are retained. No Android build or upload was performed for 481; staging 45 is unchanged.
+- native: Regular iOS 481 is available in internal TestFlight. Signed Android 481 and its changelog are now ready for the established manual upload. Both include the Remaining widget fill correction and retain the approved designs, adaptive sizing and serving/Tune fixes. The wide-layout and Clear/Tinted corrections are iOS-only. This task has not uploaded Android to Firebase; staging 45 is unchanged.
 - backend: Production backend 2722 is live and independently verified. The two-table serving-calculation migration is applied, read back and safe to rerun. Current native-contract searches return complete View all data; paired ordered results match the baseline. Server timing passes; Mac transport outliers are recorded separately and do not establish phone or VPN speed.
-- next: Test iOS 481 first: Remaining rings/bars should drain with logging, wide macro values should align at the bar ends, and both quick-action widgets should remain visible in Clear and Tinted. Astra owns any regression and the later Android packaging after iOS feedback. Samsung physical-device acceptance remains a separate check.
+- next: Upload Android 481 through the usual beta channel, then check Remaining rings/bars and widget sizing on the phone. iOS 481 is already available for its three widget checks. Astra owns reported regressions. Physical Samsung and actual iOS Home Screen acceptance remain separate from the passing native render checks.
 
 > Public, read-only project status. No login needed.
 
@@ -105,14 +105,6 @@ ID: signed-artifact-release-and-promotion-checks · Release & reliability · Rev
 A local release gate checks the signed iPhone and Android artifacts and requires recorded phone acceptance for claimed features. Release checks can run on the release Mac. Build 470 remains internal-only; these new protections do not retrospectively approve its unresolved nutrient issues.
 
 Next: The release owner must use the gate for the next candidate, verify matching platform artifacts and collect the required phone acceptance before wider promotion.
-
-### Remaining widget rings and bars should drain with logging
-
-ID: widget-remaining-fill-direction · Widgets · Reviewed 2026-09-11
-
-Available in iOS 481 internal TestFlight; the Android correction is saved but not distributed. Remaining starts full and drains across small/wide Calories and Macros widgets; Consumed fills as before. Missing or unconfirmed targets stay empty. Single Nutrient and Lock Screen consumed-only behaviour is preserved. Native mode checks pass.
-
-Next: Test Remaining mode on iOS 481 before later Android packaging. Astra owns the Android follow-up; Android 480 does not contain this correction.
 
 ## Needs checking
 
@@ -584,9 +576,9 @@ Next: Astra owns reported Recipe Edit regressions on 475; retain Save & Log, com
 
 ID: widget-layout-review-small-macros · Widgets · Reviewed 2026-09-11
 
-The approved widget designs and adaptive sizing shipped in 480. iOS 481 now adds the three follow-up corrections: Remaining fill direction, wide calorie/macros alignment and Clear/Tinted action visibility. It is available in internal TestFlight. All 4,463 app tests pass, with 142 native iOS renders and 65 mode checks. Android remains 480.
+The approved widget designs and adaptive sizing are retained in 481. iOS is available in internal TestFlight with Remaining fill, wide calorie/macros alignment and Clear/Tinted action corrections. Signed Android 481 is ready for manual upload with the shared Remaining fix. All 4,463 app tests pass; all 144 exact signed-Android renders match approval, including resize and expansion checks.
 
-Next: Test the three iOS 481 corrections first. Astra owns regressions and later Android packaging. Physical Samsung and actual iOS Home Screen acceptance remain separate from native render checks.
+Next: Upload Android 481 and review the widgets on the phone; test the iOS 481 corrections through TestFlight. Astra owns any mismatch. Physical Samsung and actual iOS Home Screen acceptance remain separate.
 
 ### Fix Android widget sizing after Build 476
 
@@ -611,6 +603,14 @@ ID: centralise-serving-scaling · Food editing · Reviewed 2026-09-11
 The completed shared serving fixes were independently reviewed and are included in regular Build 479. Gram reopen, fractional quantities, unit conversion, saved template counts and recipe yields retain their physical amounts. Tune refreshes calories, fibre and micronutrients together. Additional template regressions found during integration were fixed before signing. All 4,461 app tests and both native artifact gates pass.
 
 Next: Aadam uses iOS 479 in TestFlight or the Android 479 APK to check reopening a gram selection, changing units and updating a recipe through Tune. Astra handles any reported regression. Existing diary snapshots are not rewritten.
+
+### Remaining widget rings and bars should drain with logging
+
+ID: widget-remaining-fill-direction · Widgets · Reviewed 2026-09-11
+
+Available in iOS 481 internal TestFlight and included in the signed Android 481 APK prepared for manual upload. Remaining starts full and drains across small/wide Calories and Macros widgets; Consumed fills as before. Missing or unconfirmed targets stay empty. The exact Android APK passes all 56 hosted states and 144 renders; every image matches the reviewed correction.
+
+Next: Upload Android 481 and check Remaining fill on the phone. Astra owns any reported regression. Android upload and physical acceptance are not claimed by the signed-artifact checks.
 
 ### Align and enlarge values in the wide calorie and macro widget
 

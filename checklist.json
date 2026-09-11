@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
   "title": "TRAK — master checklist",
-  "updatedAt": "2026-09-11T05:03:44Z",
+  "updatedAt": "2026-09-11T05:39:47Z",
   "reviewedThrough": "2026-09-11",
   "release": {
-    "native": "Regular iOS 481 is available in internal TestFlight for testing the latest widget corrections: Remaining fill, wide calorie/macros alignment and Clear/Tinted action visibility. Android remains 480; its signed APK and changelog are unchanged. All earlier staging groups, serving/Tune fixes and approved widget designs are retained. No Android build or upload was performed for 481; staging 45 is unchanged.",
+    "native": "Regular iOS 481 is available in internal TestFlight. Signed Android 481 and its changelog are now ready for the established manual upload. Both include the Remaining widget fill correction and retain the approved designs, adaptive sizing and serving/Tune fixes. The wide-layout and Clear/Tinted corrections are iOS-only. This task has not uploaded Android to Firebase; staging 45 is unchanged.",
     "backend": "Production backend 2722 is live and independently verified. The two-table serving-calculation migration is applied, read back and safe to rerun. Current native-contract searches return complete View all data; paired ordered results match the baseline. Server timing passes; Mac transport outliers are recorded separately and do not establish phone or VPN speed.",
-    "next": "Test iOS 481 first: Remaining rings/bars should drain with logging, wide macro values should align at the bar ends, and both quick-action widgets should remain visible in Clear and Tinted. Astra owns any regression and the later Android packaging after iOS feedback. Samsung physical-device acceptance remains a separate check."
+    "next": "Upload Android 481 through the usual beta channel, then check Remaining rings/bars and widget sizing on the phone. iOS 481 is already available for its three widget checks. Astra owns reported regressions. Physical Samsung and actual iOS Home Screen acceptance remain separate from the passing native render checks."
   },
   "notes": [
     "Public, read-only project status. No login needed.",
@@ -15,6 +15,10 @@
     "Reconciled through 11 September. Released changes, local fixes and reported phone results are tracked separately. This board update does not release a TRAK app build."
   ],
   "changes": [
+    {
+      "date": "2026-09-11",
+      "text": "Prepared signed Android 481 and its changelog for manual upload after the iOS-first delivery. Remaining rings and bars now drain with logging. All 4,463 app tests pass; the exact APK passes 56 hosted states, 144 renders, 60 resize/corner cases and 5 expansion checks, with every image matching approval. iOS 481 and earlier scaling work are preserved."
+    },
     {
       "date": "2026-09-11",
       "text": "iOS 481 is available in internal TestFlight with the three widget corrections: Remaining fill, wide calorie/macros layout and Clear/Tinted actions. Full app and native render checks pass. At the requested iOS-first stopping point, Android stays 480 and its next package is deferred until iOS feedback."
@@ -1810,8 +1814,8 @@
       "title": "Improve widget layouts, starting with small Macros",
       "area": "Widgets",
       "status": "testing",
-      "summary": "The approved widget designs and adaptive sizing shipped in 480. iOS 481 now adds the three follow-up corrections: Remaining fill direction, wide calorie/macros alignment and Clear/Tinted action visibility. It is available in internal TestFlight. All 4,463 app tests pass, with 142 native iOS renders and 65 mode checks. Android remains 480.",
-      "nextStep": "Test the three iOS 481 corrections first. Astra owns regressions and later Android packaging. Physical Samsung and actual iOS Home Screen acceptance remain separate from native render checks.",
+      "summary": "The approved widget designs and adaptive sizing are retained in 481. iOS is available in internal TestFlight with Remaining fill, wide calorie/macros alignment and Clear/Tinted action corrections. Signed Android 481 is ready for manual upload with the shared Remaining fix. All 4,463 app tests pass; all 144 exact signed-Android renders match approval, including resize and expansion checks.",
+      "nextStep": "Upload Android 481 and review the widgets on the phone; test the iOS 481 corrections through TestFlight. Astra owns any mismatch. Physical Samsung and actual iOS Home Screen acceptance remain separate.",
       "updated": "2026-09-11"
     },
     {
@@ -1890,9 +1894,9 @@
       "id": "widget-remaining-fill-direction",
       "title": "Remaining widget rings and bars should drain with logging",
       "area": "Widgets",
-      "status": "next_release",
-      "summary": "Available in iOS 481 internal TestFlight; the Android correction is saved but not distributed. Remaining starts full and drains across small/wide Calories and Macros widgets; Consumed fills as before. Missing or unconfirmed targets stay empty. Single Nutrient and Lock Screen consumed-only behaviour is preserved. Native mode checks pass.",
-      "nextStep": "Test Remaining mode on iOS 481 before later Android packaging. Astra owns the Android follow-up; Android 480 does not contain this correction.",
+      "status": "testing",
+      "summary": "Available in iOS 481 internal TestFlight and included in the signed Android 481 APK prepared for manual upload. Remaining starts full and drains across small/wide Calories and Macros widgets; Consumed fills as before. Missing or unconfirmed targets stay empty. The exact Android APK passes all 56 hosted states and 144 renders; every image matches the reviewed correction.",
+      "nextStep": "Upload Android 481 and check Remaining fill on the phone. Astra owns any reported regression. Android upload and physical acceptance are not claimed by the signed-artifact checks.",
       "updated": "2026-09-11"
     },
     {
