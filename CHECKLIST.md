@@ -1,10 +1,10 @@
 # TRAK — master checklist
 
-Updated: 2026-09-10T18:50:49Z · Reviewed through 2026-09-10
+Updated: 2026-09-11T01:05:01Z · Reviewed through 2026-09-11
 
-- native: Regular iOS 476 remains available in internal TestFlight. Signed Android 478 is ready for manual upload with all seven approved widget spacing refinements, readable nutrient unit words, larger-text fixes and responsive launcher sizing. Its exact APK passes 136 native rendering cases and 52 stronger-corner checks. All 18 staging groups and earlier production work are retained. This task has not uploaded Android 478 to Firebase. Staging 45 is unchanged.
+- native: Regular iOS 479 is available in internal TestFlight. Signed Android 479 is ready for the established manual upload. This combines reviewed serving and Tune fixes with the approved widget spacing and heading refinements. All 18 earlier staging groups and newer production work are retained. This task has not uploaded Android to Firebase; staging 45 is unchanged.
 - backend: Production backend 2722 is live and independently verified. The two-table serving-calculation migration is applied, read back and safe to rerun. Current native-contract searches return complete View all data; paired ordered results match the baseline. Server timing passes; Mac transport outliers are recorded separately and do not establish phone or VPN speed.
-- next: Aadam uploads Android 478 through the usual manual route and reviews the widgets on the phone. Astra handles any reported regression. Source integration and packaging are complete. Samsung-relevant dimensions and corner clearance are tested synthetically; actual One UI controls and physical phone acceptance are separate. Regular iOS 476 and both backends are unchanged.
+- next: Aadam updates iOS through TestFlight or uploads Android 479 through the usual route, then checks food amounts when reopening or switching units, recipe Tune and the widgets. Astra owns any reported regression. Actual Pixel/Samsung phone acceptance remains separate from the passing native host and corner checks.
 
 > Public, read-only project status. No login needed.
 
@@ -12,7 +12,7 @@ Updated: 2026-09-10T18:50:49Z · Reviewed through 2026-09-10
 
 > Updates appear here after the shared checklist is published. Local edits and chat messages do not update it.
 
-> Reconciled through 10 September. Released changes, local fixes and reported phone results are tracked separately. This board update does not release a TRAK app build.
+> Reconciled through 11 September. Released changes, local fixes and reported phone results are tracked separately. This board update does not release a TRAK app build.
 
 ## Known issue
 
@@ -110,11 +110,11 @@ Next: The release owner must use the gate for the next candidate, verify matchin
 
 ### Fix Android widgets showing “Can’t load widget”
 
-ID: android-widgets-cannot-load · Widgets · Reviewed 2026-09-10
+ID: android-widgets-cannot-load · Widgets · Reviewed 2026-09-11
 
 The loading repair is included in Build 476, available in internal TestFlight with matching release-signed Android prepared for manual upload. All 12 widget layouts and 224 debug render states pass; the exact signed release also passes 56 populated cases through a real widget host; released 475 failed five original layouts. Four providers and per-widget settings are included. Pixel 9 picker-search and physical add/refresh acceptance remain separate from emulator evidence.
 
-Next: The existing correction is retained in signed Android 478, whose exact APK passes native provider, host, resize and rendering checks. Aadam uploads 478 and checks picker visibility, adding, resizing, values and taps on the phone. Astra handles any reported regression; packaging is not physical-phone acceptance.
+Next: The existing correction is retained in signed Android 479, whose exact APK passes native provider, host, resize and rendering checks. Aadam uploads 479 and checks picker visibility, adding, resizing, values and taps on the phone. Astra handles any reported regression; packaging is not physical-phone acceptance.
 
 ### Match nutrient graph transitions to the other screens
 
@@ -438,11 +438,11 @@ Next: On regular TRAK 475, test every reopening route, correct calories, manual 
 
 ### Blueberries entered in grams must not become cups
 
-ID: blueberries-grams-not-cup-count · Food editing · Reviewed 2026-09-08
+ID: blueberries-grams-not-cup-count · Food editing · Reviewed 2026-09-11
 
-A separate serving check requires a small gram amount to stay grams rather than being interpreted as a cup count. The new persistence tests preserve 24 g and correctly scaled calories for a food with cup portions. That is local fixture evidence, not an exact live UK/US catalogue or phone sign-off.
+Build 479 includes the shared serving correction and additional saved-template regressions: gram entries retain their unit, and older cup descriptions are converted once while preserving saved counts. Both per-cup and whole-selection template descriptions pass against the preserved physical amount. This is fixture and release evidence; the exact affected live catalogue row has not been rechecked on the phone.
 
-Next: Reproduce the exact reported Blueberries entry and route on the next staging candidate. Confirm 24 g stays grams and uses the selected catalogue row’s actual per-100 g nutrition.
+Next: On regular Build 479, confirm the reported Blueberries gram amount stays in grams after reopening and uses the selected food row’s nutrition. Astra handles any mismatch.
 
 ### Recent flagged foods have corrected catalogue servings
 
@@ -574,27 +574,35 @@ Next: Astra owns reported Recipe Edit regressions on 475; retain Save & Log, com
 
 ### Improve widget layouts, starting with small Macros
 
-ID: widget-layout-review-small-macros · Widgets · Reviewed 2026-09-10
+ID: widget-layout-review-small-macros · Widgets · Reviewed 2026-09-11
 
-The approved original widget designs are in iOS 476 and Android 476 onward, including P/F/C ordering, lighter ring values, neutral actions and wide Search. Android 478 now adds the approved seven-layout spacing refinements and fixes larger-text clipping, with native renders and paired signing verified. The Android APK is ready for manual upload; iOS remains 476.
+The approved original designs and all seven Android layout refinements are retained in Build 479. This release adds the final approved small-calorie macro spacing on Android and larger medium-weight Remaining/Consumed headings on Android and iOS Macros Wide. iOS 479 is available in internal TestFlight; signed Android 479 is ready for manual upload.
 
-Next: Aadam reviews Android 478 after manual upload. Astra handles reported regressions. Older iOS Edit Widget rows may retain archived choices until edited or re-added.
+Next: Aadam reviews the widgets in Build 479. Astra handles reported regressions. Physical Pixel/Samsung observations and older saved iOS widget choices remain separate from packaging and simulator checks.
 
 ### Fix Android widget sizing after Build 476
 
-ID: android-widget-launcher-sizing · Widgets · Reviewed 2026-09-10
+ID: android-widget-launcher-sizing · Widgets · Reviewed 2026-09-11
 
 The reported tiny rings and excessive gaps were reproduced in signed Android 476. All four providers combined size bounds from different orientations. The shared correction is merged and packaged in signed Android 477, restoring the approved ring sizes and wide Search layout. The exact APK passes 84 native host cases, and all 84 renders are identical to the approved images. It is ready for manual upload; physical Pixel acceptance has not yet been confirmed.
 
-Next: The existing correction is retained in signed Android 478, whose exact APK passes native provider, host, resize and rendering checks. Aadam uploads 478 and checks picker visibility, adding, resizing, values and taps on the phone. Astra handles any reported regression; packaging is not physical-phone acceptance.
+Next: The existing correction is retained in signed Android 479, whose exact APK passes native provider, host, resize and rendering checks. Aadam uploads 479 and checks picker visibility, adding, resizing, values and taps on the phone. Astra handles any reported regression; packaging is not physical-phone acceptance.
 
 ### Balance spacing across Android widgets
 
-ID: android-widget-spacing · Widgets · Reviewed 2026-09-10
+ID: android-widget-spacing · Widgets · Reviewed 2026-09-11
 
-The full seven-layout gallery was approved and implemented in signed Android 478. Small calorie and Macros rings are larger and centered, the P/F/C totals are closer together, wide shortcuts are larger and lower, and single-nutrient units use full words. Layouts fit launcher dimensions and system corners. Larger-text and older-Android fallback issues found during review are corrected. The exact APK passes 136 rendering cases and 52 stronger-corner checks; paired signing checks pass.
+Build 479 includes all seven approved layouts and Samsung-relevant sizing from 478, plus the final wider P/F/C group spacing and larger medium-weight wide-macro heading. Numeric text now fits within the small calorie card at narrow sizes and larger system text. The exact signed APK passes 136 native host render/resize cases and 52 stronger-corner checks; its standard images match the reviewed renders.
 
-Next: Aadam uploads Android 478 and reviews the widgets on the phone. Astra owns any reported regression. A physical Samsung check should record the model and One UI version, inspect the controls actually offered, and test resizing, clipping and saved choices. Synthetic host and corner-mask checks are not physical Samsung acceptance.
+Next: Aadam uploads Android 479 and checks the widgets on the phone. Astra owns reported regressions. A physical Samsung check should record model and One UI version, inspect the controls actually offered, and exercise resizing, clipping and saved options.
+
+### Keep serving amounts consistent across food and recipe editing
+
+ID: centralise-serving-scaling · Food editing · Reviewed 2026-09-11
+
+The completed shared serving fixes were independently reviewed and are included in regular Build 479. Gram reopen, fractional quantities, unit conversion, saved template counts and recipe yields retain their physical amounts. Tune refreshes calories, fibre and micronutrients together. Additional template regressions found during integration were fixed before signing. All 4,461 app tests and both native artifact gates pass.
+
+Next: Aadam uses iOS 479 in TestFlight or the Android 479 APK to check reopening a gram selection, changing units and updating a recipe through Tune. Astra handles any reported regression. Existing diary snapshots are not rewritten.
 
 ## Planned
 

@@ -1,18 +1,17 @@
 # Staging changes awaiting production
 
-Updated 10 September 2026. Astra maintains this release record.
+Updated 11 September 2026. Astra maintains this release record.
 [Visual checklist](https://trak-checklist.hassanali0076.chatgpt.site/staging-to-production).
 
-**Regular iOS Build 476 is available in internal TestFlight. Signed Android 478
-is ready for manual upload. Production backend 2722 remains live.** All 18 staging
-groups below are retained from 475, together with newer production Health work
-and recipe household amounts. Android 478 includes the approved seven-widget
-spacing refinements, full nutrient unit words, larger-text fixes and responsive
-launcher sizing. Its exact APK passes 136 native rendering cases and 52 stronger
-corner-mask checks. Paired production identity and signing checks pass; the
-matching iOS archive is private verification only, with no iOS upload.
-This is an internal production-app release. Public store release and new
-physical-phone acceptance are separate.
+**Regular iOS Build 479 is available in internal TestFlight. Signed Android 479
+is ready for manual upload.** All 18 staging groups below and newer production
+work are retained. Build 479 combines reviewed serving and Tune fixes with the
+final approved Android macro spacing and larger wide-macro headings on both
+platforms. All 4,461 app tests pass. The exact Android APK passes 136 native
+host render/resize cases and 52 stronger-corner checks; both signed packages
+pass production identity and signing verification. This task has not uploaded
+Android to Firebase. Public store release and new physical-phone acceptance
+remain separate.
 
 The earlier Android loading failure is repaired in 476 and passes native
 renderer checks. Pixel 9 picker-search and physical add/refresh observations
@@ -23,8 +22,8 @@ edge fix is accepted on the phone and retained in 475. The accepted maintenance
 simulation evidence remains valid. Neither needs repeating just because the
 release record changed.
 
-The backend passes 1,826 tests and 348 subtests, plus 90 separate PostgreSQL
-checks. The final app evidence covers 4,261 current sign-in tests and 122 older
+The original production integration evidence includes 1,826 backend tests and 348 subtests, plus 90 separate PostgreSQL
+checks. The original Build 475 app evidence covers 4,261 current sign-in tests and 122 older
 sign-in tests. Two fixtures needed correction during the release rerun; their
 complete files pass and the original failed invocation remains recorded. The
 final evidence combines unchanged passing partitions with those corrected
@@ -233,3 +232,30 @@ Next: Aadam uploads Android 478 through the established manual route and reviews
 the widgets. Astra handles any concrete regression. This task has not uploaded
 Android to Firebase or claimed physical Samsung acceptance. iOS stays on 476;
 both backends, all eighteen staging groups and earlier production work remain.
+
+## Build 479: serving consistency and final widget refinements
+
+Regular iOS 479 is available in internal TestFlight. Signed Android 479 is ready
+for the established manual upload. The completed serving work was independently
+reviewed, and additional saved-template and narrow-widget cases were corrected
+before packaging.
+
+- Food amounts stay consistent through gram reopen, fractions and unit changes.
+- Recipe and template conversions preserve physical amounts and saved identity.
+- Tune updates calories, fibre and micronutrients together.
+- Android small Today retains the approved wider gaps between P/F/C groups and
+  fits its numbers at small sizes and larger system text.
+- Android and iOS Macros Wide use larger medium-weight Remaining/Consumed text.
+- All earlier widget layouts, P/F/C order, Samsung-relevant sizing and the 18
+  preceding staging groups are retained.
+
+Fresh checks: 4,461 app tests across both sign-in configurations; 224 Android
+render states plus font, settings and snapshot checks; 54 iOS native renders.
+The exact signed Android file passes 136 host cases and 52 stronger-corner checks.
+Its 56 standard-state images match the reviewed renders. These are automated
+and simulator checks, not new physical Samsung or Pixel acceptance.
+
+Next: Aadam updates iOS or uploads Android 479, then checks serving reopen,
+unit changes, recipe Tune and widget appearance. Astra owns reported regressions
+and keeps this record current. No historical diary rewrite, backend promotion
+or staging build was performed for this release.
