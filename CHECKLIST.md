@@ -1,10 +1,10 @@
 # TRAK — master checklist
 
-Updated: 2026-09-11T04:05:16Z · Reviewed through 2026-09-11
+Updated: 2026-09-11T04:33:57Z · Reviewed through 2026-09-11
 
 - native: Regular iOS 480 is available in internal TestFlight. Signed Android 480 and its changelog are ready for the established manual upload. Both include the approved widget design and adaptive sizing; all 18 earlier staging groups, serving/Tune fixes and newer production work are retained. This task has not uploaded Android to Firebase; staging 45 is unchanged.
 - backend: Production backend 2722 is live and independently verified. The two-table serving-calculation migration is applied, read back and safe to rerun. Current native-contract searches return complete View all data; paired ordered results match the baseline. Server timing passes; Mac transport outliers are recorded separately and do not establish phone or VPN speed.
-- next: Aadam updates through TestFlight or uploads Android 480 through the usual route, then reviews widgets at normal and expanded sizes on iOS, Galaxy A56 and the second Galaxy. Astra handles reported regressions. Physical One UI acceptance is separate from passing native resize, corner and rendered-output checks.
+- next: Astra packages the tested post-480 widget corrections into the next paired native build: Remaining fill across both platforms, larger trailing iOS macro values and visible Clear/Tinted actions. Build 480 remains the latest delivered version. Physical Samsung and iOS Home Screen acceptance are separate checks.
 
 > Public, read-only project status. No login needed.
 
@@ -105,6 +105,30 @@ ID: signed-artifact-release-and-promotion-checks · Release & reliability · Rev
 A local release gate checks the signed iPhone and Android artifacts and requires recorded phone acceptance for claimed features. Release checks can run on the release Mac. Build 470 remains internal-only; these new protections do not retrospectively approve its unresolved nutrient issues.
 
 Next: The release owner must use the gate for the next candidate, verify matching platform artifacts and collect the required phone acceptance before wider promotion.
+
+### Remaining widget rings and bars should drain with logging
+
+ID: widget-remaining-fill-direction · Widgets · Reviewed 2026-09-11
+
+Reproduced on Build 480 and corrected in the native candidate on iOS and Android, across small and wide Calories/Macros widgets. Remaining starts full and drains; Consumed fills as before. Missing or unconfirmed targets stay empty. Single Nutrient and Lock Screen consumed-only behaviour is preserved. Installed Android output and native iOS mode checks pass. Not distributed yet.
+
+Next: Astra includes this in the next paired native build and completes signed-package checks. Build 480 does not contain the correction.
+
+### Align and enlarge values in the wide calorie and macro widget
+
+ID: ios-widget-wide-macro-layout · Widgets · Reviewed 2026-09-11
+
+The iOS candidate moves macro values to the right ends of the bars, enlarges the main values and centres the nutrition section above the shortcuts. Compact, normal and expanded native renders pass; the corrected preview is available. Android already has trailing values and centred content. Not distributed yet.
+
+Next: Astra packages the corrected iOS layout into the next native build, preserving the approved widget design and earlier scaling work.
+
+### Keep quick action icons visible in iOS Clear and Tinted styles
+
+ID: ios-widget-clear-tinted-actions · Widgets · Reviewed 2026-09-11
+
+Small Quick Actions and Search & Quick Actions used opaque inner backgrounds that obscured their icons in Clear/Tinted. The candidate uses translucent backgrounds in the shared accented mode and retains normal appearance and action destinations. Native rendered-output checks pass; actual Home Screen acceptance has not yet been performed. Not in Build 480.
+
+Next: Astra packages the correction and checks Clear and Tinted on the resulting iOS build.
 
 ## Needs checking
 
@@ -578,7 +602,7 @@ ID: widget-layout-review-small-macros · Widgets · Reviewed 2026-09-11
 
 The approved designs are implemented and packaged in Build 480 on both platforms: Sora text, open gauges, darker cards, a small Macros heading, lighter teal dietary fibre, matching bar/ring tracks and larger calorie shortcuts. iOS is available in internal TestFlight; signed Android is ready for manual upload. All 4,462 app tests pass, alongside 77 iOS native renders and 144 exact signed-Android host renders.
 
-Next: Review the delivered widgets on the phones. Astra owns any reported mismatch; the paired builds and internal iOS upload are complete.
+Next: Astra packages three post-480 corrections tracked separately: Remaining fill direction, iOS wide macro alignment and Clear/Tinted action visibility. Physical Samsung and iOS Home Screen acceptance remain separate from native render checks.
 
 ### Fix Android widget sizing after Build 476
 

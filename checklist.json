@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
   "title": "TRAK — master checklist",
-  "updatedAt": "2026-09-11T04:05:16Z",
+  "updatedAt": "2026-09-11T04:33:57Z",
   "reviewedThrough": "2026-09-11",
   "release": {
     "native": "Regular iOS 480 is available in internal TestFlight. Signed Android 480 and its changelog are ready for the established manual upload. Both include the approved widget design and adaptive sizing; all 18 earlier staging groups, serving/Tune fixes and newer production work are retained. This task has not uploaded Android to Firebase; staging 45 is unchanged.",
     "backend": "Production backend 2722 is live and independently verified. The two-table serving-calculation migration is applied, read back and safe to rerun. Current native-contract searches return complete View all data; paired ordered results match the baseline. Server timing passes; Mac transport outliers are recorded separately and do not establish phone or VPN speed.",
-    "next": "Aadam updates through TestFlight or uploads Android 480 through the usual route, then reviews widgets at normal and expanded sizes on iOS, Galaxy A56 and the second Galaxy. Astra handles reported regressions. Physical One UI acceptance is separate from passing native resize, corner and rendered-output checks."
+    "next": "Astra packages the tested post-480 widget corrections into the next paired native build: Remaining fill across both platforms, larger trailing iOS macro values and visible Clear/Tinted actions. Build 480 remains the latest delivered version. Physical Samsung and iOS Home Screen acceptance are separate checks."
   },
   "notes": [
     "Public, read-only project status. No login needed.",
@@ -15,6 +15,10 @@
     "Reconciled through 11 September. Released changes, local fixes and reported phone results are tracked separately. This board update does not release a TRAK app build."
   ],
   "changes": [
+    {
+      "date": "2026-09-11",
+      "text": "Reproduced and corrected three post-480 widget issues: Remaining gauges drain with logging on both platforms; iOS wide macro values are larger and aligned at the bar ends; Quick Actions remain visible in the Clear/Tinted rendering path. Native checks pass. These are prepared for the next build and are not in distributed 480."
+    },
     {
       "date": "2026-09-11",
       "text": "Delivered the approved Build 480 widget redesign to internal iOS TestFlight and prepared signed Android for manual upload. Values scale on expanded cards; open gauges, original Figma bar ends, matching grey tracks, P/F/C order and lighter teal fibre are included. Full app tests, native renders and exact signed-package checks pass. Physical Samsung acceptance remains separate."
@@ -1803,7 +1807,7 @@
       "area": "Widgets",
       "status": "testing",
       "summary": "The approved designs are implemented and packaged in Build 480 on both platforms: Sora text, open gauges, darker cards, a small Macros heading, lighter teal dietary fibre, matching bar/ring tracks and larger calorie shortcuts. iOS is available in internal TestFlight; signed Android is ready for manual upload. All 4,462 app tests pass, alongside 77 iOS native renders and 144 exact signed-Android host renders.",
-      "nextStep": "Review the delivered widgets on the phones. Astra owns any reported mismatch; the paired builds and internal iOS upload are complete.",
+      "nextStep": "Astra packages three post-480 corrections tracked separately: Remaining fill direction, iOS wide macro alignment and Clear/Tinted action visibility. Physical Samsung and iOS Home Screen acceptance remain separate from native render checks.",
       "updated": "2026-09-11"
     },
     {
@@ -1876,6 +1880,33 @@
       "status": "testing",
       "summary": "The completed shared serving fixes were independently reviewed and are included in regular Build 479. Gram reopen, fractional quantities, unit conversion, saved template counts and recipe yields retain their physical amounts. Tune refreshes calories, fibre and micronutrients together. Additional template regressions found during integration were fixed before signing. All 4,461 app tests and both native artifact gates pass.",
       "nextStep": "Aadam uses iOS 479 in TestFlight or the Android 479 APK to check reopening a gram selection, changing units and updating a recipe through Tune. Astra handles any reported regression. Existing diary snapshots are not rewritten.",
+      "updated": "2026-09-11"
+    },
+    {
+      "id": "widget-remaining-fill-direction",
+      "title": "Remaining widget rings and bars should drain with logging",
+      "area": "Widgets",
+      "status": "next_release",
+      "summary": "Reproduced on Build 480 and corrected in the native candidate on iOS and Android, across small and wide Calories/Macros widgets. Remaining starts full and drains; Consumed fills as before. Missing or unconfirmed targets stay empty. Single Nutrient and Lock Screen consumed-only behaviour is preserved. Installed Android output and native iOS mode checks pass. Not distributed yet.",
+      "nextStep": "Astra includes this in the next paired native build and completes signed-package checks. Build 480 does not contain the correction.",
+      "updated": "2026-09-11"
+    },
+    {
+      "id": "ios-widget-wide-macro-layout",
+      "title": "Align and enlarge values in the wide calorie and macro widget",
+      "area": "Widgets",
+      "status": "next_release",
+      "summary": "The iOS candidate moves macro values to the right ends of the bars, enlarges the main values and centres the nutrition section above the shortcuts. Compact, normal and expanded native renders pass; the corrected preview is available. Android already has trailing values and centred content. Not distributed yet.",
+      "nextStep": "Astra packages the corrected iOS layout into the next native build, preserving the approved widget design and earlier scaling work.",
+      "updated": "2026-09-11"
+    },
+    {
+      "id": "ios-widget-clear-tinted-actions",
+      "title": "Keep quick action icons visible in iOS Clear and Tinted styles",
+      "area": "Widgets",
+      "status": "next_release",
+      "summary": "Small Quick Actions and Search & Quick Actions used opaque inner backgrounds that obscured their icons in Clear/Tinted. The candidate uses translucent backgrounds in the shared accented mode and retains normal appearance and action destinations. Native rendered-output checks pass; actual Home Screen acceptance has not yet been performed. Not in Build 480.",
+      "nextStep": "Astra packages the correction and checks Clear and Tinted on the resulting iOS build.",
       "updated": "2026-09-11"
     }
   ]
