@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "title": "TRAK — master checklist",
-  "updatedAt": "2026-09-11T01:05:01Z",
+  "updatedAt": "2026-09-11T01:33:00Z",
   "reviewedThrough": "2026-09-11",
   "release": {
     "native": "Regular iOS 479 is available in internal TestFlight. Signed Android 479 is ready for the established manual upload. This combines reviewed serving and Tune fixes with the approved widget spacing and heading refinements. All 18 earlier staging groups and newer production work are retained. This task has not uploaded Android to Firebase; staging 45 is unchanged.",
@@ -15,6 +15,10 @@
     "Reconciled through 11 September. Released changes, local fixes and reported phone results are tracked separately. This board update does not release a TRAK app build."
   ],
   "changes": [
+    {
+      "date": "2026-09-11",
+      "text": "Reopened Samsung widget spacing after phone feedback across all layouts. Large-card renders expose fixed content-size limits; earlier clipping/corner checks are not visual acceptance. Darker backgrounds and fuller rings remain in review, alongside alignment with the new logger design."
+    },
     {
       "date": "2026-09-11",
       "text": "Build 479 combines shared serving calculations and consistent Tune updates with wider Android small-calorie macro spacing and larger medium-weight wide-macro headings on both platforms. iOS is available in internal TestFlight; signed Android is ready for manual upload. All 4,461 app tests pass, alongside native renders and exact signed-APK host checks. Earlier production and staging work is retained."
@@ -1785,9 +1789,9 @@
       "id": "widget-layout-review-small-macros",
       "title": "Improve widget layouts, starting with small Macros",
       "area": "Widgets",
-      "status": "testing",
-      "summary": "The approved original designs and all seven Android layout refinements are retained in Build 479. This release adds the final approved small-calorie macro spacing on Android and larger medium-weight Remaining/Consumed headings on Android and iOS Macros Wide. iOS 479 is available in internal TestFlight; signed Android 479 is ready for manual upload.",
-      "nextStep": "Aadam reviews the widgets in Build 479. Astra handles reported regressions. Physical Pixel/Samsung observations and older saved iOS widget choices remain separate from packaging and simulator checks.",
+      "status": "active",
+      "summary": "Build 479 contains the earlier approved layouts and spacing refinements. A darker Android card and fuller rings are now in mockup review. New logger design work also needs alignment of macro colours and final typography before matching widget changes are implemented.",
+      "nextStep": "Astra owns the combined style and Samsung spacing review. Keep the approved widget families, P/F/C order and neutral actions; show revised mockups before native design changes.",
       "updated": "2026-09-11"
     },
     {
@@ -1812,9 +1816,9 @@
       "id": "android-widget-spacing",
       "title": "Balance spacing across Android widgets",
       "area": "Widgets",
-      "status": "testing",
-      "summary": "Build 479 includes all seven approved layouts and Samsung-relevant sizing from 478, plus the final wider P/F/C group spacing and larger medium-weight wide-macro heading. Numeric text now fits within the small calorie card at narrow sizes and larger system text. The exact signed APK passes 136 native host render/resize cases and 52 stronger-corner checks; its standard images match the reviewed renders.",
-      "nextStep": "Aadam uploads Android 479 and checks the widgets on the phone. Astra owns reported regressions. A physical Samsung check should record model and One UI version, inspect the controls actually offered, and exercise resizing, clipping and saved options.",
+      "status": "issue",
+      "summary": "Samsung phone feedback reports too much spacing across all widget layouts. Build 479 retains the earlier launcher-size and clipping repairs, but fixed content-size limits can leave excessive blank space when cards are enlarged. Existing signed native renders show this limitation; passing clipping and corner checks did not establish balanced spacing.",
+      "nextStep": "Astra will revise all seven layouts around the available widget width and height, show the designs for review, then verify the exact Android package and actual Samsung sizing. Record the Samsung model, One UI version and launcher dimensions during phone verification.",
       "updated": "2026-09-11"
     },
     {

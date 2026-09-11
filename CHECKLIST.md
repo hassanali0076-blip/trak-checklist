@@ -1,6 +1,6 @@
 # TRAK — master checklist
 
-Updated: 2026-09-11T01:05:01Z · Reviewed through 2026-09-11
+Updated: 2026-09-11T01:33:00Z · Reviewed through 2026-09-11
 
 - native: Regular iOS 479 is available in internal TestFlight. Signed Android 479 is ready for the established manual upload. This combines reviewed serving and Tune fixes with the approved widget spacing and heading refinements. All 18 earlier staging groups and newer production work are retained. This task has not uploaded Android to Firebase; staging 45 is unchanged.
 - backend: Production backend 2722 is live and independently verified. The two-table serving-calculation migration is applied, read back and safe to rerun. Current native-contract searches return complete View all data; paired ordered results match the baseline. Server timing passes; Mac transport outliers are recorded separately and do not establish phone or VPN speed.
@@ -55,6 +55,14 @@ ID: grocery-refresh-scheduling-and-completion-receipts · Search & catalogue · 
 Nightly catalogue maintenance completed through the audit date, but recent grocery triggers failed before running and the latest successful trigger did not establish refresh completion. Reliable recent grocery results remain unverified.
 
 Next: The operations owner must inspect the last runner outcome and restore scheduling on existing infrastructure, with durable start/completion/failure records and missed-run alerts. No scheduler change was made by the audit.
+
+### Balance spacing across Android widgets
+
+ID: android-widget-spacing · Widgets · Reviewed 2026-09-11
+
+Samsung phone feedback reports too much spacing across all widget layouts. Build 479 retains the earlier launcher-size and clipping repairs, but fixed content-size limits can leave excessive blank space when cards are enlarged. Existing signed native renders show this limitation; passing clipping and corner checks did not establish balanced spacing.
+
+Next: Astra will revise all seven layouts around the available widget width and height, show the designs for review, then verify the exact Android package and actual Samsung sizing. Record the Samsung model, One UI version and launcher dimensions during phone verification.
 
 ### Find why barberries cannot be found
 
@@ -572,14 +580,6 @@ Regular TRAK 475 opens Recipe Edit immediately while complete ingredients load, 
 
 Next: Astra owns reported Recipe Edit regressions on 475; retain Save & Log, complete ingredients and account isolation. Delivery is complete; new phone acceptance is separate.
 
-### Improve widget layouts, starting with small Macros
-
-ID: widget-layout-review-small-macros · Widgets · Reviewed 2026-09-11
-
-The approved original designs and all seven Android layout refinements are retained in Build 479. This release adds the final approved small-calorie macro spacing on Android and larger medium-weight Remaining/Consumed headings on Android and iOS Macros Wide. iOS 479 is available in internal TestFlight; signed Android 479 is ready for manual upload.
-
-Next: Aadam reviews the widgets in Build 479. Astra handles reported regressions. Physical Pixel/Samsung observations and older saved iOS widget choices remain separate from packaging and simulator checks.
-
 ### Fix Android widget sizing after Build 476
 
 ID: android-widget-launcher-sizing · Widgets · Reviewed 2026-09-11
@@ -587,14 +587,6 @@ ID: android-widget-launcher-sizing · Widgets · Reviewed 2026-09-11
 The reported tiny rings and excessive gaps were reproduced in signed Android 476. All four providers combined size bounds from different orientations. The shared correction is merged and packaged in signed Android 477, restoring the approved ring sizes and wide Search layout. The exact APK passes 84 native host cases, and all 84 renders are identical to the approved images. It is ready for manual upload; physical Pixel acceptance has not yet been confirmed.
 
 Next: The existing correction is retained in signed Android 479, whose exact APK passes native provider, host, resize and rendering checks. Aadam uploads 479 and checks picker visibility, adding, resizing, values and taps on the phone. Astra handles any reported regression; packaging is not physical-phone acceptance.
-
-### Balance spacing across Android widgets
-
-ID: android-widget-spacing · Widgets · Reviewed 2026-09-11
-
-Build 479 includes all seven approved layouts and Samsung-relevant sizing from 478, plus the final wider P/F/C group spacing and larger medium-weight wide-macro heading. Numeric text now fits within the small calorie card at narrow sizes and larger system text. The exact signed APK passes 136 native host render/resize cases and 52 stronger-corner checks; its standard images match the reviewed renders.
-
-Next: Aadam uploads Android 479 and checks the widgets on the phone. Astra owns reported regressions. A physical Samsung check should record model and One UI version, inspect the controls actually offered, and exercise resizing, clipping and saved options.
 
 ### Keep serving amounts consistent across food and recipe editing
 
@@ -807,6 +799,14 @@ ID: recipe-saving-preserves-nutrition-precision · Recipes & custom foods · Rev
 The larger Astra/Sol pilot reproduced the 400-to-399 calorie loss during diary snapshot creation. A reviewed one-line local fix preserves fractional ingredient calories. Four new real-route cases pass, including the published daily total, recipe edits, Tune and unlink. The same four older test failures occur on the unchanged baseline and remain recorded. This fix is not in Build 40 or live backend 2719.
 
 Next: Prepare this separate backend correction on the latest staging source before its own release. Preserve old diary snapshots; retain the four recorded test gaps. Graft helped find supporting files but missed the decisive backend helper, so no token saving is claimed.
+
+### Improve widget layouts, starting with small Macros
+
+ID: widget-layout-review-small-macros · Widgets · Reviewed 2026-09-11
+
+Build 479 contains the earlier approved layouts and spacing refinements. A darker Android card and fuller rings are now in mockup review. New logger design work also needs alignment of macro colours and final typography before matching widget changes are implemented.
+
+Next: Astra owns the combined style and Samsung spacing review. Keep the approved widget families, P/F/C order and neutral actions; show revised mockups before native design changes.
 
 ## Resolved live
 
