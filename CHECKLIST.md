@@ -1,6 +1,6 @@
 # TRAK — master checklist
 
-Updated: 2026-09-11T01:33:00Z · Reviewed through 2026-09-11
+Updated: 2026-09-11T01:35:47Z · Reviewed through 2026-09-11
 
 - native: Regular iOS 479 is available in internal TestFlight. Signed Android 479 is ready for the established manual upload. This combines reviewed serving and Tune fixes with the approved widget spacing and heading refinements. All 18 earlier staging groups and newer production work are retained. This task has not uploaded Android to Firebase; staging 45 is unchanged.
 - backend: Production backend 2722 is live and independently verified. The two-table serving-calculation migration is applied, read back and safe to rerun. Current native-contract searches return complete View all data; paired ordered results match the baseline. Server timing passes; Mac transport outliers are recorded separately and do not establish phone or VPN speed.
@@ -60,9 +60,9 @@ Next: The operations owner must inspect the last runner outcome and restore sche
 
 ID: android-widget-spacing · Widgets · Reviewed 2026-09-11
 
-Samsung phone feedback reports too much spacing across all widget layouts. Build 479 retains the earlier launcher-size and clipping repairs, but fixed content-size limits can leave excessive blank space when cards are enlarged. Existing signed native renders show this limitation; passing clipping and corner checks did not establish balanced spacing.
+Galaxy A56 and a second Galaxy handset are reported to have too much spacing across all widget layouts. Build 479 retains the earlier launcher-size and clipping repairs, but fixed content-size limits can leave excessive blank space when cards are enlarged. Existing signed native renders show this limitation; passing clipping and corner checks did not establish balanced spacing.
 
-Next: Astra will revise all seven layouts around the available widget width and height, show the designs for review, then verify the exact Android package and actual Samsung sizing. Record the Samsung model, One UI version and launcher dimensions during phone verification.
+Next: Astra will revise all seven layouts around the available widget width and height, show the designs for review, then verify the exact Android package and actual Samsung sizing. Verify on Galaxy A56 and the second Galaxy handset; record its model, both One UI versions and launcher dimensions.
 
 ### Find why barberries cannot be found
 
