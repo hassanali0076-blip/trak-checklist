@@ -1,10 +1,10 @@
 # TRAK — master checklist
 
-Updated: 2026-09-11T04:33:57Z · Reviewed through 2026-09-11
+Updated: 2026-09-11T05:03:44Z · Reviewed through 2026-09-11
 
-- native: Regular iOS 480 is available in internal TestFlight. Signed Android 480 and its changelog are ready for the established manual upload. Both include the approved widget design and adaptive sizing; all 18 earlier staging groups, serving/Tune fixes and newer production work are retained. This task has not uploaded Android to Firebase; staging 45 is unchanged.
+- native: Regular iOS 481 is available in internal TestFlight for testing the latest widget corrections: Remaining fill, wide calorie/macros alignment and Clear/Tinted action visibility. Android remains 480; its signed APK and changelog are unchanged. All earlier staging groups, serving/Tune fixes and approved widget designs are retained. No Android build or upload was performed for 481; staging 45 is unchanged.
 - backend: Production backend 2722 is live and independently verified. The two-table serving-calculation migration is applied, read back and safe to rerun. Current native-contract searches return complete View all data; paired ordered results match the baseline. Server timing passes; Mac transport outliers are recorded separately and do not establish phone or VPN speed.
-- next: Astra packages the tested post-480 widget corrections into the next paired native build: Remaining fill across both platforms, larger trailing iOS macro values and visible Clear/Tinted actions. Build 480 remains the latest delivered version. Physical Samsung and iOS Home Screen acceptance are separate checks.
+- next: Test iOS 481 first: Remaining rings/bars should drain with logging, wide macro values should align at the bar ends, and both quick-action widgets should remain visible in Clear and Tinted. Astra owns any regression and the later Android packaging after iOS feedback. Samsung physical-device acceptance remains a separate check.
 
 > Public, read-only project status. No login needed.
 
@@ -110,25 +110,9 @@ Next: The release owner must use the gate for the next candidate, verify matchin
 
 ID: widget-remaining-fill-direction · Widgets · Reviewed 2026-09-11
 
-Reproduced on Build 480 and corrected in the native candidate on iOS and Android, across small and wide Calories/Macros widgets. Remaining starts full and drains; Consumed fills as before. Missing or unconfirmed targets stay empty. Single Nutrient and Lock Screen consumed-only behaviour is preserved. Installed Android output and native iOS mode checks pass. Not distributed yet.
+Available in iOS 481 internal TestFlight; the Android correction is saved but not distributed. Remaining starts full and drains across small/wide Calories and Macros widgets; Consumed fills as before. Missing or unconfirmed targets stay empty. Single Nutrient and Lock Screen consumed-only behaviour is preserved. Native mode checks pass.
 
-Next: Astra includes this in the next paired native build and completes signed-package checks. Build 480 does not contain the correction.
-
-### Align and enlarge values in the wide calorie and macro widget
-
-ID: ios-widget-wide-macro-layout · Widgets · Reviewed 2026-09-11
-
-The iOS candidate moves macro values to the right ends of the bars, enlarges the main values and centres the nutrition section above the shortcuts. Compact, normal and expanded native renders pass; the corrected preview is available. Android already has trailing values and centred content. Not distributed yet.
-
-Next: Astra packages the corrected iOS layout into the next native build, preserving the approved widget design and earlier scaling work.
-
-### Keep quick action icons visible in iOS Clear and Tinted styles
-
-ID: ios-widget-clear-tinted-actions · Widgets · Reviewed 2026-09-11
-
-Small Quick Actions and Search & Quick Actions used opaque inner backgrounds that obscured their icons in Clear/Tinted. The candidate uses translucent backgrounds in the shared accented mode and retains normal appearance and action destinations. Native rendered-output checks pass; actual Home Screen acceptance has not yet been performed. Not in Build 480.
-
-Next: Astra packages the correction and checks Clear and Tinted on the resulting iOS build.
+Next: Test Remaining mode on iOS 481 before later Android packaging. Astra owns the Android follow-up; Android 480 does not contain this correction.
 
 ## Needs checking
 
@@ -600,9 +584,9 @@ Next: Astra owns reported Recipe Edit regressions on 475; retain Save & Log, com
 
 ID: widget-layout-review-small-macros · Widgets · Reviewed 2026-09-11
 
-The approved designs are implemented and packaged in Build 480 on both platforms: Sora text, open gauges, darker cards, a small Macros heading, lighter teal dietary fibre, matching bar/ring tracks and larger calorie shortcuts. iOS is available in internal TestFlight; signed Android is ready for manual upload. All 4,462 app tests pass, alongside 77 iOS native renders and 144 exact signed-Android host renders.
+The approved widget designs and adaptive sizing shipped in 480. iOS 481 now adds the three follow-up corrections: Remaining fill direction, wide calorie/macros alignment and Clear/Tinted action visibility. It is available in internal TestFlight. All 4,463 app tests pass, with 142 native iOS renders and 65 mode checks. Android remains 480.
 
-Next: Astra packages three post-480 corrections tracked separately: Remaining fill direction, iOS wide macro alignment and Clear/Tinted action visibility. Physical Samsung and iOS Home Screen acceptance remain separate from native render checks.
+Next: Test the three iOS 481 corrections first. Astra owns regressions and later Android packaging. Physical Samsung and actual iOS Home Screen acceptance remain separate from native render checks.
 
 ### Fix Android widget sizing after Build 476
 
@@ -627,6 +611,22 @@ ID: centralise-serving-scaling · Food editing · Reviewed 2026-09-11
 The completed shared serving fixes were independently reviewed and are included in regular Build 479. Gram reopen, fractional quantities, unit conversion, saved template counts and recipe yields retain their physical amounts. Tune refreshes calories, fibre and micronutrients together. Additional template regressions found during integration were fixed before signing. All 4,461 app tests and both native artifact gates pass.
 
 Next: Aadam uses iOS 479 in TestFlight or the Android 479 APK to check reopening a gram selection, changing units and updating a recipe through Tune. Astra handles any reported regression. Existing diary snapshots are not rewritten.
+
+### Align and enlarge values in the wide calorie and macro widget
+
+ID: ios-widget-wide-macro-layout · Widgets · Reviewed 2026-09-11
+
+Available in iOS 481 internal TestFlight. Macro values sit at the right ends of the bars, the main values are larger and the nutrition section is centred above the shortcuts. Compact, normal and expanded native renders pass. Earlier scaling changes are retained.
+
+Next: Review the wide calorie/macros widget on iOS 481 at its usual size. Astra owns any mismatch reported from the phone.
+
+### Keep quick action icons visible in iOS Clear and Tinted styles
+
+ID: ios-widget-clear-tinted-actions · Widgets · Reviewed 2026-09-11
+
+Available in iOS 481 internal TestFlight. Small Quick Actions and Search & Quick Actions now use translucent inner backgrounds in the shared accented mode, preserving normal appearance and destinations. Native rendered-output checks pass; actual Home Screen acceptance is the next check.
+
+Next: On iOS 481, switch Home Screen Customise to Clear and Tinted and check both action widgets. Astra owns any remaining opaque tiles or hidden icons.
 
 ## Planned
 
