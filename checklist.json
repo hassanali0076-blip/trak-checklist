@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "title": "TRAK — master checklist",
-  "updatedAt": "2026-09-11T01:35:47Z",
+  "updatedAt": "2026-09-11T01:58:10Z",
   "reviewedThrough": "2026-09-11",
   "release": {
     "native": "Regular iOS 479 is available in internal TestFlight. Signed Android 479 is ready for the established manual upload. This combines reviewed serving and Tune fixes with the approved widget spacing and heading refinements. All 18 earlier staging groups and newer production work are retained. This task has not uploaded Android to Firebase; staging 45 is unchanged.",
@@ -15,6 +15,10 @@
     "Reconciled through 11 September. Released changes, local fixes and reported phone results are tracked separately. This board update does not release a TRAK app build."
   ],
   "changes": [
+    {
+      "date": "2026-09-11",
+      "text": "Prepared all seven widget previews using the supplied Figma design and adaptive spacing. Corrected full rings to the source open arc. Preview only: no new native build; Samsung spacing remains pending device verification."
+    },
     {
       "date": "2026-09-11",
       "text": "Reopened Samsung widget spacing after phone feedback across all layouts. Large-card renders expose fixed content-size limits; earlier clipping/corner checks are not visual acceptance. Darker backgrounds and fuller rings remain in review, alongside alignment with the new logger design."
@@ -1790,8 +1794,8 @@
       "title": "Improve widget layouts, starting with small Macros",
       "area": "Widgets",
       "status": "active",
-      "summary": "Build 479 contains the earlier approved layouts and spacing refinements. A darker Android card and fuller rings are now in mockup review. New logger design work also needs alignment of macro colours and final typography before matching widget changes are implemented.",
-      "nextStep": "Astra owns the combined style and Samsung spacing review. Keep the approved widget families, P/F/C order and neutral actions; show revised mockups before native design changes.",
+      "summary": "All seven Android layouts now have a combined preview using the supplied Figma typography, macro colours and open meter arcs, with darker cards and adaptive sizing. The initial closed-ring preview has been corrected. Build 479 remains unchanged.",
+      "nextStep": "Review the revised mockups before native design changes. Preserve P/F/C order, lighter text and neutral actions; verify both platforms against the agreed design.",
       "updated": "2026-09-11"
     },
     {
@@ -1818,7 +1822,7 @@
       "area": "Widgets",
       "status": "issue",
       "summary": "Galaxy A56 and a second Galaxy handset are reported to have too much spacing across all widget layouts. Build 479 retains the earlier launcher-size and clipping repairs, but fixed content-size limits can leave excessive blank space when cards are enlarged. Existing signed native renders show this limitation; passing clipping and corner checks did not establish balanced spacing.",
-      "nextStep": "Astra will revise all seven layouts around the available widget width and height, show the designs for review, then verify the exact Android package and actual Samsung sizing. Verify on Galaxy A56 and the second Galaxy handset; record its model, both One UI versions and launcher dimensions.",
+      "nextStep": "The seven-widget adaptive-size preview is prepared for review. After approval, implement and verify the exact Android package on Galaxy A56 and the second Galaxy handset; record both One UI versions, launcher dimensions and the second model. Illustrative preview sizes do not close the phone issue.",
       "updated": "2026-09-11"
     },
     {
