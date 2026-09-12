@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "title": "TRAK — master checklist",
-  "updatedAt": "2026-09-12T02:13:33Z",
+  "updatedAt": "2026-09-12T08:31:07Z",
   "reviewedThrough": "2026-09-12",
   "release": {
     "native": "Build 486 is signed with the serving and catalogue correction fixes and the approved icons and widgets retained. iOS 486 is available in internal TestFlight, independently confirmed with Apple. Signed Android 486 is ready for manual upload; Firebase distribution is blocked by account permission. Physical acceptance remains pending.",
@@ -15,6 +15,10 @@
     "Reconciled through 12 September. Released changes, signed/uploaded builds and phone acceptance are tracked separately. Publishing this board does not release a TRAK app build."
   ],
   "changes": [
+    {
+      "date": "2026-09-12",
+      "text": "Recorded a new Samsung widget regression: both home-screen footprint and inner content are too large. Current-code review found shared minimum sizing and content-growth rules to investigate. No fix or phone acceptance is claimed; measured Samsung evidence and a reviewed preview come next."
+    },
     {
       "date": "2026-09-12",
       "text": "iOS 486 is now available in internal TestFlight. Apple confirms a valid build in the internal testing group. Signed Android 486 remains ready for manual upload; phone acceptance and public-store promotion are separate and remain pending."
@@ -377,6 +381,15 @@
     }
   ],
   "tasks": [
+    {
+      "id": "samsung-widgets-oversized-footprint-and-content",
+      "title": "Reduce oversized Samsung widget footprint and contents",
+      "area": "Widgets",
+      "status": "issue",
+      "summary": "New phone report: Samsung widgets take too much home-screen space and their rings, values and icons are too large. All layouts are affected; Galaxy A56 and another Galaxy were reported. Earlier simulated resizing checks do not establish Samsung acceptance. The installed build and actual launcher dimensions are not yet captured.",
+      "nextStep": "Astra needs a current A56 screenshot and installed build, then will compare launcher allocation and content scaling with the released source. Show the visual correction for review before implementing it; preserve the approved Pixel and iOS designs.",
+      "updated": "2026-09-12"
+    },
     {
       "id": "android-widgets-cannot-load",
       "title": "Fix Android widgets showing “Can’t load widget”",

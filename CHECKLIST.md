@@ -1,6 +1,6 @@
 # TRAK — master checklist
 
-Updated: 2026-09-12T02:13:33Z · Reviewed through 2026-09-12
+Updated: 2026-09-12T08:31:07Z · Reviewed through 2026-09-12
 
 - native: Build 486 is signed with the serving and catalogue correction fixes and the approved icons and widgets retained. iOS 486 is available in internal TestFlight, independently confirmed with Apple. Signed Android 486 is ready for manual upload; Firebase distribution is blocked by account permission. Physical acceptance remains pending.
 - backend: Backend 2725 and its correction worker were verified live. Catalogue corrections now update linked historical logs, recipes and recurring entries while preserving physical amounts and explicit personal nutrition. The affected history repair and all four derived refresh jobs were independently verified; repeat repair makes no changes.
@@ -15,6 +15,14 @@ Updated: 2026-09-12T02:13:33Z · Reviewed through 2026-09-12
 > Reconciled through 12 September. Released changes, signed/uploaded builds and phone acceptance are tracked separately. Publishing this board does not release a TRAK app build.
 
 ## Known issue
+
+### Reduce oversized Samsung widget footprint and contents
+
+ID: samsung-widgets-oversized-footprint-and-content · Widgets · Reviewed 2026-09-12
+
+New phone report: Samsung widgets take too much home-screen space and their rings, values and icons are too large. All layouts are affected; Galaxy A56 and another Galaxy were reported. Earlier simulated resizing checks do not establish Samsung acceptance. The installed build and actual launcher dimensions are not yet captured.
+
+Next: Astra needs a current A56 screenshot and installed build, then will compare launcher allocation and content scaling with the released source. Show the visual correction for review before implementing it; preserve the approved Pixel and iOS designs.
 
 ### Regional product typos can miss a valid result
 
