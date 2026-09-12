@@ -3,10 +3,10 @@
 Updated 12 September 2026. Astra maintains this release record.
 [Visual checklist](https://trak-checklist.hassanali0076.chatgpt.site/staging-to-production).
 
-**Backend 2725 is verified live. Native Build 486 is signed.** iOS upload
-succeeded; the last verified Apple state was processing, so availability in
-TestFlight still needs confirmation. Signed Android 486 is ready for manual
-upload; Firebase distribution is blocked by account permission. Approved icons,
+**Backend 2725 is verified live. iOS 486 is available in internal TestFlight.**
+Apple independently confirms the build is valid and in the internal testing
+group. Signed Android 486 is ready for manual upload; automated Firebase
+distribution is blocked by account permission. Approved icons,
 widgets and the earlier staging integration are retained. No new physical-phone
 acceptance or public store release is claimed.
 

@@ -1,10 +1,10 @@
 # TRAK — master checklist
 
-Updated: 2026-09-12T02:09:02Z · Reviewed through 2026-09-12
+Updated: 2026-09-12T02:13:33Z · Reviewed through 2026-09-12
 
-- native: Build 486 is signed with the serving and catalogue correction fixes and the approved icons and widgets retained. iOS upload succeeded; the last verified Apple state was processing, so TestFlight availability is not yet confirmed here. Signed Android 486 is ready for manual upload; Firebase distribution is blocked by account permission. Physical acceptance remains pending.
+- native: Build 486 is signed with the serving and catalogue correction fixes and the approved icons and widgets retained. iOS 486 is available in internal TestFlight, independently confirmed with Apple. Signed Android 486 is ready for manual upload; Firebase distribution is blocked by account permission. Physical acceptance remains pending.
 - backend: Backend 2725 and its correction worker were verified live. Catalogue corrections now update linked historical logs, recipes and recurring entries while preserving physical amounts and explicit personal nutrition. The affected history repair and all four derived refresh jobs were independently verified; repeat repair makes no changes.
-- next: Astra confirms iOS 486 availability and resolves Android distribution access or uses the established manual upload route. Aadam checks the serving and catalogue visual acceptance list on the installed build; Astra owns regressions. The next design build must rebase onto the latest production branches and retain these fixes.
+- next: Android 486 needs the established manual upload route while automated Firebase distribution is blocked by account permission. Aadam checks the serving and catalogue visual acceptance list on the installed build; Astra owns regressions. The next design build must rebase onto the latest production branches and retain these fixes.
 
 > Public, read-only project status. No login needed.
 
