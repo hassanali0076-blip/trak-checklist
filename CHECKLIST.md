@@ -1,10 +1,10 @@
 # TRAK — master checklist
 
-Updated: 2026-09-11T05:39:47Z · Reviewed through 2026-09-11
+Updated: 2026-09-12T02:09:02Z · Reviewed through 2026-09-12
 
-- native: Regular iOS 481 is available in internal TestFlight. Signed Android 481 and its changelog are now ready for the established manual upload. Both include the Remaining widget fill correction and retain the approved designs, adaptive sizing and serving/Tune fixes. The wide-layout and Clear/Tinted corrections are iOS-only. This task has not uploaded Android to Firebase; staging 45 is unchanged.
-- backend: Production backend 2722 is live and independently verified. The two-table serving-calculation migration is applied, read back and safe to rerun. Current native-contract searches return complete View all data; paired ordered results match the baseline. Server timing passes; Mac transport outliers are recorded separately and do not establish phone or VPN speed.
-- next: Upload Android 481 through the usual beta channel, then check Remaining rings/bars and widget sizing on the phone. iOS 481 is already available for its three widget checks. Astra owns reported regressions. Physical Samsung and actual iOS Home Screen acceptance remain separate from the passing native render checks.
+- native: Build 486 is signed with the serving and catalogue correction fixes and the approved icons and widgets retained. iOS upload succeeded; the last verified Apple state was processing, so TestFlight availability is not yet confirmed here. Signed Android 486 is ready for manual upload; Firebase distribution is blocked by account permission. Physical acceptance remains pending.
+- backend: Backend 2725 and its correction worker were verified live. Catalogue corrections now update linked historical logs, recipes and recurring entries while preserving physical amounts and explicit personal nutrition. The affected history repair and all four derived refresh jobs were independently verified; repeat repair makes no changes.
+- next: Astra confirms iOS 486 availability and resolves Android distribution access or uses the established manual upload route. Aadam checks the serving and catalogue visual acceptance list on the installed build; Astra owns regressions. The next design build must rebase onto the latest production branches and retain these fixes.
 
 > Public, read-only project status. No login needed.
 
@@ -12,7 +12,7 @@ Updated: 2026-09-11T05:39:47Z · Reviewed through 2026-09-11
 
 > Updates appear here after the shared checklist is published. Local edits and chat messages do not update it.
 
-> Reconciled through 11 September. Released changes, local fixes and reported phone results are tracked separately. This board update does not release a TRAK app build.
+> Reconciled through 12 September. Released changes, signed/uploaded builds and phone acceptance are tracked separately. Publishing this board does not release a TRAK app build.
 
 ## Known issue
 
@@ -598,11 +598,11 @@ Next: Upload/install Android 480 and review all widgets at normal and expanded s
 
 ### Keep serving amounts consistent across food and recipe editing
 
-ID: centralise-serving-scaling · Food editing · Reviewed 2026-09-11
+ID: centralise-serving-scaling · Food editing · Reviewed 2026-09-12
 
-The completed shared serving fixes were independently reviewed and are included in regular Build 479. Gram reopen, fractional quantities, unit conversion, saved template counts and recipe yields retain their physical amounts. Tune refreshes calories, fibre and micronutrients together. Additional template regressions found during integration were fixed before signing. All 4,461 app tests and both native artifact gates pass.
+Signed Build 486 preserves gram input and reopen values across food and recipe editing. Catalogue corrections reconcile linked history, recipes and recurring entries without repeated routine warning/recovery UI, while preserving explicit personal nutrition. Backend 2725 and the historical repair are verified live. Independent Astra adversarial review passed; 4,398 main app tests, 124 legacy-auth tests and 10 explicit DST follow-up tests passed. Signed build verification does not establish phone acceptance.
 
-Next: Aadam uses iOS 479 in TestFlight or the Android 479 APK to check reopening a gram selection, changing units and updating a recipe through Tune. Astra handles any reported regression. Existing diary snapshots are not rewritten.
+Next: After 486 is available and installed, Aadam checks 100 g food reopen, 200 g recipe ingredient save/reopen, unit changes, hard restart without recurring warning/card, corrected history and recipe totals, preserved personal edits and widget refresh. Astra owns failures and distribution follow-up. See the visual release list for the complete pending checks.
 
 ### Remaining widget rings and bars should drain with logging
 

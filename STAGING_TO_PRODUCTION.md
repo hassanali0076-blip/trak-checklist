@@ -1,18 +1,21 @@
 # Staging changes awaiting production
 
-Updated 11 September 2026. Astra maintains this release record.
+Updated 12 September 2026. Astra maintains this release record.
 [Visual checklist](https://trak-checklist.hassanali0076.chatgpt.site/staging-to-production).
 
-**Regular iOS Build 480 is available in internal TestFlight. Signed Android 480
-and its changelog are ready for manual upload.** All 18 staging groups below,
-the serving/Tune fixes and newer production work are retained. Build 480 adds
-the approved widget designs: open gauges, Sora text, matching bar tracks,
-lighter teal fibre and content that grows when widgets expand. All 4,462 app
-tests pass. The exact Android APK passes 144 native host render cases, 60
-resize/corner cases and 5 expansion checks; iOS passes 77 native renders.
-Both signed packages pass production identity and signing verification.
-This task has not uploaded Android to Firebase. Public store release and
-new physical-phone acceptance remain separate.
+**Backend 2725 is verified live. Native Build 486 is signed.** iOS upload
+succeeded; the last verified Apple state was processing, so availability in
+TestFlight still needs confirmation. Signed Android 486 is ready for manual
+upload; Firebase distribution is blocked by account permission. Approved icons,
+widgets and the earlier staging integration are retained. No new physical-phone
+acceptance or public store release is claimed.
+
+Build 486 preserves physical serving amounts and reconciles catalogue
+corrections across linked history, recipes and recurring entries. Explicit
+personal nutrition remains intact. The production history repair, zero-change
+repeat and all four derived refresh jobs were independently verified. The
+independent Astra adversarial review passed. Exact source, test and signed
+artifact evidence is retained in the private release record.
 
 The earlier Android loading failure is repaired in 476 and passes native
 renderer checks. Pixel 9 picker-search and physical add/refresh observations
@@ -260,3 +263,28 @@ Next: Aadam updates iOS or uploads Android 479, then checks serving reopen,
 unit changes, recipe Tune and widget appearance. Astra owns reported regressions
 and keeps this record current. No historical diary rewrite, backend promotion
 or staging build was performed for this release.
+
+## Build 486 serving and catalogue visual acceptance
+
+All checks below remain pending on an installed Build 486 or later build that
+retains these fixes. Aadam supplies device observations; Astra owns any failures.
+Record platform, build and screenshots/results. Automated tests do not tick
+these device checks.
+
+| Pending check | Expected result |
+| --- | --- |
+| Cold launch and hard-close/reopen | No unsolicited serving warning or recurring unsaved-food card from a routine catalogue correction. |
+| Save and reopen 100 g of food | Still 100 g with the correct calories and macros, never 100 servings. |
+| Recipe ingredient: select grams, type 200, save/reopen | Still 200 g; no long serving fraction in the gram field; recipe totals agree. |
+| Corrected food across search, detail, history, recipes and recurring logs | Nutrition agrees after sync and the logged physical amount is preserved. |
+| Explicit personal nutrition edit | The user's intentional nutrition remains intact after catalogue correction. |
+| Daily totals and home-screen widgets | Consumed/remaining values and macro bars agree with corrected logs; widgets refresh. |
+| Any legitimate remaining warning or choice | Approved app typography, spacing, colours and controls; intended nonblocking logging route works. Routine corrections reconcile without this UI. |
+| Approved icons and widgets on iOS and Android | Intended release appearance is retained, including relevant light/dark and sizing states. |
+| Cold/warm and offline-to-online paths | Saved amounts and corrected nutrition converge consistently after sync without recurring recovery UI. |
+
+Before the next design build, the design agent must fetch and rebase onto the
+latest authoritative native production branch (and main for any backend work),
+preserve the Build 486/2725 serving and catalogue fixes, and run the combined
+regression and release checks on the exact rebased source. The design agent has
+acknowledged this requirement; TRAK Master coordinates build allocation.
