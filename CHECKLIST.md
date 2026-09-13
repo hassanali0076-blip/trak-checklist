@@ -1,10 +1,10 @@
 # TRAK — master checklist
 
-Updated: 2026-09-12T10:24:10Z · Reviewed through 2026-09-12
+Updated: 2026-09-13T01:21:16Z · Reviewed through 2026-09-13
 
-- native: Build 486 is signed with the serving and catalogue correction fixes and the approved icons and widgets retained. iOS 486 is available in internal TestFlight, independently confirmed with Apple. Signed Android 486 is ready for manual upload; Firebase distribution is blocked by account permission. Physical acceptance remains pending.
-- backend: Backend 2725 and its correction worker were verified live. Catalogue corrections now update linked historical logs, recipes and recurring entries while preserving physical amounts and explicit personal nutrition. The affected history repair and all four derived refresh jobs were independently verified; repeat repair makes no changes.
-- next: Android 486 needs the established manual upload route while automated Firebase distribution is blocked by account permission. Aadam checks the serving and catalogue visual acceptance list on the installed build; Astra owns regressions. The next design build must rebase onto the latest production branches and retain these fixes.
+- native: iOS Build 488 is Apple VALID and available in the internal Trak beta group. It contains the reviewed Search and designer-icon release, the multi-select To list correction and a picker showing 62 distinct artworks instead of duplicate aliases. Matching signed Android Build 488 is prepared for the established manual upload route but has not been distributed. Physical acceptance remains pending.
+- backend: Backend 2726 is verified live with the additive remote icon-assignment system. Production icon mappings remain disabled and empty; the reviewed staging manifest has not been published to production. Catalogue corrections remain live, but safe propagation of later display-name edits into older linked snapshots is still unresolved.
+- next: Install and test iOS 488: Search relevance, designer icons in light and dark mode, picker uniqueness, multi-select To list versus Add, and ordinary logging/reopen. Upload Android 488 manually if Android testing is required. Publish the reviewed production icon mappings only after the separate guarded approval and readback; keep catalogue-name propagation open.
 
 > Public, read-only project status. No login needed.
 
@@ -12,7 +12,7 @@ Updated: 2026-09-12T10:24:10Z · Reviewed through 2026-09-12
 
 > Updates appear here after the shared checklist is published. Local edits and chat messages do not update it.
 
-> Reconciled through 12 September. Released changes, signed/uploaded builds and phone acceptance are tracked separately. Publishing this board does not release a TRAK app build.
+> Reconciled through 13 September. Released changes, signed/uploaded builds and phone acceptance are tracked separately. Publishing this board does not release a TRAK app build.
 
 ## Known issue
 
@@ -96,6 +96,14 @@ The Adjust chip in the food editor is reported to be misaligned with the Adjust 
 
 Next: Astra reproduces the alignment issue on the relevant platform/build, checks text scaling and light/dark mode, and makes a minimal layout correction after reviewing the actual screen.
 
+### Corrected food names reach linked saved and logged entries
+
+ID: catalogue-display-name-propagation · Search & catalogue · Reviewed 2026-09-13
+
+A catalogue display-name edit can still leave an older name in linked diary or saved snapshots. The reported Pro Mlk catalogue row is corrected, but existing linked entries may retain the removed pack wording. This is not fixed, migrated or deployed.
+
+Next: Design and test an exact-food-identity propagation rule that preserves deliberate personal edits, serving amounts and historical nutrition. Dry-run the affected rows before any approved write, then verify independent readback and a zero-change rerun.
+
 ## Next phone build
 
 ### Native code organization
@@ -113,6 +121,14 @@ ID: signed-artifact-release-and-promotion-checks · Release & reliability · Rev
 A local release gate checks the signed iPhone and Android artifacts and requires recorded phone acceptance for claimed features. Release checks can run on the release Mac. Build 470 remains internal-only; these new protections do not retrospectively approve its unresolved nutrient issues.
 
 Next: The release owner must use the gate for the next candidate, verify matching platform artifacts and collect the required phone acceptance before wider promotion.
+
+### Publish reviewed food-icon assignments safely
+
+ID: remote-food-icon-assignments-production · Search & catalogue · Reviewed 2026-09-13
+
+Backend 2726 can return centrally managed icon keys so corrections to existing artwork no longer require a Flutter build. Production remains deliberately disabled and empty. The reviewed staging manifest contains 236 exact public-food assignments and category fallbacks, but staging publication is not production publication.
+
+Next: After Build 488 phone acceptance, compare the frozen staging manifest with production, approve the exact mapping set, run the guarded dry run, publish once, independently read it back and prove a zero-change rerun. Do not alter Search ranking, nutrition or logged-food data.
 
 ## Needs checking
 
@@ -635,6 +651,22 @@ ID: ios-widget-clear-tinted-actions · Widgets · Reviewed 2026-09-11
 Available in iOS 481 internal TestFlight. Small Quick Actions and Search & Quick Actions now use translucent inner backgrounds in the shared accented mode, preserving normal appearance and destinations. Native rendered-output checks pass; actual Home Screen acceptance is the next check.
 
 Next: On iOS 481, switch Home Screen Customise to Clear and Tinted and check both action widgets. Astra owns any remaining opaque tiles or hidden icons.
+
+### Accept the Search and designer-icon release on the phone
+
+ID: production-build-488-search-and-designer-icons · Release & reliability · Reviewed 2026-09-13
+
+iOS Build 488 is Apple VALID and available in the internal Trak beta group. It includes the reviewed Search behavior, centralized bundled designer icons and the corrected icon picker. Matching signed Android Build 488 exists for manual upload but is not distributed. Build and package checks passed; no physical-phone acceptance is claimed.
+
+Next: Install iOS 488 and confirm the visible build number. Check Search relevance, representative exact and category icon matches, green apple and blue-default energy drink artwork, light/dark visibility, picker uniqueness, logging and reopen. Upload Android 488 only through the established manual route when Android testing is wanted.
+
+### Multi-select always offers To list and Add
+
+ID: search-multiselect-to-list-and-add-all · Search · Reviewed 2026-09-13
+
+Build 488 wires the missing To list action when a food is opened while another food is already selected. To list returns with both foods selected and writes nothing to the diary; Add logs the opened food together with every food already in the list. Search queries, ranking and food data are unchanged. Automated Search tests pass; phone acceptance remains open.
+
+Next: On iOS 488, select one food, open a second and confirm both To list and Add remain available. Verify To list keeps both selected without logging, while Add logs both exactly once to the chosen meal. Reopen the diary and repeat from a different Search shelf.
 
 ## Planned
 
