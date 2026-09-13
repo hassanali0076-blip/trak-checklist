@@ -1,6 +1,6 @@
 # TRAK — master checklist
 
-Updated: 2026-09-13T01:21:16Z · Reviewed through 2026-09-13
+Updated: 2026-09-13T01:38:48Z · Reviewed through 2026-09-13
 
 - native: iOS Build 488 is Apple VALID and available in the internal Trak beta group. It contains the reviewed Search and designer-icon release, the multi-select To list correction and a picker showing 62 distinct artworks instead of duplicate aliases. Matching signed Android Build 488 is prepared for the established manual upload route but has not been distributed. Physical acceptance remains pending.
 - backend: Backend 2726 is verified live with the additive remote icon-assignment system. Production icon mappings remain disabled and empty; the reviewed staging manifest has not been published to production. Catalogue corrections remain live, but safe propagation of later display-name edits into older linked snapshots is still unresolved.
@@ -13,6 +13,8 @@ Updated: 2026-09-13T01:21:16Z · Reviewed through 2026-09-13
 > Updates appear here after the shared checklist is published. Local edits and chat messages do not update it.
 
 > Reconciled through 13 September. Released changes, signed/uploaded builds and phone acceptance are tracked separately. Publishing this board does not release a TRAK app build.
+
+> On 13 September, Aadam closed the current Needs checking queue for now. A recurrence is tracked as a new ticket rather than reopening an older sign-off.
 
 ## Known issue
 
@@ -132,541 +134,6 @@ Next: After Build 488 phone acceptance, compare the frozen staging manifest with
 
 ## Needs checking
 
-### Fix Android widgets showing “Can’t load widget”
-
-ID: android-widgets-cannot-load · Widgets · Reviewed 2026-09-11
-
-The loading repair is included in Build 476, available in internal TestFlight with matching release-signed Android prepared for manual upload. All 12 widget layouts and 224 debug render states pass; the exact signed release also passes 56 populated cases through a real widget host; released 475 failed five original layouts. Four providers and per-widget settings are included. Pixel 9 picker-search and physical add/refresh acceptance remain separate from emulator evidence.
-
-Next: The existing correction is retained in signed Android 479, whose exact APK passes native provider, host, resize and rendering checks. Aadam uploads 479 and checks picker visibility, adding, resizing, values and taps on the phone. Astra handles any reported regression; packaging is not physical-phone acceptance.
-
-### Match nutrient graph transitions to the other screens
-
-ID: micronutrient-graph-standard-transition · Coach & insights · Reviewed 2026-09-10
-
-Build 45 retains the Build 44 correction: it removes the special 200 ms graph animation and uses the same standard screen transition as the rest of Insights. Earlier data preparation, cached history and swipe-back are preserved. Retained in regular TRAK 475, available in internal TestFlight.
-
-Next: Regular TRAK 475 is available in internal TestFlight and retains the normal Insights transition. Staging 45 remains the directly installed build; its accepted graph result is retained. Astra owns any new motion feedback.
-
-### Make iodine graphs load
-
-ID: iodine-graph-cannot-load · Coach & insights · Reviewed 2026-09-09
-
-Fixed in live staging backend 2721: iodine is recognised across graph history, batch history and breakdowns. The running source matches the tested correction. It reads existing microgram values; missing data stays missing and no recommended target is invented. Focused 101 tests and 174 subtests pass.
-
-Next: Open iodine in TRAK Staging. The backend correction also works with the existing app; Build 43 includes the separate graph-opening improvements. Astra records the phone result.
-
-### Keep the Coach acceptance tick smooth
-
-ID: coach-accept-tick-pauses-mid-stroke · Coach & insights · Reviewed 2026-09-10
-
-Build 43 includes the tested correction for the Build 42 tick freeze. The stroke now draws continuously from the tap instead of pausing partway through or restarting after the response. Successful saving still controls confirmation and return; late failure restores the review. Retained in regular TRAK 475, available in internal TestFlight.
-
-Next: Install regular TRAK 475 and accept a Coach review. Check the uninterrupted tick and correctly saved plan; Astra owns any follow-up.
-
-### Recipes and custom foods appear missing
-
-ID: verify-saved-library-visibility-after-the-filter-correction · Recipes & custom foods · Reviewed 2026-09-10
-
-The saved-library and Search projection corrections are retained in later regular and staging releases. Missing records were not established; the reported problem was delayed or filtered presentation. Complete current-phone acceptance remains open. Retained in regular TRAK 475, available in internal TestFlight.
-
-Next: On regular TRAK 475, open Recipes and Foods after a catalogue query and confirm both complete libraries appear, remain loggable and ignore the unrelated catalogue filter. Preserve existing data.
-
-### Offline and restart food-log recovery
-
-ID: offline-and-restart-food-log-recovery · Diary & recurring · Reviewed 2026-09-08
-
-Later releases retain the local-save and reconnect protections added after the earlier delayed Undo report. Automated coverage does not replace the remaining offline, restart and account-change phone checks.
-
-Next: On Staging Build 33, add, edit, move, copy and delete offline; reopen and reconnect. Confirm the intended diary survives once, with prompt Undo and no duplicate Health writes.
-
-### Recurring foods log at their exact local time
-
-ID: recurring-foods-become-real-entries-at-their-exact-local-time · Diary & recurring · Reviewed 2026-09-08
-
-The backend scheduler and native timing safeguards are implemented and retained in the current release lines. Complete open, background and closed-app phone acceptance is still unrecorded.
-
-Next: On the current staging build, verify saved minutes, timezone changes, upcoming cards and one diary entry per occurrence before and after its scheduled time.
-
-### Coach check-in flag appears on the diary only when due
-
-ID: coach-check-in-flag-appears-on-the-diary-only-when-due · Coach & insights · Reviewed 2026-08-31
-
-The due-only diary flag is shipped. Complete on-phone timing and completion checks are still open.
-
-Next: Confirm absent before due, visible when due, and cleared after completion or skip.
-
-### Suggested and Recent cards arrive late when opening Search
-
-ID: suggested-and-recent-foods-feel-immediate-and-relevant · Search & catalogue · Reviewed 2026-09-08
-
-The subsequent Search work reduces competing requests and preserves immediate personal shelves. Some phone searches are now quick, but cold-start, slow-network and account-change coverage is not fully accepted.
-
-Next: On Staging Build 33, hard-close, reopen and enter Search immediately. Check Suggested and Recents before caches warm, then repeat with slow/offline connectivity and another meal or account.
-
-### Recents can disappear when Suggested is present
-
-ID: recents-shelf-remains-visible-alongside-suggested · Search & catalogue · Reviewed 2026-09-08
-
-The missing-shelf backend repair and stable personal-section projections are retained in later releases. The broader new-phone acceptance remains open; older fixes do not close a newly reported latency or reordering regression.
-
-Next: On Staging Build 33, confirm both shelves appear without duplicates and remain stable for five seconds after results finish. Repeat in another meal and time slot.
-
-### Verified and Branded foods stay correctly classified and unique
-
-ID: verified-and-branded-foods-stay-correctly-classified-and-unique · Search & catalogue · Reviewed 2026-08-31
-
-The backend classification correction is live. Final checks of Common, Verified and Branded shelves remain.
-
-Next: Check government foods in Common, reviewed products in Verified, and unreviewed products in Branded.
-
-### Common foods use the correct household portions
-
-ID: common-foods-use-the-correct-household-portions · Search & catalogue · Reviewed 2026-08-31
-
-Build 461 includes reviewed portion families and wording fixes. Several foods passed; remaining oat-milk, onion and macro-ring checks are open.
-
-Next: Check exact oat milk, onion portion scaling and the zero-to-filled macro-ring animation.
-
-### Recipes keep the same serving everywhere
-
-ID: recipes-use-one-serving-across-every-search-surface · Recipes & custom foods · Reviewed 2026-09-10
-
-The shared current-recipe projection and preserved AI/private-food identity are included in later release work. Old diary snapshots remain historical. The cross-surface phone check still needs explicit acceptance. Retained in regular TRAK 475, available in internal TestFlight.
-
-Next: On regular TRAK 475, open the same recipe through Recipes, My foods and Previously logged. Confirm the named serving, amount, unit and nutrition agree, then save and reopen a new log.
-
-### Food projections share one source of truth
-
-ID: food-projections-share-one-source-of-truth · Search & catalogue · Reviewed 2026-09-08
-
-The executable projection matrix led to backend corrections for pinned private-food identity, recipe icons and trusted AI food links. Those corrections reached production with the Build 468 backend work. Cross-surface phone acceptance remains separate.
-
-Next: Verify Search, barcode, saved libraries, favorites, AI results and diary reopening refer to the same food and preserve its serving and icon. Keep deleted/private food and account-isolation cases in future regression coverage.
-
-### Every daily total uses the canonical diary rule
-
-ID: secondary-daily-totals-use-the-canonical-rule · Diary & recurring · Reviewed 2026-09-08
-
-The follow-up backend correction moved the remaining secondary daily-total consumers onto the shared resolver and was deployed with the Build 468 backend work. It preserves the entries-total-first rule and active food-log fallback. Mixed-history phone acceptance remains open.
-
-Next: Compare diary, Insights, Coach, remaining macros and goal summaries on days with manual totals, food logs, deletions and fasting. Any new mismatch needs its own exact example.
-
-### Immediate or offline reopen can hide a serving choice
-
-ID: the-unit-chosen-in-food-editor-stays-chosen-everywhere · Food editing · Reviewed 2026-09-10
-
-Existing grams-versus-scoops and pending/offline diary protections are retained. The newly reported calculator default was a separate missing save path and has its own delivered correction and acceptance card. Retained in regular TRAK 475, available in internal TestFlight.
-
-Next: In regular TRAK 475, retain exact grams or named portions on immediate online/offline diary reopen. The calculator default is also delivered and has its own acceptance card; existing diary amounts must not change.
-
-### iPhone inactive-state diagnostics need refinement
-
-ID: an-iphone-inactive-moment-must-not-be-mislabeled-as-background · Release & reliability · Reviewed 2026-09-01
-
-The inactive-but-visible diagnostic classification is corrected and installed in Build 464. Hidden, paused and idle lifecycle events remain informational. This phone round did not reproduce or accept the diagnostic path.
-
-Next: Confirm any naturally reproduced visible inactive interruption keeps the foreground diagnostic while background suspension remains informational.
-
-### Food and recipe sharing works between Android and iPhone
-
-ID: food-and-recipe-sharing-works-between-android-and-iphone · Recipes & custom foods · Reviewed 2026-08-31
-
-Recipe links open. One messaging-app path takes an extra browser permission step; full two-way import checks remain.
-
-Next: Test food, custom food and recipe links in both directions, including Log once and Save/import.
-
-### Coach repeatedly says it is settling
-
-ID: coach-settling-recovery · Coach & insights · Reviewed 2026-08-31
-
-The completed-goal mismatch is corrected and deployed. The affected phone's open/reopen check remains outstanding.
-
-Next: Open Coach, leave and reopen it. Confirm the review appears without resetting the goal. No phone build needed.
-
-### New recurring foods appear in upcoming slots today
-
-ID: new-recurring-food-appears-in-today-s-still-upcoming-slot · Diary & recurring · Reviewed 2026-09-08
-
-Backend admission and the native immediate-refresh correction are implemented in the later release lines. The full combined phone result for a newly scheduled food is still open.
-
-Next: On Staging Build 33, add a food a few minutes ahead. Its planned card should appear immediately and log once at the saved time without changing unrelated cards.
-
-### Logout protects unsaved changes
-
-ID: logout-protects-unsaved-changes · Account & onboarding · Reviewed 2026-09-08
-
-The standard slide-up warning and pending-write protection are retained in later releases. Stay signed in previously preserved pending food. Discard, failed-sync recovery, account isolation and current Android acceptance remain open.
-
-Next: On the current staging build, verify Stay and Discard with disposable data, then failed-sync recovery and account changes. Repeat on Android using the matching release.
-
-### Recurring foods refresh promptly after reopening
-
-ID: recurring-foods-appear-promptly-after-reopening · Diary & recurring · Reviewed 2026-09-08
-
-The earlier two-minute return delay has a separately tested reconciliation correction. Later release work retains recurring refresh protections, but the exact current-phone hard-close sequence is not signed off.
-
-Next: On Staging Build 33, hard-close and reopen before and after a scheduled time. Confirm the planned card becomes the logged card and calorie total together. Capture any delay, including slow or offline recovery.
-
-### Recurring cards transition without duplicates or gaps
-
-ID: recurring-cards-transition-without-duplicates-or-gaps · Diary & recurring · Reviewed 2026-09-08
-
-Later regular and staging releases retain duplicate, refresh-race, add/delete and card-transition protections. Full combined iPhone and Android acceptance is still open.
-
-Next: On the current staging build, test scheduled logging, Log all today and on a future day, overlapping entries, template deletion and removal during refresh. Check one card and one calorie contribution per occurrence.
-
-### Edit a database food’s serving size
-
-ID: edit-the-serving-size-of-a-database-food · Food editing · Reviewed 2026-09-10
-
-The serving/unit/icon editor is released, with later corrections for first-frame layout, Review state and stale post-save projections. It remains separate from calculator default memory. Complete save-and-reopen phone acceptance is still open. Retained in regular TRAK 475, available in internal TestFlight.
-
-Next: On regular TRAK 475, confirm Edit opens promptly with the correct name, icon and Serving card. Change amount and unit; check Nutrition, Review, save/reopen, supported units, dark mode and larger text.
-
-### Delete Undo appears without waiting for sync
-
-ID: food-log-delete-undo-appears-without-waiting-for-sync · Diary & recurring · Reviewed 2026-09-08
-
-The local-admission correction is retained in the later release lines. The previous delayed Undo report remains a required reconnect phone check rather than an assumed pass.
-
-Next: On Staging Build 33, reconnect and immediately delete a disposable food. Undo should appear promptly, restore once and remain correct if sync fails.
-
-### TRAK Custom reference-food publication
-
-ID: trak-custom-food-publication · Search & catalogue · Reviewed 2026-09-08
-
-The selected TRAK Custom nutrient support and native presentation were promoted through regular Builds 469/470 and backend 2714. This does not establish that every staged reference-food row was copied to production. Approved catalogue rows, coverage, source visibility and phone acceptance remain separate checks.
-
-Next: Reconcile the approved reference-food inventory in each environment. Check the TRAK Custom shelf, nutrient data and source settings on regular Build 470 and current staging; keep unknown nutrient values unknown.
-
-### Raw Chicken Breast shows household portion chips
-
-ID: raw-chicken-breast-shows-household-portion-chips · Search & catalogue · Reviewed 2026-09-08
-
-The reviewed-source eligibility correction is included in later backend work, and Staging Build 30 added weight-units-first ordering. The exact Raw Chicken portion and calorie phone check still needs a recorded pass.
-
-Next: On Staging Build 33, open Raw Chicken Breast and check that its named portions appear after g, oz and lb, with correct gram and nutrition scaling.
-
-### Edit the current goal weight and loss rate
-
-ID: edit-current-goal-weight-and-rate-together · Coach & insights · Reviewed 2026-09-08
-
-The new goal-weight step, review summary and shared current-goal update were delivered through the later staging builds and selected regular release. Goal and daily-target cards use the saved rate without restarting the journey. Phone acceptance across all consumers remains open.
-
-Next: Change target weight and rate, confirm the review screen, then check Coach, Insights, milestones, predictions and daily targets after reopening. Test both lb and kg.
-
-### Weight units stay consistent across goal editing
-
-ID: body-weight-units-use-one-conversion-path · Coach & insights · Reviewed 2026-09-08
-
-Staging Build 34 consolidates goal-edit and onboarding conversions through the shared weight-unit module. Local checks cover edit values, saved targets, weekly rates, repeated lb/kg switching and cold reopening. Further phone-review work remains separate; stone is unsupported.
-
-Next: The staging owner must track any later phone findings separately and verify lb/kg input, display, save and reopen without drift.
-
-### New Health weights appear without manual syncing
-
-ID: automatic-health-weight-pickup-after-provider-publication · Health · Reviewed 2026-09-08
-
-A foreground pickup correction is included in regular Builds 469/470. It rechecks for a scale measurement published after the first Health read or after returning to TRAK. Automated Apple Health and Health Connect tests cover outgoing weight/nutrition writes too; physical provider acceptance remains open.
-
-Next: Publish a new scale weight while TRAK is open, then test a short app switch and return. Confirm one imported weight and verify manual food/weight writes still appear once in Apple Health or Health Connect. Confirm the intended staging source before testing there.
-
-### Roll-On staging behaviour and minimum targets
-
-ID: rollon-staging-behaviour-and-shared-minimum · Coach & insights · Reviewed 2026-09-10
-
-The earlier staging failure still needs a final phone pass. The reviewed Coach/Roll-On packet is now in Staging Build 37 with the shared personal minimum, cache and missing-profile handling. Combined automated checks passed; this does not close the reported phone issue. Retained in regular TRAK 475, available in internal TestFlight.
-
-Next: On regular TRAK 475, reproduce the reported day/action and verify allocation, Why details, incomplete profiles, changed minimums and preserved historical targets.
-
-### Coach weekly check-in shows and applies the correct calories
-
-ID: weekly-coach-review-displays-and-applies-one-valid-plan · Coach & insights · Reviewed 2026-09-10
-
-The repair for zero-calorie first plans and incorrect repeat plans is retained in distributed Staging Build 39 with backend 2718. It keeps one review per period and applies the displayed current calories and macros. The newly reported checklist-animation timing issue is tracked separately. Retained in regular TRAK 475, available in internal TestFlight.
-
-Next: Verify first check-in, redo, reopen and accept in the current staging app. All screens should show the same saved calories and macros; keep calculation correctness separate from the animation repair.
-
-### Use the agreed personal calorie minimum everywhere
-
-ID: personal-calorie-minimum-used-by-coach-goals-and-rollon · Coach & insights · Reviewed 2026-09-10
-
-The agreed height/weight-based Standard minimum and optional Low setting are included with the Coach/Roll-On packet in Staging Build 37 and its paired backend. Explicit user choices are preserved and missing profile details are handled explicitly. Regular TRAK delivery is complete; new phone acceptance is separate. Retained in regular TRAK 475, available in internal TestFlight.
-
-Next: The shared minimum is delivered in regular TRAK 475/backend 2722. Astra owns any profile-specific inconsistency reported across Coach, goal setup or Roll-On; retain explicit user choices.
-
-### Test Coach check-ins without waiting a week
-
-ID: repeat-coach-checkins-without-waiting-a-week · Coach & insights · Reviewed 2026-09-10
-
-Staging Build 45/backend 2721 retain Repeat test check-in and Start next test week, including the earlier URL correction. Automated coverage passes; these controls remain exclusive to staging and are deliberately gated off in production 475/backend 2722.
-
-Next: Use the controls in staging 45 for ordinary check-in testing. They reuse recorded data and do not invent a week of history. Accepted maintenance simulations remain valid.
-
-### Micronutrient details open with the correct complete view
-
-ID: micronutrient-details-open-with-complete-current-data · Coach & insights · Reviewed 2026-09-10
-
-Regular TRAK 475 includes the complete shared nutrient preparation and covering caches developed through staging 45, plus the accepted shading, bars and edge corrections. Account/date/route guards and normal screen motion are retained.
-
-Next: Astra handles any new incomplete-data report on 475, including saved long timeframes. Preserve the accepted staging graph evidence.
-
-### All shows the full recorded nutrient history
-
-ID: micronutrient-all-range-uses-recorded-history · Coach & insights · Reviewed 2026-09-10
-
-Staging Build 34 contains the correction for 1Y to All remaining stuck at one year when recorded history is shorter. It uses the actual history span and retains Build 33 work. A related regular Build 470 correction remains separate; full phone acceptance is still open. Retained in regular TRAK 475, available in internal TestFlight.
-
-Next: On regular TRAK 475, test repeated 1Y to All switching with less than and more than a year of history, including empty history, without closing the screen.
-
-### Nutrient target markers remain visible
-
-ID: micronutrient-target-markers-remain-visible · Coach & insights · Reviewed 2026-09-10
-
-Build 40 restores the historical light and dark nutrient rail colours. Astra reviewed rendered examples and marker/range tests; nutrient values and target calculations are preserved. Retained in regular TRAK 475, available in internal TestFlight.
-
-Next: On regular TRAK 475, check rail contrast and visible target markers across nutrient screens and Food Editor.
-
-### Nutrient values and spacing match the agreed design
-
-ID: micronutrient-formatting-and-spacing · Coach & insights · Reviewed 2026-09-10
-
-Staging Builds 29/30 added the agreed numeric presentation and tighter legend-to-Today spacing, retained by Build 33. The subsequent regular formatting corrections are retained in the combined production source. These are presentation changes, not nutrition-data changes. Retained in regular TRAK 475, available in internal TestFlight.
-
-Next: Check Today, Daily average, History, tooltips, percentages and small positive values on the intended build. Retain stored precision and verify the final regular/staging formatting agrees.
-
-### Micronutrient coverage loads in regular TRAK
-
-ID: micronutrient-coverage-production-retry-error · Coach & insights · Reviewed 2026-09-10
-
-Build 470 restored the intended nutrient screen, then production backend 2715 fixed the coverage endpoint that was returning an error because of an environment mismatch. The backend correction is verified live. The full phone experience, including separate chart issues, remains open.
-
-Next: The endpoint correction is retained in backend 2722 and regular TRAK 475. Astra owns any new coverage-load failure; retain graph defects as separate regression cards.
-
-### Show weight units before Small, Medium and Large
-
-ID: weight-units-before-named-food-portions · Food editing · Reviewed 2026-09-10
-
-Staging Build 30 changed the serving-chip order to g, oz, lb before named portions such as Small, Medium and Large. Build 33 retains it. The change does not alter portion weights or food ranking. Retained in regular TRAK 475, available in internal TestFlight.
-
-Next: Check several foods with named servings on regular TRAK 475, including scroll/overflow behaviour and correct calories after selecting a weight unit or named portion.
-
-### Remember the serving set with the pack calculator
-
-ID: remember-calculator-serving-when-food-is-reopened · Food editing · Reviewed 2026-09-10
-
-Staging Build 34 includes the fix that saves calculated grams to the account and restores them through Search, Recents, barcode and restart. For example, 500 g divided by four servings reopens at 125 g. Phone acceptance remains open. Retained in regular TRAK 475, available in internal TestFlight.
-
-Next: On regular TRAK 475, test every reopening route, correct calories, manual overrides, existing diary amounts and account switching. A failed save must be reported; cold offline restoration and older web-app preference migration are not included.
-
-### Blueberries entered in grams must not become cups
-
-ID: blueberries-grams-not-cup-count · Food editing · Reviewed 2026-09-11
-
-Build 479 includes the shared serving correction and additional saved-template regressions: gram entries retain their unit, and older cup descriptions are converted once while preserving saved counts. Both per-cup and whole-selection template descriptions pass against the preserved physical amount. This is fixture and release evidence; the exact affected live catalogue row has not been rechecked on the phone.
-
-Next: On regular Build 479, confirm the reported Blueberries gram amount stays in grams after reopening and uses the selected food row’s nutrition. Astra handles any mismatch.
-
-### Recent flagged foods have corrected catalogue servings
-
-ID: flagged-food-label-and-serving-corrections · Search & catalogue · Reviewed 2026-09-08
-
-Five recent moderation cases received guarded live catalogue corrections with independent readback. The ASDA reduced-fat burger entry now uses one burger and its label nutrition rather than incorrectly treating those values as per 100 g. Existing diary history was preserved.
-
-Next: Rescan or reselect the corrected products to verify the label serving and calories in the app. Track later catalogue drift separately from the broader unreleased verification-policy change.
-
-### Move accepted staging work into regular TRAK safely
-
-ID: promote-only-accepted-staging-work · Release & reliability · Reviewed 2026-09-08
-
-Regular Builds 469/470 contain the earlier selected goal, nutrient, Search and Health bundle. Staging Build 38 and backend 2717 contain subsequent work, including the accepted maintenance policy and corrected Coach test-button request. Maintenance acceptance uses reviewed simulations; other changes retain their own acceptance requirements. Regular TRAK promotion has not occurred for this newer bundle.
-
-Next: The release owner must reconcile the exact accepted changes into the latest regular baseline, preserve concurrent work, pair the required backend and verify the release artifacts before separately approved promotion. Retain the simulation-based maintenance acceptance decision.
-
-### Goal changes must preserve earlier expenditure history
-
-ID: goal-change-preserves-earlier-expenditure-history · Coach & insights · Reviewed 2026-09-08
-
-The earlier Coach goal-history repair is included in the paired staging backend for Build 37. It preserves earlier expenditure records when a goal changes on a day without its own saved estimate and retains the applied adjustment after recalculation. Production promotion and phone acceptance remain open.
-
-Next: On staging, change a goal on a day without a saved estimate, then check earlier history and later recalculation before regular rollout.
-
-### Coach maintenance range matches the selected tolerance
-
-ID: coach-maintenance-range-matches-selected-tolerance · Coach & insights · Reviewed 2026-09-10
-
-The maintenance policy is accepted on independently reviewed simulations and is now integrated into live staging backend 2717, paired with Build 38. The accepted controller logic and confidence calculation are preserved in the integrated runtime. Existing simulation evidence remains valid; the policy is also live on production backend 2722. Retained in regular TRAK 475, available in internal TestFlight.
-
-Next: The accepted maintenance policy is live in production 2722 and paired with 475. Reuse its reviewed simulations; do not require prepared phone histories or rerun them unless relevant logic changes. Broader Coach effectiveness remains separately tracked.
-
-### Coach Accept responds immediately
-
-ID: coach-accept-animation-starts-without-save-delay · Coach & insights · Reviewed 2026-09-10
-
-Build 43 starts feedback immediately and includes the continuous tick correction. The animation does not hold mid-stroke for the network. Confirmation and return still require a successful save, and failed-save recovery is preserved. Retained in regular TRAK 475, available in internal TestFlight.
-
-Next: The immediate, continuous feedback is delivered in regular TRAK 475. Astra owns any reported regression. Staging 45 retains repeat-check-in controls for testing; production keeps the ordinary weekly cycle.
-
-### Coach result waits for its review checklist
-
-ID: coach-result-waits-for-review-checklist · Coach & insights · Reviewed 2026-09-10
-
-Build 40 waits for both Coach data and the completed review checklist before showing the result. Slow responses, retry, reduced motion and leaving the screen are covered by tests. Retained in regular TRAK 475, available in internal TestFlight.
-
-Next: Regular TRAK 475 includes the loading-checklist fix. For repeatable testing, use staging 45 and confirm the checklist finishes before its result appears; production retains the normal weekly cycle.
-
-### Daily targets show saved cycling values immediately
-
-ID: cycling-save-updates-daily-targets-first-frame · Coach & insights · Reviewed 2026-09-10
-
-Build 40 carries the exact saved cycling week through the real settings flow, so the first returned Insights card has the saved calories and macros. Cancellation, account changes and later target edits are covered. Retained in regular TRAK 475, available in internal TestFlight.
-
-Next: On regular TRAK 475, save a different cycling plan and confirm the first returned daily-target card immediately matches it.
-
-### EPA + DHA uses the combined 0.25 g target
-
-ID: epa-dha-combined-standard-target · Coach & insights · Reviewed 2026-09-09
-
-Build 40 and live backend 2719 now share the combined 0.25 g target, history and coverage contract. Complete components produce a known total; incomplete foods remain unknown. The deployed calculation probe exactly matches the reviewed candidate.
-
-Next: On Build 40, verify the combined target and intake in overview/detail/coverage, including a food missing one component. Phone acceptance remains open.
-
-### Edit goal returns with updated daily targets
-
-ID: edit-goal-rate-updates-cycling-targets-on-return · Coach & insights · Reviewed 2026-09-10
-
-Build 41 prepares the current daily targets before returning from Edit goal after a weekly loss-rate change, including different calories by day. It uses the existing target resolver; target calculations are unchanged. Retained in regular TRAK 475, available in internal TestFlight.
-
-Next: On regular TRAK 475, change weekly loss rate, update the plan and confirm the first returned Insights targets match the new plan. Check both uniform and cycling targets.
-
-### Explain the Standard and Low calorie minimums
-
-ID: calorie-minimum-explanations-and-recommended-badge · Coach & insights · Reviewed 2026-09-10
-
-Build 41 explains the Standard and Low allowances, marks Standard as Recommended and removes the size-based sentence. Displayed minimums remain calculated for the profile; the minimum policy is unchanged. Retained in regular TRAK 475, available in internal TestFlight.
-
-Next: Review the wording and calculated Standard/Low amounts in regular TRAK 475, including larger text.
-
-### Food micronutrients open full-screen with the serving shown
-
-ID: food-micronutrients-fullscreen-serving-caption · Food editing · Reviewed 2026-09-10
-
-Build 41 opens Food Editor micronutrients as a full screen, puts the serving in brackets after the food name and displays unit-bearing zero for blank food amounts. Missing nutrition remains unknown internally. Embedded recipe and meal panels keep their parent layout. Retained in regular TRAK 475, available in internal TestFlight.
-
-Next: On regular TRAK 475, check food and recipe serving captions, full-screen opening, back navigation and blank values in light and dark mode.
-
-### Restore the light-grey micronutrient background
-
-ID: micronutrient-overview-light-background · Coach & insights · Reviewed 2026-09-10
-
-Build 41 restores the light-grey background behind the main micronutrient overview so white cards remain visible. Dark mode is unchanged. Existing visual references verify the intended colours. Retained in regular TRAK 475, available in internal TestFlight.
-
-Next: On regular TRAK 475, confirm the white nutrient cards stand out against the grey background in light mode.
-
-### Remove the delay when reopening nutrient graphs
-
-ID: micronutrient-graph-repeat-tap-delay · Coach & insights · Reviewed 2026-09-10
-
-Build 45 retains early shared history preparation, covering caches and the normal transition. It adds stable first-frame Standard references, matching N-day bars/scale and corrected plot edges after the Build 44 phone report. Installed directly and available in TestFlight; automated checks pass and phone acceptance is tracked separately. Retained in regular TRAK 475, available in internal TestFlight.
-
-Next: The reported graph rendering fix was accepted on staging 45 and is included in regular TRAK 475. Astra owns any new timing report; keep cold-open observations separate from the accepted rendering fix.
-
-### Goal-rate editing from plan review includes goal weight
-
-ID: goal-review-rate-edit-includes-goal-weight · Coach & insights · Reviewed 2026-09-09
-
-Build 42 opens goal weight, then goal rate, when editing Goal rate from the plan review. It returns to the review before the final Update plan. Related goal and Insights checks and the full app suites pass; target calculations are unchanged.
-
-Next: On Build 43, check the full edit-and-save sequence and the returned daily targets. Astra owns any remaining regression.
-
-### Search foods sometimes fail to load micronutrients
-
-ID: search-food-micronutrients-intermittent-retry · Food editing · Reviewed 2026-09-10
-
-Regular TRAK 475 now recovers when a same-account Health refresh invalidates a pending food nutrient read, and retries one temporary request failure. All 21 focused cache/recovery checks pass, including account isolation and the shared retry limit. It is available in internal TestFlight. These fixes cover reproduced failure classes; the original phone incident was not conclusively traced.
-
-Next: Astra owns any recurrence while opening Search foods in 475. Record the exact food and route if it occurs; the fix is delivered, with new phone acceptance tracked separately.
-
-### Recipe Edit opens immediately
-
-ID: recipe-editor-opens-without-waiting-for-detail · Recipes & custom foods · Reviewed 2026-09-10
-
-Regular TRAK 475 opens Recipe Edit immediately while complete ingredients load, avoids unnecessary nutrient enrichment, retries one temporary failure and retains an actionable Retry screen. The 18-ingredient regression preserves original household amounts and one gram basis. An old cached recipe is not silently reopened for editing. Available in internal TestFlight.
-
-Next: Astra owns reported Recipe Edit regressions on 475; retain Save & Log, complete ingredients and account isolation. Delivery is complete; new phone acceptance is separate.
-
-### Improve widget layouts, starting with small Macros
-
-ID: widget-layout-review-small-macros · Widgets · Reviewed 2026-09-11
-
-The approved widget designs and adaptive sizing are retained in 481. iOS is available in internal TestFlight with Remaining fill, wide calorie/macros alignment and Clear/Tinted action corrections. Signed Android 481 is ready for manual upload with the shared Remaining fix. All 4,463 app tests pass; all 144 exact signed-Android renders match approval, including resize and expansion checks.
-
-Next: Upload Android 481 and review the widgets on the phone; test the iOS 481 corrections through TestFlight. Astra owns any mismatch. Physical Samsung and actual iOS Home Screen acceptance remain separate.
-
-### Fix Android widget sizing after Build 476
-
-ID: android-widget-launcher-sizing · Widgets · Reviewed 2026-09-11
-
-The reported tiny rings and excessive gaps were reproduced in signed Android 476. All four providers combined size bounds from different orientations. The shared correction is merged and packaged in signed Android 477, restoring the approved ring sizes and wide Search layout. The exact APK passes 84 native host cases, and all 84 renders are identical to the approved images. It is ready for manual upload; physical Pixel acceptance has not yet been confirmed.
-
-Next: The existing correction is retained in signed Android 479, whose exact APK passes native provider, host, resize and rendering checks. Aadam uploads 479 and checks picker visibility, adding, resizing, values and taps on the phone. Astra handles any reported regression; packaging is not physical-phone acceptance.
-
-### Balance spacing across Android widgets
-
-ID: android-widget-spacing · Widgets · Reviewed 2026-09-11
-
-Build 480 removes the fixed-size limits so values, gauges and labels grow together. Tall cards now select the correct layout. The exact signed APK passes 60 resize/corner cases and 5 expansion cases; all 144 host images match the reviewed candidate. The earlier baseline failures and rejected pre-release text-clipping attempts are retained in private evidence.
-
-Next: Upload/install Android 480 and review all widgets at normal and expanded sizes on Galaxy A56 and the second Galaxy. Astra handles remaining spacing problems; emulator evidence does not establish One UI phone acceptance.
-
-### Keep serving amounts consistent across food and recipe editing
-
-ID: centralise-serving-scaling · Food editing · Reviewed 2026-09-12
-
-Signed Build 486 preserves gram input and reopen values across food and recipe editing. Catalogue corrections reconcile linked history, recipes and recurring entries without repeated routine warning/recovery UI, while preserving explicit personal nutrition. Backend 2725 and the historical repair are verified live. Independent Astra adversarial review passed; 4,398 main app tests, 124 legacy-auth tests and 10 explicit DST follow-up tests passed. Signed build verification does not establish phone acceptance.
-
-Next: After 486 is available and installed, Aadam checks 100 g food reopen, 200 g recipe ingredient save/reopen, unit changes, hard restart without recurring warning/card, corrected history and recipe totals, preserved personal edits and widget refresh. Astra owns failures and distribution follow-up. See the visual release list for the complete pending checks.
-
-### Remaining widget rings and bars should drain with logging
-
-ID: widget-remaining-fill-direction · Widgets · Reviewed 2026-09-11
-
-Available in iOS 481 internal TestFlight and included in the signed Android 481 APK prepared for manual upload. Remaining starts full and drains across small/wide Calories and Macros widgets; Consumed fills as before. Missing or unconfirmed targets stay empty. The exact Android APK passes all 56 hosted states and 144 renders; every image matches the reviewed correction.
-
-Next: Upload Android 481 and check Remaining fill on the phone. Astra owns any reported regression. Android upload and physical acceptance are not claimed by the signed-artifact checks.
-
-### Align and enlarge values in the wide calorie and macro widget
-
-ID: ios-widget-wide-macro-layout · Widgets · Reviewed 2026-09-11
-
-Available in iOS 481 internal TestFlight. Macro values sit at the right ends of the bars, the main values are larger and the nutrition section is centred above the shortcuts. Compact, normal and expanded native renders pass. Earlier scaling changes are retained.
-
-Next: Review the wide calorie/macros widget on iOS 481 at its usual size. Astra owns any mismatch reported from the phone.
-
-### Keep quick action icons visible in iOS Clear and Tinted styles
-
-ID: ios-widget-clear-tinted-actions · Widgets · Reviewed 2026-09-11
-
-Available in iOS 481 internal TestFlight. Small Quick Actions and Search & Quick Actions now use translucent inner backgrounds in the shared accented mode, preserving normal appearance and destinations. Native rendered-output checks pass; actual Home Screen acceptance is the next check.
-
-Next: On iOS 481, switch Home Screen Customise to Clear and Tinted and check both action widgets. Astra owns any remaining opaque tiles or hidden icons.
-
-### Accept the Search and designer-icon release on the phone
-
-ID: production-build-488-search-and-designer-icons · Release & reliability · Reviewed 2026-09-13
-
-iOS Build 488 is Apple VALID and available in the internal Trak beta group. It includes the reviewed Search behavior, centralized bundled designer icons and the corrected icon picker. Matching signed Android Build 488 exists for manual upload but is not distributed. Build and package checks passed; no physical-phone acceptance is claimed.
-
-Next: Install iOS 488 and confirm the visible build number. Check Search relevance, representative exact and category icon matches, green apple and blue-default energy drink artwork, light/dark visibility, picker uniqueness, logging and reopen. Upload Android 488 only through the established manual route when Android testing is wanted.
-
-### Multi-select always offers To list and Add
-
-ID: search-multiselect-to-list-and-add-all · Search · Reviewed 2026-09-13
-
-Build 488 wires the missing To list action when a food is opened while another food is already selected. To list returns with both foods selected and writes nothing to the diary; Add logs the opened food together with every food already in the list. Search queries, ranking and food data are unchanged. Automated Search tests pass; phone acceptance remains open.
-
-Next: On iOS 488, select one food, open a second and confirm both To list and Add remain available. Verify To list keeps both selected without logging, while Add logs both exactly once to the chosen meal. Reopen the diary and repeat from a different Search shelf.
 
 ## Planned
 
@@ -916,6 +383,22 @@ Next: Use the verified staging profile for subsequent builds and recheck it if s
 
 ## Earlier sign-off
 
+### Fix Android widgets showing “Can’t load widget”
+
+ID: android-widgets-cannot-load · Widgets · Reviewed 2026-09-13
+
+The loading repair is included in Build 476, available in internal TestFlight with matching release-signed Android prepared for manual upload. All 12 widget layouts and 224 debug render states pass; the exact signed release also passes 56 populated cases through a real widget host; released 475 failed five original layouts. Four providers and per-widget settings are included. Pixel 9 picker-search and physical add/refresh acceptance remain separate from emulator evidence. Closed for now by Aadam on 13 September 2026; this is an administrative close, not new phone acceptance.
+
+Next: Closed for now. If the symptom returns, create a new ticket with the affected build, device and reproduction details rather than reopening this historical item.
+
+### Match nutrient graph transitions to the other screens
+
+ID: micronutrient-graph-standard-transition · Coach & insights · Reviewed 2026-09-13
+
+Build 45 retains the Build 44 correction: it removes the special 200 ms graph animation and uses the same standard screen transition as the rest of Insights. Earlier data preparation, cached history and swipe-back are preserved. Retained in regular TRAK 475, available in internal TestFlight. Closed for now by Aadam on 13 September 2026; this is an administrative close, not new phone acceptance.
+
+Next: Closed for now. If the symptom returns, create a new ticket with the affected build, device and reproduction details rather than reopening this historical item.
+
 ### Staging changes awaiting production
 
 ID: staging-changes-awaiting-production · Production promotion · Reviewed 2026-09-11
@@ -963,6 +446,22 @@ ID: backend-nutrient-test-fixture-schema-gaps · Release verification · Reviewe
 The repaired test schemas and fixtures are merged with production backend 2722. The combined suite passes 1,826 tests and 348 subtests, with 90 separate real PostgreSQL checks. Ownership, cancellation and transaction assertions are preserved. Verified local equivalents were used under the standing manual release rule; hosted jobs did not execute.
 
 Next: Keep the current fixtures and pinned combined test manifest in future backend work. This repair is complete.
+
+### Make iodine graphs load
+
+ID: iodine-graph-cannot-load · Coach & insights · Reviewed 2026-09-13
+
+Fixed in live staging backend 2721: iodine is recognised across graph history, batch history and breakdowns. The running source matches the tested correction. It reads existing microgram values; missing data stays missing and no recommended target is invented. Focused 101 tests and 174 subtests pass. Closed for now by Aadam on 13 September 2026; this is an administrative close, not new phone acceptance.
+
+Next: Closed for now. If the symptom returns, create a new ticket with the affected build, device and reproduction details rather than reopening this historical item.
+
+### Keep the Coach acceptance tick smooth
+
+ID: coach-accept-tick-pauses-mid-stroke · Coach & insights · Reviewed 2026-09-13
+
+Build 43 includes the tested correction for the Build 42 tick freeze. The stroke now draws continuously from the tap instead of pausing partway through or restarting after the response. Successful saving still controls confirmation and return; late failure restores the review. Retained in regular TRAK 475, available in internal TestFlight. Closed for now by Aadam on 13 September 2026; this is an administrative close, not new phone acceptance.
+
+Next: Closed for now. If the symptom returns, create a new ticket with the affected build, device and reproduction details rather than reopening this historical item.
 
 ### Build 461 backend, database and worker prerequisites are live
 
@@ -1436,6 +935,438 @@ Recorded complete in an earlier release or verification checkpoint. This is hist
 
 Next: Keep covered by regression tests; track any newly reported regression separately.
 
+### Recipes and custom foods appear missing
+
+ID: verify-saved-library-visibility-after-the-filter-correction · Recipes & custom foods · Reviewed 2026-09-13
+
+The saved-library and Search projection corrections are retained in later regular and staging releases. Missing records were not established; the reported problem was delayed or filtered presentation. Complete current-phone acceptance remains open. Retained in regular TRAK 475, available in internal TestFlight. Closed for now by Aadam on 13 September 2026; this is an administrative close, not new phone acceptance.
+
+Next: Closed for now. If the symptom returns, create a new ticket with the affected build, device and reproduction details rather than reopening this historical item.
+
+### Offline and restart food-log recovery
+
+ID: offline-and-restart-food-log-recovery · Diary & recurring · Reviewed 2026-09-13
+
+Later releases retain the local-save and reconnect protections added after the earlier delayed Undo report. Automated coverage does not replace the remaining offline, restart and account-change phone checks. Closed for now by Aadam on 13 September 2026; this is an administrative close, not new phone acceptance.
+
+Next: Closed for now. If the symptom returns, create a new ticket with the affected build, device and reproduction details rather than reopening this historical item.
+
+### Recurring foods log at their exact local time
+
+ID: recurring-foods-become-real-entries-at-their-exact-local-time · Diary & recurring · Reviewed 2026-09-13
+
+The backend scheduler and native timing safeguards are implemented and retained in the current release lines. Complete open, background and closed-app phone acceptance is still unrecorded. Closed for now by Aadam on 13 September 2026; this is an administrative close, not new phone acceptance.
+
+Next: Closed for now. If the symptom returns, create a new ticket with the affected build, device and reproduction details rather than reopening this historical item.
+
+### Coach check-in flag appears on the diary only when due
+
+ID: coach-check-in-flag-appears-on-the-diary-only-when-due · Coach & insights · Reviewed 2026-09-13
+
+The due-only diary flag is shipped. Complete on-phone timing and completion checks are still open. Closed for now by Aadam on 13 September 2026; this is an administrative close, not new phone acceptance.
+
+Next: Closed for now. If the symptom returns, create a new ticket with the affected build, device and reproduction details rather than reopening this historical item.
+
+### Suggested and Recent cards arrive late when opening Search
+
+ID: suggested-and-recent-foods-feel-immediate-and-relevant · Search & catalogue · Reviewed 2026-09-13
+
+The subsequent Search work reduces competing requests and preserves immediate personal shelves. Some phone searches are now quick, but cold-start, slow-network and account-change coverage is not fully accepted. Closed for now by Aadam on 13 September 2026; this is an administrative close, not new phone acceptance.
+
+Next: Closed for now. If the symptom returns, create a new ticket with the affected build, device and reproduction details rather than reopening this historical item.
+
+### Recents can disappear when Suggested is present
+
+ID: recents-shelf-remains-visible-alongside-suggested · Search & catalogue · Reviewed 2026-09-13
+
+The missing-shelf backend repair and stable personal-section projections are retained in later releases. The broader new-phone acceptance remains open; older fixes do not close a newly reported latency or reordering regression. Closed for now by Aadam on 13 September 2026; this is an administrative close, not new phone acceptance.
+
+Next: Closed for now. If the symptom returns, create a new ticket with the affected build, device and reproduction details rather than reopening this historical item.
+
+### Verified and Branded foods stay correctly classified and unique
+
+ID: verified-and-branded-foods-stay-correctly-classified-and-unique · Search & catalogue · Reviewed 2026-09-13
+
+The backend classification correction is live. Final checks of Common, Verified and Branded shelves remain. Closed for now by Aadam on 13 September 2026; this is an administrative close, not new phone acceptance.
+
+Next: Closed for now. If the symptom returns, create a new ticket with the affected build, device and reproduction details rather than reopening this historical item.
+
+### Common foods use the correct household portions
+
+ID: common-foods-use-the-correct-household-portions · Search & catalogue · Reviewed 2026-09-13
+
+Build 461 includes reviewed portion families and wording fixes. Several foods passed; remaining oat-milk, onion and macro-ring checks are open. Closed for now by Aadam on 13 September 2026; this is an administrative close, not new phone acceptance.
+
+Next: Closed for now. If the symptom returns, create a new ticket with the affected build, device and reproduction details rather than reopening this historical item.
+
+### Recipes keep the same serving everywhere
+
+ID: recipes-use-one-serving-across-every-search-surface · Recipes & custom foods · Reviewed 2026-09-13
+
+The shared current-recipe projection and preserved AI/private-food identity are included in later release work. Old diary snapshots remain historical. The cross-surface phone check still needs explicit acceptance. Retained in regular TRAK 475, available in internal TestFlight. Closed for now by Aadam on 13 September 2026; this is an administrative close, not new phone acceptance.
+
+Next: Closed for now. If the symptom returns, create a new ticket with the affected build, device and reproduction details rather than reopening this historical item.
+
+### Food projections share one source of truth
+
+ID: food-projections-share-one-source-of-truth · Search & catalogue · Reviewed 2026-09-13
+
+The executable projection matrix led to backend corrections for pinned private-food identity, recipe icons and trusted AI food links. Those corrections reached production with the Build 468 backend work. Cross-surface phone acceptance remains separate. Closed for now by Aadam on 13 September 2026; this is an administrative close, not new phone acceptance.
+
+Next: Closed for now. If the symptom returns, create a new ticket with the affected build, device and reproduction details rather than reopening this historical item.
+
+### Every daily total uses the canonical diary rule
+
+ID: secondary-daily-totals-use-the-canonical-rule · Diary & recurring · Reviewed 2026-09-13
+
+The follow-up backend correction moved the remaining secondary daily-total consumers onto the shared resolver and was deployed with the Build 468 backend work. It preserves the entries-total-first rule and active food-log fallback. Mixed-history phone acceptance remains open. Closed for now by Aadam on 13 September 2026; this is an administrative close, not new phone acceptance.
+
+Next: Closed for now. If the symptom returns, create a new ticket with the affected build, device and reproduction details rather than reopening this historical item.
+
+### Immediate or offline reopen can hide a serving choice
+
+ID: the-unit-chosen-in-food-editor-stays-chosen-everywhere · Food editing · Reviewed 2026-09-13
+
+Existing grams-versus-scoops and pending/offline diary protections are retained. The newly reported calculator default was a separate missing save path and has its own delivered correction and acceptance card. Retained in regular TRAK 475, available in internal TestFlight. Closed for now by Aadam on 13 September 2026; this is an administrative close, not new phone acceptance.
+
+Next: Closed for now. If the symptom returns, create a new ticket with the affected build, device and reproduction details rather than reopening this historical item.
+
+### iPhone inactive-state diagnostics need refinement
+
+ID: an-iphone-inactive-moment-must-not-be-mislabeled-as-background · Release & reliability · Reviewed 2026-09-13
+
+The inactive-but-visible diagnostic classification is corrected and installed in Build 464. Hidden, paused and idle lifecycle events remain informational. This phone round did not reproduce or accept the diagnostic path. Closed for now by Aadam on 13 September 2026; this is an administrative close, not new phone acceptance.
+
+Next: Closed for now. If the symptom returns, create a new ticket with the affected build, device and reproduction details rather than reopening this historical item.
+
+### Food and recipe sharing works between Android and iPhone
+
+ID: food-and-recipe-sharing-works-between-android-and-iphone · Recipes & custom foods · Reviewed 2026-09-13
+
+Recipe links open. One messaging-app path takes an extra browser permission step; full two-way import checks remain. Closed for now by Aadam on 13 September 2026; this is an administrative close, not new phone acceptance.
+
+Next: Closed for now. If the symptom returns, create a new ticket with the affected build, device and reproduction details rather than reopening this historical item.
+
+### Coach repeatedly says it is settling
+
+ID: coach-settling-recovery · Coach & insights · Reviewed 2026-09-13
+
+The completed-goal mismatch is corrected and deployed. The affected phone's open/reopen check remains outstanding. Closed for now by Aadam on 13 September 2026; this is an administrative close, not new phone acceptance.
+
+Next: Closed for now. If the symptom returns, create a new ticket with the affected build, device and reproduction details rather than reopening this historical item.
+
+### New recurring foods appear in upcoming slots today
+
+ID: new-recurring-food-appears-in-today-s-still-upcoming-slot · Diary & recurring · Reviewed 2026-09-13
+
+Backend admission and the native immediate-refresh correction are implemented in the later release lines. The full combined phone result for a newly scheduled food is still open. Closed for now by Aadam on 13 September 2026; this is an administrative close, not new phone acceptance.
+
+Next: Closed for now. If the symptom returns, create a new ticket with the affected build, device and reproduction details rather than reopening this historical item.
+
+### Logout protects unsaved changes
+
+ID: logout-protects-unsaved-changes · Account & onboarding · Reviewed 2026-09-13
+
+The standard slide-up warning and pending-write protection are retained in later releases. Stay signed in previously preserved pending food. Discard, failed-sync recovery, account isolation and current Android acceptance remain open. Closed for now by Aadam on 13 September 2026; this is an administrative close, not new phone acceptance.
+
+Next: Closed for now. If the symptom returns, create a new ticket with the affected build, device and reproduction details rather than reopening this historical item.
+
+### Recurring foods refresh promptly after reopening
+
+ID: recurring-foods-appear-promptly-after-reopening · Diary & recurring · Reviewed 2026-09-13
+
+The earlier two-minute return delay has a separately tested reconciliation correction. Later release work retains recurring refresh protections, but the exact current-phone hard-close sequence is not signed off. Closed for now by Aadam on 13 September 2026; this is an administrative close, not new phone acceptance.
+
+Next: Closed for now. If the symptom returns, create a new ticket with the affected build, device and reproduction details rather than reopening this historical item.
+
+### Recurring cards transition without duplicates or gaps
+
+ID: recurring-cards-transition-without-duplicates-or-gaps · Diary & recurring · Reviewed 2026-09-13
+
+Later regular and staging releases retain duplicate, refresh-race, add/delete and card-transition protections. Full combined iPhone and Android acceptance is still open. Closed for now by Aadam on 13 September 2026; this is an administrative close, not new phone acceptance.
+
+Next: Closed for now. If the symptom returns, create a new ticket with the affected build, device and reproduction details rather than reopening this historical item.
+
+### Edit a database food’s serving size
+
+ID: edit-the-serving-size-of-a-database-food · Food editing · Reviewed 2026-09-13
+
+The serving/unit/icon editor is released, with later corrections for first-frame layout, Review state and stale post-save projections. It remains separate from calculator default memory. Complete save-and-reopen phone acceptance is still open. Retained in regular TRAK 475, available in internal TestFlight. Closed for now by Aadam on 13 September 2026; this is an administrative close, not new phone acceptance.
+
+Next: Closed for now. If the symptom returns, create a new ticket with the affected build, device and reproduction details rather than reopening this historical item.
+
+### Delete Undo appears without waiting for sync
+
+ID: food-log-delete-undo-appears-without-waiting-for-sync · Diary & recurring · Reviewed 2026-09-13
+
+The local-admission correction is retained in the later release lines. The previous delayed Undo report remains a required reconnect phone check rather than an assumed pass. Closed for now by Aadam on 13 September 2026; this is an administrative close, not new phone acceptance.
+
+Next: Closed for now. If the symptom returns, create a new ticket with the affected build, device and reproduction details rather than reopening this historical item.
+
+### TRAK Custom reference-food publication
+
+ID: trak-custom-food-publication · Search & catalogue · Reviewed 2026-09-13
+
+The selected TRAK Custom nutrient support and native presentation were promoted through regular Builds 469/470 and backend 2714. This does not establish that every staged reference-food row was copied to production. Approved catalogue rows, coverage, source visibility and phone acceptance remain separate checks. Closed for now by Aadam on 13 September 2026; this is an administrative close, not new phone acceptance.
+
+Next: Closed for now. If the symptom returns, create a new ticket with the affected build, device and reproduction details rather than reopening this historical item.
+
+### Raw Chicken Breast shows household portion chips
+
+ID: raw-chicken-breast-shows-household-portion-chips · Search & catalogue · Reviewed 2026-09-13
+
+The reviewed-source eligibility correction is included in later backend work, and Staging Build 30 added weight-units-first ordering. The exact Raw Chicken portion and calorie phone check still needs a recorded pass. Closed for now by Aadam on 13 September 2026; this is an administrative close, not new phone acceptance.
+
+Next: Closed for now. If the symptom returns, create a new ticket with the affected build, device and reproduction details rather than reopening this historical item.
+
+### Edit the current goal weight and loss rate
+
+ID: edit-current-goal-weight-and-rate-together · Coach & insights · Reviewed 2026-09-13
+
+The new goal-weight step, review summary and shared current-goal update were delivered through the later staging builds and selected regular release. Goal and daily-target cards use the saved rate without restarting the journey. Phone acceptance across all consumers remains open. Closed for now by Aadam on 13 September 2026; this is an administrative close, not new phone acceptance.
+
+Next: Closed for now. If the symptom returns, create a new ticket with the affected build, device and reproduction details rather than reopening this historical item.
+
+### Weight units stay consistent across goal editing
+
+ID: body-weight-units-use-one-conversion-path · Coach & insights · Reviewed 2026-09-13
+
+Staging Build 34 consolidates goal-edit and onboarding conversions through the shared weight-unit module. Local checks cover edit values, saved targets, weekly rates, repeated lb/kg switching and cold reopening. Further phone-review work remains separate; stone is unsupported. Closed for now by Aadam on 13 September 2026; this is an administrative close, not new phone acceptance.
+
+Next: Closed for now. If the symptom returns, create a new ticket with the affected build, device and reproduction details rather than reopening this historical item.
+
+### New Health weights appear without manual syncing
+
+ID: automatic-health-weight-pickup-after-provider-publication · Health · Reviewed 2026-09-13
+
+A foreground pickup correction is included in regular Builds 469/470. It rechecks for a scale measurement published after the first Health read or after returning to TRAK. Automated Apple Health and Health Connect tests cover outgoing weight/nutrition writes too; physical provider acceptance remains open. Closed for now by Aadam on 13 September 2026; this is an administrative close, not new phone acceptance.
+
+Next: Closed for now. If the symptom returns, create a new ticket with the affected build, device and reproduction details rather than reopening this historical item.
+
+### Roll-On staging behaviour and minimum targets
+
+ID: rollon-staging-behaviour-and-shared-minimum · Coach & insights · Reviewed 2026-09-13
+
+The earlier staging failure still needs a final phone pass. The reviewed Coach/Roll-On packet is now in Staging Build 37 with the shared personal minimum, cache and missing-profile handling. Combined automated checks passed; this does not close the reported phone issue. Retained in regular TRAK 475, available in internal TestFlight. Closed for now by Aadam on 13 September 2026; this is an administrative close, not new phone acceptance.
+
+Next: Closed for now. If the symptom returns, create a new ticket with the affected build, device and reproduction details rather than reopening this historical item.
+
+### Coach weekly check-in shows and applies the correct calories
+
+ID: weekly-coach-review-displays-and-applies-one-valid-plan · Coach & insights · Reviewed 2026-09-13
+
+The repair for zero-calorie first plans and incorrect repeat plans is retained in distributed Staging Build 39 with backend 2718. It keeps one review per period and applies the displayed current calories and macros. The newly reported checklist-animation timing issue is tracked separately. Retained in regular TRAK 475, available in internal TestFlight. Closed for now by Aadam on 13 September 2026; this is an administrative close, not new phone acceptance.
+
+Next: Closed for now. If the symptom returns, create a new ticket with the affected build, device and reproduction details rather than reopening this historical item.
+
+### Use the agreed personal calorie minimum everywhere
+
+ID: personal-calorie-minimum-used-by-coach-goals-and-rollon · Coach & insights · Reviewed 2026-09-13
+
+The agreed height/weight-based Standard minimum and optional Low setting are included with the Coach/Roll-On packet in Staging Build 37 and its paired backend. Explicit user choices are preserved and missing profile details are handled explicitly. Regular TRAK delivery is complete; new phone acceptance is separate. Retained in regular TRAK 475, available in internal TestFlight. Closed for now by Aadam on 13 September 2026; this is an administrative close, not new phone acceptance.
+
+Next: Closed for now. If the symptom returns, create a new ticket with the affected build, device and reproduction details rather than reopening this historical item.
+
+### Test Coach check-ins without waiting a week
+
+ID: repeat-coach-checkins-without-waiting-a-week · Coach & insights · Reviewed 2026-09-13
+
+Staging Build 45/backend 2721 retain Repeat test check-in and Start next test week, including the earlier URL correction. Automated coverage passes; these controls remain exclusive to staging and are deliberately gated off in production 475/backend 2722. Closed for now by Aadam on 13 September 2026; this is an administrative close, not new phone acceptance.
+
+Next: Closed for now. If the symptom returns, create a new ticket with the affected build, device and reproduction details rather than reopening this historical item.
+
+### Micronutrient details open with the correct complete view
+
+ID: micronutrient-details-open-with-complete-current-data · Coach & insights · Reviewed 2026-09-13
+
+Regular TRAK 475 includes the complete shared nutrient preparation and covering caches developed through staging 45, plus the accepted shading, bars and edge corrections. Account/date/route guards and normal screen motion are retained. Closed for now by Aadam on 13 September 2026; this is an administrative close, not new phone acceptance.
+
+Next: Closed for now. If the symptom returns, create a new ticket with the affected build, device and reproduction details rather than reopening this historical item.
+
+### All shows the full recorded nutrient history
+
+ID: micronutrient-all-range-uses-recorded-history · Coach & insights · Reviewed 2026-09-13
+
+Staging Build 34 contains the correction for 1Y to All remaining stuck at one year when recorded history is shorter. It uses the actual history span and retains Build 33 work. A related regular Build 470 correction remains separate; full phone acceptance is still open. Retained in regular TRAK 475, available in internal TestFlight. Closed for now by Aadam on 13 September 2026; this is an administrative close, not new phone acceptance.
+
+Next: Closed for now. If the symptom returns, create a new ticket with the affected build, device and reproduction details rather than reopening this historical item.
+
+### Nutrient target markers remain visible
+
+ID: micronutrient-target-markers-remain-visible · Coach & insights · Reviewed 2026-09-13
+
+Build 40 restores the historical light and dark nutrient rail colours. Astra reviewed rendered examples and marker/range tests; nutrient values and target calculations are preserved. Retained in regular TRAK 475, available in internal TestFlight. Closed for now by Aadam on 13 September 2026; this is an administrative close, not new phone acceptance.
+
+Next: Closed for now. If the symptom returns, create a new ticket with the affected build, device and reproduction details rather than reopening this historical item.
+
+### Nutrient values and spacing match the agreed design
+
+ID: micronutrient-formatting-and-spacing · Coach & insights · Reviewed 2026-09-13
+
+Staging Builds 29/30 added the agreed numeric presentation and tighter legend-to-Today spacing, retained by Build 33. The subsequent regular formatting corrections are retained in the combined production source. These are presentation changes, not nutrition-data changes. Retained in regular TRAK 475, available in internal TestFlight. Closed for now by Aadam on 13 September 2026; this is an administrative close, not new phone acceptance.
+
+Next: Closed for now. If the symptom returns, create a new ticket with the affected build, device and reproduction details rather than reopening this historical item.
+
+### Micronutrient coverage loads in regular TRAK
+
+ID: micronutrient-coverage-production-retry-error · Coach & insights · Reviewed 2026-09-13
+
+Build 470 restored the intended nutrient screen, then production backend 2715 fixed the coverage endpoint that was returning an error because of an environment mismatch. The backend correction is verified live. The full phone experience, including separate chart issues, remains open. Closed for now by Aadam on 13 September 2026; this is an administrative close, not new phone acceptance.
+
+Next: Closed for now. If the symptom returns, create a new ticket with the affected build, device and reproduction details rather than reopening this historical item.
+
+### Show weight units before Small, Medium and Large
+
+ID: weight-units-before-named-food-portions · Food editing · Reviewed 2026-09-13
+
+Staging Build 30 changed the serving-chip order to g, oz, lb before named portions such as Small, Medium and Large. Build 33 retains it. The change does not alter portion weights or food ranking. Retained in regular TRAK 475, available in internal TestFlight. Closed for now by Aadam on 13 September 2026; this is an administrative close, not new phone acceptance.
+
+Next: Closed for now. If the symptom returns, create a new ticket with the affected build, device and reproduction details rather than reopening this historical item.
+
+### Remember the serving set with the pack calculator
+
+ID: remember-calculator-serving-when-food-is-reopened · Food editing · Reviewed 2026-09-13
+
+Staging Build 34 includes the fix that saves calculated grams to the account and restores them through Search, Recents, barcode and restart. For example, 500 g divided by four servings reopens at 125 g. Phone acceptance remains open. Retained in regular TRAK 475, available in internal TestFlight. Closed for now by Aadam on 13 September 2026; this is an administrative close, not new phone acceptance.
+
+Next: Closed for now. If the symptom returns, create a new ticket with the affected build, device and reproduction details rather than reopening this historical item.
+
+### Blueberries entered in grams must not become cups
+
+ID: blueberries-grams-not-cup-count · Food editing · Reviewed 2026-09-13
+
+Build 479 includes the shared serving correction and additional saved-template regressions: gram entries retain their unit, and older cup descriptions are converted once while preserving saved counts. Both per-cup and whole-selection template descriptions pass against the preserved physical amount. This is fixture and release evidence; the exact affected live catalogue row has not been rechecked on the phone. Closed for now by Aadam on 13 September 2026; this is an administrative close, not new phone acceptance.
+
+Next: Closed for now. If the symptom returns, create a new ticket with the affected build, device and reproduction details rather than reopening this historical item.
+
+### Recent flagged foods have corrected catalogue servings
+
+ID: flagged-food-label-and-serving-corrections · Search & catalogue · Reviewed 2026-09-13
+
+Five recent moderation cases received guarded live catalogue corrections with independent readback. The ASDA reduced-fat burger entry now uses one burger and its label nutrition rather than incorrectly treating those values as per 100 g. Existing diary history was preserved. Closed for now by Aadam on 13 September 2026; this is an administrative close, not new phone acceptance.
+
+Next: Closed for now. If the symptom returns, create a new ticket with the affected build, device and reproduction details rather than reopening this historical item.
+
+### Move accepted staging work into regular TRAK safely
+
+ID: promote-only-accepted-staging-work · Release & reliability · Reviewed 2026-09-13
+
+Regular Builds 469/470 contain the earlier selected goal, nutrient, Search and Health bundle. Staging Build 38 and backend 2717 contain subsequent work, including the accepted maintenance policy and corrected Coach test-button request. Maintenance acceptance uses reviewed simulations; other changes retain their own acceptance requirements. Regular TRAK promotion has not occurred for this newer bundle. Closed for now by Aadam on 13 September 2026; this is an administrative close, not new phone acceptance.
+
+Next: Closed for now. If the symptom returns, create a new ticket with the affected build, device and reproduction details rather than reopening this historical item.
+
+### Goal changes must preserve earlier expenditure history
+
+ID: goal-change-preserves-earlier-expenditure-history · Coach & insights · Reviewed 2026-09-13
+
+The earlier Coach goal-history repair is included in the paired staging backend for Build 37. It preserves earlier expenditure records when a goal changes on a day without its own saved estimate and retains the applied adjustment after recalculation. Production promotion and phone acceptance remain open. Closed for now by Aadam on 13 September 2026; this is an administrative close, not new phone acceptance.
+
+Next: Closed for now. If the symptom returns, create a new ticket with the affected build, device and reproduction details rather than reopening this historical item.
+
+### Coach maintenance range matches the selected tolerance
+
+ID: coach-maintenance-range-matches-selected-tolerance · Coach & insights · Reviewed 2026-09-13
+
+The maintenance policy is accepted on independently reviewed simulations and is now integrated into live staging backend 2717, paired with Build 38. The accepted controller logic and confidence calculation are preserved in the integrated runtime. Existing simulation evidence remains valid; the policy is also live on production backend 2722. Retained in regular TRAK 475, available in internal TestFlight. Closed for now by Aadam on 13 September 2026; this is an administrative close, not new phone acceptance.
+
+Next: Closed for now. If the symptom returns, create a new ticket with the affected build, device and reproduction details rather than reopening this historical item.
+
+### Coach Accept responds immediately
+
+ID: coach-accept-animation-starts-without-save-delay · Coach & insights · Reviewed 2026-09-13
+
+Build 43 starts feedback immediately and includes the continuous tick correction. The animation does not hold mid-stroke for the network. Confirmation and return still require a successful save, and failed-save recovery is preserved. Retained in regular TRAK 475, available in internal TestFlight. Closed for now by Aadam on 13 September 2026; this is an administrative close, not new phone acceptance.
+
+Next: Closed for now. If the symptom returns, create a new ticket with the affected build, device and reproduction details rather than reopening this historical item.
+
+### Coach result waits for its review checklist
+
+ID: coach-result-waits-for-review-checklist · Coach & insights · Reviewed 2026-09-13
+
+Build 40 waits for both Coach data and the completed review checklist before showing the result. Slow responses, retry, reduced motion and leaving the screen are covered by tests. Retained in regular TRAK 475, available in internal TestFlight. Closed for now by Aadam on 13 September 2026; this is an administrative close, not new phone acceptance.
+
+Next: Closed for now. If the symptom returns, create a new ticket with the affected build, device and reproduction details rather than reopening this historical item.
+
+### Daily targets show saved cycling values immediately
+
+ID: cycling-save-updates-daily-targets-first-frame · Coach & insights · Reviewed 2026-09-13
+
+Build 40 carries the exact saved cycling week through the real settings flow, so the first returned Insights card has the saved calories and macros. Cancellation, account changes and later target edits are covered. Retained in regular TRAK 475, available in internal TestFlight. Closed for now by Aadam on 13 September 2026; this is an administrative close, not new phone acceptance.
+
+Next: Closed for now. If the symptom returns, create a new ticket with the affected build, device and reproduction details rather than reopening this historical item.
+
+### EPA + DHA uses the combined 0.25 g target
+
+ID: epa-dha-combined-standard-target · Coach & insights · Reviewed 2026-09-13
+
+Build 40 and live backend 2719 now share the combined 0.25 g target, history and coverage contract. Complete components produce a known total; incomplete foods remain unknown. The deployed calculation probe exactly matches the reviewed candidate. Closed for now by Aadam on 13 September 2026; this is an administrative close, not new phone acceptance.
+
+Next: Closed for now. If the symptom returns, create a new ticket with the affected build, device and reproduction details rather than reopening this historical item.
+
+### Edit goal returns with updated daily targets
+
+ID: edit-goal-rate-updates-cycling-targets-on-return · Coach & insights · Reviewed 2026-09-13
+
+Build 41 prepares the current daily targets before returning from Edit goal after a weekly loss-rate change, including different calories by day. It uses the existing target resolver; target calculations are unchanged. Retained in regular TRAK 475, available in internal TestFlight. Closed for now by Aadam on 13 September 2026; this is an administrative close, not new phone acceptance.
+
+Next: Closed for now. If the symptom returns, create a new ticket with the affected build, device and reproduction details rather than reopening this historical item.
+
+### Explain the Standard and Low calorie minimums
+
+ID: calorie-minimum-explanations-and-recommended-badge · Coach & insights · Reviewed 2026-09-13
+
+Build 41 explains the Standard and Low allowances, marks Standard as Recommended and removes the size-based sentence. Displayed minimums remain calculated for the profile; the minimum policy is unchanged. Retained in regular TRAK 475, available in internal TestFlight. Closed for now by Aadam on 13 September 2026; this is an administrative close, not new phone acceptance.
+
+Next: Closed for now. If the symptom returns, create a new ticket with the affected build, device and reproduction details rather than reopening this historical item.
+
+### Food micronutrients open full-screen with the serving shown
+
+ID: food-micronutrients-fullscreen-serving-caption · Food editing · Reviewed 2026-09-13
+
+Build 41 opens Food Editor micronutrients as a full screen, puts the serving in brackets after the food name and displays unit-bearing zero for blank food amounts. Missing nutrition remains unknown internally. Embedded recipe and meal panels keep their parent layout. Retained in regular TRAK 475, available in internal TestFlight. Closed for now by Aadam on 13 September 2026; this is an administrative close, not new phone acceptance.
+
+Next: Closed for now. If the symptom returns, create a new ticket with the affected build, device and reproduction details rather than reopening this historical item.
+
+### Restore the light-grey micronutrient background
+
+ID: micronutrient-overview-light-background · Coach & insights · Reviewed 2026-09-13
+
+Build 41 restores the light-grey background behind the main micronutrient overview so white cards remain visible. Dark mode is unchanged. Existing visual references verify the intended colours. Retained in regular TRAK 475, available in internal TestFlight. Closed for now by Aadam on 13 September 2026; this is an administrative close, not new phone acceptance.
+
+Next: Closed for now. If the symptom returns, create a new ticket with the affected build, device and reproduction details rather than reopening this historical item.
+
+### Remove the delay when reopening nutrient graphs
+
+ID: micronutrient-graph-repeat-tap-delay · Coach & insights · Reviewed 2026-09-13
+
+Build 45 retains early shared history preparation, covering caches and the normal transition. It adds stable first-frame Standard references, matching N-day bars/scale and corrected plot edges after the Build 44 phone report. Installed directly and available in TestFlight; automated checks pass and phone acceptance is tracked separately. Retained in regular TRAK 475, available in internal TestFlight. Closed for now by Aadam on 13 September 2026; this is an administrative close, not new phone acceptance.
+
+Next: Closed for now. If the symptom returns, create a new ticket with the affected build, device and reproduction details rather than reopening this historical item.
+
+### Goal-rate editing from plan review includes goal weight
+
+ID: goal-review-rate-edit-includes-goal-weight · Coach & insights · Reviewed 2026-09-13
+
+Build 42 opens goal weight, then goal rate, when editing Goal rate from the plan review. It returns to the review before the final Update plan. Related goal and Insights checks and the full app suites pass; target calculations are unchanged. Closed for now by Aadam on 13 September 2026; this is an administrative close, not new phone acceptance.
+
+Next: Closed for now. If the symptom returns, create a new ticket with the affected build, device and reproduction details rather than reopening this historical item.
+
+### Search foods sometimes fail to load micronutrients
+
+ID: search-food-micronutrients-intermittent-retry · Food editing · Reviewed 2026-09-13
+
+Regular TRAK 475 now recovers when a same-account Health refresh invalidates a pending food nutrient read, and retries one temporary request failure. All 21 focused cache/recovery checks pass, including account isolation and the shared retry limit. It is available in internal TestFlight. These fixes cover reproduced failure classes; the original phone incident was not conclusively traced. Closed for now by Aadam on 13 September 2026; this is an administrative close, not new phone acceptance.
+
+Next: Closed for now. If the symptom returns, create a new ticket with the affected build, device and reproduction details rather than reopening this historical item.
+
+### Recipe Edit opens immediately
+
+ID: recipe-editor-opens-without-waiting-for-detail · Recipes & custom foods · Reviewed 2026-09-13
+
+Regular TRAK 475 opens Recipe Edit immediately while complete ingredients load, avoids unnecessary nutrient enrichment, retries one temporary failure and retains an actionable Retry screen. The 18-ingredient regression preserves original household amounts and one gram basis. An old cached recipe is not silently reopened for editing. Available in internal TestFlight. Closed for now by Aadam on 13 September 2026; this is an administrative close, not new phone acceptance.
+
+Next: Closed for now. If the symptom returns, create a new ticket with the affected build, device and reproduction details rather than reopening this historical item.
+
 ### Keep one shortcut row in the Android small Today widget
 
 ID: android-small-today-widget-duplicate-shortcuts · Release verification · Reviewed 2026-09-10
@@ -1443,3 +1374,75 @@ ID: android-small-today-widget-duplicate-shortcuts · Release verification · Re
 The production widget layout contained seven identical shortcut rows. Build 475 removes six duplicate insertions and keeps one bottom row with the same Search, Scan and Log weight actions. All other widget nodes and binding IDs are unchanged. The final Android release passes fatal lint and signature checks; the matching APK is ready for manual distribution.
 
 Next: Keep the corrected layout in future production builds. Android phone appearance remains separate from the passing release build.
+
+### Improve widget layouts, starting with small Macros
+
+ID: widget-layout-review-small-macros · Widgets · Reviewed 2026-09-13
+
+The approved widget designs and adaptive sizing are retained in 481. iOS is available in internal TestFlight with Remaining fill, wide calorie/macros alignment and Clear/Tinted action corrections. Signed Android 481 is ready for manual upload with the shared Remaining fix. All 4,463 app tests pass; all 144 exact signed-Android renders match approval, including resize and expansion checks. Closed for now by Aadam on 13 September 2026; this is an administrative close, not new phone acceptance.
+
+Next: Closed for now. If the symptom returns, create a new ticket with the affected build, device and reproduction details rather than reopening this historical item.
+
+### Fix Android widget sizing after Build 476
+
+ID: android-widget-launcher-sizing · Widgets · Reviewed 2026-09-13
+
+The reported tiny rings and excessive gaps were reproduced in signed Android 476. All four providers combined size bounds from different orientations. The shared correction is merged and packaged in signed Android 477, restoring the approved ring sizes and wide Search layout. The exact APK passes 84 native host cases, and all 84 renders are identical to the approved images. It is ready for manual upload; physical Pixel acceptance has not yet been confirmed. Closed for now by Aadam on 13 September 2026; this is an administrative close, not new phone acceptance.
+
+Next: Closed for now. If the symptom returns, create a new ticket with the affected build, device and reproduction details rather than reopening this historical item.
+
+### Balance spacing across Android widgets
+
+ID: android-widget-spacing · Widgets · Reviewed 2026-09-13
+
+Build 480 removes the fixed-size limits so values, gauges and labels grow together. Tall cards now select the correct layout. The exact signed APK passes 60 resize/corner cases and 5 expansion cases; all 144 host images match the reviewed candidate. The earlier baseline failures and rejected pre-release text-clipping attempts are retained in private evidence. Closed for now by Aadam on 13 September 2026; this is an administrative close, not new phone acceptance.
+
+Next: Closed for now. If the symptom returns, create a new ticket with the affected build, device and reproduction details rather than reopening this historical item.
+
+### Keep serving amounts consistent across food and recipe editing
+
+ID: centralise-serving-scaling · Food editing · Reviewed 2026-09-13
+
+Signed Build 486 preserves gram input and reopen values across food and recipe editing. Catalogue corrections reconcile linked history, recipes and recurring entries without repeated routine warning/recovery UI, while preserving explicit personal nutrition. Backend 2725 and the historical repair are verified live. Independent Astra adversarial review passed; 4,398 main app tests, 124 legacy-auth tests and 10 explicit DST follow-up tests passed. Signed build verification does not establish phone acceptance. Closed for now by Aadam on 13 September 2026; this is an administrative close, not new phone acceptance.
+
+Next: Closed for now. If the symptom returns, create a new ticket with the affected build, device and reproduction details rather than reopening this historical item.
+
+### Remaining widget rings and bars should drain with logging
+
+ID: widget-remaining-fill-direction · Widgets · Reviewed 2026-09-13
+
+Available in iOS 481 internal TestFlight and included in the signed Android 481 APK prepared for manual upload. Remaining starts full and drains across small/wide Calories and Macros widgets; Consumed fills as before. Missing or unconfirmed targets stay empty. The exact Android APK passes all 56 hosted states and 144 renders; every image matches the reviewed correction. Closed for now by Aadam on 13 September 2026; this is an administrative close, not new phone acceptance.
+
+Next: Closed for now. If the symptom returns, create a new ticket with the affected build, device and reproduction details rather than reopening this historical item.
+
+### Align and enlarge values in the wide calorie and macro widget
+
+ID: ios-widget-wide-macro-layout · Widgets · Reviewed 2026-09-13
+
+Available in iOS 481 internal TestFlight. Macro values sit at the right ends of the bars, the main values are larger and the nutrition section is centred above the shortcuts. Compact, normal and expanded native renders pass. Earlier scaling changes are retained. Closed for now by Aadam on 13 September 2026; this is an administrative close, not new phone acceptance.
+
+Next: Closed for now. If the symptom returns, create a new ticket with the affected build, device and reproduction details rather than reopening this historical item.
+
+### Keep quick action icons visible in iOS Clear and Tinted styles
+
+ID: ios-widget-clear-tinted-actions · Widgets · Reviewed 2026-09-13
+
+Available in iOS 481 internal TestFlight. Small Quick Actions and Search & Quick Actions now use translucent inner backgrounds in the shared accented mode, preserving normal appearance and destinations. Native rendered-output checks pass; actual Home Screen acceptance is the next check. Closed for now by Aadam on 13 September 2026; this is an administrative close, not new phone acceptance.
+
+Next: Closed for now. If the symptom returns, create a new ticket with the affected build, device and reproduction details rather than reopening this historical item.
+
+### Accept the Search and designer-icon release on the phone
+
+ID: production-build-488-search-and-designer-icons · Release & reliability · Reviewed 2026-09-13
+
+iOS Build 488 is Apple VALID and available in the internal Trak beta group. It includes the reviewed Search behavior, centralized bundled designer icons and the corrected icon picker. Matching signed Android Build 488 exists for manual upload but is not distributed. Build and package checks passed; no physical-phone acceptance is claimed. Closed for now by Aadam on 13 September 2026; this is an administrative close, not new phone acceptance.
+
+Next: Closed for now. If the symptom returns, create a new ticket with the affected build, device and reproduction details rather than reopening this historical item.
+
+### Multi-select always offers To list and Add
+
+ID: search-multiselect-to-list-and-add-all · Search · Reviewed 2026-09-13
+
+Build 488 wires the missing To list action when a food is opened while another food is already selected. To list returns with both foods selected and writes nothing to the diary; Add logs the opened food together with every food already in the list. Search queries, ranking and food data are unchanged. Automated Search tests pass; phone acceptance remains open. Closed for now by Aadam on 13 September 2026; this is an administrative close, not new phone acceptance.
+
+Next: Closed for now. If the symptom returns, create a new ticket with the affected build, device and reproduction details rather than reopening this historical item.
